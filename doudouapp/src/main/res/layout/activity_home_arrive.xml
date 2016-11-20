@@ -1,115 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:id="@+id/activity_main"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/bright_foreground_inverse_material_light"
-              android:gravity="center_vertical"
-              android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:id="@+id/activity_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/bright_foreground_inverse_material_light"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
     >
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:gravity="center_vertical"
-            android:text="@string/homeLogo"
-            android:textColor="@color/common_yellow"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/tv_address"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="@string/address"
-            android:textColor="@color/bright_foreground_disabled_material_light"
-            />
-
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1">
-
-            <EditText
-                android:id="@+id/et_search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/edittextshape"
-                android:drawableLeft="@mipmap/btn_header_searchbtn"
-                android:drawablePadding="2dp"
-                android:hint="@string/search_commodity"
-                android:textColor="@color/cardview_dark_background"
-                android:textSize="14sp"/>
-        </RelativeLayout>
-
-
-        <TextView
-            android:id="@+id/tv_classify"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="@string/classify"
-            android:textColor="@color/common_orange"
-            />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@color/transparent"
-            android:src="@mipmap/btn_weaken_arrowdown_orange"
-            />
-    </LinearLayout>
-
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
+        android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/ll_home_arrive_title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:visibility="invisible"
-            android:background="@color/tab_bg_color"
-            android:orientation="horizontal"
-            android:padding="10dp"/>
-    </HorizontalScrollView>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        >
-        <com.yjlw.ddms.homeentity.views.RefreshListView
-            android:id="@+id/lv_home_arrive"
-            android:layout_width="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_height="match_parent"
-            android:fastScrollEnabled="false"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
 
-            />
-        <ProgressBar
-            android:id="@+id/pb_content"
-            android:layout_centerInParent="true"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="center_vertical"
+                android:text="@string/homeLogo"
+                android:textColor="@color/common_yellow"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@string/address"
+                android:textColor="@color/bright_foreground_disabled_material_light"
+                />
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1">
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/edittextshape"
+                    android:drawableLeft="@mipmap/btn_header_searchbtn"
+                    android:drawablePadding="2dp"
+                    android:hint="@string/search_commodity"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textSize="14sp"/>
+            </RelativeLayout>
+
+
+            <TextView
+                android:id="@+id/tv_classify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@string/classify"
+                android:textColor="@color/common_orange"
+                />
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/transparent"
+                android:src="@mipmap/btn_weaken_arrowdown_orange"
+                />
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/ll_home_arrive_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/tab_bg_color"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:visibility="invisible"/>
+        </HorizontalScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            >
+
+            <com.yjlw.ddms.homeentity.views.RefreshListView
+                android:id="@+id/lv_home_arrive"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:fastScrollEnabled="false"
+
+                />
+
+            <ProgressBar
+                android:id="@+id/pb_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+    <!--android:id="@+id/enter_floating_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentRight="true"
+    android:layout_marginBottom="40dip"
+    android:layout_marginRight="10dip"
+    android:clickable="true"
+    app:background="#00FF00"
+    app:backgroundTint="#00FF00"
+    app:rippleColor="@android:color/red"
+    app:fabSize="normal"
+    android:src="@drawable/ic_done"-->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <android.support.design.widget.FloatingActionButton
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.6"
+            android:src="@mipmap/btn_header_shoppingcart_white"
+            app:backgroundTint="@color/v638c03"/>
 
-            android:layout_height="wrap_content"/>
-    </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="20dp"
+            android:background="#ff00"
+            android:padding="5dp"
+            android:text="2"
+            android:textColor="@color/background_floating_material_light"
+            android:textSize="10dp"
+            />
+    </FrameLayout>
 
-</LinearLayout>
+
+</RelativeLayout>
