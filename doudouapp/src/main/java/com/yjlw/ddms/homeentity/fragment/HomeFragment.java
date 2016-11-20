@@ -1,8 +1,10 @@
 package com.yjlw.ddms.homeentity.fragment;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +23,7 @@ import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 
+import com.yjlw.ddms.homeentity.activity.ShoppingCartActivity;
 import com.yjlw.ddms.homeentity.adapter.StrollShoppingListAdapter;
 import com.yjlw.ddms.homeentity.adapter.strollGridViewAdapter;
 import com.yjlw.ddms.homeentity.entity.SecondPageResult;
@@ -77,6 +80,7 @@ public class HomeFragment extends Fragment {
     private View brandTitleItem;
     private View newProductView;
     private HomeTitleItemView newProductTitle;
+    private FloatingActionButton flactionBtn;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -92,6 +96,7 @@ public class HomeFragment extends Fragment {
         llArrveTitle = (LinearLayout) view.findViewById(R.id.ll_home_arrive_title);
         lvHomeArrave = (RefreshListView) view.findViewById(R.id.lv_home_arrive);
         pbContent = (ProgressBar) view.findViewById(R.id.pb_content);
+        flactionBtn = (FloatingActionButton) view.findViewById(R.id.flaction_btn);
 
         homeCenterView = inflate(getContext(), R.layout.home_centeri_tem, null);
         lvHomeArrave.addHeaderView(homeCenterView);//给ListView添加头布局
@@ -139,6 +144,13 @@ public class HomeFragment extends Fragment {
         coverUrl = (ImageView) homeCenterFoodItem.findViewById(R.id.iv_cover_url);
         title = (TextView) homeCenterFoodItem.findViewById(R.id.tv_title);
         price = (TextView) homeCenterFoodItem.findViewById(R.id.tv_price);
+        flactionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), ShoppingCartActivity.class));
+
+            }
+        });
         super.onActivityCreated(savedInstanceState);
     }
 
