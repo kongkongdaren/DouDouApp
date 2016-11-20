@@ -110,7 +110,7 @@ public class HomeNewProduct {
 
         @Override
         public CharSequence getPageTitle(int position) {
-//            Log.i("Log", resultBean.getTags().get(position).getTitle());
+            //            Log.i("Log", resultBean.getTags().get(position).getTitle());
             return tags.get(position).getTitle();
         }
 
@@ -121,13 +121,15 @@ public class HomeNewProduct {
 
         @Override
         public boolean isViewFromObject(View view, Object object) {
-            return view==object;
+            return view == object;
         }
+
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             View view = View.inflate(context, R.layout.home_news_grade, null);
             ImageView viewById = (ImageView) view.findViewById(R.id.iv_home_icon);
-            x.image().bind(viewById,tags.get(position).getUrl());
+            x.image().bind(viewById, tags.get(position).getGoods().getCoverUrl());
+            Log.i("Log", tags.get(position).getGoods().getCoverUrl());
             container.addView(view);
             return view;
         }
