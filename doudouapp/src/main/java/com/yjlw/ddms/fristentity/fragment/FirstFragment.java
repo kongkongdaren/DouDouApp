@@ -219,7 +219,6 @@ public class FirstFragment extends Fragment {
 
         photoList = firstPagerData.getData().getHeader().get(2).getList();
         pcvDinner.setTextView(photoList.get(0).getTitle());
-
         pcvDinner.setSmallTextView(photoList.get(0).getUiType());
         ImageView dinnerIcon= (ImageView) pcvDinner.findViewById(R.id.iv_dinner);
         Picasso.with(getContext()).load(photoList.get(0).getImgs().get(0)).into(dinnerIcon);
