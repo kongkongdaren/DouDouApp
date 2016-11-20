@@ -27,6 +27,7 @@ public class DownLoadDataUtils {
         params.addBodyParameter("limit", "20");
         params.addBodyParameter("offset", "0");
         params.addBodyParameter("sign", "");
+
         params.addBodyParameter("uid", "0");
         params.addBodyParameter("uuid", "9ea70fa9356586ff23fc31785f735cf1");
         params.addBodyParameter("Latitude", "39.913249");
