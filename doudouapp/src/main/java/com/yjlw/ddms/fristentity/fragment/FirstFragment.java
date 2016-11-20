@@ -247,6 +247,7 @@ public class FirstFragment extends Fragment {
         Picasso.with(getContext()).load(photoList.get(2).getImgs().get(0)).into(eatIcon);
         TextView  tvPcvOld= (TextView) pcvOldDiet.findViewById(R.id.tv_dinner_big);
         tvPcvOld.setMaxLines(2);
+
         tvPcvOld.setMaxEms(4);
         tvPcvOld.setEllipsize(TextUtils.TruncateAt.END);
         tvPcvOld.setText(photoList.get(3).getTitle());
