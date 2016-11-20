@@ -1,5 +1,6 @@
 package com.yjlw.ddms.fristentity.fragment;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,6 +16,7 @@ import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -67,7 +69,7 @@ public class FirstFragment extends Fragment {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0) {
-               vp.setCurrentItem(index++);
+               vp.setCurrentItem(++index);
             }
             super.handleMessage(msg);
         }
@@ -89,6 +91,8 @@ public class FirstFragment extends Fragment {
     private PhotographCategoryView pcvOldDiet;
     private PhotographCategoryView pcHotSpecial;
     private List<FirstPagerData.DataBean.HeaderBean.ListBeanX> photoList;
+    private ProgressDialog dialog;
+    private ProgressBar pbContent;
 
 
     @Override
@@ -102,6 +106,7 @@ public class FirstFragment extends Fragment {
         view = inflater.inflate(R.layout.activity_haoodu, null);
         View viewPager = inflate(getContext(), R.layout.bean_advertisement, null);
         vp = (ViewPager) viewPager.findViewById(R.id.vp_id);
+        pbContent = (ProgressBar) view.findViewById(R.id.pb_content);
         rlv = (ListView) view.findViewById(R.id.lv_first);
         llContainer = (LinearLayout) viewPager.findViewById(R.id.ll_container_id);
         rlv.addHeaderView(viewPager);
@@ -170,8 +175,7 @@ public class FirstFragment extends Fragment {
             @Override
             public void onSuccess(String result) {
                 Log.i("Log", "首页下载的数据是" + result);
-                parserFirstPager(result);
-
+                    parserFirstPager(result);
             }
 
             @Override
@@ -200,6 +204,11 @@ public class FirstFragment extends Fragment {
         Gson gson = new Gson();
         FirstPagerData firstPagerData = gson.fromJson(result, FirstPagerData.class);
         List<FirstPagerData.DataBean.HeaderBean.ListBeanX> listAder = firstPagerData.getData().getHeader().get(0).getList();
+        if(listAder==null){
+            pbContent.setVisibility(View.VISIBLE);
+        }else{
+            pbContent.setVisibility(View.GONE);
+        }
         listBeen = firstPagerData.getData().getList();
         aboutListView(listBeen);
         listClass = firstPagerData.getData().getHeader().get(1).getList();
@@ -237,7 +246,8 @@ public class FirstFragment extends Fragment {
         ImageView eatIcon= (ImageView) pcvEat.findViewById(R.id.iv_dinner);
         Picasso.with(getContext()).load(photoList.get(2).getImgs().get(0)).into(eatIcon);
         TextView  tvPcvOld= (TextView) pcvOldDiet.findViewById(R.id.tv_dinner_big);
-        tvPcvOld.setSingleLine(false);
+        tvPcvOld.setMaxLines(2);
+
         tvPcvOld.setMaxEms(4);
         tvPcvOld.setEllipsize(TextUtils.TruncateAt.END);
         tvPcvOld.setText(photoList.get(3).getTitle());
