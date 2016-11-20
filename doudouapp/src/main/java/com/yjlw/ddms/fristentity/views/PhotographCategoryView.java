@@ -53,7 +53,6 @@ public class PhotographCategoryView extends CardView {
         tvDinner.setText(bigTitle);
     }
     //为textview设置
-    public void setSmallTextView(String smallTitle){
-        tvDinner.setText(smallTitle);
+    public void setSmallTextView(String smallTitle){tvSmallDinner.setText(smallTitle);
     }
 }
