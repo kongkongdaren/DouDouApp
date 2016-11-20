@@ -15,13 +15,14 @@
     <TextView
         android:id="@+id/tv_dinner_big"
         style="@style/classStyle"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:textSize="20sp"
         android:text="@string/dinner"/>
     <TextView
         android:id="@+id/tv_dinner_small"
         style="@style/classStyle"
         android:layout_marginTop="50dp"
+        android:textSize="10sp"
         android:text="@string/dinnereat"
         />
 </android.support.v7.widget.CardView>

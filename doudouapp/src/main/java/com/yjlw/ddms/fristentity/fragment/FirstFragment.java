@@ -6,13 +6,16 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
@@ -22,6 +25,7 @@ import com.yjlw.ddms.fristentity.adapter.MyViewPagerAdapter;
 import com.yjlw.ddms.fristentity.entity.FirstPagerData;
 import com.yjlw.ddms.fristentity.views.HaoDouTitleCclickItem;
 import com.yjlw.ddms.fristentity.views.PhotographCategoryView;
+import com.yjlw.ddms.utils.ToastUtils;
 
 import org.xutils.common.Callback;
 import org.xutils.http.HttpMethod;
@@ -57,6 +61,8 @@ public class FirstFragment extends Fragment {
     private List<ViewPagerFragment> pager;
     private int index = 1;
     private boolean isTaskRun;
+    private boolean flg;// true：当前页的数据加载完毕；false：没有还在完毕
+    private int pageIndex = 0;// 页码
     private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
@@ -219,22 +225,32 @@ public class FirstFragment extends Fragment {
 
         photoList = firstPagerData.getData().getHeader().get(2).getList();
         pcvDinner.setTextView(photoList.get(0).getTitle());
-        pcvDinner.setSmallTextView(photoList.get(0).getUiType());
+        pcvDinner.setSmallTextView(photoList.get(0).getDesc());
         ImageView dinnerIcon= (ImageView) pcvDinner.findViewById(R.id.iv_dinner);
         Picasso.with(getContext()).load(photoList.get(0).getImgs().get(0)).into(dinnerIcon);
         pcvLoon.setTextView(photoList.get(1).getTitle());
+        pcvLoon.setSmallTextView(photoList.get(1).getDesc());
         ImageView loonIcon= (ImageView) pcvLoon.findViewById(R.id.iv_dinner);
         Picasso.with(getContext()).load(photoList.get(1).getImgs().get(0)).into(loonIcon);
         pcvEat.setTextView(photoList.get(2).getTitle());
+        pcvEat.setSmallTextView(photoList.get(2).getDesc());
         ImageView eatIcon= (ImageView) pcvEat.findViewById(R.id.iv_dinner);
         Picasso.with(getContext()).load(photoList.get(2).getImgs().get(0)).into(eatIcon);
-        pcvOldDiet.setTextView(photoList.get(3).getTitle());
+        TextView  tvPcvOld= (TextView) pcvOldDiet.findViewById(R.id.tv_dinner_big);
+        tvPcvOld.setSingleLine(false);
+        tvPcvOld.setMaxEms(4);
+        tvPcvOld.setEllipsize(TextUtils.TruncateAt.END);
+        tvPcvOld.setText(photoList.get(3).getTitle());
+        //pcvOldDiet.setTextView(photoList.get(3).getTitle());
+        pcvOldDiet.setSmallTextView(photoList.get(3).getDesc());
         ImageView oldDietIcon= (ImageView) pcvOldDiet.findViewById(R.id.iv_dinner);
         Picasso.with(getContext()).load(photoList.get(3).getImgs().get(0)).into(oldDietIcon);
         pcHotSpecial.setTextView(photoList.get(4).getTitle());
+        pcHotSpecial.setSmallTextView(photoList.get(4).getDesc());
         ImageView hotSpecialIcon= (ImageView)pcHotSpecial.findViewById(R.id.iv_dinner);
         Picasso.with(getContext()).load(photoList.get(4).getImgs().get(0)).into(hotSpecialIcon);
-        Log.i("log", listClass.get(1).getTitle());
+        Log.i("log", "描述是"+photoList.get(4).getDesc());
+        Log.i("log","描述是"+photoList.get(2).getDesc());
         // 2、关于ViewPager的操作
         aboutViewPager(listAder);
 
@@ -247,7 +263,25 @@ public class FirstFragment extends Fragment {
         MyFirstPagerAdapter adapter = new MyFirstPagerAdapter(listBeen, getContext());
 //        Log.i("ListBean",listBeen.toString());
         rlv.setAdapter(adapter);
+         rlv.setOnScrollListener(new MyOnScrollListener());
+    }
+    private final class MyOnScrollListener implements AbsListView.OnScrollListener{
 
+        @Override
+        public void onScrollStateChanged(AbsListView absListView, int scrollState) {
+            if(scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE && flg){
+                if (pageIndex <photoList.size()-1){
+                    loadFirstPagerData();
+                }else{
+                    ToastUtils.showToast(getContext(),"当前数据已经加载完毕。。。");
+                }
+            }
+        }
+
+        @Override
+        public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+            flg = firstVisibleItem + visibleItemCount == totalItemCount;
+        }
     }
 
 
