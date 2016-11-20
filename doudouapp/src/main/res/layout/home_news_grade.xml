@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
-        android:alpha="0.4"
+        android:alpha="0.6"
         android:background="@color/button_material_dark"
         android:orientation="horizontal"
         android:padding="5dp"
@@ -31,6 +31,7 @@
             android:layout_height="wrap_content"
             android:background="@color/result_points"
             android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:textColor="@color/actionbar_bg_color"/>
 
         <TextView
