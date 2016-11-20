@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:background="@color/tab_bg_color">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+        <com.yjlw.ddms.fristentity.views.PhotographCategoryView
+            android:id="@+id/pcv_dinner"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <com.yjlw.ddms.fristentity.views.PhotographCategoryView
+            android:id="@+id/pcv_loon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+        <com.yjlw.ddms.fristentity.views.PhotographCategoryView
+            android:id="@+id/pcv_eat"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"/>
+        <com.yjlw.ddms.fristentity.views.PhotographCategoryView
+            android:id="@+id/pcv_old_diet"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+        <com.yjlw.ddms.fristentity.views.PhotographCategoryView
+
+            android:id="@+id/pcv_hot_special"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+</LinearLayout>

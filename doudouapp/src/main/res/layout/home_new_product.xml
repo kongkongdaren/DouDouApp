@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:visibility="invisible">
+
+    <com.yjlw.ddms.homeentity.views.HomeTitleItemView
+        android:id="@+id/new_product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="invisible"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.yjlw.ddms.fristentity.views.MySelfCircleView
+            android:id="@+id/mycirview_storelogourl"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_store_userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
+
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_store_title"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_info"
+                style="@style/newProductInfo"
+                android:layout_below="@+id/tv_user_name"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_con"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_info"
+                android:layout_marginTop="5dp"
+                android:gravity="center_vertical"
+                android:text="@string/examine"
+                android:textColor="@color/common_yellow"
+
+                />
+
+            <TextView
+                android:id="@+id/tv_content"
+                style="@style/newProductContent"
+                android:layout_below="@+id/tv_info"
+                android:layout_toRightOf="@+id/tv_con"
+
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_new_product_coverUrl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"/>
+
+        <TextView
+            android:id="@+id/tv_new_product_title"
+            style="@style/shoppingTitle"
+            android:layout_above="@+id/tv_subTitle"
+            android:layout_alignParentBottom="true"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_new_product_dealprice"
+            style="@style/shoppingTitle"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:textSize="14sp"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vp_new_product_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            />
+
+        <com.viewpagerindicator.TabPageIndicator
+            android:id="@+id/vp_new_product_tags"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+
+        android:background="@color/bright_gray"/>
+
+
+</LinearLayout>

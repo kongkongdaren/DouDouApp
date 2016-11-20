@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="80dp">
+    <com.yjlw.ddms.fristentity.views.HaoDouTitleCclickItem
+        android:id="@+id/htc_poprecipe"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+    <com.yjlw.ddms.fristentity.views.HaoDouTitleCclickItem
+        android:id="@+id/htc_video"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+    <com.yjlw.ddms.fristentity.views.HaoDouTitleCclickItem
+        android:id="@+id/htc_kitchen"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+    <com.yjlw.ddms.fristentity.views.HaoDouTitleCclickItem
+        android:id="@+id/htc_hot_activity"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"/>
+    <com.yjlw.ddms.fristentity.views.HaoDouTitleCclickItem
+        android:id="@+id/htc_menu_classify"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1" />
+</LinearLayout>

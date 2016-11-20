@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_guide"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    >
+
+        <ImageView
+            android:id="@+id/iv_real_time_iamge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_title_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="冷吃劲道，热吃软糯--酱烧"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:id="@+id/iv_left_iamge_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_username_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="孩妈妮妮"/>
+                <ImageView
+                    android:id="@+id/iv_right_image_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/icon_vip_small"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_content_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="冬日里是进补的季节，俗话说“冬日小补，来年打虎”"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:id="@+id/iv_dianji_image_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/ico_weaken_good"/>
+                <TextView
+                    android:id="@+id/tv_dianji_count_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="7"/>
+
+                <ImageView
+                    android:id="@+id/iv_message_image_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="40dp"
+                    android:src="@mipmap/ico_weaken_comment"/>
+                <TextView
+                    android:id="@+id/tv_message_count_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:text="15"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/wheel_timebtn_pre"
+        android:layout_marginTop="10dp" />
+    
+</LinearLayout>

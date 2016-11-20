@@ -1,0 +1,110 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="BottomTabStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawablePadding">3dp</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textColor">@drawable/selector_text</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">10sp</item>
+
+    </style>
+
+    <style name="myselfStyle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/myself_selector</item>
+        <item name="android:textColor">@drawable/background_selector</item>
+    </style>
+
+    <style name="classStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textColor">@color/common_white</item>
+        <item name="android:layout_marginLeft">15dp</item>
+    </style>
+
+    <style name="circlephotostyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:text">@string/circleinstruction</item>
+        <item name="android:layout_gravity">bottom</item>
+    </style>
+
+    <style name="listphoto">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:text">@string/photoname</item>
+    </style>
+    <!--到家的逛逛-->
+    <style name="scrollShopping">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@color/common_red</item>
+    </style>
+
+    <style name="Price">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
+    <style name="openurl">
+        <item name="android:layout_width">80dp</item>
+        <item name="android:layout_height">25dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@color/common_white</item>
+    </style>
+
+    <style name="shoppingTitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:textColor">@color/common_white</item>
+    </style>
+
+    <style name="newProductInfo">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:maxEms">20</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:textColor">@color/dim_foreground_disabled_material_dark</item>
+    </style>
+    <style name="newProductContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+</resources>

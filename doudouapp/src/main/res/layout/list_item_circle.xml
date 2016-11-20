@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<FrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="300dp">
+<ImageView
+    android:id="@+id/iv_list_photo_circle"
+    android:layout_width="match_parent"
+    android:layout_height="230dp"
+    android:src="@mipmap/ic_main_logo"
+    android:scaleType="fitXY"/>
+    <com.yjlw.ddms.fristentity.views.MySelfCircleView
+        android:id="@+id/circle_photo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@mipmap/icon_plus"
+        android:layout_marginTop="200dp"
+        android:layout_gravity="right"
+        />
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="260dp"
+        android:layout_gravity="right"
+        android:gravity="center"
+        />
+    <TextView
+        android:id="@+id/tv_list_circle_title"
+        style="@style/circlephotostyle"
+        android:layout_marginBottom="30dp"
+        android:textSize="20sp"
+        />
+    <TextView
+        android:id="@+id/tv_list_circle_content"
+        style="@style/circlephotostyle"
+        android:textSize="15sp"
+        android:layout_marginBottom="10dp"
+
+        />
+</FrameLayout>
+</RelativeLayout>

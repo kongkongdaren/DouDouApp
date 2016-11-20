@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+    <!--吃货最爱-->
+    <com.yjlw.ddms.homeentity.views.HomeTitleItemView
+        android:id="@+id/home_food"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:orientation="horizontal"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+
+        <ImageView
+            android:id="@+id/iv_cover_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/status_text"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="15dp"
+            android:text="¥9.90"
+            android:textColor="@color/status_text"
+            android:textSize="16sp"
+            />
+    </RelativeLayout>
+
+    <GridView
+        android:id="@+id/gv_food"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:numColumns="4"
+        android:scrollbars="none"
+
+        android:verticalSpacing="3dp"/>
+</LinearLayout>
