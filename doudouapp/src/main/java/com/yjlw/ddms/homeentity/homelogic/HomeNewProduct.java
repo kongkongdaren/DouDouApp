@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +20,7 @@ import com.yjlw.ddms.homeentity.entity.SecondPageResult;
 import com.yjlw.ddms.homeentity.entity.SecondPageResult.ResultBean;
 import com.yjlw.ddms.homeentity.entity.SecondPageResult.ResultBean.NewsRecommendGoodBean;
 
+import org.w3c.dom.Text;
 import org.xutils.x;
 
 import java.util.List;
@@ -92,6 +94,7 @@ public class HomeNewProduct {
         indicator.setVisibility(View.VISIBLE);
         indicator.setViewPager(mViewPagerTags);
 
+
     }
 
     /**
@@ -129,7 +132,11 @@ public class HomeNewProduct {
             View view = View.inflate(context, R.layout.home_news_grade, null);
             ImageView viewById = (ImageView) view.findViewById(R.id.iv_home_icon);
             x.image().bind(viewById, tags.get(position).getGoods().getCoverUrl());
-            Log.i("Log", tags.get(position).getGoods().getCoverUrl());
+//            Log.i("Log", tags.get(position).getGoods().getCoverUrl());
+            TextView title = (TextView) view.findViewById(R.id.tv_title);
+            title.setText(tags.get(position).getGoods().getTitle());
+            TextView dealPrice = (TextView) view.findViewById(R.id.tv_deal_price);
+            dealPrice.setText("¥"+tags.get(position).getGoods().getDealPrice());
             container.addView(view);
             return view;
         }
