@@ -98,9 +98,16 @@
             />
     </RelativeLayout>
 
-    <LinearLayout
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+
+        android:background="@color/bright_gray"/>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         android:orientation="vertical">
 
         <android.support.v4.view.ViewPager
@@ -113,15 +120,17 @@
             android:id="@+id/vp_new_product_tags"
             android:layout_width="match_parent"
             android:layout_height="20dp"
+            android:alpha="0.4"
+            android:background="@color/button_material_dark"
+            android:layout_alignParentBottom="true"
             android:visibility="gone"
             />
-    </LinearLayout>
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"
         android:layout_height="2dp"
-
-        android:background="@color/bright_gray"/>
+        android:background="#00000000"/>
 
 
 </LinearLayout>

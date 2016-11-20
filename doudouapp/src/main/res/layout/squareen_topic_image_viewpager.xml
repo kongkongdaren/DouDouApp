@@ -6,18 +6,19 @@
     android:layout_height="match_parent"
     >
 
-    <ImageView
-        android:id="@+id/iv_photo_id"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <TextView
-        android:id="@+id/tv_subject_id"
+    <!-- 占位的容器控件，准备放置小圆点 -->
+    <LinearLayout
+        android:id="@+id/ll_container_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="25dp"
+        android:background="@color/gray"
         android:gravity="center_horizontal"
-        android:textColor="@color/recommend_swipe_color2" />
+        android:orientation="horizontal" />
     
 </RelativeLayout>
