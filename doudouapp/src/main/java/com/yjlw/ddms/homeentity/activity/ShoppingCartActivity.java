@@ -118,6 +118,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         for (int i = 0; i < 12; i++)
         {
             data = new DataBean();
+
             data.setId(maxId + i + 1);// 从最大Id的下一个开始
             data.setShopName("我的" + (maxId + 1 + i) + "店铺");
             data.setContent("我的购物车里面的第" + (maxId + 1 + i) + "个商品");
