@@ -88,6 +88,7 @@ public class HotTitleActivity extends AppCompatActivity {
             args.putString("hotName",hotName);
             fragment.setArguments(args);
             fragments.add(fragment);
+
         }
         //适配器
         MyFragmentPagerAdapter adapter=new MyFragmentPagerAdapter(getSupportFragmentManager());
