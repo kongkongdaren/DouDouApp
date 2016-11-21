@@ -30,6 +30,7 @@ import com.yjlw.ddms.homeentity.entity.SecondPageResult;
 import com.yjlw.ddms.homeentity.entity.SecondPageResult.ResultBean.CateListBean;
 import com.yjlw.ddms.homeentity.entity.SecondPageResult.ResultBean.ListBean;
 import com.yjlw.ddms.homeentity.entity.SecondPageResult.ResultBean.FoodieFavoriteGoodsBean;
+import com.yjlw.ddms.homeentity.homelogic.HomeAboutTitle;
 import com.yjlw.ddms.homeentity.homelogic.HomeNewProduct;
 import com.yjlw.ddms.homeentity.homelogic.HomeTopCenterItem;
 import com.yjlw.ddms.homeentity.views.HomeTitleItemView;
@@ -235,15 +236,17 @@ public class HomeFragment extends Fragment {
 
         SecondPageResult.ResultBean result = secondPageResult.getResult();
         List<CateListBean> cateList = secondPageResult.getResult().getCateList();
-//        Log.i("Log", "更数据是："+cateLists.toString());
-//        Log.i("Log", "cateList"+cateList.toString());
+        //        Log.i("Log", "更数据是："+cateLists.toString());
+        //        Log.i("Log", "cateList"+cateList.toString());
         for (int i = 0; i < cateList.size(); i++) {
             CateListBean cateListData = cateList.get(i);
-//            Log.i("Log", "cateList"+cateLists.get(i).getCateName()+""+cateListData.getCateName());
+            //            Log.i("Log", "cateList"+cateLists.get(i).getCateName()+""+cateListData
+            // .getCateName());
             if (cateLists.contains(cateListData) == true) {
                 break;
             } else {
                 cateLists.addAll(cateList);
+                new HomeAboutTitle(cateLists, getContext(),llArrveTitle);//标签导航页面的逻辑书写
                 aboutTitle();
             }
         }
@@ -266,36 +269,13 @@ public class HomeFragment extends Fragment {
      * 关于标题的操作
      */
     private void aboutTitle() {
-        if (cateLists != null) {
-            if (cateLists.size() != 0) {
-                llArrveTitle.setVisibility(View.VISIBLE);
-                itemView.setVisibility(View.VISIBLE);
-                titleItem.setVisibility(View.VISIBLE);
-                pbContent.setVisibility(View.INVISIBLE);
-                brandTitleItem.setVisibility(View.VISIBLE);
-                newProductTitle.setVisibility(View.VISIBLE);
-            }
-
-            for (int i = 0; i < cateLists.size(); i++) {
-                String cateName = cateLists.get(i).getCateName();
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(ViewGroup
-                        .LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                TextView tvTitle = new TextView(getContext());
-                if (i > 0) {
-                    layoutParams.setMargins(25, 0, 0, 0);
-                }
-                tvTitle.setCompoundDrawablePadding(5);
-                tvTitle.setLayoutParams(layoutParams);//设置 <!--android:drawablePadding="2dp"-->
-                Drawable drawable = getResources().getDrawable(R.mipmap.ico_group_arrow_right);
-                drawable.setBounds(0, 0, drawable.getMinimumWidth() + 5, drawable
-                        .getMinimumHeight()); //设置边界
-                tvTitle.setCompoundDrawables(null, null, drawable, null);//画在右边
-                // <!--android:drawableRight="@mipmap/ico_group_arrow_right"-->
-                tvTitle.setText(cateName);
-                llArrveTitle.addView(tvTitle);
-            }
-
-
+        if (cateLists.size() != 0) {
+            llArrveTitle.setVisibility(View.VISIBLE);
+            itemView.setVisibility(View.VISIBLE);
+            titleItem.setVisibility(View.VISIBLE);
+            pbContent.setVisibility(View.INVISIBLE);
+            brandTitleItem.setVisibility(View.VISIBLE);
+            newProductTitle.setVisibility(View.VISIBLE);
         }
 
     }
