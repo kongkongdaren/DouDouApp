@@ -34,4 +34,5 @@ dependencies {
     compile 'it.sephiroth.android.library.picasso:picasso:2.5.2.4b'
     compile project(':app')
     compile 'org.greenrobot:greendao:3.2.0'
+    compile project(':daoexamplegenerator')
 }
