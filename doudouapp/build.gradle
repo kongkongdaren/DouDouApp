@@ -20,8 +20,8 @@ android {
 }
 greendao{
     schemaVersion 1
-    daoPackage 'com.yjlw.ddms'
-    targetGenDir 'src/main/java-gen'
+    daoPackage 'com.admom.mygreendaotest'
+    targetGenDir 'src/main/java'
 }
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')

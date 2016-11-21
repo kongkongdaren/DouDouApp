@@ -8,7 +8,7 @@ public class ExampleDaoGenerator {
     public static void main(String[] args) throws Exception {
         // 正如你所见的，你创建了一个用于添加实体（Entity）的模式（Schema）对象。
         // 两个参数分别代表：数据库版本号与自动生成代码的包路径。
-        Schema schema = new Schema(1, "me.itangqi.greendao");
+        Schema schema = new Schema(1, "com.admom.mygreendaotest");
 //      当然，如果你愿意，你也可以分别指定生成的 Bean 与 DAO 类所在的目录，只要如下所示：
 //      Schema schema = new Schema(1, "me.itangqi.bean");
 //      schema.setDefaultJavaPackageDao("me.itangqi.dao");
@@ -22,8 +22,8 @@ public class ExampleDaoGenerator {
 
         // 最后我们将使用 DAOGenerator 类的 generateAll() 方法自动生成代码，此处你需要根据自己的情况更改输出目录（既之前创建的 java-gen)。
         // 其实，输出目录的路径可以在 build.gradle 中设置，有兴趣的朋友可以自行搜索，这里就不再详解。
-//        F:\AndroidDemo\AndroidStio\GreenDemo\app
-        new DaoGenerator().generateAll(schema, " F:/AndroidDemo/AndroidStio/GreenDemo/app/src/main/java-gen");
+//        F:/AndroidDemo/AndroidStio/DouDouApp/doudouapp/src/main
+        new DaoGenerator().generateAll(schema, "F:/AndroidDemo/AndroidStio/DouDouApp/doudouapp/src/main/java");
     }
 
     /**
