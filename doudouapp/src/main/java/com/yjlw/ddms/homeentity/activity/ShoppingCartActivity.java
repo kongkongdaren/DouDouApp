@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -27,7 +28,7 @@ import java.util.List;
  * 购物车界面
  */
 public class ShoppingCartActivity extends AppCompatActivity implements View.OnClickListener {
-
+//
     private static final int INITIALIZE = 0;
 
     private ListView mListView;// 列表
