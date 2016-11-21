@@ -176,7 +176,7 @@ public class FirstFragment extends Fragment {
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                Log.i("Log", "首页下载的数据是" + result);
+                //Log.i("Log", "首页下载的数据是" + result);
                     parserFirstPager(result);
             }
 
