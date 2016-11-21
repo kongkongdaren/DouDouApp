@@ -9,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +22,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
+import com.yjlw.ddms.fristentity.activity.HotActivity;
 import com.yjlw.ddms.fristentity.activity.HotTitleActivity;
 import com.yjlw.ddms.fristentity.adapter.MyFirstPagerAdapter;
 import com.yjlw.ddms.fristentity.adapter.MyViewPagerAdapter;
@@ -234,7 +234,12 @@ public class FirstFragment extends Fragment {
         classHotActivity.setTextView(listClass.get(3).getTitle());
         ImageView hotIcon = (ImageView) classHotActivity.findViewById(R.id.iv_haodou_icon);
         Picasso.with(getContext()).load(listClass.get(3).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(hotIcon);
-
+        classHotActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), HotActivity.class));
+            }
+        });
         classMenu.setTextView(listClass.get(4).getTitle());
         ImageView menuIcon = (ImageView) classMenu.findViewById(R.id.iv_haodou_icon);
         Picasso.with(getContext()).load(listClass.get(4).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(menuIcon);

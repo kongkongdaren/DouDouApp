@@ -9,6 +9,7 @@
     <ImageView
         android:id="@+id/iv_photo_id"
         android:layout_width="match_parent"
+        android:src="@mipmap/btn_user_photo"
         android:layout_height="match_parent" />
 
     

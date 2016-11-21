@@ -6,8 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
-       android:name=".application.xUtilsApplication"
-
+        android:name=".application.xUtilsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_main_logo"
         android:label="@string/app_name"
@@ -28,11 +27,18 @@
         <!-- 主页面 -->
         <activity android:name=".mainactivity.MainActivity">
         </activity>
-        <!--购物车界面-->
+        <!-- 购物车界面 -->
         <activity android:name=".homeentity.activity.ShoppingCartActivity">
         </activity>
-        <!--热门菜谱界面-->
+        <!-- 热门菜谱界面 -->
         <activity android:name=".fristentity.activity.HotTitleActivity"/>
+        <!--到家的标签详情页面的处理-->
+        <activity android:name=".homeentity.activity.HomeLabelActivity">
+        </activity>
+        <!--热门活动界面-->
+        <activity android:name=".fristentity.activity.HotActivity"/>
+        <!--图片跳转页面-->
+        <activity android:name=".fristentity.activity.PhotoActivity"/>
     </application>
 
 </manifest>

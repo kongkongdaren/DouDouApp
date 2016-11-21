@@ -4,6 +4,7 @@
     android:id="@+id/activity_guide"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF"
     android:orientation="vertical"
     >
 
@@ -74,9 +75,10 @@
     </RadioGroup>
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/vp_id"
+        android:id="@+id/sqvp_id"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
+
         android:layout_height="0dp"
         android:layout_weight="1" />
 
