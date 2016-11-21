@@ -33,6 +33,7 @@ public abstract class HomeCustomBaseAdapter<T> extends BaseAdapter {
     }
 
     @Override
+
     public long getItemId(int position) {
         return position;
     }

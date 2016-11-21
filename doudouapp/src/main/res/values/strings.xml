@@ -44,4 +44,12 @@
     <string name="circleinstruction">萝卜的最佳吃法都在这里。。</string>
     <string name="openurl">立即购买</string>
     <string name="examine">[品鉴]</string>
+    <string name="menu_edit">编辑</string>
+    <string name="menu_enter">完成</string>
+    <string name="menu_del">删除</string>
+    <string name="menu_sett">结算</string>
+    <string name="kitchentitle">秋冬季巧食坚果强身健体更驱寒</string>
+    <string name="kitchenname">幸福的林冰</string>
+    <string name="titlecontent">咸香下饭，美味湘菜——香</string>
+    <string name="titlecount">1</string>
 </resources>

@@ -6,7 +6,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
-        android:name=".application.xUtilsApplication"
+       android:name=".application.xUtilsApplication"
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_main_logo"
         android:label="@string/app_name"
@@ -25,10 +26,10 @@
         <activity android:name=".mainactivity.GuideActivity">
         </activity>
         <!-- 主页面 -->
-        <activity
-            android:name=".mainactivity.MainActivity"
-
-            >
+        <activity android:name=".mainactivity.MainActivity">
+        </activity>
+        <!--购物车界面-->
+        <activity android:name=".homeentity.activity.ShoppingCartActivity">
         </activity>
     </application>
 

@@ -10,14 +10,18 @@ import org.xutils.x;
  * This program is protected by copyright laws <br/>
  * Date: 2016年11月16  20:14
  *
- * @author 姜文莒
+ * @author 原海忠
  * @version : 1.0
  */
 
 public class xUtilsApplication extends Application {
+
     @Override
     public void onCreate() {
         super.onCreate();
         x.Ext.init(this);
+
     }
+
+
 }

@@ -424,6 +424,15 @@ public class FirstPagerData {
                 private String uiType;
                 private String url;
                 private List<String> imgs;
+                private String desc;
+
+                public String getDesc() {
+                    return desc;
+                }
+
+                public void setDesc(String desc) {
+                    this.desc = desc;
+                }
 
                 public String getTitle() {
                     return title;
@@ -473,6 +482,7 @@ public class FirstPagerData {
                             ", uiType='" + uiType + '\'' +
                             ", url='" + url + '\'' +
                             ", imgs=" + imgs +
+                            ", desc='" + desc + '\'' +
                             '}';
                 }
 

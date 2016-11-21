@@ -107,4 +107,12 @@
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:textColor">@color/dark_gray</item>
     </style>
+
+    <style name="hottitle">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>
