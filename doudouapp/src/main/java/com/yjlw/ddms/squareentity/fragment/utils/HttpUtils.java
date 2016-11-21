@@ -71,6 +71,7 @@ public class HttpUtils {
         Gson gson=new Gson();
         Result.ResultBean resultBean = gson.fromJson(result, Result.ResultBean.class);
 
+
         String name = resultBean.getGroup().get(0).getName();
         Log.i("Log",name);
 
