@@ -37,6 +37,8 @@
         </activity>
         <!--热门活动界面-->
         <activity android:name=".fristentity.activity.HotActivity"/>
+        <!--图片跳转页面-->
+        <activity android:name=".fristentity.activity.PhotoActivity"/>
     </application>
 
 </manifest>
