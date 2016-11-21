@@ -2,6 +2,7 @@ package com.yjlw.ddms.homeentity.homelogic;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,11 +10,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.yjlw.ddms.R;
+import com.yjlw.ddms.homeentity.activity.HomeLabelActivity;
+import com.yjlw.ddms.homeentity.activity.ShoppingCartActivity;
 import com.yjlw.ddms.homeentity.entity.SecondPageResult;
 import com.yjlw.ddms.homeentity.entity.SecondPageResult.ResultBean.CateListBean;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import static java.security.AccessController.getContext;
 
 /**
  * Simple to Introduction
@@ -23,7 +28,7 @@ import java.util.List;
  * @CreateDate: 2016/11/21
  * @Version: [v1.0]
  */
-public class HomeAboutTitle implements DialogInterface.OnClickListener {
+public class HomeAboutTitle implements View.OnClickListener {
     private List<CateListBean> cateLists = new LinkedList<>();
     private Context context;
     private LinearLayout llArrveTitle;
@@ -55,6 +60,7 @@ public class HomeAboutTitle implements DialogInterface.OnClickListener {
                 tvTitle.setCompoundDrawables(null, null, drawable, null);//画在右边
                 // <!--android:drawableRight="@mipmap/ico_group_arrow_right"-->
                 tvTitle.setText(cateName);
+                tvTitle.setOnClickListener(this);
                 llArrveTitle.addView(tvTitle);
             }
 
@@ -62,8 +68,8 @@ public class HomeAboutTitle implements DialogInterface.OnClickListener {
         }
     }
 
-    @Override
-    public void onClick(DialogInterface dialogInterface, int i) {
 
-    }
+    @Override
+    public void onClick(View view) {
+        context.startActivity(new Intent(context, HomeLabelActivity.class));    }
 }
