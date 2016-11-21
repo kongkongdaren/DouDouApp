@@ -4,21 +4,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/bright_gray"
-        android:orientation="horizontal">
+        android:layout_height="40dp"
+        android:background="@color/bright_gray">
         <ImageButton
+            android:id="@+id/ib_header_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/btn_header_selector"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/feedbank"
+            android:text="@string/feedback"
+            android:layout_toRightOf="@+id/ib_header_id"
             android:gravity="center_vertical" />
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textColor="@color/common_orange"
+            android:layout_alignParentRight="true"
+            android:text="@string/finish"
+            android:layout_marginRight="10dp"
+            android:gravity="center_vertical" />
+
+    </RelativeLayout>
 
     <EditText
         android:layout_width="match_parent"
