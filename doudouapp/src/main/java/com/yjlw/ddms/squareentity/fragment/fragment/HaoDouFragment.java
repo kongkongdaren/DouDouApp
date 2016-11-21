@@ -40,6 +40,7 @@ public class HaoDouFragment extends Fragment {
 
         view = inflater.inflate(R.layout.squareen_fragment, null);
         mLv = (ListView) view.findViewById(R.id.lv_sq_id);
+
         return view;
     }
 
