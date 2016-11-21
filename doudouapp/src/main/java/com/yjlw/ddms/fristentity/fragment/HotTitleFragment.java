@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
@@ -37,6 +38,7 @@ public class HotTitleFragment extends Fragment {
     private ListView lv;
     private String hotNames;
     private List<HotAll.ResultBean.ListBean> listAll;
+    private ProgressBar pb;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,6 +77,8 @@ public class HotTitleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.title_fragment,container,false);
         lv = (ListView) view.findViewById(R.id.lv_title);
+        pb = (ProgressBar) view.findViewById(R.id.pb_progress);
+        pb.setDrawingCacheBackgroundColor(4);
         return view;
     }
 
@@ -125,6 +129,11 @@ public class HotTitleFragment extends Fragment {
         Gson gson=new Gson();
         HotAll hotAll = gson.fromJson(result, HotAll.class);
         listAll = hotAll.getResult().getList();
+        if(listAll==null){
+            pb.setVisibility(View.VISIBLE);
+        }else{
+            pb.setVisibility(View.GONE);
+        }
         aboutListView(listAll);
     }
 
