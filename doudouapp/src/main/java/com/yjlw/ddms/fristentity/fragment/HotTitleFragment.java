@@ -108,6 +108,7 @@ public class HotTitleFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         aboutListView();
         super.onActivityCreated(savedInstanceState);
+
     }
 
     /**
