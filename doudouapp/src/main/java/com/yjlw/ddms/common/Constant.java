@@ -725,6 +725,7 @@ public class Constant {
     params.addBodyParameter("offset", "0");
     params.addBodyParameter("sign", "");
     params.addBodyParameter("uid", "0");
+
     */
     //豆友
     public static String THIRD_PAGE_BEAN_FIREND = "http://api.haodou.com/index" +
