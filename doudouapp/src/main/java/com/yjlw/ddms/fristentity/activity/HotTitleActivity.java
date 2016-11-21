@@ -52,7 +52,7 @@ public class HotTitleActivity extends AppCompatActivity {
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 onBackPressed();
+                 finish();
             }
         });
     }
