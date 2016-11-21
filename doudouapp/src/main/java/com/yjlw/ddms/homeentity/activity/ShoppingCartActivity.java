@@ -78,6 +78,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         mListView = (ListView) findViewById(R.id.listview);
         mListView.setSelector(R.drawable.list_selector);
 
+
     }
 
     private void initListener()
