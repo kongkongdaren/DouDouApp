@@ -21,7 +21,7 @@
         android:layout_marginLeft="3dp"
         android:textSize="15sp"
         android:textColor="@color/recommend_swipe_color4"
-        android:text="@string/hottitle"/>
+        />
     <TextView
         android:id="@+id/tv_hot_content"
         android:layout_width="wrap_content"
