@@ -35,6 +35,10 @@
         <!--到家的标签详情页面的处理-->
         <activity android:name=".homeentity.activity.HomeLabelActivity">
         </activity>
+        <!--热门活动界面-->
+        <activity android:name=".fristentity.activity.HotActivity"/>
+        <!--图片跳转页面-->
+        <activity android:name=".fristentity.activity.PhotoActivity"/>
     </application>
 
 </manifest>

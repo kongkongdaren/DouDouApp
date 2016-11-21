@@ -757,5 +757,73 @@ public class Constant {
       params.addBodyParameter("sign", "");
        params.addBodyParameter("uid	", "0");
     */
-
+    //图片1
+    public static String page_guide_1="http://hop.haodou.com/hop/router/rest.json?action=cms.feed.page";
+ /*
+    params.addBodyParameter("_HOP_", "{\"sign\":\"654f188bd2e1937b7e342083901d5799\"," +
+                "\"action\":\"cms.feed.page\",\"current_time\":1479736220," +
+                "\"secret_id\":\"5722f877e4b0d4512e3fd872\",\"version\":\"1.0\"}");
+        params.addBodyParameter("appid", "2");
+        params.addBodyParameter("appkey", "9ef269eec4f7a9d07c73952d06b5413f");
+        params.addBodyParameter("channel", "anzhi_v6115");
+        params.addBodyParameter("deviceid", "haodou864394010609719");
+        params.addBodyParameter("format", "1");
+        params.addBodyParameter("from", "android");
+        params.addBodyParameter("ip", "172.16.151.15");
+        params.addBodyParameter("limit", "30");
+        params.addBodyParameter("loguid", "0");
+        params.addBodyParameter("name", "page_guide_1");
+        params.addBodyParameter("network", "WIFI");
+        params.addBodyParameter("offset", "0");
+        params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
+        params.addBodyParameter("vc", "105");
+        params.addBodyParameter("virtual", "0");
+        params.addBodyParameter("vn", "6.1.15");
+     */
+ //图片2
+ public static String page_guide_2="http://hop.haodou.com/hop/router/rest.json?action=cms.feed.page";
+ /*
+    params.addBodyParameter("_HOP_", "{\"sign\":\"3dea7b58888740052300d0fc7c67cfee\"," +
+                "\"action\":\"cms.feed.page\",\"current_time\":1479737427," +
+                "\"secret_id\":\"5722f877e4b0d4512e3fd872\",\"version\":\"1.0\"}");
+        params.addBodyParameter("appid", "2");
+        params.addBodyParameter("appkey", "9ef269eec4f7a9d07c73952d06b5413f");
+        params.addBodyParameter("channel", "anzhi_v6115");
+        params.addBodyParameter("deviceid", "haodou864394010609719");
+        params.addBodyParameter("format", "1");
+        params.addBodyParameter("from", "android");
+        params.addBodyParameter("ip", "172.16.151.15");
+        params.addBodyParameter("limit", "30");
+        params.addBodyParameter("loguid", "0");
+        params.addBodyParameter("name", "page_guide_2");
+        params.addBodyParameter("network", "WIFI");
+        params.addBodyParameter("offset", "0");
+        params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
+        params.addBodyParameter("vc", "105");
+        params.addBodyParameter("virtual", "0");
+        params.addBodyParameter("vn", "6.1.15");
+     */
+ //图片3
+ public static String page_guide_3="http://hop.haodou.com/hop/router/rest.json?action=cms.feed.page";
+ /*
+    params.addBodyParameter("_HOP_", "{\"sign\":\"99079421ad40f6cb6b7568bb8425e873\"," +
+                "\"action\":\"cms.feed.page\",\"current_time\":1479737701," +
+                "\"secret_id\":\"5722f877e4b0d4512e3fd872\",\"version\":\"1.0\"}");
+        params.addBodyParameter("appid", "2");
+        params.addBodyParameter("appkey", "9ef269eec4f7a9d07c73952d06b5413f");
+        params.addBodyParameter("channel", "anzhi_v6115");
+        params.addBodyParameter("deviceid", "haodou864394010609719");
+        params.addBodyParameter("format", "1");
+        params.addBodyParameter("from", "android");
+        params.addBodyParameter("ip", "172.16.151.15");
+        params.addBodyParameter("limit", "30");
+        params.addBodyParameter("loguid", "0");
+        params.addBodyParameter("name", "page_guide_3");
+        params.addBodyParameter("network", "WIFI");
+        params.addBodyParameter("offset", "0");
+        params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
+        params.addBodyParameter("vc", "105");
+        params.addBodyParameter("virtual", "0");
+        params.addBodyParameter("vn", "6.1.15");
+     */
 }

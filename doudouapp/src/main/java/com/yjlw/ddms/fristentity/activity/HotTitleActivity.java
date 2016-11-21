@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.fristentity.fragment.HotTitleFragment;
 
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,11 +31,11 @@ import java.util.List;
  */
 
 public class HotTitleActivity extends AppCompatActivity {
-    //@ViewInject(R.id.iv_back)
+   @ViewInject(R.id.iv_back)
     private ImageView ivBack;
-    //@ViewInject(R.id.tb_id)
+    @ViewInject(R.id.tb_id)
     private TabLayout tbLayout;
-   // @ViewInject(R.id.vp_id)
+    @ViewInject(R.id.vp_id)
     private ViewPager vp;
     private List<HotTitleFragment> fragments;
     private String[] hotNames;
@@ -42,31 +45,19 @@ public class HotTitleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.classtitle);
         //控件实例的获取
-        //x.view().inject(this);
-        initView();
+        x.view().inject(this);
+        hotNames = getResources().getStringArray(R.array.hottitlename);
         aboutViewPager();
         aboutTabLayout();
-//        hotNames = getResources().getStringArray(R.array.hottitlename);
-//        ivBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                 finish();
-//            }
-//        });
-    }
-
-    private void initView() {
-        ivBack= (ImageView) findViewById(R.id.iv_back);
-        tbLayout= (TabLayout) findViewById(R.id.tb_id);
-      vp= (ViewPager) findViewById(R.id.vp_id);
-        hotNames = getResources().getStringArray(R.array.hottitlename);
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                 finish();
             }
-        });
+      });
     }
+
+
 
 
     /**

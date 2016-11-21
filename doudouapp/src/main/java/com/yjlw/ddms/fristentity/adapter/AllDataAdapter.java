@@ -39,7 +39,7 @@ public class AllDataAdapter extends HomeCustomBaseAdapter<HotAll.ResultBean.List
             vh.ivTitlePhoto = (ImageView) convertView.findViewById(R.id.iv_title_photo);
             vh.ivPraise = (ImageView) convertView.findViewById(R.id.iv_praise_photo);
             vh.tvContent = (TextView) convertView.findViewById(R.id.tv_title_name);
-            vh.tvName = (TextView) convertView.findViewById(R.id.tv_user_name);
+            vh.tvName = (TextView) convertView.findViewById(R.id.tv_name_user);
             vh.tvPraiseCount = (TextView) convertView.findViewById(R.id.tv_count);
             vh.tvTag1 = (TextView) convertView.findViewById(R.id.tv_tag0);
             vh.tvTag2 = (TextView) convertView.findViewById(R.id.tv_tag1);
@@ -56,14 +56,14 @@ public class AllDataAdapter extends HomeCustomBaseAdapter<HotAll.ResultBean.List
         Picasso.with(context).load(listBean.getCover()).error(R.mipmap.ic_main_logo).into(vh
                 .ivTitlePhoto);
         vh.tvContent.setText(listBean.getTitle());
-//        vh.tvName.setText(listBean.getUserName());
+        vh.tvName.setText("by "+listBean.getUserName());
 //        vh.tvPraiseCount.setText(listBean.getLikeCount());
-//        vh.tvTag1.setText(listBean.getTags().get(position).getName());
-//        vh.tvTag2.setText(listBean.getTags().get(position).getName());
-//        vh.tvTag3.setText(listBean.getTags().get(position).getName());
-//        vh.tvTag4.setText(listBean.getTags().get(position).getName());
-//        vh.tvTag5.setText(listBean.getTags().get(position).getName());
-//        vh.tvTag6.setText(listBean.getTags().get(position).getName());
+//        vh.tvTag1.setText(listBean.getTags().get(0).getName());
+//        vh.tvTag2.setText(listBean.getTags().get(0).getName());
+//        vh.tvTag3.setText(listBean.getTags().get(0).getName());
+//        vh.tvTag4.setText(listBean.getTags().get(0).getName());
+//        vh.tvTag5.setText(listBean.getTags().get(0).getName());
+ //        vh.tvTag6.setText(listBean.getTags().get(0).getName());
         return convertView;
 
     }
