@@ -60,6 +60,8 @@
     <string name="num">客服电话：</string>
     <string name="view_history">查看历史记录</string>
     <string name="haodoulogin">好豆登录</string>
+    <string name="photodinner">11月21日 晚餐</string>
+    <string name="hottitle">麻婆肉末白菜</string>
     <string-array name="hottitlename">
         <item>全部</item>
         <item>私人</item>
