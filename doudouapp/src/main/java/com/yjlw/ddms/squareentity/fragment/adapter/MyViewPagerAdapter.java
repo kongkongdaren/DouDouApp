@@ -28,11 +28,11 @@ public class MyViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return tempDs.get( position% tempDs.size());
+        return tempDs.get( position);
     }
 
     @Override
     public int getCount() {
-        return Integer.MAX_VALUE;
+        return tempDs.size();
     }
 }

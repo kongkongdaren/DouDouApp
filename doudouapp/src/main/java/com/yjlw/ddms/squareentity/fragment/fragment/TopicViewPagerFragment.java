@@ -3,6 +3,7 @@ package com.yjlw.ddms.squareentity.fragment.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,7 +31,8 @@ public class TopicViewPagerFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
-        img = bundle.getString("img");
+        img = bundle.getString("it");
+        Log.i("","img"+img);
         super.onCreate(savedInstanceState);
     }
 

@@ -13,6 +13,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.yjlw.ddms.R;
+import com.yjlw.ddms.squareentity.fragment.adapter.ViewPagerAdapter;
 import com.yjlw.ddms.squareentity.fragment.fragment.DynamicFragment;
 import com.yjlw.ddms.squareentity.fragment.fragment.HaoDouFragment;
 import com.yjlw.ddms.squareentity.fragment.fragment.TopicFragment;
@@ -35,7 +36,7 @@ public class SquareFragment extends Fragment {
     private View view;
     private RadioGroup mRg;
     private ViewPager mVp;
-    private List<Fragment> fragments;
+    private List<TopicFragment> fragments;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +48,7 @@ public class SquareFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.squareen_main,null);
         mRg = (RadioGroup) view.findViewById(R.id.rg_id);
-        mVp = (ViewPager) view.findViewById(R.id.vp_id);
+        mVp = (ViewPager) view.findViewById(R.id.sqvp_id);
         return view;
     }
 
@@ -91,23 +92,23 @@ public class SquareFragment extends Fragment {
         fragments = new LinkedList<>();
         for(int i=0;i<mRg.getChildCount();i++){
             TopicFragment topicFragment=new TopicFragment();
-            HaoDouFragment haoDouFragment=new HaoDouFragment();
-            DynamicFragment dynamicFragment=new DynamicFragment();
+//            HaoDouFragment haoDouFragment=new HaoDouFragment();
+//            DynamicFragment dynamicFragment=new DynamicFragment();
 
-            Bundle bundle=new Bundle();
-            bundle.putString("tabName",((RadioButton)mRg.getChildAt(i))
-                    .getText().toString());
-            topicFragment.setArguments(bundle);
-            haoDouFragment.setArguments(bundle);
-            dynamicFragment.setArguments(bundle);
-
+//            Bundle bundle=new Bundle();
+//            bundle.putString("tabName",((RadioButton)mRg.getChildAt(i))
+//                    .getText().toString());
+//            topicFragment.setArguments(bundle);
+//            haoDouFragment.setArguments(bundle);
+//            dynamicFragment.setArguments(bundle);
+//
             fragments.add(topicFragment);
-            fragments.add(haoDouFragment);
-            fragments.add(dynamicFragment);
+//            fragments.add(haoDouFragment);
+//            fragments.add(dynamicFragment);
         }
 
         //适配器
-        MyPagerAdapter adapter=new MyPagerAdapter(getFragmentManager());
+        ViewPagerAdapter adapter=new ViewPagerAdapter(getFragmentManager(),fragments);
 
         //绑定适配器
         mVp.setAdapter(adapter);
@@ -132,21 +133,21 @@ public class SquareFragment extends Fragment {
 
     }
 
-    //自定义适配器
-    private final class MyPagerAdapter extends FragmentStatePagerAdapter{
-
-        public MyPagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return fragments.get(position);
-        }
-
-        @Override
-        public int getCount() {
-            return fragments.size();
-        }
-    }
+//    //自定义适配器
+//    private final class MyPagerAdapter extends FragmentStatePagerAdapter{
+//
+//        public MyPagerAdapter(FragmentManager fm) {
+//            super(fm);
+//        }
+//
+//        @Override
+//        public Fragment getItem(int position) {
+//            return fragments.get(position);
+//        }
+//
+//        @Override
+//        public int getCount() {
+//            return fragments.size();
+//        }
+//    }
 }

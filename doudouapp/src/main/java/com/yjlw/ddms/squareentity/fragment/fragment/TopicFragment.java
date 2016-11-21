@@ -1,5 +1,7 @@
 package com.yjlw.ddms.squareentity.fragment.fragment;
 
+import android.content.Context;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -13,11 +15,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.fristentity.fragment.FirstFragment;
+import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyViewPagerAdapter;
 import com.yjlw.ddms.squareentity.fragment.entity.Result;
 
@@ -42,188 +46,49 @@ import java.util.TimerTask;
  */
 
 public class TopicFragment extends Fragment {
-
-    private View view;
-    private ListView mLv;
-    private LinearLayout mLl;
-    private ViewPager mVp;
-    private int index = 1;
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == 0) {
-                mVp.setCurrentItem(++index);
-            }
-            super.handleMessage(msg);
-        }
-    };
     private boolean isTaskRun;
     private Result.ResultBean resultBean;
     private List<TopicViewPagerFragment> tempDs;
     private Timer htimer;
     private TimerTask htimerTask;
     private Result result1;
+    private List<Result.ResultBean.AdBean> ad = new LinkedList<>();
+    private List<Result.ResultBean.GroupBean> groupBeans = new LinkedList<>();
+    private View view;
+    private ListView mLv;
+    private LinearLayout mLl;
+    private ViewPager mVp;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
-        Bundle bundle = getArguments();
-        bundle.getString("tabName");
+        //                Bundle bundle = getArguments();
+        //                bundle.getString("tabName");
         super.onCreate(savedInstanceState);
     }
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
+            Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.squareen_fragment, null);
-        mLv = (ListView) view.findViewById(R.id.lv_id);
+        mLv = (ListView) view.findViewById(R.id.lv_sq__id);
 
-        View inflate=inflater.inflate(R.layout.squareen_topic_image_viewpager, null);
+        View inflate = inflater.inflate(R.layout.squareen_topic_image_viewpager, null);
         mLl = (LinearLayout) inflate.findViewById(R.id.ll_container_id);
         mVp = (ViewPager) inflate.findViewById(R.id.vp_id);
 
         mLv.addHeaderView(inflate);
+
+        //数据下载
+
+        //准备数据源
+        DownloadData();
+
         return view;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-
-        //准备数据源
-
-
-        //数据下载
-        DownloadData();
-
-        //关于ViewPager的操作
-        aboutViewPager();
-
-        // 3、关于小圆点的操作
-        aboutLittleDots();
-
-        super.onActivityCreated(savedInstanceState);
-    }
-
-    // 3、关于小圆点的操作
-    private void aboutLittleDots() {
-        // 分析：
-        // 1）小圆点的个数与ViewPager中数据源中Fragment的个数是一样的
-        // 2）在占位的容器控件中，动态添加ImageView。
-        // 3）联动效果的添加：
-        // a)小圆点决定ViewPager当前页面的状态
-        // b)ViewPager决定小圆点的状态
-
-        MyOnClickListener listener = new MyOnClickListener();
-
-        for (int i = 0; i < tempDs.size(); i++) {// 每循环一次，构建一个ImageView的实例，添加到占位的容器控件中
-            ImageView iv = new ImageView(getActivity());
-            iv.setImageResource(R.drawable.dot_selector);
-
-            // 给ImageView添加标签
-            iv.setTag(i);
-            // 给小圆点添加监听器
-            iv.setOnClickListener(listener);
-
-            // ImageView控件上显示的图片，动态由Enabled属性值，根据选择器，来动态加载图片
-            iv.setEnabled(true);
-
-            mLl.addView(iv);
-        }
-
-        // 默认第一个小圆点是选中的状态
-        mLl.getChildAt(0).setEnabled(false);
-    }
-
-    //关于ViewPager的操作
-    private void aboutViewPager() {
-
-        //数据源
-        tempDs = new LinkedList<>();
-
-        //获取的实体类中的集合
-        List<Result.ResultBean.AdBean> ad = result1.getResult().getAd();
-        for(int i=0;i<ad.size();i++){
-            TopicViewPagerFragment viewPager=new TopicViewPagerFragment();
-            Bundle args=new Bundle();
-            args.putString("img",ad.get(i).getImg());
-            args.putString("url",ad.get(i).getUrl());
-            viewPager.setArguments(args);
-            tempDs.add(viewPager);
-        }
-        //适配器
-        MyViewPagerAdapter adapter = new MyViewPagerAdapter(getFragmentManager(),tempDs);
-        //绑定适配器
-        mVp.setAdapter(adapter);
-        // 给ViewPger添加监听器，决定小圆点的状态
-        mVp.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                index = position;
-                position = position % tempDs.size();
-                // ViewPager决定小圆点的状态
-                for (int i = 0; i < tempDs.size(); i++) {// 状态复原
-                    mLl.getChildAt(i).setEnabled(true);
-
-                }
-
-                // 将position位置处的小圆点enable属性值设置为false
-                mLl.getChildAt(position).setEnabled(false);
-                super.onPageSelected(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                  /* state: 0空闲，1是滑行中，2加载完毕 */
-
-                if (state == 0 && !isTaskRun) {
-                    startTask();
-                } else if (state == 1 && isTaskRun) {
-                    stopTask();
-                } else if (state == 2) {
-                }
-                super.onPageScrollStateChanged(state);
-            }
-        });
-
-    }
-    // OnClickListener点击事件监听器
-    private final class MyOnClickListener implements View.OnClickListener {
-
-        /*
-         * (non-Javadoc)
-         *
-         * @see android.view.View.OnClickListener#onClick(android.view.View)
-         */
-        @Override
-        public void onClick(View v) {
-            // 小圆点决定ViewPager当前页面的状态
-            mVp.setCurrentItem((Integer) v.getTag());
-        }
-
-    }
-
-    /**
-     * 停止定时任务
-     */
-    private void stopTask() {
-        isTaskRun = false;
-        htimer.cancel();
-    }
-
-    private void startTask() {
-        isTaskRun = true;
-        htimer = new Timer();
-        htimerTask = new TimerTask() {
-            @Override
-            public void run() {
-                handler.sendEmptyMessage(0);
-            }
-        };
-        htimer.schedule(htimerTask, 2 * 1000, 2 * 1000);// 这里设置自动切换的时间，单位是毫秒，2*1000表示2秒，
-    }
-
-    //数据下载
     private void DownloadData() {
         String thirdPage = Constant.THIRD_PAGE;
         RequestParams params = new RequestParams(thirdPage);
@@ -233,8 +98,6 @@ public class TopicFragment extends Fragment {
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                Log.i("download",result);
-
                 parserThirdPager(result);
             }
 
@@ -258,27 +121,49 @@ public class TopicFragment extends Fragment {
     //Gson解析数据
     private void parserThirdPager(String result) {
 
-        Gson gson=new Gson();
+        Gson gson = new Gson();
         result1 = gson.fromJson(result, Result.class);
         String img = result1.getResult().getAd().get(0).getImg();
-        Log.i("img",img);
+        groupBeans.addAll(result1.getResult().getGroup());//向ListView中添加数据源
+        ad.addAll(result1.getResult().getAd());
+
+        ListViewAdapter adapter = new ListViewAdapter(groupBeans, getContext());
+        mLv.setAdapter(adapter);
 
     }
 
-    /**
-     * 重新获得焦点
-     */
-    public void onResume() {
-        super.onResume();
-        startTask();
-    }
 
-    /**
-     * 失去焦点
-     */
     @Override
-    public void onPause() {
-        super.onPause();
-        stopTask();
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+    }
+    private class ListViewAdapter extends HomeCustomBaseAdapter<Result.ResultBean.GroupBean> {
+
+        public ListViewAdapter(List<Result.ResultBean.GroupBean> lists, Context context) {
+            super(lists, context);
+            Log.i("Log", lists.toString());
+        }
+
+        @Override
+        public View getView(int i, View convertView, ViewGroup viewGroup) {
+            ViewHolder vh = null;
+            if (convertView == null) {
+                convertView = View.inflate(context, R.layout.squareen_item, null);
+                vh = new ViewHolder();
+                vh.imageView= (ImageView) convertView.findViewById(R.id.iv_real_time_iamge);
+                vh.title= (TextView) convertView.findViewById(R.id.tv_title_id);
+                convertView.setTag(vh);
+            } else {
+                vh = (ViewHolder) convertView.getTag();
+            }
+            x.image().bind(vh.imageView,lists.get(i).getImg());
+            vh.title.setText(lists.get(i).getName());
+            return convertView;
+        }
+
+        private final class ViewHolder {
+            ImageView imageView;
+            TextView title;
+        }
     }
 }
