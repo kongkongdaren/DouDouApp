@@ -62,6 +62,7 @@ public class TopicFragment extends Fragment {
     private List<TopicViewPagerFragment> tempDs;
     private Timer htimer;
     private TimerTask htimerTask;
+    private Result result1;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -139,12 +140,14 @@ public class TopicFragment extends Fragment {
 
         //数据源
         tempDs = new LinkedList<>();
-        List<Result.ResultBean.AdBean> ad = resultBean.getAd();
-        Log.i("ad",ad.toString());
+
+        //获取的实体类中的集合
+        List<Result.ResultBean.AdBean> ad = result1.getResult().getAd();
         for(int i=0;i<ad.size();i++){
             TopicViewPagerFragment viewPager=new TopicViewPagerFragment();
             Bundle args=new Bundle();
             args.putString("img",ad.get(i).getImg());
+            args.putString("url",ad.get(i).getUrl());
             viewPager.setArguments(args);
             tempDs.add(viewPager);
         }
@@ -256,7 +259,9 @@ public class TopicFragment extends Fragment {
     private void parserThirdPager(String result) {
 
         Gson gson=new Gson();
-        resultBean = gson.fromJson(result, Result.ResultBean.class);
+        result1 = gson.fromJson(result, Result.class);
+        String img = result1.getResult().getAd().get(0).getImg();
+        Log.i("img",img);
 
     }
 
