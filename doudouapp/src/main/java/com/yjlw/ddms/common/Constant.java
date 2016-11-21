@@ -722,13 +722,13 @@ public class Constant {
          */
 
     //    第三页
-    public static String THIRD_PAGE = "http://api.haodou.com/index" +
-            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
-            "=1479277035882&vc=105&vn=6.1" +
-            ".15&loguid=0&deviceid=haodou864394010208983&uuid=9ea70fa9356586ff23fc31785f735cf1" +
-            "&channel=anzhi_v6115&method=Topic" +
-            ".indexTopic&virtual=&signmethod=md5&v=3&timestamp=1479277625&nonce=0" +
-            ".8499517020990653&appsign=716c7f117b15727f3a6f34adf871fc02";
+    public static String THIRD_PAGE = "http://api.haodou.com/index.php?" +
+            "appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&" +
+            "sessionid=1479710324456&vc=105&vn=6.1.15&loguid=0&deviceid=" +
+            "haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5&c" +
+            "hannel=anzhi_v6115&method=Topic.indexTopic&virtual=&signmethod=m" +
+            "d5&v=3&timestamp=1479710338&nonce=0.1538465487572932&appsign=2d0da" +
+            "92b2e8b7459e0881136de4bc92e";
     /*
     params.addBodyParameter("offset", "0");
     params.addBodyParameter("sign", "");
