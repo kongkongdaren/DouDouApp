@@ -143,6 +143,7 @@ public class HotTitleFragment extends Fragment {
         AllDataAdapter adapter=new AllDataAdapter(listAll,getContext());
         //绑定适配器
         lv.setAdapter(adapter);
+
     }
 }
 
