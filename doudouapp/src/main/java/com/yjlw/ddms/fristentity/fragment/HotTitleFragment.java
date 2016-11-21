@@ -12,12 +12,15 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
+import com.yjlw.ddms.fristentity.adapter.AllDataAdapter;
 import com.yjlw.ddms.fristentity.entity.HotAll;
 
 import org.xutils.common.Callback;
 import org.xutils.http.HttpMethod;
 import org.xutils.http.RequestParams;
 import org.xutils.x;
+
+import java.util.List;
 
 /**
  * Description：xx <br/>
@@ -33,6 +36,7 @@ public class HotTitleFragment extends Fragment {
 
     private ListView lv;
     private String hotNames;
+    private List<HotAll.ResultBean.ListBean> listAll;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,13 +65,7 @@ public class HotTitleFragment extends Fragment {
         params.addBodyParameter("uid", "0");
         params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
         params.addBodyParameter("offset", "0");
-        params.addBodyParameter("appqs", "haodourecipe://haodou.com/recommend/recipe/?keyword=" +
-                "%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&title=%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&" +
-                "tab=%E5%85%A8%E9%83%A8%3A%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1%7C%E7%A7%81%E4%BA%B" +
-                "A%3A%E7%A7%81%E4%BA%BA%E5%AE%9A%E5%88%B6%7C%E6%97%B6%E4%BB%A4%3A%E6%97%B6%E4%BB%A4%E" +
-                "4%BD%B3%E8%82%B4%7C%E8%BE%BE%E4%BA%BA%3A%E8%BE%BE%E4%BA%BA%E8%8F%9C%E8%B0%B1%7C%E6%9C%" +
-                "80%E6%96%B0%3A%E6%9C%80%E6%96%B0%E8%8F%9C%E8%B0%B1%7C%E7%83%98%E7%84%99%3A%E5%BF%AB%E4%B9%90%E" +
-                "7%9A%84%E7%83%98%E7%84%99");
+        params.addBodyParameter("appqs", "haodourecipe://haodou.com/recommend/recipe/?keyword=%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&title=%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&tab=%E5%85%A8%E9%83%A8%3A%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1%7C%E7%A7%81%E4%BA%BA%3A%E7%A7%81%E4%BA%BA%E5%AE%9A%E5%88%B6%7C%E6%97%B6%E4%BB%A4%3A%E6%97%B6%E4%BB%A4%E4%BD%B3%E8%82%B4%7C%E8%BE%BE%E4%BA%BA%3A%E8%BE%BE%E4%BA%BA%E8%8F%9C%E8%B0%B1%7C%E6%9C%80%E6%96%B0%3A%E6%9C%80%E6%96%B0%E8%8F%9C%E8%B0%B1%7C%E7%83%98%E7%84%99%3A%E5%BF%AB%E4%B9%90%E7%9A%84%E7%83%98%E7%84%99");
         params.addBodyParameter("type", "热门菜谱");
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
@@ -100,21 +98,25 @@ public class HotTitleFragment extends Fragment {
     private void parseHotAllData(String result) {
         Gson gson=new Gson();
         HotAll hotAll = gson.fromJson(result, HotAll.class);
-        String title = hotAll.getResult().getList().get(0).getTitle();
-        Log.i("i",title);
+        listAll = hotAll.getResult().getList();
+        aboutListView(listAll);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        aboutListView();
         super.onActivityCreated(savedInstanceState);
 
     }
 
     /**
      * 关于ListView的操作
+     * @param listAll
      */
-    private void aboutListView() {
+    private void aboutListView(List<HotAll.ResultBean.ListBean> listAll) {
+            //适配器
+        AllDataAdapter adapter=new AllDataAdapter(listAll,getContext());
+        //绑定适配器
+        lv.setAdapter(adapter);
     }
 }
 

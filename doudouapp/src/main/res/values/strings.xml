@@ -59,6 +59,7 @@
     <string name="opinion">亲，希望能留下您的联系方式，若您的意见被采纳，我们会赠送精美礼物一份哦！</string>
     <string name="num">客服电话：</string>
     <string name="view_history">查看历史记录</string>
+    <string name="haodoulogin">好豆登陆</string>
     <string-array name="hottitlename">
         <item>全部</item>
         <item>私人</item>

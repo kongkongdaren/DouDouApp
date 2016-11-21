@@ -27,6 +27,7 @@
     </RelativeLayout>
     <!--用于导航的TabLayout容器控件-->
     <android.support.design.widget.TabLayout
+        android:layout_below="@+id/title"
         android:id="@+id/tb_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,9 +35,7 @@
         app:tabGravity="center"
         app:tabIndicatorColor="@color/abc_search_url_text_normal"
         app:tabTextColor="@drawable/title_selector"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        />
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_id"
         android:layout_below="@+id/tb_id"
