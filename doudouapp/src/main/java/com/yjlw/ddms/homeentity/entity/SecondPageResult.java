@@ -1010,6 +1010,44 @@ public class SecondPageResult {
             public void setOpenUrl(String OpenUrl) {
                 this.OpenUrl = OpenUrl;
             }
+
+            @Override
+            public boolean equals(Object o) {
+                if (this == o)
+                    return true;
+                if (o == null || getClass() != o.getClass())
+                    return false;
+
+                CateListBean that = (CateListBean) o;
+
+                if (CateId != null ? !CateId.equals(that.CateId) : that.CateId != null)
+                    return false;
+                if (CateName != null ? !CateName.equals(that.CateName) : that.CateName != null)
+                    return false;
+                if (ImgUrl != null ? !ImgUrl.equals(that.ImgUrl) : that.ImgUrl != null)
+                    return false;
+                return OpenUrl != null ? OpenUrl.equals(that.OpenUrl) : that.OpenUrl == null;
+
+            }
+
+            @Override
+            public int hashCode() {
+                int result = CateId != null ? CateId.hashCode() : 0;
+                result = 31 * result + (CateName != null ? CateName.hashCode() : 0);
+                result = 31 * result + (ImgUrl != null ? ImgUrl.hashCode() : 0);
+                result = 31 * result + (OpenUrl != null ? OpenUrl.hashCode() : 0);
+                return result;
+            }
+
+            @Override
+            public String toString() {
+                return "CateListBean{" +
+                        "CateId='" + CateId + '\'' +
+                        ", CateName='" + CateName + '\'' +
+                        ", ImgUrl='" + ImgUrl + '\'' +
+                        ", OpenUrl='" + OpenUrl + '\'' +
+                        '}';
+            }
         }
 
         public static class FoodieFavoriteGoodsBean {
