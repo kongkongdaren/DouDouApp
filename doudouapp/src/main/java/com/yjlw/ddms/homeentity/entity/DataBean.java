@@ -1,66 +1,70 @@
 package com.yjlw.ddms.homeentity.entity;
 
-public class DataBean
-{
 
-	int id;
+import org.greenrobot.greendao.annotation.Generated;
 
-	int carNum;
+import static android.R.attr.id;
+public class DataBean {
 
-	String shopName;
+     int id;
 
-	String content;
+    public DataBean(int id, int carNum, String shopName, String content, float price) {
+        this.id = id;
+        this.carNum = carNum;
+        this.shopName = shopName;
+        this.content = content;
+        this.price = price;
+    }
 
-	float price;
+    public DataBean() {
 
-	public int getId()
-	{
-		return id;
-	}
+    }
 
-	public void setId(int id)
-	{
-		this.id = id;
-	}
+    int carNum;
 
-	public int getCarNum()
-	{
-		return carNum;
-	}
+    String shopName;
 
-	public void setCarNum(int carNum)
-	{
-		this.carNum = carNum;
-	}
+    String content;
 
-	public String getShopName()
-	{
-		return shopName;
-	}
+    float price;
 
-	public void setShopName(String shopName)
-	{
-		this.shopName = shopName;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getContent()
-	{
-		return content;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setContent(String content)
-	{
-		this.content = content;
-	}
+    public int getCarNum() {
+        return carNum;
+    }
 
-	public float getPrice()
-	{
-		return price;
-	}
+    public void setCarNum(int carNum) {
+        this.carNum = carNum;
+    }
 
-	public void setPrice(float price)
-	{
-		this.price = price;
-	}
+    public String getShopName() {
+        return shopName;
+    }
 
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
 }
