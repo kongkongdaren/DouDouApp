@@ -15,10 +15,13 @@ import org.xutils.x;
  */
 
 public class xUtilsApplication extends Application {
+
     @Override
     public void onCreate() {
         super.onCreate();
         x.Ext.init(this);
 
     }
+
+
 }

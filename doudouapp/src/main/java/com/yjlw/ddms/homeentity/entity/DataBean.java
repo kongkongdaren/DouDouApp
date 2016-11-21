@@ -1,7 +1,6 @@
 package com.yjlw.ddms.homeentity.entity;
 
 
-import org.greenrobot.greendao.annotation.Generated;
 
 import static android.R.attr.id;
 public class DataBean {
