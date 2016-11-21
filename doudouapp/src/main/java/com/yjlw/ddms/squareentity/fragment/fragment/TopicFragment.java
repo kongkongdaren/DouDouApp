@@ -73,7 +73,7 @@ public class TopicFragment extends Fragment {
             Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.squareen_fragment, null);
-        mLv = (ListView) view.findViewById(R.id.lv_sq__id);
+        mLv = (ListView) view.findViewById(R.id.lv_sq_id);
 
         View inflate = inflater.inflate(R.layout.squareen_topic_image_viewpager, null);
         mLl = (LinearLayout) inflate.findViewById(R.id.ll_container_id);
