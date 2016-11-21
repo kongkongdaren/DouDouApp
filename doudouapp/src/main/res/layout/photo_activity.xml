@@ -5,20 +5,20 @@
     <RelativeLayout
         android:id="@+id/photo_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="@color/white"
         android:padding="10dp">
         <ImageView
             android:id="@+id/iv_photo_back"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:clickable="true"
             android:gravity="center_vertical"
             android:src="@mipmap/btn_header_back" />
         <TextView
             android:id="@+id/tv_photo_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
             android:textColor="@color/primary_material_dark"
             android:textSize="18sp" />
@@ -26,8 +26,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rlv_id"
         android:layout_width="match_parent"
+        android:layout_marginTop="60dp"
         android:layout_height="match_parent"
         android:background="@color/common_gray"/>
-
 
 </RelativeLayout>
