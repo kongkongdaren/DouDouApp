@@ -1,5 +1,6 @@
 package com.yjlw.ddms.fristentity.fragment;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -15,6 +16,7 @@ import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -25,7 +27,6 @@ import com.yjlw.ddms.fristentity.adapter.MyViewPagerAdapter;
 import com.yjlw.ddms.fristentity.entity.FirstPagerData;
 import com.yjlw.ddms.fristentity.views.HaoDouTitleCclickItem;
 import com.yjlw.ddms.fristentity.views.PhotographCategoryView;
-import com.yjlw.ddms.utils.ToastUtils;
 
 import org.xutils.common.Callback;
 import org.xutils.http.HttpMethod;
@@ -67,7 +68,7 @@ public class FirstFragment extends Fragment {
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == 0) {
-               vp.setCurrentItem(index++);
+               vp.setCurrentItem(++index);
             }
             super.handleMessage(msg);
         }
@@ -89,6 +90,9 @@ public class FirstFragment extends Fragment {
     private PhotographCategoryView pcvOldDiet;
     private PhotographCategoryView pcHotSpecial;
     private List<FirstPagerData.DataBean.HeaderBean.ListBeanX> photoList;
+    private ProgressDialog dialog;
+    private ProgressBar pbContent;
+    private MyFirstPagerAdapter adapter;
 
 
     @Override
@@ -102,6 +106,7 @@ public class FirstFragment extends Fragment {
         view = inflater.inflate(R.layout.activity_haoodu, null);
         View viewPager = inflate(getContext(), R.layout.bean_advertisement, null);
         vp = (ViewPager) viewPager.findViewById(R.id.vp_id);
+        pbContent = (ProgressBar) view.findViewById(R.id.pb_content);
         rlv = (ListView) view.findViewById(R.id.lv_first);
         llContainer = (LinearLayout) viewPager.findViewById(R.id.ll_container_id);
         rlv.addHeaderView(viewPager);
@@ -170,8 +175,7 @@ public class FirstFragment extends Fragment {
             @Override
             public void onSuccess(String result) {
                 Log.i("Log", "首页下载的数据是" + result);
-                parserFirstPager(result);
-
+                    parserFirstPager(result);
             }
 
             @Override
@@ -200,57 +204,59 @@ public class FirstFragment extends Fragment {
         Gson gson = new Gson();
         FirstPagerData firstPagerData = gson.fromJson(result, FirstPagerData.class);
         List<FirstPagerData.DataBean.HeaderBean.ListBeanX> listAder = firstPagerData.getData().getHeader().get(0).getList();
+        if(listAder==null){
+            pbContent.setVisibility(View.VISIBLE);
+        }else{
+            pbContent.setVisibility(View.GONE);
+        }
         listBeen = firstPagerData.getData().getList();
         aboutListView(listBeen);
         listClass = firstPagerData.getData().getHeader().get(1).getList();
         classTitle.setTextView(listClass.get(0).getTitle());
         ImageView recipeIcon = (ImageView) classTitle.findViewById(R.id.iv_haodou_icon);
-        Picasso.with(getContext()).load(listClass.get(0).getImgs().get(0)).into(recipeIcon);
+        Picasso.with(getContext()).load(listClass.get(0).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(recipeIcon);
 
         classVedio.setTextView(listClass.get(1).getTitle());
         ImageView vedioIcon = (ImageView) classVedio.findViewById(R.id.iv_haodou_icon);
-        Picasso.with(getContext()).load(listClass.get(1).getImgs().get(0)).into(vedioIcon);
+        Picasso.with(getContext()).load(listClass.get(1).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(vedioIcon);
 
         classKitchen.setTextView(listClass.get(2).getTitle());
         ImageView kitchenIcon = (ImageView) classKitchen.findViewById(R.id.iv_haodou_icon);
-        Picasso.with(getContext()).load(listClass.get(2).getImgs().get(0)).into(kitchenIcon);
+        Picasso.with(getContext()).load(listClass.get(2).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(kitchenIcon);
 
         classHotActivity.setTextView(listClass.get(3).getTitle());
         ImageView hotIcon = (ImageView) classHotActivity.findViewById(R.id.iv_haodou_icon);
-        Picasso.with(getContext()).load(listClass.get(3).getImgs().get(0)).into(hotIcon);
+        Picasso.with(getContext()).load(listClass.get(3).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(hotIcon);
 
         classMenu.setTextView(listClass.get(4).getTitle());
         ImageView menuIcon = (ImageView) classMenu.findViewById(R.id.iv_haodou_icon);
-        Picasso.with(getContext()).load(listClass.get(4).getImgs().get(0)).into(menuIcon);
+        Picasso.with(getContext()).load(listClass.get(4).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(menuIcon);
 
         photoList = firstPagerData.getData().getHeader().get(2).getList();
         pcvDinner.setTextView(photoList.get(0).getTitle());
         pcvDinner.setSmallTextView(photoList.get(0).getDesc());
         ImageView dinnerIcon= (ImageView) pcvDinner.findViewById(R.id.iv_dinner);
-        Picasso.with(getContext()).load(photoList.get(0).getImgs().get(0)).into(dinnerIcon);
+        Picasso.with(getContext()).load(photoList.get(0).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(dinnerIcon);
         pcvLoon.setTextView(photoList.get(1).getTitle());
         pcvLoon.setSmallTextView(photoList.get(1).getDesc());
         ImageView loonIcon= (ImageView) pcvLoon.findViewById(R.id.iv_dinner);
-        Picasso.with(getContext()).load(photoList.get(1).getImgs().get(0)).into(loonIcon);
+        Picasso.with(getContext()).load(photoList.get(1).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(loonIcon);
         pcvEat.setTextView(photoList.get(2).getTitle());
         pcvEat.setSmallTextView(photoList.get(2).getDesc());
         ImageView eatIcon= (ImageView) pcvEat.findViewById(R.id.iv_dinner);
-        Picasso.with(getContext()).load(photoList.get(2).getImgs().get(0)).into(eatIcon);
+        Picasso.with(getContext()).load(photoList.get(2).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(eatIcon);
         TextView  tvPcvOld= (TextView) pcvOldDiet.findViewById(R.id.tv_dinner_big);
-        tvPcvOld.setSingleLine(false);
-        tvPcvOld.setMaxEms(4);
+        tvPcvOld.setMaxLines(2);
+        tvPcvOld.setMaxEms(5);
         tvPcvOld.setEllipsize(TextUtils.TruncateAt.END);
         tvPcvOld.setText(photoList.get(3).getTitle());
-        //pcvOldDiet.setTextView(photoList.get(3).getTitle());
         pcvOldDiet.setSmallTextView(photoList.get(3).getDesc());
         ImageView oldDietIcon= (ImageView) pcvOldDiet.findViewById(R.id.iv_dinner);
-        Picasso.with(getContext()).load(photoList.get(3).getImgs().get(0)).into(oldDietIcon);
+        Picasso.with(getContext()).load(photoList.get(3).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(oldDietIcon);
         pcHotSpecial.setTextView(photoList.get(4).getTitle());
         pcHotSpecial.setSmallTextView(photoList.get(4).getDesc());
         ImageView hotSpecialIcon= (ImageView)pcHotSpecial.findViewById(R.id.iv_dinner);
-        Picasso.with(getContext()).load(photoList.get(4).getImgs().get(0)).into(hotSpecialIcon);
-        Log.i("log", "描述是"+photoList.get(4).getDesc());
-        Log.i("log","描述是"+photoList.get(2).getDesc());
+        Picasso.with(getContext()).load(photoList.get(4).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(hotSpecialIcon);
         // 2、关于ViewPager的操作
         aboutViewPager(listAder);
 
@@ -260,9 +266,8 @@ public class FirstFragment extends Fragment {
 
     private void aboutListView(List<FirstPagerData.DataBean.ListBean> listBeen) {
         //适配器
-        MyFirstPagerAdapter adapter = new MyFirstPagerAdapter(listBeen, getContext());
-//        Log.i("ListBean",listBeen.toString());
-        rlv.setAdapter(adapter);
+        adapter = new MyFirstPagerAdapter(listBeen, getContext());
+         rlv.setAdapter(adapter);
          rlv.setOnScrollListener(new MyOnScrollListener());
     }
     private final class MyOnScrollListener implements AbsListView.OnScrollListener{
@@ -270,11 +275,7 @@ public class FirstFragment extends Fragment {
         @Override
         public void onScrollStateChanged(AbsListView absListView, int scrollState) {
             if(scrollState == AbsListView.OnScrollListener.SCROLL_STATE_IDLE && flg){
-                if (pageIndex <photoList.size()-1){
-                    loadFirstPagerData();
-                }else{
-                    ToastUtils.showToast(getContext(),"当前数据已经加载完毕。。。");
-                }
+
             }
         }
 
