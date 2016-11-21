@@ -32,7 +32,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:gravity="center_vertical">
-                <ImageView
+                <com.yjlw.ddms.fristentity.views.MySelfCircleView
                     android:id="@+id/iv_left_iamge_id"
                     android:layout_width="10dp"
                     android:layout_height="10dp"
@@ -42,11 +42,13 @@
                     android:id="@+id/tv_username_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:text="孩妈妮妮"/>
                 <ImageView
                     android:id="@+id/iv_right_image_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:src="@mipmap/icon_vip_small"/>
             </LinearLayout>
 
