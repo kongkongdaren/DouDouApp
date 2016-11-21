@@ -3,12 +3,21 @@ package com.yjlw.ddms.fristentity.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
 import com.yjlw.ddms.R;
+import com.yjlw.ddms.common.Constant;
+import com.yjlw.ddms.fristentity.entity.HotAll;
+
+import org.xutils.common.Callback;
+import org.xutils.http.HttpMethod;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 /**
  * Description：xx <br/>
@@ -23,11 +32,12 @@ import com.yjlw.ddms.R;
 public class HotTitleFragment extends Fragment {
 
     private ListView lv;
+    private String hotNames;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         Bundle arguments = getArguments();
-        String hotNames = arguments.getString("hotName");
+        hotNames = arguments.getString("hotName");
         super.onCreate(savedInstanceState);
     }
 
@@ -36,13 +46,69 @@ public class HotTitleFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
          View view=inflater.inflate(R.layout.title_fragment,container,false);
         lv = (ListView) view.findViewById(R.id.lv_title);
+        DownHotAllData();
         return view;
+    }
+
+    /**
+     * 下载热门菜谱之全部
+     */
+    private void DownHotAllData() {
+        String secondUrl = Constant.SECOND_PAGE_ALLPOPULARRECIPES;
+        RequestParams params = new RequestParams(secondUrl);
+        params.addBodyParameter("limit", "10");
+        params.addBodyParameter("sign", "");
+        params.addBodyParameter("uid", "0");
+        params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
+        params.addBodyParameter("offset", "0");
+        params.addBodyParameter("appqs", "haodourecipe://haodou.com/recommend/recipe/?keyword=" +
+                "%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&title=%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&" +
+                "tab=%E5%85%A8%E9%83%A8%3A%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1%7C%E7%A7%81%E4%BA%B" +
+                "A%3A%E7%A7%81%E4%BA%BA%E5%AE%9A%E5%88%B6%7C%E6%97%B6%E4%BB%A4%3A%E6%97%B6%E4%BB%A4%E" +
+                "4%BD%B3%E8%82%B4%7C%E8%BE%BE%E4%BA%BA%3A%E8%BE%BE%E4%BA%BA%E8%8F%9C%E8%B0%B1%7C%E6%9C%" +
+                "80%E6%96%B0%3A%E6%9C%80%E6%96%B0%E8%8F%9C%E8%B0%B1%7C%E7%83%98%E7%84%99%3A%E5%BF%AB%E4%B9%90%E" +
+                "7%9A%84%E7%83%98%E7%84%99");
+        params.addBodyParameter("type", "热门菜谱");
+        x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Log.i("Log","下载全部的数据是"+result);
+                parseHotAllData(result);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+    }
+
+    /**
+     * 解析数据
+     * @param result
+     */
+    private void parseHotAllData(String result) {
+        Gson gson=new Gson();
+        HotAll hotAll = gson.fromJson(result, HotAll.class);
+        String title = hotAll.getResult().getList().get(0).getTitle();
+        Log.i("i",title);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         aboutListView();
         super.onActivityCreated(savedInstanceState);
+
     }
 
     /**
