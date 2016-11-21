@@ -78,7 +78,6 @@ public class HotTitleFragment extends Fragment {
         View view=inflater.inflate(R.layout.title_fragment,container,false);
         lv = (ListView) view.findViewById(R.id.lv_title);
         pb = (ProgressBar) view.findViewById(R.id.pb_progress);
-        pb.setDrawingCacheBackgroundColor(4);
         return view;
     }
 

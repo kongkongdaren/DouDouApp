@@ -63,7 +63,7 @@ public class AllDataAdapter extends HomeCustomBaseAdapter<HotAll.ResultBean.List
 //        vh.tvTag3.setText(listBean.getTags().get(0).getName());
 //        vh.tvTag4.setText(listBean.getTags().get(0).getName());
 //        vh.tvTag5.setText(listBean.getTags().get(0).getName());
-//        vh.tvTag6.setText(listBean.getTags().get(0).getName());
+ //        vh.tvTag6.setText(listBean.getTags().get(0).getName());
         return convertView;
 
     }
