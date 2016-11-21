@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.yjlw.ddms.common.Constant;
 
+import org.xutils.http.RequestParams;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,6 +27,10 @@ public class HttpUtils {
 
     public static byte[] downloadJsonDataMethod(){
         String thirdPage = Constant.THIRD_PAGE;
+        RequestParams params = new RequestParams(thirdPage);
+        params.addBodyParameter("offset", "0");
+        params.addBodyParameter("sign", "");
+        params.addBodyParameter("uid", "0");
 
         return null;
     }
