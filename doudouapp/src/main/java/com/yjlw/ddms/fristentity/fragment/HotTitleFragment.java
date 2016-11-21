@@ -49,7 +49,7 @@ public class HotTitleFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.title_fragment,null);
+        View view=inflater.inflate(R.layout.title_fragment,container,false);
         lv = (ListView) view.findViewById(R.id.lv_title);
         return view;
     }
