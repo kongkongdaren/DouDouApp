@@ -46,7 +46,7 @@ public class HotTitleActivity extends AppCompatActivity {
         setContentView(R.layout.classtitle);
         //控件实例的获取
         x.view().inject(this);
-        aboutViewPager();
+        //aboutViewPager();
         aboutTabLayout();
         hotNames = getResources().getStringArray(R.array.hottitlename);
         ivBack.setOnClickListener(new View.OnClickListener() {
