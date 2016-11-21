@@ -53,6 +53,7 @@
     <string name="titlecontent">咸香下饭，美味湘菜——香</string>
     <string name="titlecount">1</string>
     <string-array name="hottitlename">
+
         <item>全部</item>
         <item>私人</item>
         <item>时令</item>
