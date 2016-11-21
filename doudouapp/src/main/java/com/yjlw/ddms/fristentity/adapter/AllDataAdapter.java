@@ -62,6 +62,7 @@ public class AllDataAdapter extends HomeCustomBaseAdapter<HotAll.ResultBean.List
         vh.tvTag5.setText(listBean.getTags().get(position).getName());
         vh.tvTag6.setText(listBean.getTags().get(position).getName());
         return convertView;
+
     }
     private  final  class ViewHolder{
         private ImageView ivTitlePhoto;
