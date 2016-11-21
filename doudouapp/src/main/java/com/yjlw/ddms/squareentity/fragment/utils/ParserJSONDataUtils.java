@@ -18,6 +18,8 @@ public class ParserJSONDataUtils {
 
    public static List<Result.ResultBean> parserJSONDataMethod(byte[] bytes){
 
+       Gson gson=null;
+
 
         return null;
    }
