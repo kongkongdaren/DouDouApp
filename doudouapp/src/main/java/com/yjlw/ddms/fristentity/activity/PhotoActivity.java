@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +13,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
+import com.yjlw.ddms.fristentity.adapter.PhotoAdapter;
 import com.yjlw.ddms.fristentity.entity.PhotoData;
 
 import org.xutils.common.Callback;
@@ -85,6 +87,7 @@ public class PhotoActivity extends AppCompatActivity {
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String> () {
             @Override
             public void onSuccess(String result) {
+                Log.i("Log","图片"+result);
                 parsePhotoData(result);
             }
 
@@ -113,6 +116,7 @@ public class PhotoActivity extends AppCompatActivity {
         Gson gson=new Gson();
         PhotoData photoData = gson.fromJson(result, PhotoData.class);
         List<PhotoData.DataBean.ListBean> listPhoto = photoData.getData().getList();
+        Log.i("Log",listPhoto.get(0).getTitle());
         aboutRecyclerView(listPhoto);
 
     }
@@ -125,5 +129,7 @@ public class PhotoActivity extends AppCompatActivity {
         //初始化布局
          rlv.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
          //适配器
+        PhotoAdapter adapter=new PhotoAdapter(listPhoto,this);
+        rlv.setAdapter(adapter);
     }
 }
