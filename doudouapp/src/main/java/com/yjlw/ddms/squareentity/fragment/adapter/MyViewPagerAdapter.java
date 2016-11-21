@@ -18,10 +18,10 @@ import java.util.List;
  * @version : 1.0
  */
 
-public class MyViewPagerFragment extends FragmentStatePagerAdapter {
+public class MyViewPagerAdapter extends FragmentStatePagerAdapter {
     private List<TopicViewPagerFragment> tempDs;
 
-    public MyViewPagerFragment(FragmentManager fm,List<TopicViewPagerFragment> tempDs) {
+    public MyViewPagerAdapter(FragmentManager fm, List<TopicViewPagerFragment> tempDs) {
         super(fm);
         this.tempDs=tempDs;
     }
