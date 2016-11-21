@@ -24,6 +24,7 @@ import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.fristentity.activity.HotActivity;
 import com.yjlw.ddms.fristentity.activity.HotTitleActivity;
+import com.yjlw.ddms.fristentity.activity.PhotoActivity;
 import com.yjlw.ddms.fristentity.adapter.MyFirstPagerAdapter;
 import com.yjlw.ddms.fristentity.adapter.MyViewPagerAdapter;
 import com.yjlw.ddms.fristentity.entity.FirstPagerData;
@@ -247,14 +248,18 @@ public class FirstFragment extends Fragment {
         photoList = firstPagerData.getData().getHeader().get(2).getList();
         pcvDinner.setTextView(photoList.get(0).getTitle());
         pcvDinner.setSmallTextView(photoList.get(0).getDesc());
+        clickPress(photoList,pcvDinner,0);
+
         ImageView dinnerIcon= (ImageView) pcvDinner.findViewById(R.id.iv_dinner);
         Picasso.with(getContext()).load(photoList.get(0).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(dinnerIcon);
         pcvLoon.setTextView(photoList.get(1).getTitle());
         pcvLoon.setSmallTextView(photoList.get(1).getDesc());
+        clickPress(photoList,pcvLoon,1);
         ImageView loonIcon= (ImageView) pcvLoon.findViewById(R.id.iv_dinner);
         Picasso.with(getContext()).load(photoList.get(1).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(loonIcon);
         pcvEat.setTextView(photoList.get(2).getTitle());
         pcvEat.setSmallTextView(photoList.get(2).getDesc());
+        clickPress(photoList,pcvEat,2);
         ImageView eatIcon= (ImageView) pcvEat.findViewById(R.id.iv_dinner);
         Picasso.with(getContext()).load(photoList.get(2).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(eatIcon);
         TextView  tvPcvOld= (TextView) pcvOldDiet.findViewById(R.id.tv_dinner_big);
@@ -263,10 +268,12 @@ public class FirstFragment extends Fragment {
         tvPcvOld.setEllipsize(TextUtils.TruncateAt.END);
         tvPcvOld.setText(photoList.get(3).getTitle());
         pcvOldDiet.setSmallTextView(photoList.get(3).getDesc());
+        clickPress(photoList,pcvOldDiet,3);
         ImageView oldDietIcon= (ImageView) pcvOldDiet.findViewById(R.id.iv_dinner);
         Picasso.with(getContext()).load(photoList.get(3).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(oldDietIcon);
         pcHotSpecial.setTextView(photoList.get(4).getTitle());
         pcHotSpecial.setSmallTextView(photoList.get(4).getDesc());
+        clickPress(photoList,pcHotSpecial,4);
         ImageView hotSpecialIcon= (ImageView)pcHotSpecial.findViewById(R.id.iv_dinner);
         Picasso.with(getContext()).load(photoList.get(4).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(hotSpecialIcon);
         // 2、关于ViewPager的操作
@@ -274,6 +281,19 @@ public class FirstFragment extends Fragment {
 
         // 3、关于小圆点的操作
         aboutLittleDots();
+    }
+
+    private void clickPress(final List<FirstPagerData.DataBean.HeaderBean.ListBeanX> photoList, PhotographCategoryView pcv, final int i) {
+         pcv.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 Intent intent=new Intent(getActivity(), PhotoActivity.class);
+                 Bundle bundle=new Bundle();
+                 bundle.putString("name",photoList.get(i).getTitle());
+                 intent.putExtras(bundle);
+                 startActivity(intent);
+             }
+         });
     }
 
     private void aboutListView(List<FirstPagerData.DataBean.ListBean> listBeen) {

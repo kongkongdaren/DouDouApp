@@ -9,15 +9,16 @@
 
         <ImageView
             android:id="@+id/iv_real_time_iamge"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
+            android:layout_width="80dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
             <TextView
                 android:id="@+id/tv_title_id"
@@ -33,8 +34,8 @@
                 android:gravity="center_vertical">
                 <ImageView
                     android:id="@+id/iv_left_iamge_id"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
                     android:src="@mipmap/btn_user_photo"
                     />
                 <TextView
@@ -53,6 +54,8 @@
                 android:id="@+id/tv_content_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:ellipsize="end"
                 android:text="冬日里是进补的季节，俗话说“冬日小补，来年打虎”"/>
 
             <LinearLayout
