@@ -10,6 +10,8 @@ import android.widget.ImageView;
 
 import com.yjlw.ddms.R;
 
+import it.sephiroth.android.library.picasso.Picasso;
+
 /**
  * Description：图片轮播的Fragment<br/>
  * Copyright (c) 2016,JansonLi<br/>
@@ -23,9 +25,12 @@ import com.yjlw.ddms.R;
 public class TopicViewPagerFragment extends Fragment {
 
     private ImageView mPhoto;
+    private String img;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        Bundle bundle = getArguments();
+        img = bundle.getString("img");
         super.onCreate(savedInstanceState);
     }
 
@@ -39,6 +44,7 @@ public class TopicViewPagerFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        Picasso.with(getContext()).load(img).into(mPhoto);
         super.onActivityCreated(savedInstanceState);
     }
 }
