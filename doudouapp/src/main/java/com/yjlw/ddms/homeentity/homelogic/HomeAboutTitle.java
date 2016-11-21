@@ -71,5 +71,6 @@ public class HomeAboutTitle implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+
         context.startActivity(new Intent(context, HomeLabelActivity.class));    }
 }
