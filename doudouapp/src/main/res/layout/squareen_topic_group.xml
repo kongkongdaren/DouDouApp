@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:src="@mipmap/ico_auxiliary_hotspot"/>
+            android:src="@mipmap/ico_auxiliary_topic"/>
         <TextView
             android:id="@+id/tv_topic_"
             android:layout_width="0dp"
@@ -25,12 +25,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="实时热点"/>
-        <ImageView
-            android:id="@+id/iv_topic_auxiliary_more_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:src="@mipmap/ico_auxiliary_more"/>
+            android:text="话题小组"/>
     
 </LinearLayout>
