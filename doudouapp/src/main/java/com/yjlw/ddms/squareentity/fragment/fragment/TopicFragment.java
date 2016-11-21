@@ -231,6 +231,7 @@ public class TopicFragment extends Fragment {
             @Override
             public void onSuccess(String result) {
                 Log.i("download",result);
+
                 parserThirdPager(result);
             }
 
