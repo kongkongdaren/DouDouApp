@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'org.greenrobot.greendao'
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
@@ -18,11 +18,7 @@ android {
         }
     }
 }
-greendao{
-    schemaVersion 1
-    daoPackage 'com.admom.mygreendaotest'
-    targetGenDir 'src/main/java-gen'
-}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -38,5 +34,4 @@ dependencies {
     compile 'it.sephiroth.android.library.picasso:picasso:2.5.2.4b'
     compile project(':app')
     compile 'org.greenrobot:greendao:3.2.0'
-    compile project(':daoexamplegenerator')
 }
