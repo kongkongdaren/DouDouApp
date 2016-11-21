@@ -38,7 +38,7 @@ public class DynamicFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         view = inflater.inflate(R.layout.squareen_fragment, null);
-        mLv = (ListView) view.findViewById(R.id.lv_sq__id);
+        mLv = (ListView) view.findViewById(R.id.lv_sq_id);
         return view;
     }
 
