@@ -35,7 +35,7 @@ public class SquareFragment extends Fragment {
     private View view;
     private RadioGroup mRg;
     private ViewPager mVp;
-    private List<Fragment> fragments;
+    private List<TopicFragment> fragments;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +47,7 @@ public class SquareFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.squareen_main,null);
         mRg = (RadioGroup) view.findViewById(R.id.rg_id);
-        mVp = (ViewPager) view.findViewById(R.id.vp_id);
+        mVp = (ViewPager) view.findViewById(R.id.main_vp_id);
         return view;
     }
 
@@ -91,19 +91,19 @@ public class SquareFragment extends Fragment {
         fragments = new LinkedList<>();
         for(int i=0;i<mRg.getChildCount();i++){
             TopicFragment topicFragment=new TopicFragment();
-            HaoDouFragment haoDouFragment=new HaoDouFragment();
-            DynamicFragment dynamicFragment=new DynamicFragment();
+//            HaoDouFragment haoDouFragment=new HaoDouFragment();
+//            DynamicFragment dynamicFragment=new DynamicFragment();
 
             Bundle bundle=new Bundle();
             bundle.putString("tabName",((RadioButton)mRg.getChildAt(i))
                     .getText().toString());
             topicFragment.setArguments(bundle);
-            haoDouFragment.setArguments(bundle);
-            dynamicFragment.setArguments(bundle);
+//            haoDouFragment.setArguments(bundle);
+//            dynamicFragment.setArguments(bundle);
 
             fragments.add(topicFragment);
-            fragments.add(haoDouFragment);
-            fragments.add(dynamicFragment);
+//            fragments.add(haoDouFragment);
+//            fragments.add(dynamicFragment);
         }
 
         //适配器
