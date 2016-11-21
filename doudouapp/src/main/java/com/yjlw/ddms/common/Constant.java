@@ -36,13 +36,15 @@ public class Constant {
     /**
      * 热门菜谱——全部
      */
-    public static String SECOND_PAGE_ALLPOPULARRECIPES = "http://api.haodou.com/index.php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1479711964067&vc=105&vn=6.1.15&loguid=10283273&deviceid=haodou864394010248476&uuid=bdf542fa8eb3bcbc457a5383dc48fc0c&channel=anzhi_v6115&method=Recipe.getCollectRecomment&virtual=&signmethod=md5&v=3&timestamp=1479714919&nonce=0.894336285475347&appsign=536956210180d7125b7ff81e68e7821b";
+    public static String SECOND_PAGE_ALLPOPULARRECIPES = "http://api.haodou.com/index.php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1479717441077&vc=105&vn=" +
+            "6.1.15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5&channel=anzhi_v6115&method=Recipe.getCollectRecomment&virtual=&signmethod=md5&v=3&timestamp=" +
+            "1479721611&nonce=0.9624307813269698&appsign=4fbbb621ceeca881c7364dd24a0aa160";
 
     /*
     params.addBodyParameter("limit", "10");
     params.addBodyParameter("sign", "");
     params.addBodyParameter("uid", "0");
-    params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
+    params.addBodyParameter("uuid", "b3b08f17bca548949af2ddc9c88e65f5");
     params.addBodyParameter("offset", "0");
     params.addBodyParameter("appqs", "haodourecipe://haodou.com/recommend/recipe/?keyword=%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&title=%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&tab=%E5%85%A8%E9%83%A8%3A%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1%7C%E7%A7%81%E4%BA%BA%3A%E7%A7%81%E4%BA%BA%E5%AE%9A%E5%88%B6%7C%E6%97%B6%E4%BB%A4%3A%E6%97%B6%E4%BB%A4%E4%BD%B3%E8%82%B4%7C%E8%BE%BE%E4%BA%BA%3A%E8%BE%BE%E4%BA%BA%E8%8F%9C%E8%B0%B1%7C%E6%9C%80%E6%96%B0%3A%E6%9C%80%E6%96%B0%E8%8F%9C%E8%B0%B1%7C%E7%83%98%E7%84%99%3A%E5%BF%AB%E4%B9%90%E7%9A%84%E7%83%98%E7%84%99");
     params.addBodyParameter("type", "热门菜谱");
