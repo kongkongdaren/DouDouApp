@@ -25,6 +25,7 @@ public class HttpUtils {
 
     public static byte[] downloadJsonDataMethod(){
         String thirdPage = Constant.THIRD_PAGE;
+
         return null;
     }
 }
