@@ -1,6 +1,7 @@
 package com.yjlw.ddms.fristentity.fragment;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
+import com.yjlw.ddms.fristentity.activity.HotTitleActivity;
 import com.yjlw.ddms.fristentity.adapter.MyFirstPagerAdapter;
 import com.yjlw.ddms.fristentity.adapter.MyViewPagerAdapter;
 import com.yjlw.ddms.fristentity.entity.FirstPagerData;
@@ -215,7 +217,12 @@ public class FirstFragment extends Fragment {
         classTitle.setTextView(listClass.get(0).getTitle());
         ImageView recipeIcon = (ImageView) classTitle.findViewById(R.id.iv_haodou_icon);
         Picasso.with(getContext()).load(listClass.get(0).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(recipeIcon);
-
+        classTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), HotTitleActivity.class));
+            }
+        });
         classVedio.setTextView(listClass.get(1).getTitle());
         ImageView vedioIcon = (ImageView) classVedio.findViewById(R.id.iv_haodou_icon);
         Picasso.with(getContext()).load(listClass.get(1).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(vedioIcon);
