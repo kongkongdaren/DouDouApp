@@ -1,5 +1,6 @@
 package com.yjlw.ddms.homeentity.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,7 +11,7 @@ import java.util.List;
  * @CreateDate: 2016/11/21
  * @Version: [v1.0]
  */
-public class LabelDetailsResult {
+public class LabelDetailsResult implements Serializable {
 
     /**
      * result : {"CartTotalNum":7,"CateInfos":[{"CateId":0,"CateName":"全部"},{"CateId":"58",
