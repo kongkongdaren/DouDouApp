@@ -52,12 +52,4 @@
     <string name="kitchenname">幸福的林冰</string>
     <string name="titlecontent">咸香下饭，美味湘菜——香</string>
     <string name="titlecount">1</string>
-    <string-array name="hottitlename">
-        <item>全部</item>
-        <item>私人</item>
-        <item>时令</item>
-        <item>达人</item>
-        <item>最新</item>
-        <item>烘焙</item>
-    </string-array>
 </resources>
