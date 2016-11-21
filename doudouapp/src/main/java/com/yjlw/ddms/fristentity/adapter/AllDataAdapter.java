@@ -49,18 +49,18 @@ public class AllDataAdapter extends HomeCustomBaseAdapter<HotAll.ResultBean.List
             convertView.setTag(vh);
         }else{
            vh=(ViewHolder) convertView.getTag();
-            HotAll.ResultBean.ListBean listBean = lists.get(position);
-            Picasso.with(context).load(listBean.getCover()).error(R.mipmap.ic_main_logo).into(vh.ivTitlePhoto);
-            vh.tvContent.setText(listBean.getTitle());
-            vh.tvName.setText(listBean.getUserName());
-            vh.tvPraiseCount.setText(listBean.getLikeCount());
-            vh.tvTag1.setText(listBean.getTags().get(position).getName());
-            vh.tvTag2.setText(listBean.getTags().get(position).getName());
-            vh.tvTag3.setText(listBean.getTags().get(position).getName());
-            vh.tvTag4.setText(listBean.getTags().get(position).getName());
-            vh.tvTag5.setText(listBean.getTags().get(position).getName());
-            vh.tvTag6.setText(listBean.getTags().get(position).getName());
         }
+        HotAll.ResultBean.ListBean listBean = lists.get(position);
+        Picasso.with(context).load(listBean.getCover()).error(R.mipmap.ic_main_logo).into(vh.ivTitlePhoto);
+        vh.tvContent.setText(listBean.getTitle());
+        vh.tvName.setText(listBean.getUserName());
+        vh.tvPraiseCount.setText(listBean.getLikeCount());
+        vh.tvTag1.setText(listBean.getTags().get(position).getName());
+        vh.tvTag2.setText(listBean.getTags().get(position).getName());
+        vh.tvTag3.setText(listBean.getTags().get(position).getName());
+        vh.tvTag4.setText(listBean.getTags().get(position).getName());
+        vh.tvTag5.setText(listBean.getTags().get(position).getName());
+        vh.tvTag6.setText(listBean.getTags().get(position).getName());
         return convertView;
     }
     private  final  class ViewHolder{

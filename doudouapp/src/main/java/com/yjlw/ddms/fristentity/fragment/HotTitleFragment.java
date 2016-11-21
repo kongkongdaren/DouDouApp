@@ -42,9 +42,29 @@ public class HotTitleFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         Bundle arguments = getArguments();
         hotNames = arguments.getString("hotName");
-        DownHotAllData();
+
+        switch (hotNames){
+            case "全部":
+                DownHotAllData();
+                break;
+            case "私人":
+                DownPrivateData();
+                break;
+            case "时令":
+                break;
+            case "达人":
+                break;
+            case "最新":
+                break;
+            case "烘焙":
+                break;
+
+
+        }
         super.onCreate(savedInstanceState);
     }
+
+
 
     @Nullable
     @Override
@@ -67,6 +87,45 @@ public class HotTitleFragment extends Fragment {
         params.addBodyParameter("offset", "0");
         params.addBodyParameter("appqs", "haodourecipe://haodou.com/recommend/recipe/?keyword=%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&title=%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&tab=%E5%85%A8%E9%83%A8%3A%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1%7C%E7%A7%81%E4%BA%BA%3A%E7%A7%81%E4%BA%BA%E5%AE%9A%E5%88%B6%7C%E6%97%B6%E4%BB%A4%3A%E6%97%B6%E4%BB%A4%E4%BD%B3%E8%82%B4%7C%E8%BE%BE%E4%BA%BA%3A%E8%BE%BE%E4%BA%BA%E8%8F%9C%E8%B0%B1%7C%E6%9C%80%E6%96%B0%3A%E6%9C%80%E6%96%B0%E8%8F%9C%E8%B0%B1%7C%E7%83%98%E7%84%99%3A%E5%BF%AB%E4%B9%90%E7%9A%84%E7%83%98%E7%84%99");
         params.addBodyParameter("type", "热门菜谱");
+        x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Log.i("Log","下载全部的数据是"+result);
+                parseHotAllData(result);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+    }
+    private void DownPrivateData() {
+        String secondUrl = Constant.SECOND_PAGE_PERSONAL;
+        RequestParams params = new RequestParams(secondUrl);
+        params.addBodyParameter("limit", "10");
+        params.addBodyParameter("sign", "");
+        params.addBodyParameter("uid", "0");
+        params.addBodyParameter("uuid", "b3b08f17bca548949af2ddc9c88e65f5");
+        params.addBodyParameter("offset", "0");
+        params.addBodyParameter("appqs", "haodourecipe://haodou"+
+                ".com/recommend/recipe/?keyword=%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&title=%E7%83%AD%E9%97%A8"+
+                "%E8%8F%9C%E8%B0%B1&tab=%E5%85%A8%E9%83%A8%3A%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1%7C%E7%A7%81"+
+                "%E4%BA%BA%3A%E7%A7%81%E4%BA%BA%E5%AE%9A%E5%88%B6%7C%E6%97%B6%E4%BB%A4%3A%E6%97%B6%E4%BB%A4%E4"+
+                "%BD%B3%E8%82%B4%7C%E8%BE%BE%E4%BA%BA%3A%E8%BE%BE%E4%BA%BA%E8%8F%9C%E8%B0%B1%7C%E6%9C%80%E6%96"+
+                "%B0%3A%E6%9C%80%E6%96%B0%E8%8F%9C%E8%B0%B1%7C%E7%83%98%E7%84%99%3A%E5%BF%AB%E4%B9%90%E7%9A%84"+
+                "%E7%83%98%E7%84%99");
+        params.addBodyParameter("type", "私人定制");
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
