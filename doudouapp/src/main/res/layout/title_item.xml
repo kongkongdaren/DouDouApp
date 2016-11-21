@@ -36,7 +36,7 @@
             android:id="@+id/iv_praise_photo"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/praiseselector"
+            android:src="@drawable/praise_selector"
             android:layout_marginRight="10dp"
             android:layout_marginTop="80dp"
             android:layout_gravity="right"/>
