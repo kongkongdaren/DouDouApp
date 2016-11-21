@@ -38,8 +38,8 @@
     <string name="startstore">明星店铺</string>
     <string name="photoname">word天~粉粉的它居然是粑粑</string>
     <string name="password">请输入密码</string>
-    <string name="pwd">密码</string>
-    <string name="name">用户名</string>
+    <string name="pwd">密码：</string>
+    <string name="name">账号：</string>
     <string name="phonenum">请输入密码</string>
     <string name="circleinstruction">萝卜的最佳吃法都在这里。。</string>
     <string name="openurl">立即购买</string>
@@ -52,4 +52,11 @@
     <string name="kitchenname">幸福的林冰</string>
     <string name="titlecontent">咸香下饭，美味湘菜——香</string>
     <string name="titlecount">1</string>
+    <string name="enter_num">请输入邮箱或手机号码</string>
+    <string name="forgetpwd">忘记密码？</string>
+    <string name="feedback">意见反馈</string>
+    <string name="finish">完成</string>
+    <string name="opinion">亲，希望能留下您的联系方式，若您的意见被采纳，我们会赠送精美礼物一份哦！</string>
+    <string name="num">客服电话：</string>
+    <string name="view_history">查看历史记录</string>
 </resources>
