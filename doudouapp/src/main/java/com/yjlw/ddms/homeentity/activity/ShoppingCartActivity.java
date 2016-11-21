@@ -60,6 +60,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_shopping_cart);
         initView();
         initListener();
@@ -77,6 +78,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         mDelete = (TextView) findViewById(R.id.tv_cart_buy_or_del);
         mListView = (ListView) findViewById(R.id.listview);
         mListView.setSelector(R.drawable.list_selector);
+
 
     }
 
