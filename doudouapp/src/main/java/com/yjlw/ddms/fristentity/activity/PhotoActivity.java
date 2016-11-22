@@ -24,6 +24,8 @@ import org.xutils.x;
 
 import java.util.List;
 
+import static android.R.attr.x;
+
 /**
  * Description：xx <br/>
  * Copyright (c) 2016<br/>
@@ -90,7 +92,6 @@ public class PhotoActivity extends AppCompatActivity {
                 Log.i("Log","图片"+result);
                 parsePhotoData(result);
             }
-
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
 
