@@ -25,6 +25,7 @@ import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.fristentity.activity.HotActivity;
 import com.yjlw.ddms.fristentity.activity.HotTitleActivity;
 import com.yjlw.ddms.fristentity.activity.KitchenActivity;
+import com.yjlw.ddms.fristentity.activity.MenuSortActivity;
 import com.yjlw.ddms.fristentity.activity.PhotoActivity;
 import com.yjlw.ddms.fristentity.adapter.MyFirstPagerAdapter;
 import com.yjlw.ddms.fristentity.adapter.MyViewPagerAdapter;
@@ -250,7 +251,12 @@ public class FirstFragment extends Fragment {
         classMenu.setTextView(listClass.get(4).getTitle());
         ImageView menuIcon = (ImageView) classMenu.findViewById(R.id.iv_haodou_icon);
         Picasso.with(getContext()).load(listClass.get(4).getImgs().get(0)).placeholder(R.mipmap.default_high).error(R.mipmap.ic_main_logo).into(menuIcon);
-
+        classMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), MenuSortActivity.class));
+            }
+        });
         photoList = firstPagerData.getData().getHeader().get(2).getList();
         pcvDinner.setTextView(photoList.get(0).getTitle());
         pcvDinner.setSmallTextView(photoList.get(0).getDesc());
