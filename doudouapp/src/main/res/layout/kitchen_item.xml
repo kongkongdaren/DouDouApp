@@ -11,7 +11,7 @@
         android:id="@+id/tv_kitchen_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:layout_marginLeft="100dp"
         android:textSize="20sp"
         android:textColor="@color/recommend_swipe_color4"
@@ -21,28 +21,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="10sp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="100dp"
         android:layout_below="@+id/tv_kitchen_title"
         android:textColor="@color/half_black"
         android:text="@string/kitchenname"/>
-    <TextView
-        android:id="@+id/tv_kitchen_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="170dp"
-        android:layout_below="@+id/tv_kitchen_title"
-        android:textColor="@color/half_black"
-        android:text="@string/kitchenname"/>
+
     <TextView
         android:id="@+id/tv_kitchen_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="15sp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginLeft="100dp"
+        android:maxLines="1"
         android:layout_below="@+id/tv_kitchen_name"
         android:textColor="@color/half_black"
         android:text="@string/kitchenname"/>
