@@ -41,6 +41,8 @@
         <activity android:name=".fristentity.activity.PhotoActivity"/>
         <!--厨房宝典跳转页面-->
         <activity android:name=".fristentity.activity.KitchenActivity"/>
+        <!--厨房宝典图片web页面-->
+        <activity android:name=".fristentity.activity.PhotoWebActivity"/>
     </application>
 
 </manifest>

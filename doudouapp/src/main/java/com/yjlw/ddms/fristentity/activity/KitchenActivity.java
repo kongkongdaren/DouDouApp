@@ -1,5 +1,6 @@
 package com.yjlw.ddms.fristentity.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -194,9 +195,17 @@ public class KitchenActivity extends AppCompatActivity {
      * 关于ListView 的操作
      * @param listData
      */
-    private void aboutListView(List<KitchenData.ResultBean.ListBean> listData) {
+    private void aboutListView(final List<KitchenData.ResultBean.ListBean> listData) {
         //适配器
         KitChenAdapter adapter=new KitChenAdapter(listData,this);
         lv.setAdapter(adapter);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent intent=new Intent(KitchenActivity.this,PhotoWebActivity.class);
+                intent.putExtra("url",listData.get(position).getUrl());
+                startActivity(intent);
+            }
+        });
     }
 }
