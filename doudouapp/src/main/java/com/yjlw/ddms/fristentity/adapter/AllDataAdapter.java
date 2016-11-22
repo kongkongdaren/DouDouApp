@@ -53,7 +53,7 @@ public class AllDataAdapter extends HomeCustomBaseAdapter<HotAll.ResultBean.List
 
         }
         HotAll.ResultBean.ListBean listBean = lists.get(position);
-        Picasso.with(context).load(listBean.getCover()).error(R.mipmap.ic_main_logo).into(vh
+        Picasso.with(context).load(listBean.getCover()).placeholder(R.mipmap.default_high).into(vh
                 .ivTitlePhoto);
         vh.tvContent.setText(listBean.getTitle());
         vh.tvName.setText("by "+listBean.getUserName());

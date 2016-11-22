@@ -42,7 +42,7 @@ public class HotActivityAdapter extends HomeCustomBaseAdapter<HotAndData.ResultB
         }else{
            vh= (ViewHolder) convertView.getTag();
         }
-        Picasso.with(context).load(lists.get(position).getImg()).error(R.mipmap.ic_main_logo).into(vh.ivHotPhoto);
+        Picasso.with(context).load(lists.get(position).getImg()).placeholder(R.mipmap.default_high).into(vh.ivHotPhoto);
         vh.tvHotName.setText(lists.get(position).getTitle());
         vh.tvHotContent.setText(lists.get(position).getIntro());
         return convertView;

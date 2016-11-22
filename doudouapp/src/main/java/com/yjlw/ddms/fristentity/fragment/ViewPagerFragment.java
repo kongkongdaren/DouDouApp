@@ -49,7 +49,7 @@ public class ViewPagerFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         tvAdverTitle.setText(title);
-        Picasso.with(getContext()).load(img).into(ivPhoto);
+        Picasso.with(getContext()).load(img).placeholder(R.mipmap.default_high).into(ivPhoto);
         super.onActivityCreated(savedInstanceState);
     }
 }

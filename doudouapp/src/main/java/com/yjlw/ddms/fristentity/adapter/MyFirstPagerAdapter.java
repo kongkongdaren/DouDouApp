@@ -93,14 +93,14 @@ public class MyFirstPagerAdapter extends HomeCustomBaseAdapter<FirstPagerData.Da
             case TYPE_DES:
                 vh.tvTitle.setText(bean.getTitle());
                 vh.tvDec.setText(bean.getDesc());
-                Picasso.with(context).load(bean.getImgs().get(0)).error(R.mipmap.ic_main_logo).into(vh.ivPhoto);
+                Picasso.with(context).load(bean.getImgs().get(0)).placeholder(R.mipmap.default_high).into(vh.ivPhoto);
                 break;
             case TYPE_ALL:
                 vch.tvTitleView.setText(bean.getTitle());
                 vch.tvDecView.setText(bean.getDesc());
                 vch.tvName.setText(bean.getUserName());
-                Picasso.with(context).load(bean.getImgs().get(0)).error(R.mipmap.ic_main_logo).into(vch.ivPhotoView);
-                Picasso.with(context).load(bean.getUserAvatar()).error(R.mipmap.ic_main_logo).into(vch.ivCirclePhoto);
+                Picasso.with(context).load(bean.getImgs().get(0)).placeholder(R.mipmap.default_high).into(vch.ivPhotoView);
+                Picasso.with(context).load(bean.getUserAvatar()).placeholder(R.mipmap.default_high).into(vch.ivCirclePhoto);
                 break;
             default:
                 break;
