@@ -141,7 +141,7 @@ public class PhotoActivity extends AppCompatActivity {
         PhotoAdapter adapter=new PhotoAdapter(listPhoto,this);
         rlv.setAdapter(adapter);
         //设置item之间的间隔
-        SpacesItemDecoration decoration=new SpacesItemDecoration(2);
+        SpacesItemDecoration decoration=new SpacesItemDecoration(10);
         rlv.addItemDecoration(decoration);
 
     }
