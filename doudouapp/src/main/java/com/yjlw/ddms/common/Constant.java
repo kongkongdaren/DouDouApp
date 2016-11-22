@@ -237,7 +237,10 @@ public class Constant {
     params.addBodyParameter("offset", "0");
     params.addBodyParameter("type", "");
 */
-
+    /**
+     * 全部
+     */
+    public static  String AllKitchen="http://api.haodou.com/index.php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1479783090186&vc=105&vn=6.1.15&loguid=0&deviceid=haodou864394010609719&uuid=4d026196b079f72c6ee96157c0c65d62&channel=anzhi_v6115&method=Wiki.getTagList&virtual=&signmethod=md5&v=3&timestamp=1479783266&nonce=0.32540721725438126&appsign=a34e4df8cffc46c1da23c1e731d12fb2";
 
     /**
      * 厨房宝典--全部
