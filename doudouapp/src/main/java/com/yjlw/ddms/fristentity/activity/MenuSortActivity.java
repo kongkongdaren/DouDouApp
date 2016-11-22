@@ -5,13 +5,13 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
+import com.yjlw.ddms.fristentity.adapter.MenuSortAdapter;
 import com.yjlw.ddms.fristentity.entity.MenuSort;
 
 import org.xutils.common.Callback;
@@ -39,8 +39,8 @@ public class MenuSortActivity extends AppCompatActivity {
     private ImageView ivSearch;
     @ViewInject(R.id.lv_sort)
     private ListView lvSort;
-    @ViewInject(R.id.fl)
-    private FrameLayout flSort;
+//    @ViewInject(R.id.fl)
+//    private FrameLayout flSort;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,6 +97,8 @@ public class MenuSortActivity extends AppCompatActivity {
     }
 //关于ListView的操作
     private void aboutListView(List<MenuSort.ResultBean.ListBean> listSort) {
-
+             //适配器
+        MenuSortAdapter adapter=new MenuSortAdapter(listSort,this);
+        lvSort.setAdapter(adapter);
     }
 }
