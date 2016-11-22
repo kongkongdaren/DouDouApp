@@ -39,6 +39,8 @@
         <activity android:name=".fristentity.activity.HotActivity"/>
         <!--图片跳转页面-->
         <activity android:name=".fristentity.activity.PhotoActivity"/>
+        <!--厨房宝典跳转页面-->
+        <activity android:name=".fristentity.activity.KitchenActivity"/>
     </application>
 
 </manifest>
