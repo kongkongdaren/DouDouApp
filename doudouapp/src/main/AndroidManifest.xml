@@ -43,6 +43,8 @@
         <activity android:name=".fristentity.activity.KitchenActivity"/>
         <!--厨房宝典图片web页面-->
         <activity android:name=".fristentity.activity.PhotoWebActivity"/>
+        <!--菜谱分类页面-->
+        <activity android:name=".fristentity.activity.MenuSortActivity"/>
     </application>
 
 </manifest>

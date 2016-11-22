@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/gray">
+        <ImageView
+            android:id="@+id/iv_sort_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:src="@mipmap/btn_header_back"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/sort"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="50dp"/>
+        <ImageView
+            android:id="@+id/iv_sort_search"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:gravity="center_vertical"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/action_search"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+    <ListView
+        android:id="@+id/lv_sort"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"/>
+        <FrameLayout
+            android:id="@+id/fl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+</LinearLayout>
