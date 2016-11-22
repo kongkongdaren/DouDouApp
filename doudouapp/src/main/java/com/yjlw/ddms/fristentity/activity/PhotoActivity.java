@@ -1,5 +1,6 @@
 package com.yjlw.ddms.fristentity.activity;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -24,7 +26,6 @@ import org.xutils.x;
 
 import java.util.List;
 
-import static android.R.attr.x;
 
 /**
  * Description：xx <br/>
@@ -43,6 +44,8 @@ public class PhotoActivity extends AppCompatActivity {
     private TextView tvPhotoName;
     @ViewInject(R.id.rlv_id)
     private RecyclerView rlv;
+    @ViewInject(R.id.pb_photo)
+    private ProgressBar pb;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -118,6 +121,11 @@ public class PhotoActivity extends AppCompatActivity {
         PhotoData photoData = gson.fromJson(result, PhotoData.class);
         List<PhotoData.DataBean.ListBean> listPhoto = photoData.getData().getList();
         Log.i("Log",listPhoto.get(0).getTitle());
+        if (listPhoto==null){
+            pb.setVisibility(View.VISIBLE);
+        }else{
+            pb.setVisibility(View.GONE);
+        }
         aboutRecyclerView(listPhoto);
 
     }
@@ -132,5 +140,27 @@ public class PhotoActivity extends AppCompatActivity {
          //适配器
         PhotoAdapter adapter=new PhotoAdapter(listPhoto,this);
         rlv.setAdapter(adapter);
+        //设置item之间的间隔
+        SpacesItemDecoration decoration=new SpacesItemDecoration(2);
+        rlv.addItemDecoration(decoration);
+
+    }
+    public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
+
+        private int space;
+
+        public SpacesItemDecoration(int space) {
+            this.space = space;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            outRect.left = space;
+            outRect.right = space;
+            outRect.bottom = space;
+            if (parent.getChildAdapterPosition(view) == 0) {
+                outRect.top = space;
+            }
+        }
     }
 }
