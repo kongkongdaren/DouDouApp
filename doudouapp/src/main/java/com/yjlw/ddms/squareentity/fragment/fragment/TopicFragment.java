@@ -22,6 +22,7 @@ import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.fristentity.fragment.FirstFragment;
 import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
+import com.yjlw.ddms.squareentity.fragment.adapter.MyBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyViewPagerAdapter;
 import com.yjlw.ddms.squareentity.fragment.entity.Result;
 
@@ -34,6 +35,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Description：话题Fragment<br/>
@@ -58,12 +61,13 @@ public class TopicFragment extends Fragment {
     private ListView mLv;
     private LinearLayout mLl;
     private ViewPager mVp;
+    private List<Result.ResultBean.HotBean> hot;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
-        //                Bundle bundle = getArguments();
-        //                bundle.getString("tabName");
+//      Bundle bundle = getArguments();
+//      bundle.getString("tabName");
         super.onCreate(savedInstanceState);
     }
 
@@ -81,13 +85,40 @@ public class TopicFragment extends Fragment {
 
         mLv.addHeaderView(inflate);
 
-        //数据下载
+        //添加实时热点
+        View squareen_real_time = inflater.inflate(R.layout.squareen_real_time, null);
+        mLv.addHeaderView(squareen_real_time);
+
+        //添加分割线
+        View squareen_view = inflater.inflate(R.layout.squareen_view, null);
+        mLv.addFooterView(squareen_view);
+
+        //添加话题小组
+        View squareen_topic_group = inflater.inflate(R.layout.squareen_topic_group,null);
+        mLv.addFooterView(squareen_topic_group);
+
+        View squareen_topic_group_item = inflater.inflate(R.layout.squareen_topic_group_item, null);
+        mLv.addFooterView(squareen_topic_group_item);
+        ImageView topic_group_item_image_id =(ImageView)squareen_topic_group_item.findViewById(R.id.topic_group_item_image_id);
+        TextView tv_Name_id= (TextView) squareen_topic_group_item.findViewById(R.id.tv_Name_id);
+        TextView tv_ViewDesc_id= (TextView) squareen_topic_group_item.findViewById(R.id.tv_ViewDesc_id);
+        TextView tv_Desc_id= (TextView) squareen_topic_group_item.findViewById(R.id.tv_Desc_id);
+
+        for(int i=0;i<groupBeans.size();i++){
+            Result.ResultBean.GroupBean groupBean = groupBeans.get(i);
+            x.image().bind(topic_group_item_image_id,groupBean.getImg());
+            tv_Name_id.setText(groupBean.getName());
+            tv_ViewDesc_id.setText(groupBean.getViewDesc());
+            tv_Desc_id.setText(groupBean.getDesc());
+        }
+
 
         //准备数据源
         DownloadData();
 
         return view;
     }
+
 
     private void DownloadData() {
         String thirdPage = Constant.THIRD_PAGE;
@@ -123,11 +154,15 @@ public class TopicFragment extends Fragment {
 
         Gson gson = new Gson();
         result1 = gson.fromJson(result, Result.class);
-        String img = result1.getResult().getAd().get(0).getImg();
+
         groupBeans.addAll(result1.getResult().getGroup());//向ListView中添加数据源
+
+        hot = result1.getResult().getHot();
+
         ad.addAll(result1.getResult().getAd());
 
-        ListViewAdapter adapter = new ListViewAdapter(groupBeans, getContext());
+        ListViewAdapter adapter = new ListViewAdapter(hot, getContext());
+
         mLv.setAdapter(adapter);
 
     }
@@ -137,11 +172,18 @@ public class TopicFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
-    private class ListViewAdapter extends HomeCustomBaseAdapter<Result.ResultBean.GroupBean> {
 
-        public ListViewAdapter(List<Result.ResultBean.GroupBean> lists, Context context) {
-            super(lists, context);
-            Log.i("Log", lists.toString());
+
+
+    //实时热点
+    private class ListViewAdapter extends HomeCustomBaseAdapter<Result.ResultBean.HotBean> {
+        @Override
+        public int getCount() {
+            return 3;
+        }
+
+        public ListViewAdapter(List<Result.ResultBean.HotBean> hot, Context context) {
+            super(hot, context);
         }
 
         @Override
@@ -152,18 +194,34 @@ public class TopicFragment extends Fragment {
                 vh = new ViewHolder();
                 vh.imageView= (ImageView) convertView.findViewById(R.id.iv_real_time_iamge);
                 vh.title= (TextView) convertView.findViewById(R.id.tv_title_id);
+                vh.LeftimageView= (ImageView) convertView.findViewById(R.id.iv_left_iamge_id);
+                vh.username= (TextView) convertView.findViewById(R.id.tv_username_id);
+                vh.tv_content= (TextView) convertView.findViewById(R.id.tv_content_id);
+                vh.tv_dianji_count_id= (TextView) convertView.findViewById(R.id.tv_dianji_count_id);
+                vh.tv_message_count_id= (TextView) convertView.findViewById(R.id.tv_message_count_id);
                 convertView.setTag(vh);
             } else {
                 vh = (ViewHolder) convertView.getTag();
             }
-            x.image().bind(vh.imageView,lists.get(i).getImg());
-            vh.title.setText(lists.get(i).getName());
+            x.image().bind(vh.imageView,hot.get(i).getImg());
+            vh.title.setText(hot.get(i).getTitle());
+            x.image().bind(vh.LeftimageView,hot.get(i).getAvatar());
+            vh.username.setText(hot.get(i).getUserName());
+            vh.tv_content.setText(hot.get(i).getPreviewContent());
+            vh.tv_dianji_count_id.setText(hot.get(i).getDigCount()+"");
+            vh.tv_message_count_id.setText(hot.get(i).getCommentCount()+"");
+
             return convertView;
         }
 
         private final class ViewHolder {
             ImageView imageView;
             TextView title;
+            ImageView LeftimageView;
+            TextView username;
+            TextView tv_content;
+            TextView tv_dianji_count_id;
+            TextView tv_message_count_id;
         }
     }
 }

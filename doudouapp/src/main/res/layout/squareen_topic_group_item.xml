@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_guide"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    >
+
+    <ImageView
+        android:id="@+id/topic_group_item_image_id"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:padding="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_Name_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="家常菜"/>
+
+            <TextView
+                android:id="@+id/tv_ViewDesc_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="20dp"
+                android:text="今日围观113652" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_Desc_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="加长味道，幸福滋味"/>
+
+    </LinearLayout>
+
+    
+</LinearLayout>

@@ -1,8 +1,18 @@
 package com.yjlw.ddms.squareentity.fragment.adapter;
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.yjlw.ddms.R;
+import com.yjlw.ddms.squareentity.fragment.entity.Result;
+
+import java.util.List;
+
+import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Description：自定义适配器<br/>
@@ -15,74 +25,59 @@ import android.widget.BaseAdapter;
  */
 
 public class MyBaseAdapter extends BaseAdapter {
+
+    private List<Result.ResultBean.GroupBean> groupBeans;
+    private Context context;
+
+    public MyBaseAdapter(List<Result.ResultBean.GroupBean> groupBeans, Context context) {
+        this.groupBeans = groupBeans;
+        this.context = context;
+    }
+
     @Override
     public int getCount() {
-        return 0;
+        return groupBeans.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return null;
+        return groupBeans.get(i);
     }
 
     @Override
     public long getItemId(int i) {
-        return 0;
+        return i;
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        return null;
+    public View getView(int i, View convertView, ViewGroup viewGroup) {
+        ViewHolder vh=null;
+        if(convertView==null){
+            convertView=View.inflate(context, R.layout.squareen_topic_group_item,null);
+            vh=new ViewHolder();
+            vh.topic_group_item_image_id= (ImageView) convertView.findViewById(R.id.topic_group_item_image_id);
+            vh.tv_Name_id= (TextView) convertView.findViewById(R.id.tv_Name_id);
+            vh.tv_ViewDesc_id= (TextView) convertView.findViewById(R.id.tv_ViewDesc_id);
+            vh.tv_Desc_id= (TextView) convertView.findViewById(R.id.tv_Desc_id);
+            convertView.setTag(vh);
+        }else{
+            vh= (ViewHolder) convertView.getTag();
+        }
+
+        Result.ResultBean.GroupBean groupBean = groupBeans.get(i);
+        Picasso.with(context).load(groupBean.getImg()).into(vh.topic_group_item_image_id);
+        vh.tv_Name_id.setText(groupBean.getName());
+        vh.tv_ViewDesc_id.setText(groupBean.getViewDesc());
+        vh.tv_Desc_id.setText(groupBean.getDesc());
+
+        return convertView;
     }
-//    private List<Result.ResultBean> ds;
-//    private Context context;
-//
-//    public MyBaseAdapter(List<Result.ResultBean> ds, Context context) {
-//        this.ds = ds;
-//        this.context = context;
-//    }
-//
-//    @Override
-//    public int getCount() {
-//        return ds.size();
-//    }
-//
-//    @Override
-//    public Object getItem(int i) {
-//        return ds.get(i);
-//    }
-//
-//    @Override
-//    public long getItemId(int i) {
-//        return i;
-//    }
-//
-//    @Override
-//    public View getView(int i, View convertView, ViewGroup viewGroup) {
-//        ViewHolder vh=null;
-//        if(convertView==null){
-//            convertView=View.inflate(context, R.layout.squareen_topic_image,null);
-//            vh=new ViewHolder();
-//            vh.imageView= (ImageView) convertView.findViewById(R.id.iv_topic_image);
-//            convertView.setTag(vh);
-//        }else{
-//            vh= (ViewHolder) convertView.getTag();
-//        }
-//        Result.ResultBean resultBean = ds.get(i);
-//        Result.ResultBean.AdBean adBean = resultBean.getAd().get(i);
-//
-//        String img = adBean.getImg();
-//        final ViewHolder finalVh = vh;
-//        new TopicImageDataAsyncTask(new TopicImageDataAsyncTask.MyCallBack() {
-//            @Override
-//            public void setbitmapToImageView(Bitmap bitmap) {
-//                finalVh.imageView.setImageBitmap(bitmap);
-//            }
-//        }).execute(img);
-//        return convertView;
-//    }
-//
-//    private final class ViewHolder{
-//        ImageView imageView;
-//    }
+
+    private final class ViewHolder{
+        ImageView topic_group_item_image_id;
+        TextView tv_Name_id;
+        TextView tv_ViewDesc_id;
+        TextView tv_Desc_id;
+
+    }
 }
