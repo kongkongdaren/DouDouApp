@@ -100,6 +100,7 @@
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:textColor">@color/dim_foreground_disabled_material_dark</item>
     </style>
+
     <style name="newProductContent">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -115,4 +116,58 @@
         <item name="android:layout_marginLeft">10dp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="home_left_product_style">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:drawableRight">@drawable/home_product_item_selector</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="home_product_style">
+
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="right_home_product_style">
+
+        <item name="android:gravity">center</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:button">@null</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_marginRight">15dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:background">@color/white</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+    <!--
+     <item name="android:textColor">@drawable/mall_tab_selector</item>
+     <item name="android:gravity">center</item>
+     <item name="android:layout_width">fill_parent</item>
+     <item name="android:layout_height">@dimen/dp_66</item>
+     <item name="android:button">@null</item>
+     <item name="android:paddingTop">@dimen/dp_15</item>
+     <item name="android:paddingBottom">@dimen/dp_15</item>
+     <item name="android:singleLine">true</item>
+     <item name="android:background">@color/white</item>
+     <item name="android:layout_weight">1.0</item>-->
 </resources>

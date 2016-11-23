@@ -65,6 +65,8 @@
     <string name="sort">分类</string>
     <string name="sales">销量</string>
     <string name="price">价格</string>
+    <string name="newProduct">新品</string>
+    <string name="Price">价格</string>
     <string-array name="hottitlename">
         <item>全部</item>
         <item>私人</item>

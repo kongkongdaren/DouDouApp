@@ -59,36 +59,36 @@
         android:orientation="horizontal"
         >
 
-        <Spinner
-            android:id="@+id/sp_product_classify"
+        <RadioGroup
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"/>
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/sales"
-            />
-
-        <TextView
-            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="@string/price"
-            />
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="0.8"
-            android:gravity="center_vertical"
-            android:text="新品"
-            />
+            <RadioButton
+                style="@style/home_left_product_style"
+                />
+
+            <RadioButton
+                android:id="@+id/radioButton4"
+                style="@style/home_product_style"
+                android:layout_marginLeft="35dp"
+                android:drawablePadding="5"
+                android:drawableRight="@drawable/home_product_item_selector"
+                android:text="@string/sales"/>
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                style="@style/home_product_style"
+                android:layout_marginLeft="35dp"
+                android:text="@string/Price"/>
+
+        </RadioGroup>
+        <RadioButton
+            android:id="@+id/radioButton2"
+            style="@style/right_home_product_style"
+            android:text="@string/newProduct"/>
+
     </LinearLayout>
 
     <ListView
