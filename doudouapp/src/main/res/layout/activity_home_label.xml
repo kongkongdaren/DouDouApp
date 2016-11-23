@@ -84,6 +84,7 @@
                 android:text="@string/Price"/>
 
         </RadioGroup>
+
         <RadioButton
             android:id="@+id/radioButton2"
             style="@style/right_home_product_style"
