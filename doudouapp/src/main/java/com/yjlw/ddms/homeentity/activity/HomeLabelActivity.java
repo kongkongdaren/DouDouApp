@@ -4,11 +4,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ViewUtils;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
+import com.yjlw.ddms.homeentity.adapter.SpinnerAdapter;
 import com.yjlw.ddms.homeentity.entity.LabelDetailsResult;
 import com.yjlw.ddms.homeentity.homelogic.HomeTitleItem;
 
@@ -29,10 +33,15 @@ import static android.R.attr.key;
  */
 public class HomeLabelActivity extends AppCompatActivity {
     private List<LabelDetailsResult> labelDetailsResults = new LinkedList<>();
-    List<LabelDetailsResult.ResultBean.ListBean> list = new LinkedList<>();
+    private List<LabelDetailsResult.ResultBean.ListBean> list = new LinkedList<>();
     private String detailsResult;
     @ViewInject(R.id.lv_details)
     private ListView listView;
+
+    @ViewInject(R.id.sp_classify)
+    private Spinner spinnerClassify;//产品种类
+    private static final String[] addressProduct = {"全部", "附近", "全国"};
+    private SpinnerAdapter arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +50,19 @@ public class HomeLabelActivity extends AppCompatActivity {
         Bundle bundle = this.getIntent().getExtras();
         detailsResult = bundle.getString("detailsResult");
         x.view().inject(this);
-        initView();
+        aboutAddressSpinner();
         downLoadData();
 
     }
 
-    private void initView() {
+    /**
+     * 关于Spinner的操作
+     */
+    private void aboutAddressSpinner() {
 
+        arrayAdapter = new SpinnerAdapter(addressProduct, this);
+        //设置下拉列表的风格,simple_spinner_dropdown_item是android系统自带的样式，等会自定义修改
+        spinnerClassify.setAdapter(arrayAdapter);
     }
 
     private void downLoadData() {

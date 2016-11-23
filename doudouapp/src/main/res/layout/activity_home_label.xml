@@ -23,11 +23,13 @@
         >
 
         <TextView
+            android:id="@+id/tv_address"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="6"/>
 
         <ImageView
+            android:id="@+id/iv_drown_address"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="5dp"
@@ -40,6 +42,7 @@
             android:background="@color/tab_bg_color"/>
 
         <Spinner
+            android:id="@+id/sp_classify"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"/>
@@ -57,19 +60,26 @@
         >
 
         <Spinner
+            android:id="@+id/sp_product_classify"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"/>
 
-        <Spinner
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/sales"
+            />
 
-        <Spinner
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/price"
+            />
 
         <TextView
             android:layout_width="0dp"
@@ -87,5 +97,6 @@
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
         android:layout_weight="1"
+        android:scrollbars="none"
         />
 </LinearLayout>
