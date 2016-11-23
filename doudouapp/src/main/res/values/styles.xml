@@ -127,7 +127,6 @@
         <item name="android:button">@null</item>
         <item name="android:singleLine">true</item>
         <item name="android:background">@color/white</item>
-        <item name="android:drawableRight">@drawable/home_product_item_selector</item>
         <item name="android:textSize">18sp</item>
     </style>
 
@@ -138,7 +137,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:paddingTop">5dp</item>
         <item name="android:paddingBottom">5dp</item>
-
+        <item name="android:layout_marginRight">10dp</item>
         <item name="android:button">@null</item>
         <item name="android:singleLine">true</item>
         <item name="android:background">@color/white</item>
@@ -149,7 +148,8 @@
 
         <item name="android:gravity">center</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:paddingTop">5dp</item>
         <item name="android:paddingBottom">5dp</item>
         <item name="android:button">@null</item>
