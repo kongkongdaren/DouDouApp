@@ -28,13 +28,28 @@
             android:layout_alignParentRight="true"
             android:src="@mipmap/action_search"/>
     </RelativeLayout>
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        >
     <ListView
         android:id="@+id/lv_sort"
         android:layout_width="80dp"
-        android:layout_height="match_parent"/>
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:background="@color/gray"/>
+        <GridView
+            android:id="@+id/gv_sort"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="80dp"
+            android:layout_height="match_parent"
+            android:columnWidth="80dp"
+            android:stretchMode="columnWidth"
+            android:background="@color/common_white"
+            android:numColumns="auto_fit"/>
+        <ProgressBar
+            android:id="@+id/pb_sort"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+    </FrameLayout>
 </LinearLayout>
