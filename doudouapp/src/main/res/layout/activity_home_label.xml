@@ -73,7 +73,7 @@
                 android:id="@+id/radioButton4"
                 style="@style/home_product_style"
                 android:layout_marginLeft="35dp"
-                android:drawablePadding="5"
+                android:drawablePadding="5dp"
                 android:drawableRight="@drawable/home_product_item_selector"
                 android:text="@string/sales"/>
 
