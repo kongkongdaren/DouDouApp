@@ -3,7 +3,7 @@ package com.yjlw.ddms.fristentity.adapter;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
 
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.fristentity.entity.MenuSort;
@@ -12,17 +12,17 @@ import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
 import java.util.List;
 
 /**
- * Description：xx <br/>
+ * Description：GridView适配器 <br/>
  * Copyright (c) 2016<br/>
  * This program is protected by copyright laws <br/>
- * Date: 2016年11月22  17:51
+ * Date: 2016年11月23  18:51
  *
  * @author 姜文莒
  * @version : 1.0
  */
 
-public class MenuSortAdapter extends HomeCustomBaseAdapter<MenuSort.ResultBean.ListBean> {
-    public MenuSortAdapter(List<MenuSort.ResultBean.ListBean> lists, Context context) {
+public class MenuGridViewAdapter extends HomeCustomBaseAdapter <MenuSort.ResultBean.ListBean.TagsBean>{
+    public MenuGridViewAdapter(List<MenuSort.ResultBean.ListBean.TagsBean> lists, Context context) {
         super(lists, context);
     }
 
@@ -30,17 +30,17 @@ public class MenuSortAdapter extends HomeCustomBaseAdapter<MenuSort.ResultBean.L
     public View getView(int position, View convertView, ViewGroup viewGroup) {
         ViewHolder vh=null;
         if(convertView==null){
-            convertView=View.inflate(context, R.layout.menu_sort_item,null);
+            convertView=View.inflate(context, R.layout.menu_sort_gv_item,null);
             vh=new ViewHolder();
-            vh.tvSort= (TextView) convertView.findViewById(R.id.tv_sort);
+           vh.btnGrid= (Button) convertView.findViewById(R.id.btn_menu_gv);
             convertView.setTag(vh);
         }else{
             vh= (ViewHolder) convertView.getTag();
         }
-        vh.tvSort.setText(lists.get(position).getCate());
+        vh.btnGrid.setText(lists.get(position).getName());
         return convertView;
     }
-    private final  class ViewHolder{
-        private TextView tvSort;
+    private final class ViewHolder{
+        private Button btnGrid;
     }
 }

@@ -63,6 +63,7 @@
     <string name="photodinner">11月21日 晚餐</string>
     <string name="hottitle">麻婆肉末白菜</string>
     <string name="sort">分类</string>
+    <string name="menugv">瘦身</string>
     <string-array name="hottitlename">
         <item>全部</item>
         <item>私人</item>
