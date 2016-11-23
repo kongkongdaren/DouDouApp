@@ -236,12 +236,9 @@ public class HomeFragment extends Fragment {
 
         SecondPageResult.ResultBean result = secondPageResult.getResult();
         List<CateListBean> cateList = secondPageResult.getResult().getCateList();
-        //        Log.i("Log", "更数据是："+cateLists.toString());
-        //        Log.i("Log", "cateList"+cateList.toString());
+
         for (int i = 0; i < cateList.size(); i++) {
             CateListBean cateListData = cateList.get(i);
-            //            Log.i("Log", "cateList"+cateLists.get(i).getCateName()+""+cateListData
-            // .getCateName());
             if (cateLists.contains(cateListData) == true) {
                 break;
             } else {
