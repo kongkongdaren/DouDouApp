@@ -2,7 +2,9 @@ package com.yjlw.ddms.homeentity.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.ViewUtils;
 import android.util.Log;
+import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
@@ -13,6 +15,8 @@ import com.yjlw.ddms.homeentity.homelogic.HomeTitleItem;
 import org.xutils.common.Callback;
 import org.xutils.http.HttpMethod;
 import org.xutils.http.RequestParams;
+import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.util.LinkedList;
@@ -25,7 +29,10 @@ import static android.R.attr.key;
  */
 public class HomeLabelActivity extends AppCompatActivity {
     private List<LabelDetailsResult> labelDetailsResults = new LinkedList<>();
+    List<LabelDetailsResult.ResultBean.ListBean> list = new LinkedList<>();
     private String detailsResult;
+    @ViewInject(R.id.lv_details)
+    private ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +40,13 @@ public class HomeLabelActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_label);
         Bundle bundle = this.getIntent().getExtras();
         detailsResult = bundle.getString("detailsResult");
+        x.view().inject(this);
+        initView();
         downLoadData();
+
+    }
+
+    private void initView() {
 
     }
 
@@ -78,6 +91,8 @@ public class HomeLabelActivity extends AppCompatActivity {
         Gson gson = new Gson();
         LabelDetailsResult labelResult = gson.fromJson(s, LabelDetailsResult.class);
         labelDetailsResults.add(labelResult);
+        list.addAll(labelResult.getResult().getList());
+
         aboutTitle(detailsResult);
     }
 
@@ -89,7 +104,7 @@ public class HomeLabelActivity extends AppCompatActivity {
     private void aboutTitle(String detailsResult) {
         switch (detailsResult) {
             case "家传秘制":
-                new HomeTitleItem(labelDetailsResults, this);
+                new HomeTitleItem(listView, list, this);
                 break;
         }
     }
