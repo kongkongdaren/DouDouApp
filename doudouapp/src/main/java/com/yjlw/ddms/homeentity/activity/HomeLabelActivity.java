@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,7 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.lang.annotation.ElementType;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -81,6 +83,10 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
     private PopupWindow popupWindow;
     private int mScreenWidth;
     private PopupWindow mPopupWindow;
+    private LabelDetailsResult labelResult;
+    private List<LabelDetailsResult.ResultBean.CateInfosBean> cateInfos = new LinkedList<>();
+    private int mScreenHeight;
+    private int height;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +100,7 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
         tvAddress.setText(addressinfo);
         aboutAddressSpinner();
         downLoadData();
+        productMold.setText("全部");
         productMold.setOnClickListener(this);
         productSales.setOnClickListener(this);
         productPrice.setOnClickListener(this);
@@ -122,22 +129,30 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
      */
     @Override
     public void onClick(View view) {
-        List<String> popupDatas = new ArrayList<>();
+
+
         switch (view.getId()) {
             case R.id.rb_product_mold://商品种类
-
+                List<String> popupDatas = new ArrayList<>();
+               popupDatas.clear();
+                for (int i = 0; i < cateInfos.size(); i++) {
+                    String cateName = cateInfos.get(i).getCateName();
+                    popupDatas.add(cateName);
+                }
                 getPopupWindowInstance(popupDatas);
                 mPopupWindow.showAsDropDown(view);
-
                 break;
             case R.id.rb_home_sales://销量排行
-                popupDatas.clear();
-                Collections.addAll(popupDatas, "销量由高到低", "销量由底到高");
-                getPopupWindowInstance(popupDatas);
+                List<String> popupDatas2 = new ArrayList<>();
+                popupDatas2.clear();
+                Collections.addAll(popupDatas2, "销量由高到低", "销量由底到高");
+                getPopupWindowInstance(popupDatas2);
                 mPopupWindow.showAsDropDown(view);
                 break;
             case R.id.rb_home_price://价格排行
-                getPopupWindowInstance(popupDatas);
+                List<String> popupDatas3 = new ArrayList<>();
+                Collections.addAll(popupDatas3, "价格由底到高", "价格由高到低");
+                getPopupWindowInstance(popupDatas3);
                 mPopupWindow.showAsDropDown(view);
                 break;
         }
@@ -160,27 +175,58 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
      *
      * @param popupDatas
      */
-    private void initPopuptWindow(List<String> popupDatas) {
+    private void initPopuptWindow(final List<String> popupDatas) {
+
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View popupWindow = layoutInflater.inflate(R.layout.home_popup_window, null);
         LinearLayout popupRoot = (LinearLayout) popupWindow.findViewById(R.id.ll__popup_root);
+
+        mScreenHeight = getWindowManager().getDefaultDisplay().getHeight();
+        mPopupWindow = new PopupWindow(popupWindow);
         for (int i = 0; i < popupDatas.size(); i++) {
-            PopupWindowsItem windowsItem = new PopupWindowsItem(this);
+            final PopupWindowsItem windowsItem = new PopupWindowsItem(this);
             windowsItem.setTitle(popupDatas.get(i));
             popupRoot.addView(windowsItem);
+            height += windowsItem.getMeasuredHeight();
+            Log.i("Log", height+"");
+            windowsItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mPopupWindow.dismiss();
+                    mPopupWindow=null;
+                    if(popupDatas.size()>2){
+                        productMold.setText(windowsItem.getTitle());
 
+                    }
+
+                }
+            });
         }
         // 创建一个PopupWindow
         // 参数1：contentView 指定PopupWindow的内容
         // 参数2：width 指定PopupWindow的width
         // 参数3：height 指定PopupWindow的height
-        mPopupWindow = new PopupWindow(popupWindow, 600, 300);
+        if(popupDatas.size()>2){
+            mPopupWindow.setHeight(mScreenHeight);
+        }else {
+            mPopupWindow.setHeight(180);
+        }
 
         // 获取屏幕和PopupWindow的width和height
         mScreenWidth = getWindowManager().getDefaultDisplay().getWidth();
-        mScreenWidth = getWindowManager().getDefaultDisplay().getHeight();
+
         mPopupWindow.setWidth(mScreenWidth);
 
+    }
+
+    /**
+     * 点击别的条目的时候关闭popupWindow
+     */
+    private void popupWindowDismiss() {
+        if (popupWindow != null && popupWindow.isShowing()) {
+            popupWindow.dismiss();//关闭aboutPopupWindow
+            popupWindow = null;
+        }
     }
 
     /**
@@ -244,10 +290,10 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
 
     private void parserSecondPageData(String s) {
         Gson gson = new Gson();
-        LabelDetailsResult labelResult = gson.fromJson(s, LabelDetailsResult.class);
+        labelResult = gson.fromJson(s, LabelDetailsResult.class);
         labelDetailsResults.add(labelResult);
         list.addAll(labelResult.getResult().getList());
-
+        cateInfos.addAll(labelResult.getResult().getCateInfos());
         aboutTitle(detailsResult);
     }
 
