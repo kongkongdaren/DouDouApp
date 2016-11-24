@@ -165,6 +165,8 @@ public class AddressInfo {
             this.poi = poi;
         }
 
+
+
         public String getPoitype() {
             return poitype;
         }
@@ -212,5 +214,36 @@ public class AddressInfo {
         public void setRoadDistance(String roadDistance) {
             this.roadDistance = roadDistance;
         }
+
+        @Override
+        public String toString() {
+            return "ResultBean{" +
+                    "correctlongitude=" + correctlongitude +
+                    ", correctlatitude=" + correctlatitude +
+                    ", Address='" + Address + '\'' +
+                    ", province='" + province + '\'' +
+                    ", city='" + city + '\'' +
+                    ", dist='" + dist + '\'' +
+                    ", area='" + area + '\'' +
+                    ", town='" + town + '\'' +
+                    ", village='" + village + '\'' +
+                    ", poi='" + poi + '\'' +
+                    ", poitype='" + poitype + '\'' +
+                    ", direction='" + direction + '\'' +
+                    ", distance='" + distance + '\'' +
+                    ", roadname='" + roadname + '\'' +
+                    ", roadDirection='" + roadDirection + '\'' +
+                    ", roadDistance='" + roadDistance + '\'' +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "AddressInfo{" +
+                "error_code=" + error_code +
+                ", reason='" + reason + '\'' +
+                ", result=" + result +
+                '}';
     }
 }

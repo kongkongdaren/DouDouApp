@@ -1,14 +1,9 @@
 package com.yjlw.ddms.baidumap;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.view.View;
 
-import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
@@ -25,7 +20,8 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
     protected MapView mapview;
     protected double latitude = 40.050966;// 经度
     protected double longitude = 116.303128;// 纬度
-    protected LatLng hmPos = new LatLng(latitude, longitude);// ����
+//    39.913248,116.403624
+    protected LatLng hmPos = new LatLng(latitude, longitude);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +59,9 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
         //
         // mapview.showScaleControl(false);// 默认是true 显示标尺
 
+    }
+    public   void OkAddress(View view){
+        finish();
     }
     @Override
     protected void onDestroy() {

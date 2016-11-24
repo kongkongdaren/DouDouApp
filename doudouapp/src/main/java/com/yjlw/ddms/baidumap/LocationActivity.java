@@ -13,7 +13,15 @@ import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
+import com.google.gson.Gson;
 import com.yjlw.ddms.R;
+import com.yjlw.ddms.baidumap.entity.AddressInfo;
+import com.yjlw.ddms.utils.SharedPreferencesUtils;
+
+import org.xutils.common.Callback;
+import org.xutils.http.HttpMethod;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 /**
  * 定位操作
@@ -97,7 +105,43 @@ public class LocationActivity extends BaiduMapBaseActivity {
                 MyLocationData.Builder latitude = new MyLocationData.Builder().latitude
                         (bdLocation.getLatitude());
                 Log.i("Log",bdLocation.getLatitude()+","+bdLocation.getLongitude());
+
+                String url = "http://api.haoservice.com/api/getLocationinfor";
+                RequestParams params = new RequestParams(url);
+                params.addBodyParameter("latlng",bdLocation.getLatitude()+","+bdLocation.getLongitude());
+                params.addBodyParameter("type", "2");
+                params.addBodyParameter("key", "9eb3943f742c430fae3178ba5dcf9717");
+                x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                      Log.i("Log",s);
+                        parserAddressInFo(s);
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable, boolean b) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(CancelledException e) {
+
+                    }
+
+                    @Override
+                    public void onFinished() {
+
+                    }
+                });
             }
         }
+    }
+
+    private void parserAddressInFo(String s) {
+        Gson gson=new Gson();
+        AddressInfo addressInfo = gson.fromJson(s, AddressInfo.class);
+        String address = addressInfo.getResult().getAddress();
+        Log.i("Log",addressInfo.toString());
+        SharedPreferencesUtils.saveString(this,"addressinfo",address);
     }
 }
