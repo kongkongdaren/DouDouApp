@@ -49,12 +49,12 @@ public class HomeLabelActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_label);
+        SDKInitializer.initialize(getApplicationContext()); // 不能传递Activity，必须是全局Context
         Bundle bundle = this.getIntent().getExtras();
         detailsResult = bundle.getString("detailsResult");
         x.view().inject(this);
         aboutAddressSpinner();
         downLoadData();
-        SDKInitializer.initialize(getApplicationContext());
 
     }
 

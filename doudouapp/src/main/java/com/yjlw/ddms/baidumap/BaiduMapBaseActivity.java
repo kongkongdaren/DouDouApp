@@ -25,7 +25,8 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
     protected MapView mapview;
     protected double latitude = 40.050966;// 经度
     protected double longitude = 116.303128;// 纬度
-    protected LatLng hmPos = new LatLng(latitude, longitude);// ����
+//    39.913248,116.403624
+    protected LatLng hmPos = new LatLng(latitude, longitude);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
