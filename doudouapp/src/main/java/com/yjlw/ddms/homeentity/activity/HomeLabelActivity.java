@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.google.gson.Gson;
@@ -16,6 +17,7 @@ import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.adapter.SpinnerAdapter;
 import com.yjlw.ddms.homeentity.entity.LabelDetailsResult;
 import com.yjlw.ddms.homeentity.homelogic.HomeTitleItem;
+import com.yjlw.ddms.utils.SharedPreferencesUtils;
 
 import org.xutils.common.Callback;
 import org.xutils.http.HttpMethod;
@@ -39,23 +41,34 @@ public class HomeLabelActivity extends AppCompatActivity {
 
     @ViewInject(R.id.sp_classify)
     private Spinner spinnerClassify;//产品种类
-
+    @ViewInject(R.id.tv_address)
+    private TextView tvAddress;
     @ViewInject(R.id.iv_drown_address)
     private ImageView ivDownAddress;
     private static final String[] addressProduct = {"全部", "附近", "全国"};
     private SpinnerAdapter arrayAdapter;
+    private String addressinfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_label);
+        addressinfo = SharedPreferencesUtils.getString(this, "addressinfo", "");
+
         SDKInitializer.initialize(getApplicationContext()); // 不能传递Activity，必须是全局Context
         Bundle bundle = this.getIntent().getExtras();
         detailsResult = bundle.getString("detailsResult");
         x.view().inject(this);
+
         aboutAddressSpinner();
         downLoadData();
 
+    }
+
+    @Override
+    protected void onRestart() {
+        tvAddress.setText(addressinfo);
+        super.onRestart();
     }
 
     /**
