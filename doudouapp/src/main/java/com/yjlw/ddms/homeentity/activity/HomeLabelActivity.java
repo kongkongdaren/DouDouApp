@@ -1,16 +1,20 @@
 package com.yjlw.ddms.homeentity.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ViewUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
+import com.yjlw.ddms.baidumap.BaseActivity;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.adapter.SpinnerAdapter;
 import com.yjlw.ddms.homeentity.entity.LabelDetailsResult;
@@ -20,6 +24,7 @@ import org.xutils.common.Callback;
 import org.xutils.http.HttpMethod;
 import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
@@ -40,6 +45,9 @@ public class HomeLabelActivity extends AppCompatActivity {
 
     @ViewInject(R.id.sp_classify)
     private Spinner spinnerClassify;//产品种类
+
+    @ViewInject(R.id.iv_drown_address)
+    private ImageView ivDownAddress;
     private static final String[] addressProduct = {"全部", "附近", "全国"};
     private SpinnerAdapter arrayAdapter;
 
@@ -63,6 +71,11 @@ public class HomeLabelActivity extends AppCompatActivity {
         arrayAdapter = new SpinnerAdapter(addressProduct, this);
         //设置下拉列表的风格,simple_spinner_dropdown_item是android系统自带的样式，等会自定义修改
         spinnerClassify.setAdapter(arrayAdapter);
+    }
+//获取地址
+    @Event(type = View.OnClickListener.class, value = R.id.iv_drown_address)
+    private void downAddress(View view) {
+        startActivity(new Intent(this, BaseActivity.class));
     }
 
     private void downLoadData() {
