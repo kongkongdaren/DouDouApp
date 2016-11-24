@@ -1,16 +1,17 @@
 package com.yjlw.ddms.homeentity.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ViewUtils;
-import android.util.Log;
-import android.widget.ArrayAdapter;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
+import com.yjlw.ddms.baidumap.LocationActivity;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.adapter.SpinnerAdapter;
 import com.yjlw.ddms.homeentity.entity.LabelDetailsResult;
@@ -19,14 +20,12 @@ import com.yjlw.ddms.homeentity.homelogic.HomeTitleItem;
 import org.xutils.common.Callback;
 import org.xutils.http.HttpMethod;
 import org.xutils.http.RequestParams;
-import org.xutils.view.annotation.ContentView;
+import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.util.LinkedList;
 import java.util.List;
-
-import static android.R.attr.key;
 
 /**
  * 标签页面
@@ -40,6 +39,9 @@ public class HomeLabelActivity extends AppCompatActivity {
 
     @ViewInject(R.id.sp_classify)
     private Spinner spinnerClassify;//产品种类
+
+    @ViewInject(R.id.iv_drown_address)
+    private ImageView ivDownAddress;
     private static final String[] addressProduct = {"全部", "附近", "全国"};
     private SpinnerAdapter arrayAdapter;
 
@@ -52,6 +54,7 @@ public class HomeLabelActivity extends AppCompatActivity {
         x.view().inject(this);
         aboutAddressSpinner();
         downLoadData();
+        SDKInitializer.initialize(getApplicationContext());
 
     }
 
@@ -63,6 +66,12 @@ public class HomeLabelActivity extends AppCompatActivity {
         arrayAdapter = new SpinnerAdapter(addressProduct, this);
         //设置下拉列表的风格,simple_spinner_dropdown_item是android系统自带的样式，等会自定义修改
         spinnerClassify.setAdapter(arrayAdapter);
+    }
+
+    //获取验证
+    @Event(type = View.OnClickListener.class, value = R.id.iv_drown_address)
+    private void downAddress(View view) {
+        startActivity(new Intent(getApplicationContext(), LocationActivity.class));
     }
 
     private void downLoadData() {
