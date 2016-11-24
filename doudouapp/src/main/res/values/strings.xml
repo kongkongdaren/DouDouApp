@@ -68,6 +68,7 @@
     <string name="newProduct">新品</string>
     <string name="Price">价格</string>
     <string name="menugv">瘦身</string>
+    <string name="vediohinttext">搜索视频</string>
 
     <string-array name="hottitlename">
         <item>全部</item>
