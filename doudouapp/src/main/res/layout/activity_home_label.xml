@@ -60,23 +60,26 @@
         >
 
         <RadioGroup
+            android:id="@+id/rg_home_group"
             android:layout_width="0dp"
-            android:layout_weight="5"
             android:layout_height="match_parent"
+            android:layout_weight="5"
             android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/rb_product_mold"
                 style="@style/home_left_product_style"
                 />
 
             <RadioButton
+                android:id="@+id/rb_home_sales"
                 style="@style/home_product_style"
                 android:layout_marginLeft="35dp"
                 android:drawablePadding="5dp"
                 android:text="@string/sales"/>
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/rb_home_price"
                 style="@style/home_product_style"
                 android:layout_marginLeft="35dp"
                 android:text="@string/Price"/>
@@ -84,6 +87,7 @@
         </RadioGroup>
 
         <RadioButton
+            android:id="@+id/rb_home_new_product"
             style="@style/right_home_product_style"
             android:text="@string/newProduct"/>
 
