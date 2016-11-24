@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -104,6 +105,21 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
         productMold.setOnClickListener(this);
         productSales.setOnClickListener(this);
         productPrice.setOnClickListener(this);
+        aboutListView();
+    }
+
+    private void aboutListView() {
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+                popupWindowDismiss();
+            }
+        });
     }
 
     @Override
@@ -134,7 +150,7 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
         switch (view.getId()) {
             case R.id.rb_product_mold://商品种类
                 List<String> popupDatas = new ArrayList<>();
-               popupDatas.clear();
+                popupDatas.clear();
                 for (int i = 0; i < cateInfos.size(); i++) {
                     String cateName = cateInfos.get(i).getCateName();
                     popupDatas.add(cateName);
@@ -188,13 +204,13 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
             windowsItem.setTitle(popupDatas.get(i));
             popupRoot.addView(windowsItem);
             height += windowsItem.getMeasuredHeight();
-            Log.i("Log", height+"");
+            Log.i("Log", height + "");
             windowsItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     mPopupWindow.dismiss();
-                    mPopupWindow=null;
-                    if(popupDatas.size()>2){
+                    mPopupWindow = null;
+                    if (popupDatas.size() > 2) {
                         productMold.setText(windowsItem.getTitle());
 
                     }
@@ -206,9 +222,9 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
         // 参数1：contentView 指定PopupWindow的内容
         // 参数2：width 指定PopupWindow的width
         // 参数3：height 指定PopupWindow的height
-        if(popupDatas.size()>2){
+        if (popupDatas.size() > 2) {
             mPopupWindow.setHeight(mScreenHeight);
-        }else {
+        } else {
             mPopupWindow.setHeight(180);
         }
 
