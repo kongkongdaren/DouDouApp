@@ -11,13 +11,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.fristentity.adapter.VideoPagerAdapter;
 import com.yjlw.ddms.fristentity.entity.VideoData;
-import com.yjlw.ddms.fristentity.fragment.views.VideoPagerFragment;
+import com.yjlw.ddms.fristentity.fragment.VideoPagerFragment;
+import com.yjlw.ddms.homeentity.views.HomeTitleItemView;
 
 import org.xutils.common.Callback;
 import org.xutils.http.HttpMethod;
@@ -48,16 +50,22 @@ public class LookVideoActivity extends AppCompatActivity {
     @ViewInject(R.id.vp_video_id)
     private ViewPager vpVideo;
     @ViewInject(R.id.ll_container_video_id)
+    private ListView lvVideo;
+    @ViewInject(R.id.lv_video)
     private LinearLayout llContainer;
     private List<VideoPagerFragment> videoPager;
     private int index ;
     private Handler handler;
+    private View hotView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lookvideo_activity);
         x.view().inject(this);
+        hotView = View.inflate(this, R.layout.hot_video, null);
+        lvVideo.addHeaderView(hotView);
+        initView();
         ivVideoBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,6 +73,12 @@ public class LookVideoActivity extends AppCompatActivity {
             }
         });
         downLoadVedioData();
+    }
+//界面实例的获取
+    private void initView() {
+        HomeTitleItemView htivVideo= (HomeTitleItemView) hotView.findViewById(R.id.httv_hot);
+        htivVideo.setIvResource(R.mipmap.ic_main_logo);
+        htivVideo.setTitle("热门排行总榜");
     }
 
     /**
