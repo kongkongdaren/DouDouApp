@@ -1,11 +1,24 @@
 package com.yjlw.ddms.homeentity.activity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -17,7 +30,9 @@ import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.adapter.SpinnerAdapter;
 import com.yjlw.ddms.homeentity.entity.LabelDetailsResult;
 import com.yjlw.ddms.homeentity.homelogic.HomeTitleItem;
+import com.yjlw.ddms.homeentity.views.PopupWindowsItem;
 import com.yjlw.ddms.utils.SharedPreferencesUtils;
+import com.yjlw.ddms.utils.ToastUtils;
 
 import org.xutils.common.Callback;
 import org.xutils.http.HttpMethod;
@@ -26,13 +41,17 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import static android.R.attr.data;
+import static android.R.attr.key;
 
 /**
  * 标签页面
  */
-public class HomeLabelActivity extends AppCompatActivity {
+public class HomeLabelActivity extends AppCompatActivity implements View.OnClickListener {
     private List<LabelDetailsResult> labelDetailsResults = new LinkedList<>();
     private List<LabelDetailsResult.ResultBean.ListBean> list = new LinkedList<>();
     private String detailsResult;
@@ -45,9 +64,22 @@ public class HomeLabelActivity extends AppCompatActivity {
     private TextView tvAddress;
     @ViewInject(R.id.iv_drown_address)
     private ImageView ivDownAddress;
+    @ViewInject(R.id.rb_product_mold)
+    private RadioButton productMold;
+    @ViewInject(R.id.rb_home_sales)
+    private RadioButton productSales;
+    @ViewInject(R.id.rb_home_price)
+    private RadioButton productPrice;
+
+    @ViewInject(R.id.rb_home_new_product)
+    private RadioButton newProduct;
     private static final String[] addressProduct = {"全部", "附近", "全国"};
     private SpinnerAdapter arrayAdapter;
     private String addressinfo;
+    private LinearLayout llPopupWindow;
+    private PopupWindow popupWindow;
+    private int mScreenWidth;
+    private PopupWindow mPopupWindow;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +93,9 @@ public class HomeLabelActivity extends AppCompatActivity {
         tvAddress.setText(addressinfo);
         aboutAddressSpinner();
         downLoadData();
-
+        productMold.setOnClickListener(this);
+        productSales.setOnClickListener(this);
+        productPrice.setOnClickListener(this);
     }
 
     @Override
@@ -80,7 +114,84 @@ public class HomeLabelActivity extends AppCompatActivity {
         spinnerClassify.setAdapter(arrayAdapter);
     }
 
-    //获取验证
+    /**
+     * 用户的选择展示（排行以及商品）
+     *
+     * @param view
+     */
+    @Override
+    public void onClick(View view) {
+        List<String> popupDatas = new ArrayList<>();
+        switch (view.getId()) {
+            case R.id.rb_product_mold://商品种类
+
+                getPopupWindowInstance(popupDatas);
+                mPopupWindow.showAsDropDown(view);
+
+                break;
+            case R.id.rb_home_sales://销量排行
+                getPopupWindowInstance(popupDatas);
+                mPopupWindow.showAsDropDown(view);
+                break;
+            case R.id.rb_home_price://价格排行
+                getPopupWindowInstance(popupDatas);
+                mPopupWindow.showAsDropDown(view);
+                break;
+        }
+    }
+
+    /*
+         * 获取PopupWindow实例
+         */
+    private void getPopupWindowInstance(List<String> popupDatas) {
+        if (null != mPopupWindow) {
+            mPopupWindow.dismiss();
+            return;
+        } else {
+            initPopuptWindow(popupDatas);
+        }
+    }
+
+    /**
+     * 关于PopupWindow的操作
+     * @param popupDatas
+     */
+    private void initPopuptWindow(List<String> popupDatas) {
+        LayoutInflater layoutInflater = LayoutInflater.from(this);
+        View popupWindow = layoutInflater.inflate(R.layout.home_popup_window, null);
+        LinearLayout popupRoot = (LinearLayout) popupWindow.findViewById(R.id.ll__popup_root);
+        PopupWindowsItem windowsItem = new PopupWindowsItem(this);
+        popupRoot.addView(windowsItem);
+        // 创建一个PopupWindow
+        // 参数1：contentView 指定PopupWindow的内容
+        // 参数2：width 指定PopupWindow的width
+        // 参数3：height 指定PopupWindow的height
+        mPopupWindow = new PopupWindow(popupWindow, 600, 300);
+
+        // 获取屏幕和PopupWindow的width和height
+        mScreenWidth = getWindowManager().getDefaultDisplay().getWidth();
+        mScreenWidth = getWindowManager().getDefaultDisplay().getHeight();
+        mPopupWindow.setWidth(mScreenWidth);
+
+    }
+
+    /**
+     * 获取popupwindow的布局文件
+     *
+     * @return
+     */
+    @NonNull
+    private View getView() {
+        View contentView = View.inflate(this, R.layout.home_popup_window, null);
+        llPopupWindow = (LinearLayout) contentView.findViewById(R.id.ll__popup_root);
+        return contentView;
+    }
+
+    /**
+     * 获取验证
+     *
+     * @param view
+     */
     @Event(type = View.OnClickListener.class, value = R.id.iv_drown_address)
     private void downAddress(View view) {
         startActivity(new Intent(getApplicationContext(), LocationActivity.class));
@@ -144,5 +255,6 @@ public class HomeLabelActivity extends AppCompatActivity {
                 break;
         }
     }
+
 
 }

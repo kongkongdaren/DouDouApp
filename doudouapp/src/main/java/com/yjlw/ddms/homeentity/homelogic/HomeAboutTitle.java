@@ -69,8 +69,8 @@ public class HomeAboutTitle implements View.OnClickListener {
                     layoutParams.setMargins(25, 0, 0, 0);
                 }
                 tvTitle.setCompoundDrawablePadding(5);
-                tvTitle.setTextSize(18);
-                tvTitle.setTextColor(Color.BLACK);
+                tvTitle.setTextSize(16);
+
                 tvTitle.setLayoutParams(layoutParams);//设置 <!--android:drawablePadding="2dp"-->
                 Drawable drawable = context.getResources().getDrawable(R.mipmap
                         .ico_group_arrow_right);
