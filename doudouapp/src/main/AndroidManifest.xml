@@ -70,7 +70,14 @@
         <activity android:name=".fristentity.activity.PhotoWebActivity"/>
         <!-- 菜谱分类页面 -->
         <activity android:name=".fristentity.activity.MenuSortActivity"/>
-        <activity android:name=".baidumap.BaseActivity">
+        <activity android:name=".baidumap.BaiduMapBaseActivity">
+        </activity>
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote">
+        </service>
+        <activity android:name=".baidumap.LocationActivity">
         </activity>
     </application>
 
