@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 <FrameLayout
     android:layout_width="match_parent"
-    android:layout_height="300dp">
+    android:layout_height="330dp">
 <ImageView
     android:id="@+id/iv_list_photo_circle"
     android:layout_width="match_parent"
@@ -30,7 +30,7 @@
     <TextView
         android:id="@+id/tv_list_circle_title"
         style="@style/circlephotostyle"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="50dp"
         android:textSize="20sp"
         />
     <TextView
