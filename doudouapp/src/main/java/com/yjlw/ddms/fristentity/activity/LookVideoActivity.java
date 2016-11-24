@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
@@ -30,6 +31,8 @@ import org.xutils.x;
 import java.util.LinkedList;
 import java.util.List;
 
+import it.sephiroth.android.library.picasso.Picasso;
+
 /**
  * Description：看视频详细页面 <br/>
  * Copyright (c) 2016<br/>
@@ -47,16 +50,19 @@ public class LookVideoActivity extends AppCompatActivity {
     private EditText etSearch;
     @ViewInject(R.id.iv_all)
     private ImageView ivAll;
-    @ViewInject(R.id.vp_video_id)
     private ViewPager vpVideo;
     @ViewInject(R.id.ll_container_video_id)
     private ListView lvVideo;
-    @ViewInject(R.id.lv_video)
     private LinearLayout llContainer;
     private List<VideoPagerFragment> videoPager;
     private int index ;
     private Handler handler;
     private View hotView;
+    private ImageView ivHot;
+    private ImageView ivHotCircle;
+    private TextView hotUser,hotName,hotContent,hotTime,hotZan,hotComment;
+    private HomeTitleItemView htivVideo;
+    private View viewPager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,8 +70,9 @@ public class LookVideoActivity extends AppCompatActivity {
         setContentView(R.layout.lookvideo_activity);
         x.view().inject(this);
         hotView = View.inflate(this, R.layout.hot_video, null);
+        viewPager = View.inflate(this, R.layout.hot_viewpager, null);
+        lvVideo.addHeaderView(viewPager);
         lvVideo.addHeaderView(hotView);
-        initView();
         ivVideoBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,12 +80,21 @@ public class LookVideoActivity extends AppCompatActivity {
             }
         });
         downLoadVedioData();
+        initView();
     }
 //界面实例的获取
     private void initView() {
-        HomeTitleItemView htivVideo= (HomeTitleItemView) hotView.findViewById(R.id.httv_hot);
-        htivVideo.setIvResource(R.mipmap.ic_main_logo);
-        htivVideo.setTitle("热门排行总榜");
+       vpVideo= (ViewPager) viewPager.findViewById(R.id.vp_video_id);
+        llContainer= (LinearLayout) viewPager.findViewById(R.id.ll_container_video_id);
+        htivVideo = (HomeTitleItemView) hotView.findViewById(R.id.httv_hot);
+        ivHot = (ImageView) hotView.findViewById(R.id.iv_hot_photo);
+        ivHotCircle = (ImageView) hotView.findViewById(R.id.iv_hot_circle);
+        hotUser= (TextView) hotView.findViewById(R.id.tv_hot_user);
+        hotName= (TextView) hotView.findViewById(R.id.tv_hot_title);
+        hotContent= (TextView) hotView.findViewById(R.id.tv_hot_content);
+        hotTime= (TextView) hotView.findViewById(R.id.tv_hot_time);
+        hotZan= (TextView) hotView.findViewById(R.id.tv_zan);
+        hotComment= (TextView) hotView.findViewById(R.id.tv_hot_comment);
     }
 
     /**
@@ -118,11 +134,26 @@ public class LookVideoActivity extends AppCompatActivity {
         Gson gson=new Gson();
         VideoData videoData = gson.fromJson(result, VideoData.class);
         List<VideoData.ResultBean.AdBean> videoAd = videoData.getResult().getAd();
+        List<VideoData.ResultBean.HotrankBean> hotRank = videoData.getResult().getHotrank();
         aboutViewPager(videoAd);
         //关于小圆点的操作
         aboutLittleDots();
         // 使用Handler技术实现广告图片的循环播放
         circleShowPic();
+        aboutHeadView(hotRank);
+    }
+
+    private void aboutHeadView(List<VideoData.ResultBean.HotrankBean> hotRank) {
+        htivVideo.setIvResource(R.mipmap.ic_main_logo);
+        htivVideo.setTitle("热门排行总榜");
+        Picasso.with(this).load(hotRank.get(0).getInfo().getCover()).placeholder(R.mipmap.default_high).into(ivHot);
+        Picasso.with(this).load(hotRank.get(0).getInfo().getUserInfo().getAvatar()).placeholder(R.mipmap.default_high).into(ivHotCircle);
+        hotUser.setText(hotRank.get(0).getInfo().getUserInfo().getUserName());
+        hotName.setText(hotRank.get(0).getInfo().getTitle());
+        hotContent.setText(hotRank.get(0).getInfo().getIntro());
+        hotTime.setText(hotRank.get(0).getInfo().getCreateTime());
+        hotZan.setText(hotRank.get(0).getInfo().getDiggCount());
+        hotComment.setText(hotRank.get(0).getInfo().getPlayCount());
     }
 
     //关于ViewPager的操作
