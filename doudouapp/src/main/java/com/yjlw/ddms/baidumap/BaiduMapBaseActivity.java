@@ -1,14 +1,9 @@
 package com.yjlw.ddms.baidumap;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Toast;
+import android.view.View;
 
-import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
@@ -64,6 +59,9 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
         //
         // mapview.showScaleControl(false);// 默认是true 显示标尺
 
+    }
+    public   void OkAddress(View view){
+        finish();
     }
     @Override
     protected void onDestroy() {
