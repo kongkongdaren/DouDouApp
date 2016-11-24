@@ -36,7 +36,7 @@
         android:id="@+id/lv_sort"
         android:layout_width="80dp"
         android:layout_height="match_parent"
-        android:background="@color/gray"/>
+        />
         <GridView
             android:id="@+id/gv_sort"
             android:layout_width="match_parent"
