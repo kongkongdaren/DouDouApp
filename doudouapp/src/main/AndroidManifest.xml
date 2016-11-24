@@ -35,9 +35,10 @@
 
         <!-- 百度地图的操作 -->
         <!-- 百度地图密钥（原海忠）(eaeSfIvDQCl2GpaGQeS95oGb4M5xzlcw) -->
+        <!--百度地图秘钥（姜文莒）（uateLaRmBx2wno9FxZbvnH5drGSFbpwY）-->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="eaeSfIvDQCl2GpaGQeS95oGb4M5xzlcw"/>
+            android:value="uateLaRmBx2wno9FxZbvnH5drGSFbpwY"/>
         <!-- 欢迎界面 -->
         <activity android:name=".mainactivity.SplashActivity">
             <intent-filter>
@@ -70,6 +71,8 @@
         <activity android:name=".fristentity.activity.PhotoWebActivity"/>
         <!-- 菜谱分类页面 -->
         <activity android:name=".fristentity.activity.MenuSortActivity"/>
+        <!-- 看视频页面 -->
+        <activity android:name=".fristentity.activity.LookVideoActivity"/>
         <activity android:name=".baidumap.BaiduMapBaseActivity">
         </activity>
         <service

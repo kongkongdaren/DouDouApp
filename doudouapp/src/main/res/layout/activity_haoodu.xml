@@ -7,12 +7,12 @@
         android:layout_height="40dp"
         android:layout_marginTop="20dp"
         android:orientation="horizontal">
-        <Button
-            android:id="@+id/btn_plus"
+        <ImageView
+            android:id="@+id/iv_plus"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
-            android:background="@mipmap/icon_publish"
+            android:src="@mipmap/icon_publish"
             />
         <EditText
             android:id="@+id/et_search"

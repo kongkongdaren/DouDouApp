@@ -25,6 +25,7 @@ import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.fristentity.activity.HotActivity;
 import com.yjlw.ddms.fristentity.activity.HotTitleActivity;
 import com.yjlw.ddms.fristentity.activity.KitchenActivity;
+import com.yjlw.ddms.fristentity.activity.LookVideoActivity;
 import com.yjlw.ddms.fristentity.activity.MenuSortActivity;
 import com.yjlw.ddms.fristentity.activity.PhotoActivity;
 import com.yjlw.ddms.fristentity.adapter.MyFirstPagerAdapter;
@@ -63,7 +64,6 @@ public class FirstFragment extends Fragment {
     private ViewPager vp;
     private ListView rlv;
     private LinearLayout llContainer;
-    private List<FirstPagerData.DataBean> beanlist = new LinkedList<>();
     private List<ViewPagerFragment> pager;
     private int index = 1;
     private boolean isTaskRun;
@@ -229,7 +229,12 @@ public class FirstFragment extends Fragment {
         classVedio.setTextView(listClass.get(1).getTitle());
         ImageView vedioIcon = (ImageView) classVedio.findViewById(R.id.iv_haodou_icon);
         Picasso.with(getContext()).load(listClass.get(1).getImgs().get(0)).placeholder(R.mipmap.default_high).error(R.mipmap.ic_main_logo).into(vedioIcon);
-
+        classVedio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), LookVideoActivity.class));
+            }
+        });
         classKitchen.setTextView(listClass.get(2).getTitle());
         ImageView kitchenIcon = (ImageView) classKitchen.findViewById(R.id.iv_haodou_icon);
         Picasso.with(getContext()).load(listClass.get(2).getImgs().get(0)).placeholder(R.mipmap.default_high).error(R.mipmap.ic_main_logo).into(kitchenIcon);
@@ -354,7 +359,6 @@ public class FirstFragment extends Fragment {
                 // ViewPager决定小圆点的状态
                 for (int i = 0; i < pager.size(); i++) {// 状态复原
                     llContainer.getChildAt(i).setEnabled(true);
-
                 }
 
                 // 将position位置处的小圆点enable属性值设置为false
