@@ -54,12 +54,11 @@ public class HomeLabelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_label);
         addressinfo = SharedPreferencesUtils.getString(this, "addressinfo", "");
-
         SDKInitializer.initialize(getApplicationContext()); // 不能传递Activity，必须是全局Context
         Bundle bundle = this.getIntent().getExtras();
         detailsResult = bundle.getString("detailsResult");
         x.view().inject(this);
-
+        tvAddress.setText(addressinfo);
         aboutAddressSpinner();
         downLoadData();
 
