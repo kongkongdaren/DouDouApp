@@ -42,6 +42,7 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -130,6 +131,8 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
 
                 break;
             case R.id.rb_home_sales://销量排行
+                popupDatas.clear();
+                Collections.addAll(popupDatas, "销量由高到低", "销量由底到高");
                 getPopupWindowInstance(popupDatas);
                 mPopupWindow.showAsDropDown(view);
                 break;
@@ -154,14 +157,19 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
 
     /**
      * 关于PopupWindow的操作
+     *
      * @param popupDatas
      */
     private void initPopuptWindow(List<String> popupDatas) {
         LayoutInflater layoutInflater = LayoutInflater.from(this);
         View popupWindow = layoutInflater.inflate(R.layout.home_popup_window, null);
         LinearLayout popupRoot = (LinearLayout) popupWindow.findViewById(R.id.ll__popup_root);
-        PopupWindowsItem windowsItem = new PopupWindowsItem(this);
-        popupRoot.addView(windowsItem);
+        for (int i = 0; i < popupDatas.size(); i++) {
+            PopupWindowsItem windowsItem = new PopupWindowsItem(this);
+            windowsItem.setTitle(popupDatas.get(i));
+            popupRoot.addView(windowsItem);
+
+        }
         // 创建一个PopupWindow
         // 参数1：contentView 指定PopupWindow的内容
         // 参数2：width 指定PopupWindow的width
