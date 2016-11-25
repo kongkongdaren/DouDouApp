@@ -1,6 +1,5 @@
 package com.yjlw.ddms.fristentity.fragment;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -41,8 +40,6 @@ import org.xutils.x;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import it.sephiroth.android.library.picasso.Picasso;
 
@@ -65,21 +62,8 @@ public class FirstFragment extends Fragment {
     private ListView rlv;
     private LinearLayout llContainer;
     private List<ViewPagerFragment> pager;
-    private int index = 1;
-    private boolean isTaskRun;
+    private int index=0;
     private boolean flg;// true：当前页的数据加载完毕；false：没有还在完毕
-    private int pageIndex = 0;// 页码
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            if (msg.what == 0) {
-               vp.setCurrentItem(++index);
-            }
-            super.handleMessage(msg);
-        }
-    };
-    private Timer htimer;
-    private TimerTask htimerTask;
     private View classify;
     private View imageSelfView;
     private List<FirstPagerData.DataBean.HeaderBean.ListBeanX> listClass;
@@ -95,9 +79,9 @@ public class FirstFragment extends Fragment {
     private PhotographCategoryView pcvOldDiet;
     private PhotographCategoryView pcHotSpecial;
     private List<FirstPagerData.DataBean.HeaderBean.ListBeanX> photoList;
-    private ProgressDialog dialog;
     private ProgressBar pbContent;
     private MyFirstPagerAdapter adapter;
+    private Handler handler;
 
 
     @Override
@@ -298,6 +282,7 @@ public class FirstFragment extends Fragment {
 
         // 3、关于小圆点的操作
         aboutLittleDots();
+        circleShowPic();
     }
 
     private void clickPress(final List<FirstPagerData.DataBean.HeaderBean.ListBeanX> photoList, PhotographCategoryView pcv, final int i) {
@@ -354,8 +339,6 @@ public class FirstFragment extends Fragment {
         vp.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                index = position;
-                position = position % pager.size();
                 // ViewPager决定小圆点的状态
                 for (int i = 0; i < pager.size(); i++) {// 状态复原
                     llContainer.getChildAt(i).setEnabled(true);
@@ -363,34 +346,8 @@ public class FirstFragment extends Fragment {
 
                 // 将position位置处的小圆点enable属性值设置为false
                 llContainer.getChildAt(position).setEnabled(false);
-                super.onPageSelected(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-                  /* state: 0空闲，1是滑行中，2加载完毕 */
-
-                if (state == 0 && !isTaskRun) {
-                    startTask();
-                } else if (state == 1 && isTaskRun) {
-                    stopTask();
-                } else if (state == 2) {
-                }
-                super.onPageScrollStateChanged(state);
             }
         });
-    }
-
-    private void startTask() {
-        isTaskRun = true;
-        htimer = new Timer();
-        htimerTask = new TimerTask() {
-            @Override
-            public void run() {
-                handler.sendEmptyMessage(0);
-            }
-        };
-        htimer.schedule(htimerTask, 2 * 1000, 2 * 1000);// 这里设置自动切换的时间，单位是毫秒，2*1000表示2秒，
     }
 
     /**
@@ -441,30 +398,18 @@ public class FirstFragment extends Fragment {
         }
 
     }
-
-    /**
-     * 停止定时任务
-     */
-    private void stopTask() {
-        isTaskRun = false;
-        htimer.cancel();
-    }
-
-    /**
-     * 重新获得焦点
-     */
-    public void onResume() {
-        super.onResume();
-        startTask();
-    }
-
-    /**
-     * 失去焦点
-     */
-    @Override
-    public void onPause() {
-        super.onPause();
-        stopTask();
+    private void circleShowPic() {
+        handler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                vp.setCurrentItem(index++);
+                if(index==pager.size()){
+                    index=0;
+                }
+                handler.sendEmptyMessageDelayed(1,2000);
+            }
+        };
+        handler.sendEmptyMessageDelayed(1,2000);
     }
 
 }
