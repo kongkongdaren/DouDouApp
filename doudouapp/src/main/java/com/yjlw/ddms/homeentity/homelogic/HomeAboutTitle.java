@@ -1,40 +1,21 @@
 package com.yjlw.ddms.homeentity.homelogic;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.activity.HomeLabelActivity;
-import com.yjlw.ddms.homeentity.activity.ShoppingCartActivity;
-import com.yjlw.ddms.homeentity.entity.LabelDetailsResult;
-import com.yjlw.ddms.homeentity.entity.SecondPageResult;
 import com.yjlw.ddms.homeentity.entity.SecondPageResult.ResultBean.CateListBean;
-import com.yjlw.ddms.mainactivity.MainActivity;
 
-import org.xutils.common.Callback;
-import org.xutils.http.HttpMethod;
-import org.xutils.http.RequestParams;
-import org.xutils.x;
-
-import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
-
-import static android.R.attr.key;
-import static android.R.id.list;
-import static java.security.AccessController.getContext;
 
 /**
  * Simple to Introduction
@@ -94,37 +75,44 @@ public class HomeAboutTitle implements View.OnClickListener {
             TextView textView = (TextView) view;
             String lab = textView.getText().toString();
             Intent intent = new Intent();
+
             intent.setClass(context, HomeLabelActivity.class);
             switch (lab) {
                 case "家传秘制":
-                    aboutTitleOne(intent, lab);
+                    aboutTitleOne(intent,Constant.SECOND_PAGE_THE_FAMILY_SECRET,58, lab);
                     break;
                 case "肉禽蛋类":
-                    aboutTitleOne(intent, lab);
+                    aboutTitleOne(intent,Constant.SECOND_PAGE_MEATS, 59, lab);
                     break;
                 case "烘焙面点":
-                    aboutTitleOne(intent, lab);
+                    aboutTitleOne(intent, Constant.SECOND_PAGE_BAKEDPASTRY, 60, lab);
                     break;
                 case "水产海鲜":
-                    aboutTitleOne(intent, lab);
+                    aboutTitleOne(intent,Constant.SECOND_PAGE_AQUACULTURE_SEAFOOD, 61, lab);
                     break;
                 case "腌腊制品":
-                    aboutTitleOne(intent, lab);
+
+                    aboutTitleOne(intent,Constant.SECOND_PAGE_GASES, 62, lab);
                     break;
                 case "调味酱料":
-                    aboutTitleOne(intent, lab);
+
+                    aboutTitleOne(intent,Constant.SECOND_PAGE_SAUCE, 63, lab);
                     break;
                 case "养生养颜":
-                    aboutTitleOne(intent, lab);
+
+                    aboutTitleOne(intent,Constant.SECOND_PAGE_KEEPING, 64, lab);
                     break;
                 case "小吃零嘴":
-                    aboutTitleOne(intent, lab);
+
+                    aboutTitleOne(intent, Constant.SECOND_PAGE_SMALL, 65, lab);
                     break;
                 case "冲调饮品":
-                    aboutTitleOne(intent, lab);
+
+                    aboutTitleOne(intent,Constant.SECOND_PAGE_MIXING_DRINKS, 66, lab);
                     break;
                 case "生鲜果蔬":
-                    aboutTitleOne(intent, lab);
+
+                    aboutTitleOne(intent,Constant.SECOND_PAGE_FRUIT, 67, lab);
                     break;
             }
 
@@ -136,13 +124,17 @@ public class HomeAboutTitle implements View.OnClickListener {
 
     /**
      * 界面的跳转
-     *
      * @param intent
+     * @param url
+     * @param i
      * @param lab
      */
-    private void aboutTitleOne(Intent intent, String lab) {
+    private void aboutTitleOne(Intent intent, String url, int i, String lab) {
         Bundle bundle = new Bundle();
         bundle.putString("detailsResult", lab);
+        bundle.putString("url", url);
+
+        bundle.putString("CateId",i+"");
         intent.putExtras(bundle);
         context.startActivity(intent);
     }

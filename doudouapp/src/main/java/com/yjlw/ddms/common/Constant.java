@@ -9,8 +9,10 @@ package com.yjlw.ddms.common;
  * @Version: [v1.0]
  */
 public class Constant {
-    //百度地图位置获取纠正http://api.haoservice.com/api/getLocationinfor?latlng=41.93554,118.44361&type=2&key=您申请的APPKEY
-public static String ADDRESS_URL="http://api.haoservice.com/api/getLocationinfor?latlng="+41.93554+","+118.44361+"&type=2&key=9eb3943f742c430fae3178ba5dcf9717";
+    //百度地图位置获取纠正http://api.haoservice.com/api/getLocationinfor?latlng=41.93554,118
+    // .44361&type=2&key=您申请的APPKEY
+    public static String ADDRESS_URL = "http://api.haoservice.com/api/getLocationinfor?latlng=" +
+            41.93554 + "," + 118.44361 + "&type=2&key=9eb3943f742c430fae3178ba5dcf9717";
 
     //第一页
     public static String ONE_PAGE = "http://hop.haodou.com/hop/router/rest.json?action=front" + "" +
@@ -508,7 +510,8 @@ public static String ADDRESS_URL="http://api.haoservice.com/api/getLocationinfor
            params.addBodyParameter("uid", "0");
            params.addBodyParameter("CateId", "58");
            params.addBodyParameter("Keyword", "");
-           params.addBodyParameter("appqs", "haodourecipe://haodou.com/goods/searchResult/?CateId=58&CateName=家传秘制");
+           params.addBodyParameter("appqs", "haodourecipe://haodou
+           .com/goods/searchResult/?CateId=58&CateName=家传秘制");
            params.addBodyParameter("Latitude", "38.945562");
            params.addBodyParameter("Longitude", "100.45229");
            params.addBodyParameter("offset", "0");
@@ -682,30 +685,7 @@ public static String ADDRESS_URL="http://api.haoservice.com/api/getLocationinfor
                params.addBodyParameter("TagId", "0");
               params.addBodyParameter("offset", "0");
      */
-    /**
-     * 小吃零嘴
-     */
-    public static String SECOND_PAGE_SMALLNIBBLE = "http://api.haodou.com/mall/index" +
-            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
-            "=1479277154256&vc=105&vn=6.1" +
-            ".15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5" +
-            "&channel=anzhi_v6115&method=dj-search" +
-            ".search&virtual=&signmethod=md5&v=3&timestamp=1479280391&nonce=0" +
-            ".8310787587730922&appsign=bed45c6037ff057314f0998663b254c5";
-    /*
 
-    params.addBodyParameter("limit", "20");
-    params.addBodyParameter("sign", "");
-    params.addBodyParameter("uid", "0");
-    params.addBodyParameter("CateId", "65");
-    params.addBodyParameter("Keyword", "");
-    params.addBodyParameter("appqs", "haodourecipe://haodou
-    .com/goods/searchResult/?CateId=65&CateName=小吃零嘴");
-    params.addBodyParameter("Latitude", "39.913249");
-    params.addBodyParameter("Longitude", "116.403625");
-    params.addBodyParameter("TagId", "0");
-    params.addBodyParameter("offset", "0");
-     */
     /**
      * 养生养颜
      */
@@ -729,7 +709,14 @@ public static String ADDRESS_URL="http://api.haoservice.com/api/getLocationinfor
     params.addBodyParameter("TagId", "0");
     params.addBodyParameter("offset", "0");
          */
-
+    //生鲜果蔬
+    public static String SECOND_PAGE_FRUIT = "http://api.haodou.com/mall/index" +
+            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
+            "=1480043901835&vc=105&vn=6.1" +
+            ".15&loguid=0&deviceid=haodou864394010208983&uuid=9ea70fa9356586ff23fc31785f735cf1" +
+            "&channel=anzhi_v6115&method=dj-search" +
+            ".search&virtual=&signmethod=md5&v=3&timestamp=1480043914&nonce=0" +
+            ".27787931494493556&appsign=0322cde1b6b9408dbda40f1ed2ecf658";
     //    第三页
     public static String THIRD_PAGE = "http://api.haodou.com/index" +
             ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
