@@ -194,6 +194,10 @@ public class LookVideoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(LookVideoActivity.this,HotRankActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("title","热门排行总榜");
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
         Picasso.with(this).load(hotRank.get(0).getInfo().getCover()).placeholder(R.mipmap.default_high).into(ivHotPhoto);
