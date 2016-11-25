@@ -81,11 +81,17 @@
             android:enabled="true"
             android:process=":remote">
         </service>
-        <!--获取位置-->
+        <!-- 获取位置 -->
         <activity android:name=".baidumap.LocationActivity">
         </activity>
-        <!--特价趁现在-->
+        <!-- 特价趁现在 -->
         <activity android:name=".homeentity.activity.EveryBargainPriceActivity">
+        </activity>
+        <!-- 美食研究所 -->
+        <activity android:name=".homeentity.activity.CateActivity">
+        </activity>
+        <!--吃货最爱-->
+        <activity android:name=".homeentity.activity.FoodieLikeActivity">
         </activity>
     </application>
 

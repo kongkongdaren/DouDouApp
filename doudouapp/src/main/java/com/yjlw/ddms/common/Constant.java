@@ -1,5 +1,7 @@
 package com.yjlw.ddms.common;
 
+import static android.R.attr.offset;
+
 /**
  * Simple to Introduction
  *
@@ -494,6 +496,24 @@ public class Constant {
      params.addBodyParameter("type", "new");
 
 */
+    //吃货最爱foodie
+   /* limit	20
+    offset	0
+    sign
+    uid	0*/
+    public static String SECOND_PAGE_FOODIE_LIKE = "http://api.haodou.com/mall/index" +
+            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
+            "=1480064699178&vc=105&vn=6.1" +
+            ".15&loguid=0&deviceid=haodou864394010208983&uuid=9ea70fa9356586ff23fc31785f735cf1" +
+            "&channel=anzhi_v6115&method=idx" +
+            ".foodie-favorite-goods-list&virtual=&signmethod=md5&v=3&timestamp=1480064709&nonce=0" +
+            ".2181716858141124&appsign=f19e11e66fe16bc49d6720144c8397fa";
+    /*
+     params.addBodyParameter("limit", "20");
+      params.addBodyParameter("offset", "0");
+      params.addBodyParameter("sign", "");
+      params.addBodyParameter("uid", "0");
+      */
     //家传秘制The family secret
     public static String SECOND_PAGE_THE_FAMILY_SECRET = "http://api.haodou.com/mall/index" +
             ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
