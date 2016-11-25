@@ -78,6 +78,9 @@
     <string name="enter_code">请输入手机验证码</string>
     <string name="enter_nickname">昵称限汉字、字母、数字、下划线</string>
     <string name="enter_setpwd">密码不少于6位，限字母和数字</string>
+    <string name="time">2015-9-13 20:50</string>
+    <string name="zan">111111</string>
+    <string name="comment">2222</string>
 
     <string-array name="hottitlename">
         <item>全部</item>
