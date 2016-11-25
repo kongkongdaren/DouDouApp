@@ -2,15 +2,17 @@ package com.yjlw.ddms.homeentity.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+
+import android.view.View;
+
 import android.widget.ImageView;
+
 import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.adapter.BargainPriceAdapter;
-import com.yjlw.ddms.homeentity.entity.LabelDetailsResult;
 import com.yjlw.ddms.homeentity.entity.SalePriceBean;
 
 import org.xutils.common.Callback;
@@ -21,8 +23,7 @@ import org.xutils.x;
 
 import java.util.LinkedList;
 import java.util.List;
-
-import static android.R.id.list;
+import static android.view.View.inflate;
 
 /**
  * 特价趁现在
@@ -30,16 +31,25 @@ import static android.R.id.list;
 public class EveryBargainPriceActivity extends AppCompatActivity {
     @ViewInject(R.id.lv_bargain_price)
     private ListView lvPrice;
+    @ViewInject(R.id.iv_home_back)
+    private ImageView ivKitChenBack;
+
     private List<SalePriceBean> salePriceBeens = new LinkedList<>();
     private BargainPriceAdapter adapter;
     private ImageView imageView;
-    private List<SalePriceBean.ResultBean.ListBean> listBeen=new LinkedList<>();
+    private List<SalePriceBean.ResultBean.ListBean> listBeen = new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_every_bargain_price);
         x.view().inject(this);
+        ivKitChenBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         downLoadData();
         aboutListView();
     }
@@ -83,12 +93,11 @@ public class EveryBargainPriceActivity extends AppCompatActivity {
         salePriceBeens.add(salePriceBean);
         listBeen.addAll(salePriceBean.getResult().getList());
         String imgUrl = salePriceBean.getResult().getAd().get(0).getImgUrl();
-        imageView = new ImageView(this);
-        x.image().bind(imageView,imgUrl);
-        Log.i("Log", salePriceBeens.toString());
-        lvPrice.addHeaderView(imageView);
-        adapter = new BargainPriceAdapter(listBeen, this);
-        lvPrice.setAdapter(adapter);
+        View topImage=inflate(this, R.layout.home_top_image_item, null);
+        imageView= (ImageView) topImage.findViewById(R.id.iv_top_image);
+        x.image().bind(imageView, imgUrl);
+        lvPrice.addHeaderView(topImage);
+
 
     }
 
@@ -96,7 +105,8 @@ public class EveryBargainPriceActivity extends AppCompatActivity {
      * ListView的操作
      */
     private void aboutListView() {
-
+        adapter = new BargainPriceAdapter(listBeen, this);
+        lvPrice.setAdapter(adapter);
 
     }
 }
