@@ -9,6 +9,11 @@ package com.yjlw.ddms.common;
  * @Version: [v1.0]
  */
 public class Constant {
+    //百度地图位置获取纠正http://api.haoservice.com/api/getLocationinfor?latlng=41.93554,118
+    // .44361&type=2&key=您申请的APPKEY
+    public static String ADDRESS_URL = "http://api.haoservice.com/api/getLocationinfor?latlng=" +
+            41.93554 + "," + 118.44361 + "&type=2&key=9eb3943f742c430fae3178ba5dcf9717";
+
     //第一页
     public static String ONE_PAGE = "http://hop.haodou.com/hop/router/rest.json?action=front" + "" +
             ".get_index";
@@ -36,8 +41,12 @@ public class Constant {
     /**
      * 热门菜谱——全部
      */
-    public static String SECOND_PAGE_ALLPOPULARRECIPES = "http://api.haodou.com/index.php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1479717441077&vc=105&vn=" +
-            "6.1.15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5&channel=anzhi_v6115&method=Recipe.getCollectRecomment&virtual=&signmethod=md5&v=3&timestamp=" +
+    public static String SECOND_PAGE_ALLPOPULARRECIPES = "http://api.haodou.com/index" +
+            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
+            "=1479717441077&vc=105&vn=" +
+            "6.1.15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5" +
+            "&channel=anzhi_v6115&method=Recipe" +
+            ".getCollectRecomment&virtual=&signmethod=md5&v=3&timestamp=" +
             "1479721611&nonce=0.9624307813269698&appsign=4fbbb621ceeca881c7364dd24a0aa160";
 
     /*
@@ -46,7 +55,13 @@ public class Constant {
     params.addBodyParameter("uid", "0");
     params.addBodyParameter("uuid", "b3b08f17bca548949af2ddc9c88e65f5");
     params.addBodyParameter("offset", "0");
-    params.addBodyParameter("appqs", "haodourecipe://haodou.com/recommend/recipe/?keyword=%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&title=%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&tab=%E5%85%A8%E9%83%A8%3A%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1%7C%E7%A7%81%E4%BA%BA%3A%E7%A7%81%E4%BA%BA%E5%AE%9A%E5%88%B6%7C%E6%97%B6%E4%BB%A4%3A%E6%97%B6%E4%BB%A4%E4%BD%B3%E8%82%B4%7C%E8%BE%BE%E4%BA%BA%3A%E8%BE%BE%E4%BA%BA%E8%8F%9C%E8%B0%B1%7C%E6%9C%80%E6%96%B0%3A%E6%9C%80%E6%96%B0%E8%8F%9C%E8%B0%B1%7C%E7%83%98%E7%84%99%3A%E5%BF%AB%E4%B9%90%E7%9A%84%E7%83%98%E7%84%99");
+    params.addBodyParameter("appqs", "haodourecipe://haodou
+    .com/recommend/recipe/?keyword=%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&title=%E7%83%AD%E9%97%A8
+    %E8%8F%9C%E8%B0%B1&tab=%E5%85%A8%E9%83%A8%3A%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1%7C%E7%A7%81
+    %E4%BA%BA%3A%E7%A7%81%E4%BA%BA%E5%AE%9A%E5%88%B6%7C%E6%97%B6%E4%BB%A4%3A%E6%97%B6%E4%BB%A4%E4
+    %BD%B3%E8%82%B4%7C%E8%BE%BE%E4%BA%BA%3A%E8%BE%BE%E4%BA%BA%E8%8F%9C%E8%B0%B1%7C%E6%9C%80%E6%96
+    %B0%3A%E6%9C%80%E6%96%B0%E8%8F%9C%E8%B0%B1%7C%E7%83%98%E7%84%99%3A%E5%BF%AB%E4%B9%90%E7%9A%84
+    %E7%83%98%E7%84%99");
     params.addBodyParameter("type", "热门菜谱");
     */
 
@@ -190,30 +205,28 @@ public class Constant {
     /**
      * 看视频
      */
-    public static String SECOND_PAGE_VIDEO = "http://api.haodou.com/index" +
-            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
-            "=1479277154256&vc=105&vn=6.1" +
-            ".15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5" +
-            "&channel=anzhi_v6115&method=Video" +
-            ".index&virtual=&signmethod=md5&v=3&timestamp=1479282258&nonce=0" +
-            ".16592636338289224&appsign=f4dc9f46d3d2f2fb2cb9815d9080a532";
+    public static String SECOND_PAGE_VIDEO = "http://api.haodou.com/index.php?appid=" +
+            "2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=147997375" +
+            "4144&vc=105&vn=6.1.15&loguid=10282642&deviceid=haodou864394010609719&uuid" +
+            "=4d026196b079f72c6ee96157c0c65d62&channel=anzhi_v6115&method=Video.index&" +
+            "virtual=&signmethod=md5&v=3&timestamp=1479974587&nonce=0.3768255077715191" +
+            "3&appsign=3549e8ecc515ec606543607f7b2d8e35";
 /*
 
-    params.addBodyParameter("sign", "");
-    params.addBodyParameter("uid", "0");
+    params.addBodyParameter("sign", "df04ef8cf3aab201ce09175f64129ac4");
+    params.addBodyParameter("uid", "10282642");
     params.addBodyParameter("appqs", "haodourecipe://haodou.com/Video/index/");
 */
 
     /**
      * 热门排行榜
      */
-    public static String SECOND_PAGE_BILLBOARD = "http://api.haodou.com/index" +
-            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
-            "=1479277154256&vc=105&vn=6.1" +
-            ".15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5" +
-            "&channel=anzhi_v6115&method=Video" +
-            ".getHotRankList&virtual=&signmethod=md5&v=3&timestamp=1479283741&nonce=0" +
-            ".3839005293377159&appsign=6d46ac40e20c13334e1cb9917ee29808";
+    public static String SECOND_PAGE_BILLBOARD = "http://api.haodou.com/index.php?appid=2&appkey=" +
+            "9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1480038710761&vc=" +
+            "105&vn=6.1.15&loguid=10282642&deviceid=haodou864394010609719&uuid=4d026196b07" +
+            "9f72c6ee96157c0c65d62&channel=anzhi_v6115&method=Video.getHotRankList&virtual" +
+            "=&signmethod=md5&v=3&timestamp=1480039360&nonce=0.2530998219394517&appsign=" +
+            "a0fed5858156f72cda664d2c2ab7c40d";
 
    /*
    params.addBodyParameter("limit", "20");
@@ -224,20 +237,28 @@ public class Constant {
     /**
      * 新手课堂
      */
-    public static String SECOND_PAGE_FRESHCLASSROOM = "http://api.haodou.com/index" +
-            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
-            "=1479277154256&vc=105&vn=6.1" +
-            ".15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5" +
-            "&channel=anzhi_v6115&method=Video" +
-            ".getNoviceVideoList&virtual=&signmethod=md5&v=3&timestamp=1479283861&nonce=0" +
-            ".13536424168014372&appsign=1735cd899c6cd8755528adbd7ebc4ebd";
+    public static String SECOND_PAGE_FRESHCLASSROOM = "http://api.haodou.com/index.php?appid" +
+            "=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=" +
+            "1480038710761&vc=105&vn=6.1.15&loguid=10282642&deviceid=haodou8643940106097" +
+            "19&uuid=4d026196b079f72c6ee96157c0c65d62&channel=anzhi_v6115&method" +
+            "=Video.getNoviceVideoList&virtual=&signmethod=md5&v=3&timestamp=" +
+            "1480039638&nonce=0.4733037921153841&appsign=79752eac04abc7bb3fbebf97c9f44798";
 /*
 
     params.addBodyParameter("limit", "20");
     params.addBodyParameter("offset", "0");
     params.addBodyParameter("type", "");
 */
-
+    /**
+     * 全部
+     */
+    public static String AllKitchen = "http://api.haodou.com/index" +
+            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
+            "=1479783090186&vc=105&vn=6.1" +
+            ".15&loguid=0&deviceid=haodou864394010609719&uuid=4d026196b079f72c6ee96157c0c65d62" +
+            "&channel=anzhi_v6115&method=Wiki" +
+            ".getTagList&virtual=&signmethod=md5&v=3&timestamp=1479783266&nonce=0" +
+            ".32540721725438126&appsign=a34e4df8cffc46c1da23c1e731d12fb2";
 
     /**
      * 厨房宝典--全部
@@ -416,12 +437,11 @@ public class Constant {
      */
     //菜谱分类MenuTypeTbl
     public static String ONE_PAGE_MENU_TYPE_TB = "http://api.haodou.com/index" +
-            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
-            "=1479277154256&vc=105&vn=6.1" +
-            ".15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5" +
-            "&channel=anzhi_v6115&method=Search" +
-            ".getCateList&virtual=&signmethod=md5&v=3&timestamp=1479282640&nonce=0" +
-            ".5862882656206031&appsign=1b93e9eb927bc205e835edb867dd1d09";
+            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format" +
+            "=json&sessionid=1479805147084&vc=105&vn=6.1.15&loguid=10282642&deviceid=" +
+            "haodou864394010609719&uuid=4d026196b079f72c6ee96157c0c65d62&channel=anzhi_v6115&" +
+            "method=Search.getCateList&virtual=&signmethod=md5&v=3&timestamp=1479807284&nonce" +
+            "=0.43069921176733694&appsign=06e76e126a8252a7362cf1490f69a65d";
 
     //第二页
     public static String SECOND_PAGE = "http://api.haodou.com/mall/index" +
@@ -477,11 +497,11 @@ public class Constant {
     //家传秘制The family secret
     public static String SECOND_PAGE_THE_FAMILY_SECRET = "http://api.haodou.com/mall/index" +
             ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
-            "=1479277154256&vc=105&vn=6.1" +
-            ".15&loguid=0&deviceid=haodou864394010224212&uuid" +
-            "=b3b08f17bca548949af2ddc9c88e65f5&channel=anzhi_v6115&method=dj-search" +
-            ".search&virtual=&signmethod=md5&v=3&timestamp=1479279603&nonce=0" +
-            ".7534586717567352&appsign=2d2c0594ba8fe809148bbfc5b35d581e";
+            "=1479870087749&vc=105&vn=6.1" +
+            ".15&loguid=0&deviceid=haodou864394010208983&uuid=9ea70fa9356586ff23fc31785f735cf1" +
+            "&channel=anzhi_v6115&method=dj-search" +
+            ".search&virtual=&signmethod=md5&v=3&timestamp=1479870188&nonce=0" +
+            ".4716946057340825&appsign=50bc09b3a509aca7bfb3d63f84e5d191";
 
 
     /*
@@ -492,8 +512,8 @@ public class Constant {
            params.addBodyParameter("Keyword", "");
            params.addBodyParameter("appqs", "haodourecipe://haodou
            .com/goods/searchResult/?CateId=58&CateName=家传秘制");
-           params.addBodyParameter("Latitude", "39.913249");
-           params.addBodyParameter("Longitude", "116.403625");
+           params.addBodyParameter("Latitude", "38.945562");
+           params.addBodyParameter("Longitude", "100.45229");
            params.addBodyParameter("offset", "0");
             params.addBodyParameter("TagId", "0");
 
@@ -665,30 +685,7 @@ public class Constant {
                params.addBodyParameter("TagId", "0");
               params.addBodyParameter("offset", "0");
      */
-    /**
-     * 小吃零嘴
-     */
-    public static String SECOND_PAGE_SMALLNIBBLE = "http://api.haodou.com/mall/index" +
-            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
-            "=1479277154256&vc=105&vn=6.1" +
-            ".15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5" +
-            "&channel=anzhi_v6115&method=dj-search" +
-            ".search&virtual=&signmethod=md5&v=3&timestamp=1479280391&nonce=0" +
-            ".8310787587730922&appsign=bed45c6037ff057314f0998663b254c5";
-    /*
 
-    params.addBodyParameter("limit", "20");
-    params.addBodyParameter("sign", "");
-    params.addBodyParameter("uid", "0");
-    params.addBodyParameter("CateId", "65");
-    params.addBodyParameter("Keyword", "");
-    params.addBodyParameter("appqs", "haodourecipe://haodou
-    .com/goods/searchResult/?CateId=65&CateName=小吃零嘴");
-    params.addBodyParameter("Latitude", "39.913249");
-    params.addBodyParameter("Longitude", "116.403625");
-    params.addBodyParameter("TagId", "0");
-    params.addBodyParameter("offset", "0");
-     */
     /**
      * 养生养颜
      */
@@ -712,7 +709,14 @@ public class Constant {
     params.addBodyParameter("TagId", "0");
     params.addBodyParameter("offset", "0");
          */
-
+    //生鲜果蔬
+    public static String SECOND_PAGE_FRUIT = "http://api.haodou.com/mall/index" +
+            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
+            "=1480043901835&vc=105&vn=6.1" +
+            ".15&loguid=0&deviceid=haodou864394010208983&uuid=9ea70fa9356586ff23fc31785f735cf1" +
+            "&channel=anzhi_v6115&method=dj-search" +
+            ".search&virtual=&signmethod=md5&v=3&timestamp=1480043914&nonce=0" +
+            ".27787931494493556&appsign=0322cde1b6b9408dbda40f1ed2ecf658";
     //    第三页
     public static String THIRD_PAGE = "http://api.haodou.com/index" +
             ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
@@ -759,53 +763,56 @@ public class Constant {
        params.addBodyParameter("uid	", "0");
     */
     //图片1
-    public static String page_guide_1="http://hop.haodou.com/hop/router/rest.json?action=cms.feed.page";
- /*
-    params.addBodyParameter("_HOP_", "{\"sign\":\"654f188bd2e1937b7e342083901d5799\"," +
-                "\"action\":\"cms.feed.page\",\"current_time\":1479736220," +
-                "\"secret_id\":\"5722f877e4b0d4512e3fd872\",\"version\":\"1.0\"}");
-        params.addBodyParameter("appid", "2");
-        params.addBodyParameter("appkey", "9ef269eec4f7a9d07c73952d06b5413f");
-        params.addBodyParameter("channel", "anzhi_v6115");
-        params.addBodyParameter("deviceid", "haodou864394010609719");
-        params.addBodyParameter("format", "1");
-        params.addBodyParameter("from", "android");
-        params.addBodyParameter("ip", "172.16.151.15");
-        params.addBodyParameter("limit", "30");
-        params.addBodyParameter("loguid", "0");
-        params.addBodyParameter("name", "page_guide_1");
-        params.addBodyParameter("network", "WIFI");
-        params.addBodyParameter("offset", "0");
-        params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
-        params.addBodyParameter("vc", "105");
-        params.addBodyParameter("virtual", "0");
-        params.addBodyParameter("vn", "6.1.15");
-     */
- //图片2
- public static String page_guide_2="http://hop.haodou.com/hop/router/rest.json?action=cms.feed.page";
- /*
-    params.addBodyParameter("_HOP_", "{\"sign\":\"3dea7b58888740052300d0fc7c67cfee\"," +
-                "\"action\":\"cms.feed.page\",\"current_time\":1479737427," +
-                "\"secret_id\":\"5722f877e4b0d4512e3fd872\",\"version\":\"1.0\"}");
-        params.addBodyParameter("appid", "2");
-        params.addBodyParameter("appkey", "9ef269eec4f7a9d07c73952d06b5413f");
-        params.addBodyParameter("channel", "anzhi_v6115");
-        params.addBodyParameter("deviceid", "haodou864394010609719");
-        params.addBodyParameter("format", "1");
-        params.addBodyParameter("from", "android");
-        params.addBodyParameter("ip", "172.16.151.15");
-        params.addBodyParameter("limit", "30");
-        params.addBodyParameter("loguid", "0");
-        params.addBodyParameter("name", "page_guide_2");
-        params.addBodyParameter("network", "WIFI");
-        params.addBodyParameter("offset", "0");
-        params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
-        params.addBodyParameter("vc", "105");
-        params.addBodyParameter("virtual", "0");
-        params.addBodyParameter("vn", "6.1.15");
-     */
- //图片3
- public static String page_guide_3="http://hop.haodou.com/hop/router/rest.json?action=cms.feed.page";
+    public static String page_guide_1 = "http://hop.haodou.com/hop/router/rest.json?action=cms" +
+            ".feed.page";
+    /*
+       params.addBodyParameter("_HOP_", "{\"sign\":\"654f188bd2e1937b7e342083901d5799\"," +
+                   "\"action\":\"cms.feed.page\",\"current_time\":1479736220," +
+                   "\"secret_id\":\"5722f877e4b0d4512e3fd872\",\"version\":\"1.0\"}");
+           params.addBodyParameter("appid", "2");
+           params.addBodyParameter("appkey", "9ef269eec4f7a9d07c73952d06b5413f");
+           params.addBodyParameter("channel", "anzhi_v6115");
+           params.addBodyParameter("deviceid", "haodou864394010609719");
+           params.addBodyParameter("format", "1");
+           params.addBodyParameter("from", "android");
+           params.addBodyParameter("ip", "172.16.151.15");
+           params.addBodyParameter("limit", "30");
+           params.addBodyParameter("loguid", "0");
+           params.addBodyParameter("name", "page_guide_1");
+           params.addBodyParameter("network", "WIFI");
+           params.addBodyParameter("offset", "0");
+           params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
+           params.addBodyParameter("vc", "105");
+           params.addBodyParameter("virtual", "0");
+           params.addBodyParameter("vn", "6.1.15");
+        */
+    //图片2
+    public static String page_guide_2 = "http://hop.haodou.com/hop/router/rest.json?action=cms" +
+            ".feed.page";
+    /*
+       params.addBodyParameter("_HOP_", "{\"sign\":\"3dea7b58888740052300d0fc7c67cfee\"," +
+                   "\"action\":\"cms.feed.page\",\"current_time\":1479737427," +
+                   "\"secret_id\":\"5722f877e4b0d4512e3fd872\",\"version\":\"1.0\"}");
+           params.addBodyParameter("appid", "2");
+           params.addBodyParameter("appkey", "9ef269eec4f7a9d07c73952d06b5413f");
+           params.addBodyParameter("channel", "anzhi_v6115");
+           params.addBodyParameter("deviceid", "haodou864394010609719");
+           params.addBodyParameter("format", "1");
+           params.addBodyParameter("from", "android");
+           params.addBodyParameter("ip", "172.16.151.15");
+           params.addBodyParameter("limit", "30");
+           params.addBodyParameter("loguid", "0");
+           params.addBodyParameter("name", "page_guide_2");
+           params.addBodyParameter("network", "WIFI");
+           params.addBodyParameter("offset", "0");
+           params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
+           params.addBodyParameter("vc", "105");
+           params.addBodyParameter("virtual", "0");
+           params.addBodyParameter("vn", "6.1.15");
+        */
+    //图片3
+    public static String page_guide_3 = "http://hop.haodou.com/hop/router/rest.json?action=cms" +
+            ".feed.page";
  /*
     params.addBodyParameter("_HOP_", "{\"sign\":\"99079421ad40f6cb6b7568bb8425e873\"," +
                 "\"action\":\"cms.feed.page\",\"current_time\":1479737701," +

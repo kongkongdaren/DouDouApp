@@ -24,6 +24,9 @@ import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.fristentity.activity.HotActivity;
 import com.yjlw.ddms.fristentity.activity.HotTitleActivity;
+import com.yjlw.ddms.fristentity.activity.KitchenActivity;
+import com.yjlw.ddms.fristentity.activity.LookVideoActivity;
+import com.yjlw.ddms.fristentity.activity.MenuSortActivity;
 import com.yjlw.ddms.fristentity.activity.PhotoActivity;
 import com.yjlw.ddms.fristentity.adapter.MyFirstPagerAdapter;
 import com.yjlw.ddms.fristentity.adapter.MyViewPagerAdapter;
@@ -61,7 +64,6 @@ public class FirstFragment extends Fragment {
     private ViewPager vp;
     private ListView rlv;
     private LinearLayout llContainer;
-    private List<FirstPagerData.DataBean> beanlist = new LinkedList<>();
     private List<ViewPagerFragment> pager;
     private int index = 1;
     private boolean isTaskRun;
@@ -217,7 +219,7 @@ public class FirstFragment extends Fragment {
         listClass = firstPagerData.getData().getHeader().get(1).getList();
         classTitle.setTextView(listClass.get(0).getTitle());
         ImageView recipeIcon = (ImageView) classTitle.findViewById(R.id.iv_haodou_icon);
-        Picasso.with(getContext()).load(listClass.get(0).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(recipeIcon);
+        Picasso.with(getContext()).load(listClass.get(0).getImgs().get(0)).placeholder(R.mipmap.default_high).into(recipeIcon);
         classTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -226,15 +228,25 @@ public class FirstFragment extends Fragment {
         });
         classVedio.setTextView(listClass.get(1).getTitle());
         ImageView vedioIcon = (ImageView) classVedio.findViewById(R.id.iv_haodou_icon);
-        Picasso.with(getContext()).load(listClass.get(1).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(vedioIcon);
-
+        Picasso.with(getContext()).load(listClass.get(1).getImgs().get(0)).placeholder(R.mipmap.default_high).error(R.mipmap.ic_main_logo).into(vedioIcon);
+        classVedio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), LookVideoActivity.class));
+            }
+        });
         classKitchen.setTextView(listClass.get(2).getTitle());
         ImageView kitchenIcon = (ImageView) classKitchen.findViewById(R.id.iv_haodou_icon);
-        Picasso.with(getContext()).load(listClass.get(2).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(kitchenIcon);
-
+        Picasso.with(getContext()).load(listClass.get(2).getImgs().get(0)).placeholder(R.mipmap.default_high).error(R.mipmap.ic_main_logo).into(kitchenIcon);
+        classKitchen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), KitchenActivity.class));
+            }
+        });
         classHotActivity.setTextView(listClass.get(3).getTitle());
         ImageView hotIcon = (ImageView) classHotActivity.findViewById(R.id.iv_haodou_icon);
-        Picasso.with(getContext()).load(listClass.get(3).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(hotIcon);
+        Picasso.with(getContext()).load(listClass.get(3).getImgs().get(0)).placeholder(R.mipmap.default_high).error(R.mipmap.ic_main_logo).into(hotIcon);
         classHotActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -243,25 +255,30 @@ public class FirstFragment extends Fragment {
         });
         classMenu.setTextView(listClass.get(4).getTitle());
         ImageView menuIcon = (ImageView) classMenu.findViewById(R.id.iv_haodou_icon);
-        Picasso.with(getContext()).load(listClass.get(4).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(menuIcon);
-
+        Picasso.with(getContext()).load(listClass.get(4).getImgs().get(0)).placeholder(R.mipmap.default_high).error(R.mipmap.ic_main_logo).into(menuIcon);
+        classMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), MenuSortActivity.class));
+            }
+        });
         photoList = firstPagerData.getData().getHeader().get(2).getList();
         pcvDinner.setTextView(photoList.get(0).getTitle());
         pcvDinner.setSmallTextView(photoList.get(0).getDesc());
         clickPress(photoList,pcvDinner,0);
 
         ImageView dinnerIcon= (ImageView) pcvDinner.findViewById(R.id.iv_dinner);
-        Picasso.with(getContext()).load(photoList.get(0).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(dinnerIcon);
+        Picasso.with(getContext()).load(photoList.get(0).getImgs().get(0)).placeholder(R.mipmap.default_high).error(R.mipmap.ic_main_logo).into(dinnerIcon);
         pcvLoon.setTextView(photoList.get(1).getTitle());
         pcvLoon.setSmallTextView(photoList.get(1).getDesc());
         clickPress(photoList,pcvLoon,1);
         ImageView loonIcon= (ImageView) pcvLoon.findViewById(R.id.iv_dinner);
-        Picasso.with(getContext()).load(photoList.get(1).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(loonIcon);
+        Picasso.with(getContext()).load(photoList.get(1).getImgs().get(0)).placeholder(R.mipmap.default_high).error(R.mipmap.ic_main_logo).into(loonIcon);
         pcvEat.setTextView(photoList.get(2).getTitle());
         pcvEat.setSmallTextView(photoList.get(2).getDesc());
         clickPress(photoList,pcvEat,2);
         ImageView eatIcon= (ImageView) pcvEat.findViewById(R.id.iv_dinner);
-        Picasso.with(getContext()).load(photoList.get(2).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(eatIcon);
+        Picasso.with(getContext()).load(photoList.get(2).getImgs().get(0)).placeholder(R.mipmap.default_high).error(R.mipmap.ic_main_logo).into(eatIcon);
         TextView  tvPcvOld= (TextView) pcvOldDiet.findViewById(R.id.tv_dinner_big);
         tvPcvOld.setMaxLines(2);
         tvPcvOld.setMaxEms(5);
@@ -270,12 +287,12 @@ public class FirstFragment extends Fragment {
         pcvOldDiet.setSmallTextView(photoList.get(3).getDesc());
         clickPress(photoList,pcvOldDiet,3);
         ImageView oldDietIcon= (ImageView) pcvOldDiet.findViewById(R.id.iv_dinner);
-        Picasso.with(getContext()).load(photoList.get(3).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(oldDietIcon);
+        Picasso.with(getContext()).load(photoList.get(3).getImgs().get(0)).placeholder(R.mipmap.default_high).error(R.mipmap.ic_main_logo).into(oldDietIcon);
         pcHotSpecial.setTextView(photoList.get(4).getTitle());
         pcHotSpecial.setSmallTextView(photoList.get(4).getDesc());
         clickPress(photoList,pcHotSpecial,4);
         ImageView hotSpecialIcon= (ImageView)pcHotSpecial.findViewById(R.id.iv_dinner);
-        Picasso.with(getContext()).load(photoList.get(4).getImgs().get(0)).error(R.mipmap.ic_main_logo).into(hotSpecialIcon);
+        Picasso.with(getContext()).load(photoList.get(4).getImgs().get(0)).placeholder(R.mipmap.default_high).error(R.mipmap.ic_main_logo).into(hotSpecialIcon);
         // 2、关于ViewPager的操作
         aboutViewPager(listAder);
 
@@ -342,7 +359,6 @@ public class FirstFragment extends Fragment {
                 // ViewPager决定小圆点的状态
                 for (int i = 0; i < pager.size(); i++) {// 状态复原
                     llContainer.getChildAt(i).setEnabled(true);
-
                 }
 
                 // 将position位置处的小圆点enable属性值设置为false

@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -23,6 +24,7 @@ import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 
+import com.yjlw.ddms.homeentity.activity.EveryBargainPriceActivity;
 import com.yjlw.ddms.homeentity.activity.ShoppingCartActivity;
 import com.yjlw.ddms.homeentity.adapter.StrollShoppingListAdapter;
 import com.yjlw.ddms.homeentity.adapter.strollGridViewAdapter;
@@ -102,7 +104,13 @@ public class HomeFragment extends Fragment {
 
         homeCenterView = inflate(getContext(), R.layout.home_centeri_tem, null);
         lvHomeArrave.addHeaderView(homeCenterView);//给ListView添加头布局
-
+        RelativeLayout salePrice = (RelativeLayout) homeCenterView.findViewById(R.id.ll_sale_price);
+        salePrice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), EveryBargainPriceActivity.class));
+            }
+        });
         homeCenterFoodItem = inflate(getContext(), R.layout.home_center_food_item, null);//吃货最爱
         itemView = (HomeTitleItemView) homeCenterFoodItem.findViewById(R.id.home_food);
         TextView foodTitle = (TextView) itemView.findViewById(R.id.tv_center_title);
@@ -236,17 +244,14 @@ public class HomeFragment extends Fragment {
 
         SecondPageResult.ResultBean result = secondPageResult.getResult();
         List<CateListBean> cateList = secondPageResult.getResult().getCateList();
-        //        Log.i("Log", "更数据是："+cateLists.toString());
-        //        Log.i("Log", "cateList"+cateList.toString());
+
         for (int i = 0; i < cateList.size(); i++) {
             CateListBean cateListData = cateList.get(i);
-            //            Log.i("Log", "cateList"+cateLists.get(i).getCateName()+""+cateListData
-            // .getCateName());
             if (cateLists.contains(cateListData) == true) {
                 break;
             } else {
                 cateLists.addAll(cateList);
-                new HomeAboutTitle(cateLists, getContext(),llArrveTitle);//标签导航页面的逻辑书写
+                new HomeAboutTitle(cateLists, getContext(), llArrveTitle);//标签导航页面的逻辑书写
                 aboutTitle();
             }
         }

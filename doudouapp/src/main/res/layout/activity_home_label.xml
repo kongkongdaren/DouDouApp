@@ -23,11 +23,13 @@
         >
 
         <TextView
+            android:id="@+id/tv_address"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="6"/>
 
         <ImageView
+            android:id="@+id/iv_drown_address"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginRight="5dp"
@@ -40,6 +42,7 @@
             android:background="@color/tab_bg_color"/>
 
         <Spinner
+            android:id="@+id/sp_classify"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="2"/>
@@ -56,35 +59,46 @@
         android:orientation="horizontal"
         >
 
-        <Spinner
+        <RadioGroup
+            android:id="@+id/rg_home_group"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="3"/>
+            android:layout_weight="5"
+            android:orientation="horizontal">
 
-        <Spinner
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/rb_product_mold"
+                style="@style/home_left_product_style"
+                />
 
-        <Spinner
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            <RadioButton
+                android:id="@+id/rb_home_sales"
+                style="@style/home_product_style"
+                android:layout_marginLeft="35dp"
+                android:drawablePadding="5dp"
+                android:text="@string/sales"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="10dp"
-            android:layout_weight="0.8"
-            android:gravity="center_vertical"
-            android:text="新品"
-            />
+            <RadioButton
+                android:id="@+id/rb_home_price"
+                style="@style/home_product_style"
+                android:layout_marginLeft="35dp"
+                android:text="@string/Price"/>
+
+        </RadioGroup>
+
+        <RadioButton
+            android:id="@+id/rb_home_new_product"
+            style="@style/right_home_product_style"
+            android:text="@string/newProduct"/>
+
     </LinearLayout>
 
     <ListView
+        android:id="@+id/lv_details"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
         android:layout_weight="1"
+        android:scrollbars="none"
         />
 </LinearLayout>

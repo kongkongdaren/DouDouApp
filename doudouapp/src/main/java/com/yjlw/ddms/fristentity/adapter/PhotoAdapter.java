@@ -52,7 +52,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             });
         }
         MyViewHolder mvh= (MyViewHolder) holder;
-        Picasso.with(context).load(list.get(position).getImgs().get(0)).into(mvh.ivPhoto);
+        Picasso.with(context).load(list.get(position).getImgs().get(0)).placeholder(R.mipmap.default_high).into(mvh.ivPhoto);
        mvh.tvPhotoName.setText(list.get(position).getTitle());
         mvh.tvPhotoContent.setText(list.get(position).getDesc());
     }

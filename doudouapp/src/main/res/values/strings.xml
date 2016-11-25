@@ -62,6 +62,15 @@
     <string name="haodoulogin">好豆登录</string>
     <string name="photodinner">11月21日 晚餐</string>
     <string name="hottitle">麻婆肉末白菜</string>
+    <string name="sort">分类</string>
+    <string name="sales">销量</string>
+    <string name="price">价格</string>
+    <string name="newProduct">新品</string>
+    <string name="Price">价格</string>
+    <string name="menugv">瘦身</string>
+    <string name="vediohinttext">搜索视频</string>
+    <string name="hotname">紫薯香蕉卷</string>
+
     <string-array name="hottitlename">
         <item>全部</item>
         <item>私人</item>
