@@ -25,6 +25,9 @@ import it.sephiroth.android.library.picasso.Picasso;
  */
 
 public class MyBaseAdapter extends BaseAdapter {
+    private final int TYPE_CNT=2; //布局文件的类型
+    private final int TYPT_HOT=1;//实时热点的布局文件
+    private final int TYPE_GROUP=2;//话题小组的布局文件
 
     private List<Result.ResultBean.GroupBean> groupBeans;
     private Context context;
@@ -32,6 +35,16 @@ public class MyBaseAdapter extends BaseAdapter {
     public MyBaseAdapter(List<Result.ResultBean.GroupBean> groupBeans, Context context) {
         this.groupBeans = groupBeans;
         this.context = context;
+    }
+
+    @Override
+    public int getViewTypeCount() {
+        return TYPE_CNT;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return super.getItemViewType(position);
     }
 
     @Override
@@ -80,4 +93,5 @@ public class MyBaseAdapter extends BaseAdapter {
         TextView tv_Desc_id;
 
     }
+
 }
