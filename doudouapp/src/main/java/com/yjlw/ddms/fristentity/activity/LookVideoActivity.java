@@ -51,32 +51,39 @@ public class LookVideoActivity extends AppCompatActivity {
     @ViewInject(R.id.iv_all)
     private ImageView ivAll;
     private ViewPager vpVideo;
-    @ViewInject(R.id.ll_container_video_id)
-    private LinearLayout llContainer;
-    //下面有问题
     @ViewInject(R.id.lv_video)
     private ListView lvVideo;
-
+    private LinearLayout llContainer;
     private List<VideoPagerFragment> videoPager;
     private int index ;
     private Handler handler;
     private View hotView;
-    private ImageView ivHot;
-    private ImageView ivHotCircle;
+    private ImageView ivHot,ivNew;
+    private ImageView ivHotCircle,ivNewCircle;
     private TextView hotUser,hotName,hotContent,hotTime,hotZan,hotComment;
-    private HomeTitleItemView htivVideo;
+    private TextView newUser,newName,newContent,newTime,newZan,newComment;
+    private HomeTitleItemView htivVideo,htivNew;
     private View viewPager;
+    private View newbieView,greensView,categoryView,interestView;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lookvideo_activity);
         x.view().inject(this);
-
-        hotView = View.inflate(this, R.layout.hot_video, null);
-        viewPager = View.inflate(this, R.layout.hot_viewpager, null);
+        viewPager =View.inflate(this,R.layout.hot_viewpager, null);
+        hotView = View.inflate(this,R.layout.hot_video, null);
+//        newbieView = getLayoutInflater().inflate(R.layout.newbie_classroom,null);
+//        greensView=getLayoutInflater().inflate(R.layout.video_greens,null);
+//        categoryView=getLayoutInflater().inflate(R.layout.hot_video_category,null);
+//        interestView=getLayoutInflater().inflate(R.layout.interest_life,null);
         lvVideo.addHeaderView(viewPager);
         lvVideo.addHeaderView(hotView);
+//        lvVideo.addHeaderView(newbieView);
+//        lvVideo.addHeaderView(greensView);
+//        lvVideo.addHeaderView(categoryView);
+//        lvVideo.addFooterView(interestView);
         ivVideoBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,6 +107,16 @@ public class LookVideoActivity extends AppCompatActivity {
         hotTime= (TextView) hotView.findViewById(R.id.tv_hot_time);
         hotZan= (TextView) hotView.findViewById(R.id.tv_zan);
         hotComment= (TextView) hotView.findViewById(R.id.tv_hot_comment);
+
+//        htivNew= (HomeTitleItemView) newbieView.findViewById(R.id.htiv_new);
+//        ivNew = (ImageView) hotView.findViewById(R.id.iv_new_photo);
+//        ivNewCircle = (ImageView) hotView.findViewById(R.id.iv_new_circle);
+//        newUser= (TextView) hotView.findViewById(R.id.tv_new_user);
+//        newName= (TextView) hotView.findViewById(R.id.tv_new_title);
+//        newContent= (TextView) hotView.findViewById(R.id.tv_new_content);
+//        newTime= (TextView) hotView.findViewById(R.id.tv_new_time);
+//        newZan= (TextView) hotView.findViewById(R.id.tv_new_time);
+//        newComment= (TextView) hotView.findViewById(R.id.tv_new_comment);
     }
 
     /**
@@ -147,20 +164,6 @@ public class LookVideoActivity extends AppCompatActivity {
         circleShowPic();
         aboutHeadView(hotRank);
     }
-
-    private void aboutHeadView(List<VideoData.ResultBean.HotrankBean> hotRank) {
-        htivVideo.setIvResource(R.mipmap.ic_main_logo);
-        htivVideo.setTitle("热门排行总榜");
-        Picasso.with(this).load(hotRank.get(0).getInfo().getCover()).placeholder(R.mipmap.default_high).into(ivHot);
-        Picasso.with(this).load(hotRank.get(0).getInfo().getUserInfo().getAvatar()).placeholder(R.mipmap.default_high).into(ivHotCircle);
-        hotUser.setText(hotRank.get(0).getInfo().getUserInfo().getUserName());
-        hotName.setText(hotRank.get(0).getInfo().getTitle());
-        hotContent.setText(hotRank.get(0).getInfo().getIntro());
-        hotTime.setText(hotRank.get(0).getInfo().getCreateTime());
-        hotZan.setText(hotRank.get(0).getInfo().getDiggCount());
-        hotComment.setText(hotRank.get(0).getInfo().getPlayCount());
-    }
-
     //关于ViewPager的操作
     private void aboutViewPager(List<VideoData.ResultBean.AdBean> videoAd) {
         videoPager = new LinkedList<>();
@@ -238,4 +241,17 @@ public class LookVideoActivity extends AppCompatActivity {
         };
        handler.sendEmptyMessageDelayed(1,1000);
     }
+    private void aboutHeadView(List<VideoData.ResultBean.HotrankBean> hotRank) {
+        htivVideo.setIvResource(R.mipmap.ic_main_logo);
+        htivVideo.setTitle("热门排行总榜");
+        Picasso.with(this).load(hotRank.get(0).getInfo().getCover()).placeholder(R.mipmap.default_high).into(ivHot);
+        Picasso.with(this).load(hotRank.get(0).getInfo().getUserInfo().getAvatar()).placeholder(R.mipmap.default_high).into(ivHotCircle);
+        hotUser.setText(hotRank.get(0).getInfo().getUserInfo().getUserName());
+        hotName.setText(hotRank.get(0).getInfo().getTitle());
+        hotContent.setText(hotRank.get(0).getInfo().getIntro());
+        hotTime.setText(hotRank.get(0).getInfo().getCreateTime());
+        hotZan.setText(hotRank.get(0).getInfo().getDiggCount());
+        hotComment.setText(hotRank.get(0).getInfo().getPlayCount());
+    }
+
 }
