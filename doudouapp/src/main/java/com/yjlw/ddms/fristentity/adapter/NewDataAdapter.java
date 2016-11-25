@@ -35,12 +35,12 @@ public class NewDataAdapter extends HomeCustomBaseAdapter<NewData.ResultBean.Lis
         ViewHolder vh=null;
         if(convertView==null){
             vh=new ViewHolder();
-            convertView=View.inflate(context, R.layout.hot_rank_item,null);
-            vh.ivNewPhoto= (ImageView) convertView.findViewById(R.id.iv_hot_rank);
+            convertView=View.inflate(context, R.layout.newclass_item,null);
+            vh.ivNewPhoto= (ImageView) convertView.findViewById(R.id.iv_new_rank);
             vh.tvCount= (TextView) convertView.findViewById(R.id.tv_count);
-            vh.tvNewTitle= (TextView) convertView.findViewById(R.id.hot_rank_title);
-            vh.tvNewZan= (TextView) convertView.findViewById(R.id.hot_rank_zan);
-            vh.tvNewComment= (TextView) convertView.findViewById(R.id.hot_rank_comment);
+            vh.tvNewTitle= (TextView) convertView.findViewById(R.id.hot_new_title);
+            vh.tvNewZan= (TextView) convertView.findViewById(R.id.hot_new_zan);
+            vh.tvNewComment= (TextView) convertView.findViewById(R.id.hot_new_comment);
             convertView.setTag(vh);
         }else{
            vh= (ViewHolder) convertView.getTag();

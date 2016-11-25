@@ -5,8 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -40,7 +40,7 @@ public class NewActivity extends AppCompatActivity {
     @ViewInject(R.id.tv_new_title)
     private TextView tvNewTitle;
     @ViewInject(R.id.new_gv)
-    private ListView newGv;
+    private GridView newGv;
     @ViewInject(R.id.new_pb)
     private ProgressBar newPb;
     @Override
@@ -99,6 +99,7 @@ public class NewActivity extends AppCompatActivity {
         }else{
             newPb.setVisibility(View.GONE);
         }
+        Log.i("Log","新手数据"+newDataList.get(0).getTitle());
         aboutGridView(newDataList);
 
     }
