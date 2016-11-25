@@ -35,7 +35,7 @@
             android:gravity="center_vertical"/>
     </LinearLayout>
     <TextView
-        android:id="@+id/tv_lifeitem_hot"
+        android:id="@+id/tv_lifeitem_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textColor="@color/black"
@@ -50,7 +50,7 @@
         android:maxLines="2"
         android:maxEms="50"
         android:ellipsize="end"
-        android:textSize="10sp"/>
+        android:textSize="15sp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
