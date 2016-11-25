@@ -81,6 +81,8 @@
     <string name="time">2015-9-13 20:50</string>
     <string name="zan">111111</string>
     <string name="comment">2222</string>
+    <string name="hotrank">热门菜谱</string>
+    <string name="rankcount">111111</string>
     <string-array name="hottitlename">
         <item>全部</item>
         <item>私人</item>

@@ -1,5 +1,6 @@
 package com.yjlw.ddms.fristentity.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -189,6 +190,12 @@ public class LookVideoActivity extends AppCompatActivity {
         List<VideoData.ResultBean.HotrankBean> hotRank = videoData.getResult().getHotrank();
         htivHot.setIvResource(R.mipmap.ic_main_logo);
         htivHot.setTitle("热门排行总榜");
+        htivHot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(LookVideoActivity.this,HotRankActivity.class);
+            }
+        });
         Picasso.with(this).load(hotRank.get(0).getInfo().getCover()).placeholder(R.mipmap.default_high).into(ivHotPhoto);
         Picasso.with(this).load(hotRank.get(0).getInfo().getUserInfo().getAvatar()).placeholder(R.mipmap.default_high).into(ivHotCirclePhoto);
         hotUser.setText(hotRank.get(0).getInfo().getUserInfo().getUserName());
