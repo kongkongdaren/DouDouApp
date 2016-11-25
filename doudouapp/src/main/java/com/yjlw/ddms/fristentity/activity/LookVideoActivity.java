@@ -33,8 +33,6 @@ import java.util.List;
 
 import it.sephiroth.android.library.picasso.Picasso;
 
-import static android.view.View.inflate;
-
 /**
  * Description：看视频详细页面 <br/>
  * Copyright (c) 2016<br/>
