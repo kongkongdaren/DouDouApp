@@ -95,6 +95,8 @@
         </activity>
         <!--热门排行榜-->
         <activity android:name=".fristentity.activity.HotRankActivity"/>
+        <!--新手活动-->
+        <activity android:name=".fristentity.activity.NewActivity"/>
     </application>
 
 </manifest>

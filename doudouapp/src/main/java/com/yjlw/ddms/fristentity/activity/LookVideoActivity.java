@@ -212,6 +212,16 @@ public class LookVideoActivity extends AppCompatActivity {
         List<VideoData.ResultBean.NoviceBean> newNovice = videoData.getResult().getNovice();
         htivNew.setIvResource(R.mipmap.ico_vedio_newclass);
         htivNew.setTitle("新手课堂");
+        htivNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(LookVideoActivity.this,NewActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("title","新手课堂");
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
         Picasso.with(this).load(newNovice.get(0).getInfo().getCover()).placeholder(R.mipmap.default_high).into(ivNewPhoto);
         Picasso.with(this).load(newNovice.get(0).getInfo().getUserInfo().getAvatar()).placeholder(R.mipmap.default_high).into(ivNewCirclePhoto);
         newUser.setText(newNovice.get(0).getInfo().getUserInfo().getUserName());
