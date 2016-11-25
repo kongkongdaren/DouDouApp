@@ -31,7 +31,7 @@ public class TopicViewPagerFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
-        img = bundle.getString("it");
+        img = bundle.getString("img");
         Log.i("","img"+img);
         super.onCreate(savedInstanceState);
     }

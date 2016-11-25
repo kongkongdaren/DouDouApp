@@ -26,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:src="@mipmap/ico_tel"/>
+            android:src="@mipmap/phone_small_gray"/>
         <EditText
             android:layout_width="0dp"
             android:layout_height="wrap_content"

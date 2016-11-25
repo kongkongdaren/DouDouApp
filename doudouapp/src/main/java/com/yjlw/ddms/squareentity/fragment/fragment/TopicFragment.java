@@ -1,10 +1,7 @@
 package com.yjlw.ddms.squareentity.fragment.fragment;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -49,11 +46,7 @@ import it.sephiroth.android.library.picasso.Picasso;
  */
 
 public class TopicFragment extends Fragment {
-    private boolean isTaskRun;
-    private Result.ResultBean resultBean;
-    private List<TopicViewPagerFragment> tempDs;
-    private Timer htimer;
-    private TimerTask htimerTask;
+
     private Result result1;
     private List<Result.ResultBean.AdBean> ad = new LinkedList<>();
     private List<Result.ResultBean.GroupBean> groupBeans = new LinkedList<>();
@@ -62,12 +55,20 @@ public class TopicFragment extends Fragment {
     private LinearLayout mLl;
     private ViewPager mVp;
     private List<Result.ResultBean.HotBean> hot;
+    private int i;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
 
-//      Bundle bundle = getArguments();
-//      bundle.getString("tabName");
+        Bundle bundle = getArguments();
+        bundle.getString("tabName");
+        i = bundle.getInt("i");
+
+        // 3、关于小圆点的操作
+        //aboutLittleDots();
+
+        //准备数据源
+        DownloadData();
         super.onCreate(savedInstanceState);
     }
 
@@ -76,50 +77,72 @@ public class TopicFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
             Bundle savedInstanceState) {
 
-        view = inflater.inflate(R.layout.squareen_fragment, null);
-        mLv = (ListView) view.findViewById(R.id.lv_sq_id);
+        if(i==0){
+            //填充布局文件squareen_fragment
+            view = inflater.inflate(R.layout.squareen_fragment, null);
+            mLv = (ListView) view.findViewById(R.id.lv_sq_id);
 
-        View inflate = inflater.inflate(R.layout.squareen_topic_image_viewpager, null);
-        mLl = (LinearLayout) inflate.findViewById(R.id.ll_container_id);
-        mVp = (ViewPager) inflate.findViewById(R.id.vp_id);
+            View inflate = inflater.inflate(R.layout.squareen_topic_image_viewpager, null);
+            mLl = (LinearLayout) inflate.findViewById(R.id.ll_container_id);
+            mVp = (ViewPager) inflate.findViewById(R.id.vp_id);
 
-        mLv.addHeaderView(inflate);
+            //填充ViewPager布局文件
+            mLv.addHeaderView(inflate);
 
-        //添加实时热点
-        View squareen_real_time = inflater.inflate(R.layout.squareen_real_time, null);
-        mLv.addHeaderView(squareen_real_time);
+            //关于ViewPager的操作
+            //aboutViewPager();
 
-        //添加分割线
-        View squareen_view = inflater.inflate(R.layout.squareen_view, null);
-        mLv.addFooterView(squareen_view);
 
-        //添加话题小组
-        View squareen_topic_group = inflater.inflate(R.layout.squareen_topic_group,null);
-        mLv.addFooterView(squareen_topic_group);
+            //添加实时热点
+            View squareen_real_time = inflater.inflate(R.layout.squareen_real_time, null);
+            mLv.addHeaderView(squareen_real_time);
 
-        View squareen_topic_group_item = inflater.inflate(R.layout.squareen_topic_group_item, null);
-        mLv.addFooterView(squareen_topic_group_item);
-        ImageView topic_group_item_image_id =(ImageView)squareen_topic_group_item.findViewById(R.id.topic_group_item_image_id);
-        TextView tv_Name_id= (TextView) squareen_topic_group_item.findViewById(R.id.tv_Name_id);
-        TextView tv_ViewDesc_id= (TextView) squareen_topic_group_item.findViewById(R.id.tv_ViewDesc_id);
-        TextView tv_Desc_id= (TextView) squareen_topic_group_item.findViewById(R.id.tv_Desc_id);
+            //添加分割线
+            View squareen_view = inflater.inflate(R.layout.squareen_view, null);
+            mLv.addFooterView(squareen_view);
 
-        for(int i=0;i<groupBeans.size();i++){
-            Result.ResultBean.GroupBean groupBean = groupBeans.get(i);
-            x.image().bind(topic_group_item_image_id,groupBean.getImg());
-            tv_Name_id.setText(groupBean.getName());
-            tv_ViewDesc_id.setText(groupBean.getViewDesc());
-            tv_Desc_id.setText(groupBean.getDesc());
+            //添加话题小组
+            View squareen_topic_group = inflater.inflate(R.layout.squareen_topic_group,null);
+            mLv.addFooterView(squareen_topic_group);
+
+
+
+            for(int i=0;i<groupBeans.size();i++){
+                //填充控件
+                View squareen_topic_group_item = inflater.inflate(R.layout.squareen_topic_group_item, null);
+                mLv.addFooterView(squareen_topic_group_item);
+                ImageView topic_group_item_image_id =(ImageView)squareen_topic_group_item.findViewById(R.id.topic_group_item_image_id);
+                TextView tv_Name_id= (TextView) squareen_topic_group_item.findViewById(R.id.tv_Name_id);
+                TextView tv_ViewDesc_id= (TextView) squareen_topic_group_item.findViewById(R.id.tv_ViewDesc_id);
+                TextView tv_Desc_id= (TextView) squareen_topic_group_item.findViewById(R.id.tv_Desc_id);
+
+                x.image().bind(topic_group_item_image_id,groupBeans.get(i).getImg());
+                tv_Name_id.setText(groupBeans.get(i).getName());
+                tv_ViewDesc_id.setText(groupBeans.get(i).getViewDesc());
+                tv_Desc_id.setText(groupBeans.get(i).getDesc());
+            }
+
+            //清空数据源
+            groupBeans.clear();
+
+        }else if(i==1){
+        //TODO
+            //关于豆友的
+
+        }else{
+        //TODO
+            //关于动态的
         }
-
-
-        //准备数据源
-        DownloadData();
-
         return view;
     }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    //下载数据
     private void DownloadData() {
         String thirdPage = Constant.THIRD_PAGE;
         RequestParams params = new RequestParams(thirdPage);
@@ -157,7 +180,7 @@ public class TopicFragment extends Fragment {
 
         groupBeans.addAll(result1.getResult().getGroup());//向ListView中添加数据源
 
-        Log.i("log",groupBeans.toString());
+       // Log.i("log",groupBeans.toString());
         hot = result1.getResult().getHot();
 
         ad.addAll(result1.getResult().getAd());
@@ -167,14 +190,6 @@ public class TopicFragment extends Fragment {
         mLv.setAdapter(adapter);
 
     }
-
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
-
-
 
     //实时热点
     private class ListViewAdapter extends HomeCustomBaseAdapter<Result.ResultBean.HotBean> {
@@ -225,4 +240,6 @@ public class TopicFragment extends Fragment {
             TextView tv_message_count_id;
         }
     }
+
+
 }
