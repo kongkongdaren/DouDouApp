@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <com.yjlw.ddms.homeentity.views.HomeTitleItemView
-        android:id="@+id/htiv_hot"
+        android:id="@+id/htiv_category"
         android:layout_width="match_parent"
         android:layout_height="40dp"/>
     <ImageView

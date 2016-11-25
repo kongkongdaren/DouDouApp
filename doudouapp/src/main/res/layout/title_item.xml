@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="230dp"
+    android:layout_height="260dp"
     android:background="@color/common_white">
     <FrameLayout
         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
             />
     </FrameLayout>
 <LinearLayout
-    android:layout_marginTop="10dp"
+    android:layout_marginTop="20dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
@@ -61,30 +61,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/ico_tag"
-        android:layout_gravity="center_vertical"/>
-    <TextView
-        android:id="@+id/tv_tag0"
-        style="@style/hottitle"
-        />
-    <TextView
-        android:id="@+id/tv_tag1"
-        style="@style/hottitle"
-        />
-    <TextView
-        android:id="@+id/tv_tag2"
-        style="@style/hottitle"
-        />
-    <TextView
-        android:id="@+id/tv_tag3"
-        style="@style/hottitle"
-        />
-    <TextView
-        android:id="@+id/tv_tag4"
-        style="@style/hottitle"
-        />
-    <TextView
-        android:id="@+id/tv_tag5"
-        style="@style/hottitle"
-        />
+        android:gravity="center"/>
+       <LinearLayout
+           android:id="@+id/ll_tag"
+           android:layout_width="match_parent"
+           android:orientation="horizontal"
+           android:layout_height="40dp"/>
 </LinearLayout>
 </LinearLayout>
