@@ -90,6 +90,8 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
     private List<LabelDetailsResult.ResultBean.CateInfosBean> cateInfos = new LinkedList<>();
     private int mScreenHeight;
     private int height;
+    private String url;
+    private String cateId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,11 +101,13 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
         SDKInitializer.initialize(getApplicationContext()); // 不能传递Activity，必须是全局Context
         Bundle bundle = this.getIntent().getExtras();
         detailsResult = bundle.getString("detailsResult");
+        url = bundle.getString("url");
+        cateId = bundle.getString("CateId");
         x.view().inject(this);
         tvAddress.setText(addressinfo);
         aboutAddressSpinner();
-        downLoadData();
-        productMold.setText("全部");
+        downLoadData(url,detailsResult);
+        productMold.setText(detailsResult);
         productMold.setOnClickListener(this);
         productSales.setOnClickListener(this);
         productPrice.setOnClickListener(this);
@@ -238,16 +242,15 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
         startActivity(new Intent(getApplicationContext(), LocationActivity.class));
     }
 
-    private void downLoadData() {
-        String url = Constant.SECOND_PAGE_THE_FAMILY_SECRET;
+    private void downLoadData(String url, String detailsResult) {
+
         RequestParams params = new RequestParams(url);
         params.addBodyParameter("limit", "20");
         params.addBodyParameter("sign", "");
         params.addBodyParameter("uid", "0");
-        params.addBodyParameter("CateId", "58");
+        params.addBodyParameter("CateId", cateId);
         params.addBodyParameter("Keyword", "");
-        params.addBodyParameter("appqs", "haodourecipe://haodou" + "" +
-                ".com/goods/searchResult/?CateId=58&CateName=家传秘制");
+        params.addBodyParameter("appqs", detailsResult);
         params.addBodyParameter("Latitude", "38.945562");
         params.addBodyParameter("Longitude", "100.45229");
         params.addBodyParameter("offset", "0");
@@ -281,20 +284,16 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
         labelDetailsResults.add(labelResult);
         list.addAll(labelResult.getResult().getList());
         cateInfos.addAll(labelResult.getResult().getCateInfos());
-        aboutTitle(detailsResult);
+        aboutTitle();
     }
 
     /**
      * 详情界面的逻辑书写
      *
-     * @param detailsResult
      */
-    private void aboutTitle(String detailsResult) {
-        switch (detailsResult) {
-            case "家传秘制":
+    private void aboutTitle() {
                 new HomeTitleItem(listView, list, this);
-                break;
-        }
+
     }
 
 
