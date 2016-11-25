@@ -26,6 +26,7 @@ import com.yjlw.ddms.common.Constant;
 
 import com.yjlw.ddms.homeentity.activity.CateActivity;
 import com.yjlw.ddms.homeentity.activity.EveryBargainPriceActivity;
+import com.yjlw.ddms.homeentity.activity.FoodieLikeActivity;
 import com.yjlw.ddms.homeentity.activity.ShoppingCartActivity;
 import com.yjlw.ddms.homeentity.adapter.StrollShoppingListAdapter;
 import com.yjlw.ddms.homeentity.adapter.strollGridViewAdapter;
@@ -122,6 +123,12 @@ public class HomeFragment extends Fragment {
         });
         homeCenterFoodItem = inflate(getContext(), R.layout.home_center_food_item, null);//吃货最爱
         itemView = (HomeTitleItemView) homeCenterFoodItem.findViewById(R.id.home_food);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), FoodieLikeActivity.class));
+            }
+        });
         TextView foodTitle = (TextView) itemView.findViewById(R.id.tv_center_title);
         ImageView foodIocn = (ImageView) itemView.findViewById(R.id.iv_home_icon);
         foodTitle.setText("吃货最爱");
