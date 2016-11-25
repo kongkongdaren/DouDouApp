@@ -95,10 +95,11 @@ public class SquareFragment extends Fragment {
 //            HaoDouFragment haoDouFragment=new HaoDouFragment();
 //            DynamicFragment dynamicFragment=new DynamicFragment();
 
-//            Bundle bundle=new Bundle();
-//            bundle.putString("tabName",((RadioButton)mRg.getChildAt(i))
-//                    .getText().toString());
-//            topicFragment.setArguments(bundle);
+            Bundle bundle=new Bundle();
+            bundle.putString("tabName",((RadioButton)mRg.getChildAt(i))
+                    .getText().toString());
+            bundle.putInt("i",i);
+            topicFragment.setArguments(bundle);
 //            haoDouFragment.setArguments(bundle);
 //            dynamicFragment.setArguments(bundle);
 //
