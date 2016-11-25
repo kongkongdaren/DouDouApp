@@ -87,6 +87,9 @@
         <!--特价趁现在-->
         <activity android:name=".homeentity.activity.EveryBargainPriceActivity">
         </activity>
+        <!--美食研究所-->
+        <activity android:name=".homeentity.activity.CateActivity">
+        </activity>
     </application>
 
 </manifest>
