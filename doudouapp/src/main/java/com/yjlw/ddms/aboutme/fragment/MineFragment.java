@@ -1,5 +1,6 @@
 package com.yjlw.ddms.aboutme.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,15 +11,6 @@ import android.view.ViewGroup;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.aboutme.views.SettingItemClickView;
 
-/**
- * Description：xx <br/>
- * Copyright (c) 2016<br/>
- * This program is protected by copyright laws <br/>
- * Date: 2016年11月16  18:01
- *
- * @author 姜文莒
- * @version : 1.0
- */
 
 public class MineFragment extends Fragment {
     private SettingItemClickView mPublic;
@@ -44,16 +36,24 @@ public class MineFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate( R.layout.activity_about_me, null);
+        view = inflater.inflate(R.layout.activity_about_me, null);
         //界面控件实例的获取
         initWidget();
-
-
         return view;
     }
+//    public void LoginAction(View v){
+//        switch (view.getId()) {
+//            case R.id.btn_login_id:
+//                Intent intent = new Intent(getContext(), loginFragment.class);
+//                startActivity(intent);
+//                break;
+//        }
+//    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+
+
         super.onActivityCreated(savedInstanceState);
     }
 

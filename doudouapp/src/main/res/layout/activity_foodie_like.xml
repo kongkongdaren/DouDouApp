@@ -5,8 +5,7 @@
     android:id="@+id/activity_every_bargain_price"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.yjlw.ddms.homeentity.activity.EveryBargainPriceActivity">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/title"
