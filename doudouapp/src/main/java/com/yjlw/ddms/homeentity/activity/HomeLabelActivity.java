@@ -14,7 +14,9 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -117,7 +119,7 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onScroll(AbsListView absListView, int i, int i1, int i2) {
-                popupWindowDismiss();
+
             }
         });
     }
@@ -146,97 +148,66 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
 
-
+        View contentView = getView();
         switch (view.getId()) {
             case R.id.rb_product_mold://商品种类
+
                 List<String> popupDatas = new ArrayList<>();
+
                 popupDatas.clear();
                 for (int i = 0; i < cateInfos.size(); i++) {
                     String cateName = cateInfos.get(i).getCateName();
                     popupDatas.add(cateName);
                 }
-                getPopupWindowInstance(popupDatas);
-                mPopupWindow.showAsDropDown(view);
+
+                aboutPopupWindow(view, contentView, popupDatas);
+
                 break;
             case R.id.rb_home_sales://销量排行
                 List<String> popupDatas2 = new ArrayList<>();
                 popupDatas2.clear();
                 Collections.addAll(popupDatas2, "销量由高到低", "销量由底到高");
-                getPopupWindowInstance(popupDatas2);
-                mPopupWindow.showAsDropDown(view);
+                aboutPopupWindow(view, contentView, popupDatas2);
+
                 break;
             case R.id.rb_home_price://价格排行
                 List<String> popupDatas3 = new ArrayList<>();
                 Collections.addAll(popupDatas3, "价格由底到高", "价格由高到低");
-                getPopupWindowInstance(popupDatas3);
-                mPopupWindow.showAsDropDown(view);
+                aboutPopupWindow(view, contentView, popupDatas3);
                 break;
         }
     }
 
-    /*
-         * 获取PopupWindow实例
-         */
-    private void getPopupWindowInstance(List<String> popupDatas) {
-        if (null != mPopupWindow) {
-            mPopupWindow.dismiss();
-            return;
-        } else {
-            initPopuptWindow(popupDatas);
-        }
-    }
+    private void aboutPopupWindow(View view, View contentView, final List<String> popupDatas) {
+        //初始化popupWindow
+                popupWindowDismiss();
+        // ViewGroup.LayoutParams.WRAP_CONTENT=-2;表示包裹内容
+        LinearLayout popupRoot = (LinearLayout) contentView.findViewById(R.id.ll__popup_root);
+        mScreenWidth = getWindowManager().getDefaultDisplay().getWidth();
+        popupWindow = new PopupWindow(contentView, mScreenWidth, -2);
+        //        popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        // 不给背景的话就显示不了动画效果
+        popupWindow.showAsDropDown(view);
 
-    /**
-     * 关于PopupWindow的操作
-     *
-     * @param popupDatas
-     */
-    private void initPopuptWindow(final List<String> popupDatas) {
-
-        LayoutInflater layoutInflater = LayoutInflater.from(this);
-        View popupWindow = layoutInflater.inflate(R.layout.home_popup_window, null);
-        LinearLayout popupRoot = (LinearLayout) popupWindow.findViewById(R.id.ll__popup_root);
-
-        mScreenHeight = getWindowManager().getDefaultDisplay().getHeight();
-        mPopupWindow = new PopupWindow(popupWindow);
         for (int i = 0; i < popupDatas.size(); i++) {
             final PopupWindowsItem windowsItem = new PopupWindowsItem(this);
             windowsItem.setTitle(popupDatas.get(i));
             popupRoot.addView(windowsItem);
-            height += windowsItem.getMeasuredHeight();
-            Log.i("Log", height + "");
             windowsItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mPopupWindow.dismiss();
-                    mPopupWindow = null;
+                    popupWindowDismiss();
                     if (popupDatas.size() > 2) {
+                        productMold.setChecked(false);
                         productMold.setText(windowsItem.getTitle());
-
                     }
-
                 }
             });
         }
-        // 创建一个PopupWindow
-        // 参数1：contentView 指定PopupWindow的内容
-        // 参数2：width 指定PopupWindow的width
-        // 参数3：height 指定PopupWindow的height
-        if (popupDatas.size() > 2) {
-            mPopupWindow.setHeight(mScreenHeight);
-        } else {
-            mPopupWindow.setHeight(180);
-        }
-
-        // 获取屏幕和PopupWindow的width和height
-        mScreenWidth = getWindowManager().getDefaultDisplay().getWidth();
-
-        mPopupWindow.setWidth(mScreenWidth);
-
     }
 
     /**
-     * 点击别的条目的时候关闭popupWindow
+     * 关闭popupWindow
      */
     private void popupWindowDismiss() {
         if (popupWindow != null && popupWindow.isShowing()) {
