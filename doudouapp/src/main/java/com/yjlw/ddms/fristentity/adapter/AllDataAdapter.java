@@ -1,9 +1,13 @@
 package com.yjlw.ddms.fristentity.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.text.TextUtils;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.yjlw.ddms.R;
@@ -41,16 +45,10 @@ public class AllDataAdapter extends HomeCustomBaseAdapter<HotAll.ResultBean.List
             vh.tvContent = (TextView) convertView.findViewById(R.id.tv_title_name);
             vh.tvName = (TextView) convertView.findViewById(R.id.tv_name_user);
             vh.tvPraiseCount = (TextView) convertView.findViewById(R.id.tv_count);
-            vh.tvTag1 = (TextView) convertView.findViewById(R.id.tv_tag0);
-            vh.tvTag2 = (TextView) convertView.findViewById(R.id.tv_tag1);
-            vh.tvTag3 = (TextView) convertView.findViewById(R.id.tv_tag2);
-            vh.tvTag4 = (TextView) convertView.findViewById(R.id.tv_tag3);
-            vh.tvTag5 = (TextView) convertView.findViewById(R.id.tv_tag4);
-            vh.tvTag6 = (TextView) convertView.findViewById(R.id.tv_tag5);
+            vh.llTag= (LinearLayout) convertView.findViewById(R.id.ll_tag);
             convertView.setTag(vh);
         } else {
             vh = (ViewHolder) convertView.getTag();
-
         }
         HotAll.ResultBean.ListBean listBean = lists.get(position);
         Picasso.with(context).load(listBean.getCover()).placeholder(R.mipmap.default_high).into(vh
@@ -58,12 +56,21 @@ public class AllDataAdapter extends HomeCustomBaseAdapter<HotAll.ResultBean.List
         vh.tvContent.setText(listBean.getTitle());
         vh.tvName.setText("by "+listBean.getUserName());
         vh.tvPraiseCount.setText(listBean.getLikeCount()+"");
-//        vh.tvTag1.setText(listBean.getTags().get(0).getName());
-//        vh.tvTag2.setText(listBean.getTags().get(0).getName());
-//        vh.tvTag3.setText(listBean.getTags().get(0).getName());
-//        vh.tvTag4.setText(listBean.getTags().get(0).getName());
-//        vh.tvTag5.setText(listBean.getTags().get(0).getName());
- //        vh.tvTag6.setText(listBean.getTags().get(0).getName());
+        for(int i=0;i<listBean.getTags().size();i++){
+            if(i<=4) {
+                TextView tvTag = new TextView(context);
+                // 第一个参数为宽的设置，第二个参数为高的设置。
+                tvTag.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT));
+                tvTag.setTextColor(Color.BLACK);
+                tvTag.setGravity(Gravity.CENTER);
+                tvTag.setPadding(25, 0, 0, 25);//left, top, right, bottom
+                tvTag.setSingleLine(true);
+                tvTag.setEllipsize(TextUtils.TruncateAt.END);
+                tvTag.setText(listBean.getTags().get(i).getName());
+                vh.llTag.addView(tvTag);
+            }
+        }
         return convertView;
 
     }
@@ -74,11 +81,6 @@ public class AllDataAdapter extends HomeCustomBaseAdapter<HotAll.ResultBean.List
         private TextView tvContent;
         private TextView tvName;
         private TextView tvPraiseCount;
-        private TextView tvTag1;
-        private TextView tvTag2;
-        private TextView tvTag3;
-        private TextView tvTag4;
-        private TextView tvTag5;
-        private TextView tvTag6;
+        private LinearLayout llTag;
     }
 }

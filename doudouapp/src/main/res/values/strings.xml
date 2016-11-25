@@ -70,6 +70,14 @@
     <string name="menugv">瘦身</string>
     <string name="vediohinttext">搜索视频</string>
     <string name="hotname">紫薯香蕉卷</string>
+    <string name="category">饮品</string>
+    <string name="enter_registnum">请输入要注册的手机号</string>
+    <string name="next">下一步</string>
+    <string name="goto_login">已有好豆账号，点击登录</string>
+    <string name="code">请输入验证码</string>
+    <string name="enter_code">请输入手机验证码</string>
+    <string name="enter_nickname">昵称限汉字、字母、数字、下划线</string>
+    <string name="enter_setpwd">密码不少于6位，限字母和数字</string>
 
     <string-array name="hottitlename">
         <item>全部</item>
