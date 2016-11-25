@@ -39,7 +39,7 @@
             android:gravity="center_vertical"/>
     </LinearLayout>
     <TextView
-        android:id="@+id/tv_name_new"
+        android:id="@+id/tv_new_title"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:textColor="@color/black"

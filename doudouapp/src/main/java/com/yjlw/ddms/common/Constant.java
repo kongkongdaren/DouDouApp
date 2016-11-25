@@ -219,13 +219,12 @@ public static String ADDRESS_URL="http://api.haoservice.com/api/getLocationinfor
     /**
      * 热门排行榜
      */
-    public static String SECOND_PAGE_BILLBOARD = "http://api.haodou.com/index" +
-            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
-            "=1479277154256&vc=105&vn=6.1" +
-            ".15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5" +
-            "&channel=anzhi_v6115&method=Video" +
-            ".getHotRankList&virtual=&signmethod=md5&v=3&timestamp=1479283741&nonce=0" +
-            ".3839005293377159&appsign=6d46ac40e20c13334e1cb9917ee29808";
+    public static String SECOND_PAGE_BILLBOARD = "http://api.haodou.com/index.php?appid=2&appkey=" +
+            "9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1480038710761&vc=" +
+            "105&vn=6.1.15&loguid=10282642&deviceid=haodou864394010609719&uuid=4d026196b07" +
+            "9f72c6ee96157c0c65d62&channel=anzhi_v6115&method=Video.getHotRankList&virtual" +
+            "=&signmethod=md5&v=3&timestamp=1480039360&nonce=0.2530998219394517&appsign=" +
+            "a0fed5858156f72cda664d2c2ab7c40d";
 
    /*
    params.addBodyParameter("limit", "20");
@@ -236,13 +235,12 @@ public static String ADDRESS_URL="http://api.haoservice.com/api/getLocationinfor
     /**
      * 新手课堂
      */
-    public static String SECOND_PAGE_FRESHCLASSROOM = "http://api.haodou.com/index" +
-            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
-            "=1479277154256&vc=105&vn=6.1" +
-            ".15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5" +
-            "&channel=anzhi_v6115&method=Video" +
-            ".getNoviceVideoList&virtual=&signmethod=md5&v=3&timestamp=1479283861&nonce=0" +
-            ".13536424168014372&appsign=1735cd899c6cd8755528adbd7ebc4ebd";
+    public static String SECOND_PAGE_FRESHCLASSROOM = "http://api.haodou.com/index.php?appid" +
+            "=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=" +
+            "1480038710761&vc=105&vn=6.1.15&loguid=10282642&deviceid=haodou8643940106097" +
+            "19&uuid=4d026196b079f72c6ee96157c0c65d62&channel=anzhi_v6115&method" +
+            "=Video.getNoviceVideoList&virtual=&signmethod=md5&v=3&timestamp=" +
+            "1480039638&nonce=0.4733037921153841&appsign=79752eac04abc7bb3fbebf97c9f44798";
 /*
 
     params.addBodyParameter("limit", "20");
