@@ -3,6 +3,7 @@ package com.yjlw.ddms.homeentity.activity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.google.gson.Gson;
@@ -31,6 +32,8 @@ public class EveryBargainPriceActivity extends AppCompatActivity {
     private ListView lvPrice;
     private List<SalePriceBean> salePriceBeens = new LinkedList<>();
     private BargainPriceAdapter adapter;
+    private ImageView imageView;
+    private List<SalePriceBean.ResultBean.ListBean> listBeen=new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +81,14 @@ public class EveryBargainPriceActivity extends AppCompatActivity {
         Gson gson = new Gson();
         SalePriceBean salePriceBean = gson.fromJson(s, SalePriceBean.class);
         salePriceBeens.add(salePriceBean);
-        List<SalePriceBean.ResultBean.ListBean> listBeen = salePriceBean.getResult().getList();
-
+        listBeen.addAll(salePriceBean.getResult().getList());
+        String imgUrl = salePriceBean.getResult().getAd().get(0).getImgUrl();
+        imageView = new ImageView(this);
+        x.image().bind(imageView,imgUrl);
         Log.i("Log", salePriceBeens.toString());
+        lvPrice.addHeaderView(imageView);
+        adapter = new BargainPriceAdapter(listBeen, this);
+        lvPrice.setAdapter(adapter);
 
     }
 
@@ -88,7 +96,7 @@ public class EveryBargainPriceActivity extends AppCompatActivity {
      * ListView的操作
      */
     private void aboutListView() {
-        adapter = new BargainPriceAdapter(salePriceBeens,this);
-        lvPrice.setAdapter(adapter);
+
+
     }
 }
