@@ -8,6 +8,7 @@ import android.widget.ListView;
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
+import com.yjlw.ddms.homeentity.adapter.BargainPriceAdapter;
 import com.yjlw.ddms.homeentity.entity.LabelDetailsResult;
 import com.yjlw.ddms.homeentity.entity.SalePriceBean;
 
@@ -17,6 +18,9 @@ import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import static android.R.id.list;
 
 /**
@@ -25,6 +29,8 @@ import static android.R.id.list;
 public class EveryBargainPriceActivity extends AppCompatActivity {
     @ViewInject(R.id.lv_bargain_price)
     private ListView lvPrice;
+    private List<SalePriceBean> salePriceBeens = new LinkedList<>();
+    private BargainPriceAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +55,6 @@ public class EveryBargainPriceActivity extends AppCompatActivity {
             @Override
             public void onSuccess(String s) {
                 parserSecondPageData(s);
-                Log.i("Log",s);
             }
 
             @Override
@@ -72,7 +77,10 @@ public class EveryBargainPriceActivity extends AppCompatActivity {
     private void parserSecondPageData(String s) {
         Gson gson = new Gson();
         SalePriceBean salePriceBean = gson.fromJson(s, SalePriceBean.class);
-        Log.i("Log",salePriceBean.toString());
+        salePriceBeens.add(salePriceBean);
+        List<SalePriceBean.ResultBean.ListBean> listBeen = salePriceBean.getResult().getList();
+
+        Log.i("Log", salePriceBeens.toString());
 
     }
 
@@ -80,6 +88,7 @@ public class EveryBargainPriceActivity extends AppCompatActivity {
      * ListView的操作
      */
     private void aboutListView() {
-
+        adapter = new BargainPriceAdapter(salePriceBeens,this);
+        lvPrice.setAdapter(adapter);
     }
 }
