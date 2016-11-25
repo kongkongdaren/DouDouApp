@@ -56,6 +56,7 @@ public class TopicFragment extends Fragment {
     private ViewPager mVp;
     private List<Result.ResultBean.HotBean> hot;
     private int i;
+    private View squareen_topic_group;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -67,8 +68,7 @@ public class TopicFragment extends Fragment {
         // 3、关于小圆点的操作
         //aboutLittleDots();
 
-        //准备数据源
-        DownloadData();
+
         super.onCreate(savedInstanceState);
     }
 
@@ -78,11 +78,15 @@ public class TopicFragment extends Fragment {
             Bundle savedInstanceState) {
 
         if(i==0){
+
+            //准备数据源
+            DownloadData();
+
             //填充布局文件squareen_fragment
             view = inflater.inflate(R.layout.squareen_fragment, null);
             mLv = (ListView) view.findViewById(R.id.lv_sq_id);
 
-            View inflate = inflater.inflate(R.layout.squareen_topic_image_viewpager, null);
+            View inflate = View.inflate(getContext(),R.layout.squareen_topic_image_viewpager, null);
             mLl = (LinearLayout) inflate.findViewById(R.id.ll_container_id);
             mVp = (ViewPager) inflate.findViewById(R.id.vp_id);
 
@@ -94,22 +98,20 @@ public class TopicFragment extends Fragment {
 
 
             //添加实时热点
-            View squareen_real_time = inflater.inflate(R.layout.squareen_real_time, null);
+            View squareen_real_time = View.inflate(getContext(),R.layout.squareen_real_time, null);
             mLv.addHeaderView(squareen_real_time);
 
             //添加分割线
-            View squareen_view = inflater.inflate(R.layout.squareen_view, null);
+            View squareen_view = View.inflate(getContext(),R.layout.squareen_view, null);
             mLv.addFooterView(squareen_view);
 
             //添加话题小组
-            View squareen_topic_group = inflater.inflate(R.layout.squareen_topic_group,null);
+            squareen_topic_group = View.inflate(getContext(),R.layout.squareen_topic_group,null);
             mLv.addFooterView(squareen_topic_group);
-
-
 
             for(int i=0;i<groupBeans.size();i++){
                 //填充控件
-                View squareen_topic_group_item = inflater.inflate(R.layout.squareen_topic_group_item, null);
+                View squareen_topic_group_item = View.inflate(getContext(),R.layout.squareen_topic_group_item, null);
                 mLv.addFooterView(squareen_topic_group_item);
                 ImageView topic_group_item_image_id =(ImageView)squareen_topic_group_item.findViewById(R.id.topic_group_item_image_id);
                 TextView tv_Name_id= (TextView) squareen_topic_group_item.findViewById(R.id.tv_Name_id);
