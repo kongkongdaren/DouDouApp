@@ -157,6 +157,7 @@ public class TopicFragment extends Fragment {
 
         groupBeans.addAll(result1.getResult().getGroup());//向ListView中添加数据源
 
+        Log.i("log",groupBeans.toString());
         hot = result1.getResult().getHot();
 
         ad.addAll(result1.getResult().getAd());
