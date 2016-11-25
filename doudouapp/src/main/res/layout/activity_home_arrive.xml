@@ -10,10 +10,54 @@
                 android:orientation="vertical"
     >
 
+
+    <!--android:id="@+id/enter_floating_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentRight="true"
+    android:layout_marginBottom="40dip"
+    android:layout_marginRight="10dip"
+    android:clickable="true"
+    app:background="#00FF00"
+    app:backgroundTint="#00FF00"
+    app:rippleColor="@android:color/red"
+    app:fabSize="normal"
+    android:src="@drawable/ic_done"-->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/flaction_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:alpha="0.6"
+            android:src="@mipmap/btn_header_shoppingcart_white"
+            app:backgroundTint="@color/v638c03"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/circular_bead_shape"
+            android:gravity="center"
+            android:text="2"
+            android:textColor="@color/background_floating_material_light"
+            android:textSize="10dp"
+            />
+    </FrameLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -120,47 +164,6 @@
                 android:layout_centerInParent="true"/>
         </RelativeLayout>
     </LinearLayout>
-
-
-    <!--android:id="@+id/enter_floating_button"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:layout_alignParentRight="true"
-    android:layout_marginBottom="40dip"
-    android:layout_marginRight="10dip"
-    android:clickable="true"
-    app:background="#00FF00"
-    app:backgroundTint="#00FF00"
-    app:rippleColor="@android:color/red"
-    app:fabSize="normal"
-    android:src="@drawable/ic_done"-->
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/flaction_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:alpha="0.6"
-            android:src="@mipmap/btn_header_shoppingcart_white"
-            app:backgroundTint="@color/v638c03"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/circular_bead_shape"
-            android:gravity="center"
-            android:text="2"
-            android:textColor="@color/background_floating_material_light"
-            android:textSize="10dp"
-            />
-    </FrameLayout>
 
 
 </RelativeLayout>
