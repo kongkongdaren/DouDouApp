@@ -52,8 +52,11 @@ public class LookVideoActivity extends AppCompatActivity {
     private ImageView ivAll;
     private ViewPager vpVideo;
     @ViewInject(R.id.ll_container_video_id)
-    private ListView lvVideo;
     private LinearLayout llContainer;
+    //下面有问题
+    @ViewInject(R.id.lv_video)
+    private ListView lvVideo;
+
     private List<VideoPagerFragment> videoPager;
     private int index ;
     private Handler handler;
@@ -69,6 +72,7 @@ public class LookVideoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lookvideo_activity);
         x.view().inject(this);
+
         hotView = View.inflate(this, R.layout.hot_video, null);
         viewPager = View.inflate(this, R.layout.hot_viewpager, null);
         lvVideo.addHeaderView(viewPager);
@@ -79,8 +83,9 @@ public class LookVideoActivity extends AppCompatActivity {
                 finish();
             }
         });
-        downLoadVedioData();
         initView();
+        downLoadVedioData();
+
     }
 //界面实例的获取
     private void initView() {
