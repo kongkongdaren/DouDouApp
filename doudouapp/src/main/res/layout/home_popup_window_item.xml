@@ -2,15 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-              android:background="@color/actionbar_bg_color"
               android:orientation="vertical">
 
     <TextView
         android:id="@+id/tv_popup_item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="5dp"
+        android:padding="10dp"
         android:gravity="center_vertical"
         android:textColor="@color/background_floating_material_dark"
         android:textSize="16dp"
@@ -18,7 +18,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="0.5dp"
         android:layout_marginTop="5dp"
-        android:background="@color/material_grey_600"/>
+        android:background="@color/switch_thumb_normal_material_dark"/>
 </LinearLayout>

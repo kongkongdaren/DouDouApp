@@ -43,4 +43,7 @@ public class PopupWindowsItem extends LinearLayout {
     public void setTitle(String title) {
         textView.setText(title);
     }
+    public String getTitle() {
+       return textView.getText().toString();
+    }
 }
