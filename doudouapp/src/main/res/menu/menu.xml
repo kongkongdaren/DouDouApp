@@ -1,16 +1,16 @@
-<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_settings"
-        android:orderInCategory="1"
-        android:title="测试1"/>
+        android:title="分享"
+        android:id="@+id/it_share_id"
+        android:icon="@mipmap/btn_header_share_white"
+        app:showAsAction="always"
+        />
     <item
-        android:id="@+id/menu_about"
-        android:orderInCategory="2"
-        android:title="测试2"/>
-    <item
-        android:id="@+id/menu_quit"
-        android:orderInCategory="3"
-        android:title="测试3"/>
-    
+        android:title="购物车"
+        android:id="@+id/it_shopping_cart"
+        android:icon="@mipmap/btn_header_shoppingcart_white"
+        app:showAsAction="always"
+        />
 </menu>

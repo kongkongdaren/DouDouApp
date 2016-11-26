@@ -29,13 +29,13 @@ import java.util.List;
  */
 public class CateListAdapter extends HomeCustomBaseAdapter<ListBean> {
 
-public CateListAdapter(List<ListBean> lists, Context context) {
+    public CateListAdapter(List<ListBean> lists, Context context) {
         super(lists, context);
-        }
+    }
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-      ListBean strollShopping = getItem(position);
+        ListBean strollShopping = getItem(position);
         ViewHolder vh = null;
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.scroll_shopping_list_item, null);
@@ -55,6 +55,7 @@ public CateListAdapter(List<ListBean> lists, Context context) {
         vh.dealPrice.setText(strollShopping.getDealPrice());
         vh.price.setText(strollShopping.getPrice());
         vh.price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);//添加删除线
+        //购买
         vh.openUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
