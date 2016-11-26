@@ -14,13 +14,15 @@
         android:id="@+id/tv_list_title"
         style="@style/listphoto"
         android:layout_marginTop="10dp"
+        android:textColor="@color/result_view"
         android:gravity="center_vertical"
         android:textSize="20sp"
         />
     <TextView
         android:id="@+id/tv_list_content"
         style="@style/listphoto"
-        android:layout_marginTop="20dp"
+        android:textColor="@color/half_black"
+        android:layout_marginTop="10dp"
         android:textSize="15sp"
        />
 

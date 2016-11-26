@@ -30,14 +30,16 @@
     <TextView
         android:id="@+id/tv_list_circle_title"
         style="@style/circlephotostyle"
+        android:textColor="@color/result_view"
         android:layout_marginBottom="50dp"
         android:textSize="20sp"
         />
     <TextView
         android:id="@+id/tv_list_circle_content"
         style="@style/circlephotostyle"
+        android:textColor="@color/half_black"
         android:textSize="15sp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
 
         />
 </FrameLayout>
