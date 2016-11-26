@@ -9,16 +9,18 @@
         android:orientation="horizontal">
         <ImageView
             android:id="@+id/iv_plus"
-            android:layout_width="0dp"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
             android:src="@mipmap/icon_publish"
             />
+
         <EditText
             android:id="@+id/et_search"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="5"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_weight="1"
             android:hint="@string/hinttext"
             android:drawableLeft="@mipmap/search_suggest"
             android:drawablePadding="2dp"
@@ -27,9 +29,8 @@
             />
         <ImageView
             android:id="@+id/iv_inform"
-            android:layout_width="0dp"
+            android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.5"
             android:src="@mipmap/icon_index_message"/>
     </LinearLayout>
     <FrameLayout
