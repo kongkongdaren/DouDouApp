@@ -28,11 +28,15 @@ public class ProductCommentActivity extends AppCompatActivity {
     private ImageView ivKitChenBack;
     @ViewInject(R.id.lv_comment)
     private ListView lvComment;
+    private String goodsid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_comment);
         x.view().inject(this);
+        Bundle bundle = this.getIntent().getExtras();
+        goodsid = bundle.getString("goodsid");
         ivKitChenBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,7 +52,7 @@ public class ProductCommentActivity extends AppCompatActivity {
         params.addBodyParameter("limit", "20");
         params.addBodyParameter("sign", "");
         params.addBodyParameter("uid", "0");
-        params.addBodyParameter("id", "5549");
+        params.addBodyParameter("id", goodsid);
         params.addBodyParameter("rid", "");
         params.addBodyParameter("offset", "0");
         params.addBodyParameter("type", "1");
@@ -57,7 +61,6 @@ public class ProductCommentActivity extends AppCompatActivity {
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String s) {
-                Log.i("Log",s);
                 parserSecondPageData(s);
             }
 

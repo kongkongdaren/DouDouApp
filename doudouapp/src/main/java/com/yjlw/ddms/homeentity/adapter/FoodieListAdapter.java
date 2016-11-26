@@ -3,6 +3,7 @@ package com.yjlw.ddms.homeentity.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +41,7 @@ public class FoodieListAdapter extends HomeCustomBaseAdapter<ListBean> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-        ListBean listBeans =lists.get(position);;
+        final ListBean listBeans =lists.get(position);;
         ViewHolder vh = null;
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.home_foodile_item, null);
@@ -85,7 +86,11 @@ public class FoodieListAdapter extends HomeCustomBaseAdapter<ListBean> {
         vh.cmtCount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context,ProductCommentActivity.class));
+                Intent intent = new Intent(context,ProductCommentActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("goodsid",listBeans.getGoodsId()+"");
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
         vh.price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);//添加删除线
