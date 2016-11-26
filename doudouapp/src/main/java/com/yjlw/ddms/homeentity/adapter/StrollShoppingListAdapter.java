@@ -3,6 +3,7 @@ package com.yjlw.ddms.homeentity.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -35,7 +36,7 @@ public StrollShoppingListAdapter(List<ListBean> lists, Context context) {
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-      ListBean strollShopping = getItem(position);
+      final ListBean strollShopping = getItem(position);
         ViewHolder vh = null;
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.scroll_shopping_list_item, null);
@@ -59,7 +60,12 @@ public StrollShoppingListAdapter(List<ListBean> lists, Context context) {
         vh.openUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, BuyProductActivity.class));
+                Intent intent = new Intent(context, BuyProductActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("GoodsId", strollShopping.getGoodsId()+"");
+
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
         return convertView;

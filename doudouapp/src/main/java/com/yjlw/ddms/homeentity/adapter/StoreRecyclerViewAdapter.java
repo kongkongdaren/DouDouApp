@@ -1,5 +1,6 @@
 package com.yjlw.ddms.homeentity.adapter;
 
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,6 +51,7 @@ public class StoreRecyclerViewAdapter extends RecyclerView.Adapter<StoreRecycler
         x.image().bind(viewHolder.coverUrl, listBean.getCoverUrl());
         viewHolder.title.setText(listBean.getTitle());
         viewHolder.price.setText(listBean.getPrice());
+        viewHolder.price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);//添加删除线
         viewHolder.dealPrice.setText(listBean.getDealPrice());
         if (listBean.getLabels().size()!=0) {
             viewHolder.labels0.setVisibility(View.VISIBLE);

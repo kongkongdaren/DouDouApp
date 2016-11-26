@@ -59,7 +59,7 @@
                 />
 
             <TextView
-                android:id="@+id/tv_stock"
+                android:id="@+id/tv_product_stock"
                 style="@style/shoopProductInfo"
                 android:text="100"
                 android:textColor="@color/add_address"
@@ -395,6 +395,7 @@
             />
 
         <TextView
+            android:id="@+id/tv_all_evaluate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

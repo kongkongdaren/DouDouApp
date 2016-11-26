@@ -25,6 +25,8 @@ import com.yjlw.ddms.utils.ToastUtils;
 import java.util.List;
 import org.xutils.x;
 
+import static com.baidu.platform.comapi.map.e.i;
+
 
 /**
  * Simple to Introduction
@@ -107,7 +109,12 @@ public class FoodieListAdapter extends HomeCustomBaseAdapter<ListBean> {
         vh.openUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, BuyProductActivity.class));
+                Intent intent = new Intent(context, BuyProductActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("GoodsId", listBeans.getGoodsId()+"");
+
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
         return convertView;
