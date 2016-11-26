@@ -233,7 +233,15 @@ public class Constant {
 
     params.addBodyParameter("offset", "0");
 */
-
+    /**
+     * 看视频
+     */
+    public static String LOOK_VIDEO="http://api.haodou.com/index.php?appid=2&appkey=" +
+            "9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1480143789395&vc=" +
+            "105&vn=6.1.15&loguid=10282642&deviceid=haodou864394010609719&uuid=" +
+            "4d026196b079f72c6ee96157c0c65d62&channel=anzhi_v6115&method=" +
+            "Info.getVideoUrl&virtual=&signmethod=md5&v=3&timestamp=1480143813&nonce" +
+            "=0.605375645801883&appsign=9465547bf0f4e564a4bfc724d6f07923";
 
     /**
      * 新手课堂
@@ -513,23 +521,6 @@ public class Constant {
       params.addBodyParameter("sign", "");
       params.addBodyParameter("uid", "0");
       */
-    //评价
-    public static  String PRODUCT_COMMENT="http://api.haodou.com/mall/index" +
-            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
-            "=1480147046498&vc=105&vn=6.1" +
-            ".15&loguid=0&deviceid=haodou864394010208983&uuid=9ea70fa9356586ff23fc31785f735cf1" +
-            "&channel=anzhi_v6115&method=cmt" +
-            ".list&virtual=&signmethod=md5&v=3&timestamp=1480147143&nonce=0" +
-            ".05361121587858819&appsign=24de23bef623b633a65b3f585663e7aa";
-
-  /*  params.addBodyParameter("limit", "20");
-    params.addBodyParameter("sign", "");
-    params.addBodyParameter("uid", "0");
-    params.addBodyParameter("id", "5549");
-    params.addBodyParameter("rid", "");
-    params.addBodyParameter("offset", "0");
-    params.addBodyParameter("type", "1");
-    params.addBodyParameter("cid", "");*/
     //家传秘制The family secret
     public static String SECOND_PAGE_THE_FAMILY_SECRET = "http://api.haodou.com/mall/index" +
             ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
