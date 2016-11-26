@@ -64,7 +64,7 @@ public class FoodieLikeActivity extends AppCompatActivity {
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String s) {
-                Log.i("Log", s);
+
                 parserSecondPageData(s);
             }
 
@@ -90,6 +90,6 @@ public class FoodieLikeActivity extends AppCompatActivity {
         FoodieLikeData foodieLikeData = gson.fromJson(s, FoodieLikeData.class);
         foodieLikes.addAll(foodieLikeData.getResult().getList());
         FoodieListAdapter adapter = new FoodieListAdapter(foodieLikes,this);
-//        lvPrice.setAdapter(adapter);
+        lvPrice.setAdapter(adapter);
     }
 }
