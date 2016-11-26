@@ -8,12 +8,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yjlw.ddms.R;
 
 
+import com.yjlw.ddms.homeentity.activity.BuyProductActivity;
 import com.yjlw.ddms.homeentity.activity.FoodieLikeActivity;
 import com.yjlw.ddms.homeentity.activity.ProductCommentActivity;
 import com.yjlw.ddms.homeentity.entity.FoodieLikeData.ResultBean.ListBean;
@@ -101,6 +103,13 @@ public class FoodieListAdapter extends HomeCustomBaseAdapter<ListBean> {
 
             }
         });
+        //添加到购物车
+        vh.openUrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context, BuyProductActivity.class));
+            }
+        });
         return convertView;
     }
 
@@ -124,6 +133,8 @@ public class FoodieListAdapter extends HomeCustomBaseAdapter<ListBean> {
 
         vh.lablels1 = (TextView) convertView.findViewById(R.id.tv_labels_1);
         vh.lablels0 = (TextView) convertView.findViewById(R.id.tv_labels_0);
+        vh.openUrl= (ImageButton) convertView.findViewById(R.id.btn_openurl);
+
     }
 
     class ViewHolder {
@@ -142,5 +153,7 @@ public class FoodieListAdapter extends HomeCustomBaseAdapter<ListBean> {
         TextView price;//标价
         TextView lablels0;//包邮
         TextView lablels1;//包邮
+        ImageButton openUrl;//开始购买
+//
     }
 }

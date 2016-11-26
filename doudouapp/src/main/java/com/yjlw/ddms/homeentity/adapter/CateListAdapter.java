@@ -1,6 +1,7 @@
 package com.yjlw.ddms.homeentity.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.fristentity.views.MySelfCircleView;
+import com.yjlw.ddms.homeentity.activity.BuyProductActivity;
 import com.yjlw.ddms.homeentity.entity.CateData.ResultBean.ListBean;
 
 
@@ -53,6 +55,12 @@ public CateListAdapter(List<ListBean> lists, Context context) {
         vh.dealPrice.setText(strollShopping.getDealPrice());
         vh.price.setText(strollShopping.getPrice());
         vh.price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);//添加删除线
+        vh.openUrl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context, BuyProductActivity.class));
+            }
+        });
         return convertView;
     }
 

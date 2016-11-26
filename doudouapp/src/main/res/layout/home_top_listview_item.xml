@@ -86,6 +86,7 @@
                     android:textColor="@color/common_green"/>
 
                 <TextView
+                    android:id="@+id/tv_begin_buy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
