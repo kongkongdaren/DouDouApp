@@ -13,13 +13,12 @@ import com.yjlw.ddms.R;
 
 
 import com.yjlw.ddms.homeentity.entity.FoodieLikeData.ResultBean.ListBean;
+import com.yjlw.ddms.utils.ToastUtils;
 
-import org.greenrobot.greendao.annotation.Id;
-import org.xutils.x;
 
 import java.util.List;
+import org.xutils.x;
 
-import static android.icu.lang.UCharacter.GraphemeClusterBreak.V;
 
 /**
  * Simple to Introduction
@@ -79,7 +78,14 @@ public class FoodieListAdapter extends HomeCustomBaseAdapter<ListBean> {
         vh.cmtCount.setText(listBeans.getCmtCount() + "");
         vh.dealPrice.setText(listBeans.getDealPrice());
         vh.price.setText(listBeans.getPrice());
+        vh.likeCount.setText(listBeans.getLikeCount()+"");
         vh.price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);//添加删除线
+        vh.ivClick.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ToastUtils.showToast(context,"点赞了");
+            }
+        });
         return convertView;
     }
 

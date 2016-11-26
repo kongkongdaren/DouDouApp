@@ -61,6 +61,7 @@ public class FoodieLikeActivity extends AppCompatActivity {
         params.addBodyParameter("offset", "0");
         params.addBodyParameter("sign", "");
         params.addBodyParameter("uid", "0");
+
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String s) {
