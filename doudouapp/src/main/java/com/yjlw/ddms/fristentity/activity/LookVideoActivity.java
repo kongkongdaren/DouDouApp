@@ -130,6 +130,8 @@ public class LookVideoActivity extends AppCompatActivity {
     private HomeTitleItemView htivInterest;
     @ViewInject(R.id.lv_interest)
     private ListView lvInterest;
+    private List<VideoData.ResultBean.HotrankBean> hotRank;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -187,7 +189,7 @@ public class LookVideoActivity extends AppCompatActivity {
         aboutLittleDots();
         // 使用Handler技术实现广告图片的循环播放
         circleShowPic();
-        List<VideoData.ResultBean.HotrankBean> hotRank = videoData.getResult().getHotrank();
+        hotRank = videoData.getResult().getHotrank();
         htivHot.setIvResource(R.mipmap.ic_main_logo);
         htivHot.setTitle("热门排行总榜");
         htivHot.setOnClickListener(new View.OnClickListener() {
@@ -200,8 +202,18 @@ public class LookVideoActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        Picasso.with(this).load(hotRank.get(0).getInfo().getCover()).placeholder(R.mipmap.default_high).into(ivHotPhoto);
+      Picasso.with(this).load(hotRank.get(0).getInfo().getCover()).placeholder(R.mipmap.default_high).into(ivHotPhoto);
         Picasso.with(this).load(hotRank.get(0).getInfo().getUserInfo().getAvatar()).placeholder(R.mipmap.default_high).into(ivHotCirclePhoto);
+        ivHotPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(LookVideoActivity.this,VideoActiviry.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("img",hotRank.get(0).getInfo().getCover());
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
         hotUser.setText(hotRank.get(0).getInfo().getUserInfo().getUserName());
         hotName.setText(hotRank.get(0).getInfo().getTitle());
         hotContent.setText(hotRank.get(0).getInfo().getIntro());
