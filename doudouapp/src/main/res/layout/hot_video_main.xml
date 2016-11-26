@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/gray"
+        android:padding="10dp">
+        <ImageView
+            android:id="@+id/iv_hotvideo_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/btn_header_back" />
+        <ImageView
+            android:id="@+id/iv_hotvideo_collect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/btn_header_share_gray_sec"/>
+        <ImageView
+            android:id="@+id/iv_hotvideo_share"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:layout_toLeftOf="@+id/iv_hotvideo_collect"
+            android:layout_marginRight="20dp"
+            android:src="@drawable/share_selector"/>
+    </RelativeLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="230dp">
+        <io.vov.vitamio.widget.VideoView
+            android:id="@+id/vv_hot"
+            android:layout_width="match_parent"
+            android:layout_height="230dp" />
+        <ImageView
+            android:id="@+id/hotideo_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="fitXY"
+            android:src="@mipmap/ic_main_logo"
+            />
+
+        <ImageView
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="30dp"
+            android:id="@+id/zan_id"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@mipmap/btn_zan_small_on"
+            android:scaleType="fitXY" />
+
+        <TextView
+            android:layout_gravity="bottom|right"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/video_tv_zan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="321"
+            android:textColor="@color/common_white" />
+
+        <ImageView
+            android:id="@+id/video_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/btn_video_play_small" />
+    </FrameLayout>
+</LinearLayout>

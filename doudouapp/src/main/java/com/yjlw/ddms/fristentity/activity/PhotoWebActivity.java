@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
 
 import com.yjlw.ddms.R;
@@ -57,6 +59,8 @@ public class PhotoWebActivity extends AppCompatActivity {
         settings.setTextSize(WebSettings.TextSize.NORMAL);
         settings.setUseWideViewPort(true);
         settings.setLoadWithOverviewMode(true);
+        web.setWebChromeClient(new WebChromeClient());// 支持运行特殊的javascript（例如：alert()）
+        web.setWebViewClient(new WebViewClient());//
         web.loadUrl(url);
     }
 }
