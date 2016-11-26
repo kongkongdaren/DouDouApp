@@ -228,6 +228,27 @@ public class FoodieLikeData {
                 this.Labels = Labels;
             }
 
+            @Override
+            public String toString() {
+                return "ListBean{" +
+                        "CartNum=" + CartNum +
+                        ", CmtCount=" + CmtCount +
+                        ", CoverUrl='" + CoverUrl + '\'' +
+                        ", CreateTime='" + CreateTime + '\'' +
+                        ", DealPrice='" + DealPrice + '\'' +
+                        ", GoodsId=" + GoodsId +
+                        ", IsLike=" + IsLike +
+                        ", LikeCount=" + LikeCount +
+                        ", OpenUrl='" + OpenUrl + '\'' +
+                        ", Price='" + Price + '\'' +
+                        ", StoreAddress='" + StoreAddress + '\'' +
+                        ", SubTitle='" + SubTitle + '\'' +
+                        ", Title='" + Title + '\'' +
+                        ", Comments=" + Comments +
+                        ", Labels=" + Labels +
+                        '}';
+            }
+
             public static class CommentsBean {
                 /**
                  * Avatar : http://avatar1.hoto.cn/27/f9/9763111_185.jpg?v=1
@@ -292,7 +313,38 @@ public class FoodieLikeData {
                 public void setUserName(String UserName) {
                     this.UserName = UserName;
                 }
+
+                @Override
+                public String toString() {
+                    return "CommentsBean{" +
+                            "Avatar='" + Avatar + '\'' +
+                            ", Cid='" + Cid + '\'' +
+                            ", Content='" + Content + '\'' +
+                            ", CreateTime='" + CreateTime + '\'' +
+                            ", UserId=" + UserId +
+                            ", UserName='" + UserName + '\'' +
+                            '}';
+                }
             }
         }
+
+
+        @Override
+        public String toString() {
+            return "ResultBean{" +
+                    "CartTotalNum=" + CartTotalNum +
+                    ", count=" + count +
+                    ", ad=" + ad +
+                    ", list=" + list +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "FoodieLikeData{" +
+                "result=" + result +
+                ", status=" + status +
+                '}';
     }
 }

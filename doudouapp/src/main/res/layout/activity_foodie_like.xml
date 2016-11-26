@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="18sp"
             android:gravity="center"
+            android:text="吃货最爱"
             android:textSize="16sp"/>
     </LinearLayout>
 
