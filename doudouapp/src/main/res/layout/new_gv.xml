@@ -29,12 +29,10 @@
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <GridView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/new_gv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="2"
-        android:columnWidth="150dp"
         />
     <ProgressBar
         android:id="@+id/new_pb"

@@ -1,7 +1,8 @@
 package com.yjlw.ddms.fristentity.adapter;
 
 import android.content.Context;
-import android.util.Log;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -9,7 +10,6 @@ import android.widget.TextView;
 
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.fristentity.entity.NewData;
-import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
 
 import java.util.List;
 
@@ -25,39 +25,51 @@ import it.sephiroth.android.library.picasso.Picasso;
  * @version : 1.0
  */
 
-public class NewDataAdapter extends HomeCustomBaseAdapter<NewData.ResultBean.ListBean> {
+    public class NewDataAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+       List<NewData.ResultBean.ListBean> lists;
+       private Context context;
+
     public NewDataAdapter(List<NewData.ResultBean.ListBean> lists, Context context) {
-        super(lists, context);
+        this.lists = lists;
+        this.context = context;
+    }
+
+
+    @Override
+    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.newclass_item,parent,false));
+
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup viewGroup) {
-        ViewHolder vh=null;
-        if(convertView==null){
-            vh=new ViewHolder();
-            convertView=View.inflate(context, R.layout.newclass_item,null);
-            vh.ivNewPhoto= (ImageView) convertView.findViewById(R.id.iv_new_rank);
-            vh.tvCount= (TextView) convertView.findViewById(R.id.tv_count);
-            vh.tvNewTitle= (TextView) convertView.findViewById(R.id.hot_new_title);
-            vh.tvNewZan= (TextView) convertView.findViewById(R.id.hot_new_zan);
-            vh.tvNewComment= (TextView) convertView.findViewById(R.id.hot_new_comment);
-            convertView.setTag(vh);
-        }else{
-           vh= (ViewHolder) convertView.getTag();
-        }
-        Picasso.with(context).load(lists.get(position).getCover()).placeholder(R.mipmap.default_high).into(vh.ivNewPhoto);
-        vh.tvCount.setText(lists.get(position).getPlayCount()+"");
-        vh.tvNewTitle.setText(lists.get(position).getTitle());
-        vh.tvNewZan.setText(lists.get(position).getDiggCount()+"");
-        vh.tvNewComment.setText(lists.get(position).getCommentCount()+"");
-        Log.i("Log","评论数"+lists.get(0).getCommentCount()+"");
-        return convertView;
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        MyViewHolder mholder= (MyViewHolder) holder;
+        Picasso.with(context).load(lists.get(position).getCover()).placeholder(R.mipmap.default_high).into(mholder.ivNewPhoto);
+        mholder.tvCount.setText(lists.get(position).getPlayCount()+"");
+        mholder.tvNewTitle.setText(lists.get(position).getTitle());
+        mholder.tvNewZan.setText(lists.get(position).getDiggCount()+"");
+        mholder.tvNewComment.setText(lists.get(position).getCommentCount()+"");
+
     }
-    private final class ViewHolder{
-        private ImageView ivNewPhoto;
-        private TextView tvCount;
-        private TextView tvNewTitle;
-        private TextView tvNewZan;
-        private TextView tvNewComment;
+
+    @Override
+    public int getItemCount() {
+        return lists.size();
     }
 }
+      class  MyViewHolder extends RecyclerView.ViewHolder {
+          public ImageView ivNewPhoto;
+          public TextView tvCount;
+          public TextView tvNewTitle;
+          public TextView tvNewZan;
+          public TextView tvNewComment;
+
+         public MyViewHolder(View itemView) {
+             super(itemView);
+             ivNewPhoto= (ImageView) itemView.findViewById(R.id.iv_new_rank);
+             tvCount= (TextView) itemView.findViewById(R.id.tv_count);
+             tvNewTitle= (TextView) itemView.findViewById(R.id.hot_new_title);
+             tvNewZan= (TextView) itemView.findViewById(R.id.hot_new_zan);
+             tvNewComment= (TextView) itemView.findViewById(R.id.hot_new_comment);
+         }
+     }

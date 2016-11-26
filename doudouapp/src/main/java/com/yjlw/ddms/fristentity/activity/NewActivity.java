@@ -1,11 +1,13 @@
 package com.yjlw.ddms.fristentity.activity;
 
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -40,7 +42,7 @@ public class NewActivity extends AppCompatActivity {
     @ViewInject(R.id.tv_new_title)
     private TextView tvNewTitle;
     @ViewInject(R.id.new_gv)
-    private GridView newGv;
+    private RecyclerView newGv;
     @ViewInject(R.id.new_pb)
     private ProgressBar newPb;
     @Override
@@ -105,7 +107,32 @@ public class NewActivity extends AppCompatActivity {
     }
 
     private void aboutGridView(List<NewData.ResultBean.ListBean> newDataList) {
+        //初始化布局
+        newGv.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        //适配器
         NewDataAdapter adapter=new NewDataAdapter(newDataList,this);
         newGv.setAdapter(adapter);
+        //设置item之间的间隔
+        SpacesItemDecoration decoration=new SpacesItemDecoration(5);
+        newGv.addItemDecoration(decoration);
+
+    }
+    public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
+
+        private int space;
+
+        public SpacesItemDecoration(int space) {
+            this.space = space;
+        }
+
+        @Override
+        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
+            outRect.left = space;
+            outRect.right = space;
+            outRect.bottom = space;
+            if (parent.getChildAdapterPosition(view) == 0) {
+                outRect.top = space;
+            }
+        }
     }
 }
