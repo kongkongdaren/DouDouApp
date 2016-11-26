@@ -32,7 +32,6 @@
         android:gravity="center_vertical"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
-        android:text="@string/listtitle"
         android:textColor="@color/black"
         android:textSize="20sp"/>
     <RelativeLayout
@@ -53,7 +52,6 @@
             android:layout_toRightOf="@+id/mfcv_id"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
-            android:text="@string/meishi"
             android:textColor="@color/common_black"
              />
         <TextView
@@ -63,7 +61,6 @@
             android:layout_below="@+id/tv_list_user"
             android:layout_toRightOf="@+id/mfcv_id"
             android:layout_marginLeft="20dp"
-            android:text="@string/meishi"
             android:textColor="@color/half_black"
             />
     </RelativeLayout>
