@@ -443,7 +443,12 @@ public class Constant {
             "haodou864394010609719&uuid=4d026196b079f72c6ee96157c0c65d62&channel=anzhi_v6115&" +
             "method=Search.getCateList&virtual=&signmethod=md5&v=3&timestamp=1479807284&nonce" +
             "=0.43069921176733694&appsign=06e76e126a8252a7362cf1490f69a65d";
-
+    public static String LOOK_VIDEO="http://api.haodou.com/index.php?appid=2&appkey " +
+    "9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1480143789395&vc=" +
+            "105&vn=6.1.15&loguid=10282642&deviceid=haodou864394010609719&uuid=" +
+            "4d026196b079f72c6ee96157c0c65d62&channel=anzhi_v6115&method=" +
+            "Info.getVideoUrl&virtual=&signmethod=md5&v=3&timestamp=1480143813&nonce" +
+            "=0.605375645801883&appsign=9465547bf0f4e564a4bfc724d6f07923";
     //第二页
     public static String SECOND_PAGE = "http://api.haodou.com/mall/index" +
             ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
