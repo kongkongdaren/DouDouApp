@@ -1,6 +1,7 @@
 package com.yjlw.ddms.homeentity.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import com.yjlw.ddms.R;
 
 
+import com.yjlw.ddms.homeentity.activity.FoodieLikeActivity;
+import com.yjlw.ddms.homeentity.activity.ProductCommentActivity;
 import com.yjlw.ddms.homeentity.entity.FoodieLikeData.ResultBean.ListBean;
 import com.yjlw.ddms.utils.ToastUtils;
 
@@ -79,11 +82,18 @@ public class FoodieListAdapter extends HomeCustomBaseAdapter<ListBean> {
         vh.dealPrice.setText(listBeans.getDealPrice());
         vh.price.setText(listBeans.getPrice());
         vh.likeCount.setText(listBeans.getLikeCount()+"");
+        vh.cmtCount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context,ProductCommentActivity.class));
+            }
+        });
         vh.price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);//添加删除线
         vh.ivClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ToastUtils.showToast(context,"点赞了");
+
             }
         });
         return convertView;

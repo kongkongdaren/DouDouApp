@@ -90,13 +90,16 @@
         <!-- 美食研究所 -->
         <activity android:name=".homeentity.activity.CateActivity">
         </activity>
-        <!--吃货最爱-->
+        <!-- 吃货最爱 -->
         <activity android:name=".homeentity.activity.FoodieLikeActivity">
         </activity>
-        <!--热门排行榜-->
+        <!-- 热门排行榜 -->
         <activity android:name=".fristentity.activity.HotRankActivity"/>
-        <!--新手活动-->
+        <!-- 新手活动 -->
         <activity android:name=".fristentity.activity.NewActivity"/>
+        <!--产品评论-->
+        <activity android:name=".homeentity.activity.ProductCommentActivity">
+        </activity>
     </application>
 
 </manifest>

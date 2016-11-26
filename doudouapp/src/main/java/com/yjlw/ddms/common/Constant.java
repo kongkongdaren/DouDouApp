@@ -1,6 +1,8 @@
 package com.yjlw.ddms.common;
 
+import static android.R.attr.id;
 import static android.R.attr.offset;
+import static android.R.attr.type;
 
 /**
  * Simple to Introduction
@@ -514,6 +516,23 @@ public class Constant {
       params.addBodyParameter("sign", "");
       params.addBodyParameter("uid", "0");
       */
+    //商品评价
+    public static String PRODUCT_COMMENT ="http://api.haodou.com/mall/index" +
+            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
+            "=1480147046498&vc=105&vn=6.1" +
+            ".15&loguid=0&deviceid=haodou864394010208983&uuid=9ea70fa9356586ff23fc31785f735cf1" +
+            "&channel=anzhi_v6115&method=cmt" +
+            ".list&virtual=&signmethod=md5&v=3&timestamp=1480147223&nonce=0" +
+            ".9686956735929343&appsign=5f58419ff62d32bd2ee6521765a5f196";
+    /*params.addBodyParameter("limit", "20");
+    params.addBodyParameter("sign", "");
+    params.addBodyParameter("uid", "0");
+    params.addBodyParameter("id", "2786");
+    params.addBodyParameter("rid", "");
+    params.addBodyParameter("offset", "0");
+    params.addBodyParameter("type", "1");
+    params.addBodyParameter("cid", "");*/
+
     //家传秘制The family secret
     public static String SECOND_PAGE_THE_FAMILY_SECRET = "http://api.haodou.com/mall/index" +
             ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
