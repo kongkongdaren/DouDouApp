@@ -242,7 +242,6 @@ public class Constant {
             "4d026196b079f72c6ee96157c0c65d62&channel=anzhi_v6115&method=" +
             "Info.getVideoUrl&virtual=&signmethod=md5&v=3&timestamp=1480143813&nonce" +
             "=0.605375645801883&appsign=9465547bf0f4e564a4bfc724d6f07923";
-
     /**
      * 新手课堂
      */
