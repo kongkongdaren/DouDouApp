@@ -1,6 +1,7 @@
 package com.yjlw.ddms.homeentity.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.yjlw.ddms.R;
 
+import com.yjlw.ddms.homeentity.activity.BuyProductActivity;
 import com.yjlw.ddms.homeentity.entity.SalePriceBean.ResultBean.ListBean;
 
 import org.xutils.x;
@@ -47,6 +49,12 @@ public class BargainPriceAdapter extends HomeCustomBaseAdapter<ListBean> {
         vh.dealPrice.setText(item.getDealPrice());
         vh.price.setText(item.getPrice());
         vh.price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);//添加删除线
+        vh.buyProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context, BuyProductActivity.class));
+            }
+        });
         return convertView;
     }
 
@@ -57,6 +65,8 @@ public class BargainPriceAdapter extends HomeCustomBaseAdapter<ListBean> {
         vh.labels= (TextView) convertView.findViewById(R.id.tv_labels);
         vh.dealPrice = (TextView) convertView.findViewById(R.id.tv_deal_price);
         vh.stock = (TextView) convertView.findViewById(R.id.tv_stock);
+        vh.buyProduct= (TextView) convertView.findViewById(R.id.tv_begin_buy);
+
 
     }
 
@@ -67,5 +77,6 @@ public class BargainPriceAdapter extends HomeCustomBaseAdapter<ListBean> {
         TextView dealPrice;//价钱
         TextView price;//标价
         TextView stock;//剩余
+        TextView buyProduct;
     }
 }
