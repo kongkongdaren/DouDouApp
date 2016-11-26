@@ -302,6 +302,7 @@ public class FirstFragment extends Fragment {
         //适配器
         adapter = new MyFirstPagerAdapter(listBeen, getContext());
          rlv.setAdapter(adapter);
+
          rlv.setOnScrollListener(new MyOnScrollListener());
     }
     private final class MyOnScrollListener implements AbsListView.OnScrollListener{
