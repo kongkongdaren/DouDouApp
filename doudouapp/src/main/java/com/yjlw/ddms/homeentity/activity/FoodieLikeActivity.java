@@ -14,6 +14,7 @@ import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.adapter.FoodieListAdapter;
 import com.yjlw.ddms.homeentity.entity.FoodieLikeData;
+import com.yjlw.ddms.utils.ToastUtils;
 
 
 import org.xutils.common.Callback;
@@ -33,7 +34,7 @@ public class FoodieLikeActivity extends AppCompatActivity {
     private ListView lvPrice;
     @ViewInject(R.id.iv_home_back)
     private ImageView ivKitChenBack;
-    private List<FoodieLikeData.ResultBean.ListBean> foodieLikes=new LinkedList<>();
+    private List<FoodieLikeData.ResultBean.ListBean> foodieLikes = new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,13 +93,8 @@ public class FoodieLikeActivity extends AppCompatActivity {
         Gson gson = new Gson();
         FoodieLikeData foodieLikeData = gson.fromJson(s, FoodieLikeData.class);
         foodieLikes.addAll(foodieLikeData.getResult().getList());
-        FoodieListAdapter adapter = new FoodieListAdapter(foodieLikes,this);
+        FoodieListAdapter adapter = new FoodieListAdapter(foodieLikes, this);
         lvPrice.setAdapter(adapter);
-        lvPrice.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-            }
-        });
     }
 }
