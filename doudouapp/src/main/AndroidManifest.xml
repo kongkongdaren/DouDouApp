@@ -99,6 +99,9 @@
         <activity android:name=".fristentity.activity.NewActivity"/>
         <!--视频播放-->
         <activity android:name=".fristentity.activity.VideoActiviry"/>
+        <!--产品评论-->
+        <activity android:name=".homeentity.activity.ProductCommentActivity">
+        </activity>
     </application>
 
 </manifest>

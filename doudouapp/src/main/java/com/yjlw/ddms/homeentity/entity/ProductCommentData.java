@@ -30,6 +30,7 @@ public class ProductCommentData {
         this.result = result;
     }
 
+
     public static class ResultBean {
 
 
@@ -51,6 +52,8 @@ public class ProductCommentData {
         public void setList(List<ListBean> list) {
             this.list = list;
         }
+
+
 
         public static class ListBean {
             /**
@@ -166,6 +169,39 @@ public class ProductCommentData {
             public void setGender(int Gender) {
                 this.Gender = Gender;
             }
+
+            @Override
+            public String toString() {
+                return "ListBean{" +
+                        "Cid='" + Cid + '\'' +
+                        ", UserId=" + UserId +
+                        ", Avatar='" + Avatar + '\'' +
+                        ", UserName='" + UserName + '\'' +
+                        ", AtUserId='" + AtUserId + '\'' +
+                        ", AtUserName='" + AtUserName + '\'' +
+                        ", Content='" + Content + '\'' +
+                        ", AtContent='" + AtContent + '\'' +
+                        ", CreateTime='" + CreateTime + '\'' +
+                        ", Mark='" + Mark + '\'' +
+                        ", Gender=" + Gender +
+                        '}';
+            }
         }
+
+        @Override
+        public String toString() {
+            return "ResultBean{" +
+                    "count=" + count +
+                    ", list=" + list +
+                    '}';
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "ProductCommentData{" +
+                "status=" + status +
+                ", result=" + result +
+                '}';
     }
 }
