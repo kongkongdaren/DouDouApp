@@ -13,6 +13,7 @@
             android:layout_height="match_parent"
             android:src="@mipmap/icon_publish"
             />
+
         <EditText
             android:id="@+id/et_search"
             android:layout_width="0dp"
