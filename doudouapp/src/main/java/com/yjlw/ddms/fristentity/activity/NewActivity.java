@@ -133,6 +133,7 @@ public class NewActivity extends AppCompatActivity {
             if (parent.getChildAdapterPosition(view) == 0) {
                 outRect.top = space;
             }
+
         }
     }
 }
