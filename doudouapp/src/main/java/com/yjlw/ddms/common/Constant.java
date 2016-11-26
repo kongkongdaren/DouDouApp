@@ -243,6 +243,7 @@ public class Constant {
             "Info.getVideoUrl&virtual=&signmethod=md5&v=3&timestamp=1480143813&nonce" +
             "=0.605375645801883&appsign=9465547bf0f4e564a4bfc724d6f07923";
 
+
     /**
      * 新手课堂
      */
