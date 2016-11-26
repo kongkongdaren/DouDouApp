@@ -41,14 +41,6 @@ public class MineFragment extends Fragment {
         initWidget();
         return view;
     }
-//    public void LoginAction(View v){
-//        switch (view.getId()) {
-//            case R.id.btn_login_id:
-//                Intent intent = new Intent(getContext(), loginFragment.class);
-//                startActivity(intent);
-//                break;
-//        }
-//    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
