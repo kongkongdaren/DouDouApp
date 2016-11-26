@@ -1,7 +1,5 @@
 package com.yjlw.ddms.common;
 
-import static android.R.attr.offset;
-
 /**
  * Simple to Introduction
  *
@@ -235,6 +233,15 @@ public class Constant {
 
     params.addBodyParameter("offset", "0");
 */
+    /**
+     * 看视频
+     */
+    public static String LOOK_VIDEO="http://api.haodou.com/index.php?appid=2&appkey=" +
+            "9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1480143789395&vc=" +
+            "105&vn=6.1.15&loguid=10282642&deviceid=haodou864394010609719&uuid=" +
+            "4d026196b079f72c6ee96157c0c65d62&channel=anzhi_v6115&method=" +
+            "Info.getVideoUrl&virtual=&signmethod=md5&v=3&timestamp=1480143813&nonce" +
+            "=0.605375645801883&appsign=9465547bf0f4e564a4bfc724d6f07923";
 
     /**
      * 新手课堂
