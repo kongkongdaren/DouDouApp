@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
+import com.yjlw.ddms.homeentity.adapter.ProductCommentAdapter;
 import com.yjlw.ddms.homeentity.entity.ProductCommentData;
 
 
@@ -24,6 +26,8 @@ import java.util.List;
 public class ProductCommentActivity extends AppCompatActivity {
     @ViewInject(R.id.iv_home_back)
     private ImageView ivKitChenBack;
+    @ViewInject(R.id.lv_comment)
+    private ListView lvComment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,9 +81,10 @@ public class ProductCommentActivity extends AppCompatActivity {
     private void parserSecondPageData(String s) {
         Gson gson = new Gson();
         ProductCommentData productCommentData = gson.fromJson(s, ProductCommentData.class);
-        List<ProductCommentData.ResultBean.ListBean> list = productCommentData.getResult()
+        List<ProductCommentData.ResultBean.ListBean> comments = productCommentData.getResult()
                 .getList();
-        Log.i("Log",list.toString());
+        ProductCommentAdapter adapter= new ProductCommentAdapter(comments,this);
+        lvComment.setAdapter(adapter);
     }
 
 }
