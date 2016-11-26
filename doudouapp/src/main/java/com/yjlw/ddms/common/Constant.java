@@ -236,7 +236,7 @@ public class Constant {
     /**
      * 看视频
      */
-    public static String LOOK_VIDEO="http://api.haodou.com/index.php?appid=2&appkey=" +
+    public static String LOOK_VIDEO = "http://api.haodou.com/index.php?appid=2&appkey=" +
             "9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1480143789395&vc=" +
             "105&vn=6.1.15&loguid=10282642&deviceid=haodou864394010609719&uuid=" +
             "4d026196b079f72c6ee96157c0c65d62&channel=anzhi_v6115&method=" +
@@ -521,13 +521,30 @@ public class Constant {
       params.addBodyParameter("uid", "0");
       */
     //评价
-    public static String PRODUCT_COMMENT="http://api.haodou.com/mall/index" +
+    public static String PRODUCT_COMMENT = "http://api.haodou.com/mall/index" +
             ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
             "=1480147046498&vc=105&vn=6.1" +
             ".15&loguid=0&deviceid=haodou864394010208983&uuid=9ea70fa9356586ff23fc31785f735cf1" +
             "&channel=anzhi_v6115&method=cmt" +
             ".list&virtual=&signmethod=md5&v=3&timestamp=1480147143&nonce=0" +
             ".05361121587858819&appsign=24de23bef623b633a65b3f585663e7aa\n";
+
+    //商品详情（购买商品界面数据）
+    public static String BUY_PRODUCT_INFO = "http://api.haodou.com/mall/index" +
+            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
+            "=1480166618904&vc=105&vn=6.1" +
+            ".15&loguid=0&deviceid=haodou864394010208983&uuid=9ea70fa9356586ff23fc31785f735cf1" +
+            "&channel=anzhi_v6115&method=goods" +
+            ".view&virtual=&signmethod=md5&v=3&timestamp=1480166626&nonce=0" +
+            ".15927841838024237&appsign=859d5104ba1164303040892bb70654cb";
+    /*
+    params.addBodyParameter("sign", "");
+           params.addBodyParameter("uid", "0");
+           params.addBodyParameter("Latitude", "38.945562");
+           params.addBodyParameter("Longitude", "100.45229");
+           params.addBodyParameter("GoodsId", "2786");
+
+    */
     //家传秘制The family secret
     public static String SECOND_PAGE_THE_FAMILY_SECRET = "http://api.haodou.com/mall/index" +
             ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
