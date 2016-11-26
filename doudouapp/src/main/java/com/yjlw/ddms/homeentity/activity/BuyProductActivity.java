@@ -3,6 +3,8 @@ package com.yjlw.ddms.homeentity.activity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -12,6 +14,7 @@ import android.widget.GridView;
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
+import com.yjlw.ddms.homeentity.adapter.StoreRecyclerViewAdapter;
 import com.yjlw.ddms.homeentity.entity.BuyProductInFosData;
 import com.yjlw.ddms.homeentity.entity.BuyProductInFosData.ResultBean.RelationShopListBean.ListBean;
 import org.xutils.common.Callback;
@@ -29,10 +32,11 @@ import java.util.List;
 public class BuyProductActivity extends AppCompatActivity {
     @ViewInject(R.id.toolbar)
     private Toolbar tooBar;
-    @ViewInject(R.id.gv_product_info)
-    private GridView gvProductStore;//店铺
+    @ViewInject(R.id.rv_product_info)
+    private RecyclerView rvProductStore;//店铺
     private ActionBar actionBar;
     private List<ListBean> shopLists=new LinkedList<>();
+    private StoreRecyclerViewAdapter recyclerViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,11 @@ public class BuyProductActivity extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         actionBar.setDisplayShowHomeEnabled(true);
         downLoadData();
+        abutRecyclerView();
+    }
+
+    private void abutRecyclerView() {
+
     }
 
     private void downLoadData() {
@@ -63,7 +72,7 @@ public class BuyProductActivity extends AppCompatActivity {
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String s) {
-                Log.i("Log", s);
+
                 parserSecondPageData(s);
             }
 
@@ -89,9 +98,11 @@ public class BuyProductActivity extends AppCompatActivity {
         BuyProductInFosData buyProductInFosData = gson.fromJson(s, BuyProductInFosData.class);
         List<BuyProductInFosData.ResultBean.ListBeanX> listBeanXes = buyProductInFosData.getResult()
                 .getList();//评论
-        shopLists = buyProductInFosData.getResult().getRelationShopList().getList();//店铺
-
-
+        shopLists.addAll(buyProductInFosData.getResult().getRelationShopList().getList());//店铺
+        Log.i("Log", shopLists.toString());
+        rvProductStore.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerViewAdapter = new StoreRecyclerViewAdapter(shopLists);
+        rvProductStore.setAdapter(recyclerViewAdapter);
     }
 
     @Override
