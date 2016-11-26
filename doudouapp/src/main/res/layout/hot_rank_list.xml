@@ -9,13 +9,14 @@
         android:background="@color/gray"
         android:padding="10dp">
     <ImageView
-        android:id="@+id/iv_back"
+        android:id="@+id/iv_rank_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:gravity="center_vertical"
         android:src="@mipmap/btn_header_back" />
     <TextView
+        android:id="@+id/tv_rank_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
