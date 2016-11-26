@@ -3,32 +3,32 @@
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="100dp">
     <com.yjlw.ddms.fristentity.views.HaoDouTitleCclickItem
-        android:paddingTop="10dp"
+        android:paddingTop="20dp"
         android:id="@+id/htc_poprecipe"
         android:layout_width="0dp"
         android:layout_height="90dp"
         android:layout_weight="1"/>
     <com.yjlw.ddms.fristentity.views.HaoDouTitleCclickItem
         android:id="@+id/htc_video"
-        android:paddingTop="10dp"
+        android:paddingTop="20dp"
         android:layout_width="0dp"
         android:layout_height="90dp"
         android:layout_weight="1"/>
     <com.yjlw.ddms.fristentity.views.HaoDouTitleCclickItem
         android:id="@+id/htc_kitchen"
-        android:paddingTop="10dp"
+        android:paddingTop="20dp"
         android:layout_width="0dp"
         android:layout_height="90dp"
         android:layout_weight="1"/>
     <com.yjlw.ddms.fristentity.views.HaoDouTitleCclickItem
         android:id="@+id/htc_hot_activity"
-        android:paddingTop="10dp"
+        android:paddingTop="20dp"
         android:layout_width="0dp"
         android:layout_height="90dp"
         android:layout_weight="1"/>
     <com.yjlw.ddms.fristentity.views.HaoDouTitleCclickItem
         android:id="@+id/htc_menu_classify"
-        android:paddingTop="10dp"
+        android:paddingTop="20dp"
         android:layout_width="0dp"
         android:layout_height="90dp"
         android:layout_weight="1" />
