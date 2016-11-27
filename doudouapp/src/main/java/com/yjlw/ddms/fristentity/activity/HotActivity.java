@@ -43,7 +43,6 @@ public class HotActivity extends AppCompatActivity {
     @ViewInject(R.id.pb_hot)
     private ProgressBar pb;
     private HotActivityAdapter adapter;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
