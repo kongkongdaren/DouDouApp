@@ -1,1 +1,2 @@
 include ':doudouapp', ':library', 'app', ':vitamio'
+include ':refreshlibrary'
