@@ -7,6 +7,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -84,6 +85,7 @@ public class FirstFragment extends Fragment {
     private ProgressBar pbContent;
     private MyFirstPagerAdapter adapter;
     private Handler handler;
+    private  SwipeRefreshLayout srf;
 
 
     @Override
@@ -106,7 +108,7 @@ public class FirstFragment extends Fragment {
         imageSelfView = inflate(getContext(), R.layout.bean_imageselfview, null);
 
         rlv.addHeaderView(imageSelfView);//给ListView添加图片布局
-
+        srf = (SwipeRefreshLayout) view.findViewById(R.id.srf_id);
 
         loadFirstPagerData();
         return this.view;
@@ -315,6 +317,8 @@ public class FirstFragment extends Fragment {
                      startActivity(intent);
              }
          });
+        MyOnRefreshListener listener=new MyOnRefreshListener();
+        srf.setOnRefreshListener(listener);
          rlv.setOnScrollListener(new MyOnScrollListener());
     }
     private final class MyOnScrollListener implements AbsListView.OnScrollListener{
@@ -331,7 +335,63 @@ public class FirstFragment extends Fragment {
             flg = firstVisibleItem + visibleItemCount == totalItemCount;
         }
     }
+private final class MyOnRefreshListener implements SwipeRefreshLayout.OnRefreshListener{
 
+    @Override
+    public void onRefresh() {
+        downloadRefreshData(listBeen);
+    }
+}
+    private void downloadRefreshData(final List<FirstPagerData.DataBean.ListBean> listBeen) {
+        String url = Constant.ONE_PAGE;
+        RequestParams params = new RequestParams(url);
+
+        params.addBodyParameter("_HOP_", "{\"sign\":\"ba4767a053ddfe6f66c3a265cc23251f\"," +
+                "\"action\":\"front.get_index\",\"current_time\":1479269055," +
+                "\"secret_id\":\"5722f877e4b0d4512e3fd872\",\"version\":\"1.0\"}");
+        params.addBodyParameter("appid", "2");
+        params.addBodyParameter("appkey", "9ef269eec4f7a9d07c73952d06b5413f");
+        params.addBodyParameter("channel", "anzhi_v6115");
+        params.addBodyParameter("deviceid", "haodou864394010208983");
+        params.addBodyParameter("from", "android");
+        params.addBodyParameter("ip", "172.16.152.15");
+        params.addBodyParameter("limit", "30");
+        params.addBodyParameter("loguid", "0");
+        params.addBodyParameter("network", "WIFI");
+        params.addBodyParameter("offset", "0");
+        params.addBodyParameter("sign", "");
+        params.addBodyParameter("uid", "0");
+        params.addBodyParameter("uuid", "9ea70fa9356586ff23fc31785f735cf1");
+        params.addBodyParameter("vc", "105");
+        params.addBodyParameter("virtual", "0");
+        params.addBodyParameter("vn", "6.1.15");
+        x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Gson gson = new Gson();
+                FirstPagerData firstPagerData = gson.fromJson(result, FirstPagerData.class);
+                List<FirstPagerData.DataBean.ListBean> listRefreshData = firstPagerData.getData().getList();
+                listBeen.addAll(listRefreshData);
+                adapter.notifyDataSetChanged();
+                srf.setRefreshing(false);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+    }
 
     private void aboutViewPager(List<FirstPagerData.DataBean.HeaderBean.ListBeanX> listAder) {
         pager = new LinkedList<>();

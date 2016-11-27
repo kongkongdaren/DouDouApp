@@ -31,11 +31,16 @@
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
         >
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/srf"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rlv_id"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/common_gray"/>
+        </android.support.v4.widget.SwipeRefreshLayout>
         <ProgressBar
             android:id="@+id/pb_photo"
             android:layout_width="wrap_content"
