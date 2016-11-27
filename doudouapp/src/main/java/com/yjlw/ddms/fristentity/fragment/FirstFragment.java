@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -302,7 +303,12 @@ public class FirstFragment extends Fragment {
         //适配器
         adapter = new MyFirstPagerAdapter(listBeen, getContext());
          rlv.setAdapter(adapter);
+         rlv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
+             }
+         });
          rlv.setOnScrollListener(new MyOnScrollListener());
     }
     private final class MyOnScrollListener implements AbsListView.OnScrollListener{
