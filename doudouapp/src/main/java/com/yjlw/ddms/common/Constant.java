@@ -11,6 +11,7 @@ package com.yjlw.ddms.common;
 public class Constant {
     //百度地图位置获取纠正http://api.haoservice.com/api/getLocationinfor?latlng=41.93554,118
     // .44361&type=2&key=您申请的APPKEY
+    //支付宝key 2016112703407950
     public static String ADDRESS_URL = "http://api.haoservice.com/api/getLocationinfor?latlng=" +
             41.93554 + "," + 118.44361 + "&type=2&key=9eb3943f742c430fae3178ba5dcf9717";
 

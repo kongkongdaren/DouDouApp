@@ -11,14 +11,15 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:background="@android:color/transparent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_product_info"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:background="@color/common_white"
         />
 
     <LinearLayout
@@ -52,20 +53,20 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"
-            android:textSize="16sp"
             android:background="@color/vf5b230"
+            android:gravity="center"
+            android:text="加入购物车"
             android:textColor="@color/common_white"
-            android:text="加入购物车"/>
+            android:textSize="16sp"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@color/common_green"
             android:gravity="center"
-android:background="@color/common_green"
-            android:textSize="16sp"
+            android:text="立即购买"
             android:textColor="@color/common_white"
-            android:text="立即购买"/>
+            android:textSize="16sp"/>
     </LinearLayout>
 </LinearLayout>

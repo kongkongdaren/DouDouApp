@@ -5,7 +5,7 @@
     android:shape="rectangle"
     >
     <stroke
-        android:width="3px"
+        android:width="1px"
         android:color="@color/switch_thumb_normal_material_dark"
         android:dashWidth="10px"
         android:dashGap="10px" />
