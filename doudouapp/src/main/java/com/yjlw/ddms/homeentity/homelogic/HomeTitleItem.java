@@ -1,7 +1,9 @@
 package com.yjlw.ddms.homeentity.homelogic;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.fristentity.views.MySelfCircleView;
+import com.yjlw.ddms.homeentity.activity.BuyProductActivity;
 import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
 import com.yjlw.ddms.homeentity.entity.LabelDetailsResult;
 import com.yjlw.ddms.homeentity.entity.LabelDetailsResult.ResultBean.ListBean;
@@ -61,7 +64,7 @@ public class HomeTitleItem {
 
         @Override
         public View getView(int position, View convertView, ViewGroup viewGroup) {
-            ListBean listBean = getItem(position);
+            final ListBean listBean = getItem(position);
             ViewHolder vh = null;
             if (convertView == null) {
                 convertView = View.inflate(context, R.layout.home_lable_details_item, null);
@@ -91,6 +94,17 @@ public class HomeTitleItem {
                 vh.LabelsExp.setVisibility(View.VISIBLE);
                 vh.activityPrice.setVisibility(View.VISIBLE);
             }
+            vh.openUrl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, BuyProductActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("GoodsId", listBean.getGoodsId()+"");
+
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                }
+            });
             return convertView;
         }
 

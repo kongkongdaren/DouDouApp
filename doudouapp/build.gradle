@@ -40,4 +40,5 @@ dependencies {
     compile 'it.sephiroth.android.library.picasso:picasso:2.5.2.4b'
     compile project(':app')
     compile project(':vitamio')
+    compile 'com.bartoszlipinski:recyclerviewheader:1.2.1'
 }
