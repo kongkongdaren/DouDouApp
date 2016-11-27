@@ -105,6 +105,8 @@
         <!--购买商品-->
         <activity android:name=".homeentity.activity.BuyProductActivity">
         </activity>
+        <!--list条目-->
+        <activity android:name=".fristentity.activity.ListActivity"/>
     </application>
 
 </manifest>

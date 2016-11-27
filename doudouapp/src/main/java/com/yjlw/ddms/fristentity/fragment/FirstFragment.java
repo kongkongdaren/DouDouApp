@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -24,6 +25,7 @@ import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.fristentity.activity.HotActivity;
 import com.yjlw.ddms.fristentity.activity.HotTitleActivity;
 import com.yjlw.ddms.fristentity.activity.KitchenActivity;
+import com.yjlw.ddms.fristentity.activity.ListActivity;
 import com.yjlw.ddms.fristentity.activity.LookVideoActivity;
 import com.yjlw.ddms.fristentity.activity.MenuSortActivity;
 import com.yjlw.ddms.fristentity.activity.PhotoActivity;
@@ -298,11 +300,21 @@ public class FirstFragment extends Fragment {
          });
     }
 
-    private void aboutListView(List<FirstPagerData.DataBean.ListBean> listBeen) {
+    private void aboutListView(final List<FirstPagerData.DataBean.ListBean> listBeen) {
         //适配器
         adapter = new MyFirstPagerAdapter(listBeen, getContext());
          rlv.setAdapter(adapter);
-
+         rlv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                     Intent intent=new Intent(getActivity(), ListActivity.class);
+                     Bundle bundle=new Bundle();
+                     bundle.putString("imgUrl",listBeen.get((position-3)).getImgs().get(0));
+                     bundle.putString("title",listBeen.get((position-3)).getTitle());
+                     intent.putExtras(bundle);
+                     startActivity(intent);
+             }
+         });
          rlv.setOnScrollListener(new MyOnScrollListener());
     }
     private final class MyOnScrollListener implements AbsListView.OnScrollListener{

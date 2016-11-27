@@ -41,4 +41,5 @@ dependencies {
     compile project(':app')
     compile project(':vitamio')
     compile 'com.bartoszlipinski:recyclerviewheader:1.2.1'
+    compile project(':refreshlibrary')
 }
