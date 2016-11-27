@@ -25,13 +25,13 @@ public class ShoppingCartDataDao extends AbstractDao<ShoppingCartData, Long> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property StoreId = new Property(1, int.class, "StoreId", false, "STORE_ID");
+        public final static Property StoreId = new Property(1, String.class, "StoreId", false, "STORE_ID");
         public final static Property StoreLogo = new Property(2, String.class, "StoreLogo", false, "STORE_LOGO");
         public final static Property StoreName = new Property(3, String.class, "StoreName", false, "STORE_NAME");
         public final static Property CoverUrl = new Property(4, String.class, "CoverUrl", false, "COVER_URL");
         public final static Property DealPrice = new Property(5, String.class, "DealPrice", false, "DEAL_PRICE");
         public final static Property GoodsId = new Property(6, String.class, "GoodsId", false, "GOODS_ID");
-        public final static Property GoodsNum = new Property(7, int.class, "GoodsNum", false, "GOODS_NUM");
+        public final static Property GoodsNum = new Property(7, String.class, "GoodsNum", false, "GOODS_NUM");
         public final static Property Price = new Property(8, String.class, "Price", false, "PRICE");
         public final static Property Title = new Property(9, String.class, "Title", false, "TITLE");
     }
@@ -50,13 +50,13 @@ public class ShoppingCartDataDao extends AbstractDao<ShoppingCartData, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"SHOPPING_CART_DATA\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "\"STORE_ID\" INTEGER NOT NULL ," + // 1: StoreId
+                "\"STORE_ID\" TEXT," + // 1: StoreId
                 "\"STORE_LOGO\" TEXT," + // 2: StoreLogo
                 "\"STORE_NAME\" TEXT," + // 3: StoreName
                 "\"COVER_URL\" TEXT," + // 4: CoverUrl
                 "\"DEAL_PRICE\" TEXT," + // 5: DealPrice
                 "\"GOODS_ID\" TEXT," + // 6: GoodsId
-                "\"GOODS_NUM\" INTEGER NOT NULL ," + // 7: GoodsNum
+                "\"GOODS_NUM\" TEXT," + // 7: GoodsNum
                 "\"PRICE\" TEXT," + // 8: Price
                 "\"TITLE\" TEXT);"); // 9: Title
     }
@@ -75,7 +75,11 @@ public class ShoppingCartDataDao extends AbstractDao<ShoppingCartData, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
-        stmt.bindLong(2, entity.getStoreId());
+ 
+        String StoreId = entity.getStoreId();
+        if (StoreId != null) {
+            stmt.bindString(2, StoreId);
+        }
  
         String StoreLogo = entity.getStoreLogo();
         if (StoreLogo != null) {
@@ -101,7 +105,11 @@ public class ShoppingCartDataDao extends AbstractDao<ShoppingCartData, Long> {
         if (GoodsId != null) {
             stmt.bindString(7, GoodsId);
         }
-        stmt.bindLong(8, entity.getGoodsNum());
+ 
+        String GoodsNum = entity.getGoodsNum();
+        if (GoodsNum != null) {
+            stmt.bindString(8, GoodsNum);
+        }
  
         String Price = entity.getPrice();
         if (Price != null) {
@@ -122,7 +130,11 @@ public class ShoppingCartDataDao extends AbstractDao<ShoppingCartData, Long> {
         if (id != null) {
             stmt.bindLong(1, id);
         }
-        stmt.bindLong(2, entity.getStoreId());
+ 
+        String StoreId = entity.getStoreId();
+        if (StoreId != null) {
+            stmt.bindString(2, StoreId);
+        }
  
         String StoreLogo = entity.getStoreLogo();
         if (StoreLogo != null) {
@@ -148,7 +160,11 @@ public class ShoppingCartDataDao extends AbstractDao<ShoppingCartData, Long> {
         if (GoodsId != null) {
             stmt.bindString(7, GoodsId);
         }
-        stmt.bindLong(8, entity.getGoodsNum());
+ 
+        String GoodsNum = entity.getGoodsNum();
+        if (GoodsNum != null) {
+            stmt.bindString(8, GoodsNum);
+        }
  
         String Price = entity.getPrice();
         if (Price != null) {
@@ -170,13 +186,13 @@ public class ShoppingCartDataDao extends AbstractDao<ShoppingCartData, Long> {
     public ShoppingCartData readEntity(Cursor cursor, int offset) {
         ShoppingCartData entity = new ShoppingCartData( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.getInt(offset + 1), // StoreId
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // StoreId
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // StoreLogo
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // StoreName
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // CoverUrl
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // DealPrice
             cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6), // GoodsId
-            cursor.getInt(offset + 7), // GoodsNum
+            cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7), // GoodsNum
             cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8), // Price
             cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9) // Title
         );
@@ -186,13 +202,13 @@ public class ShoppingCartDataDao extends AbstractDao<ShoppingCartData, Long> {
     @Override
     public void readEntity(Cursor cursor, ShoppingCartData entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setStoreId(cursor.getInt(offset + 1));
+        entity.setStoreId(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setStoreLogo(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
         entity.setStoreName(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setCoverUrl(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setDealPrice(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
         entity.setGoodsId(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
-        entity.setGoodsNum(cursor.getInt(offset + 7));
+        entity.setGoodsNum(cursor.isNull(offset + 7) ? null : cursor.getString(offset + 7));
         entity.setPrice(cursor.isNull(offset + 8) ? null : cursor.getString(offset + 8));
         entity.setTitle(cursor.isNull(offset + 9) ? null : cursor.getString(offset + 9));
      }

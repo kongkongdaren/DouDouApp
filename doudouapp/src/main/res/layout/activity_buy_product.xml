@@ -50,12 +50,15 @@
             android:text="店铺"/>
 
         <TextView
+            android:id="@+id/tv_add_shopping_card"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/vf5b230"
             android:gravity="center"
             android:text="加入购物车"
+            android:clickable="true"
+            android:onClick="addShoppingCard"
             android:textColor="@color/common_white"
             android:textSize="16sp"/>
 
@@ -66,6 +69,8 @@
             android:background="@color/common_green"
             android:gravity="center"
             android:text="立即购买"
+            android:clickable="true"
+            android:onClick="buyProduct"
             android:textColor="@color/common_white"
             android:textSize="16sp"/>
     </LinearLayout>

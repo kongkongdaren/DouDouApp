@@ -154,6 +154,7 @@
             app:backgroundTint="@color/v638c03"/>
 
         <TextView
+            android:id="@+id/tv_shopping_cart_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -161,7 +162,8 @@
             android:layout_marginTop="25dp"
             android:background="@drawable/circular_bead_shape"
             android:gravity="center"
-            android:text="2"
+
+            android:visibility="invisible"
             android:textColor="@color/background_floating_material_light"
             android:textSize="10dp"
             />

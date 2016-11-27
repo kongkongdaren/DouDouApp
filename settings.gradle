@@ -1,2 +1,2 @@
 include ':doudouapp', ':library', 'app', ':vitamio'
-include ':refreshlibrary'
+include ':refreshlibrary','daoexamplegenerator'
