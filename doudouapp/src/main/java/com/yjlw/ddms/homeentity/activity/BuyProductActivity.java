@@ -214,8 +214,8 @@ public class BuyProductActivity extends AppCompatActivity {
         int goodsId = listBean.getGoodsId();
         String price = listBean.getPrice();
         String title = listBean.getStoreTitle();
-//        Log.i("Log", "购物车的数据是:" + storeId + "," + storeLogoUrl + "," + storeName + "," + coverUrl
-//                + "," + dealPrice + "," + goodsId + "," + price + "," + title);
+        Log.i("Log", "购物车的数据是:" + storeId + "," + storeLogoUrl + "," + storeName + "," + coverUrl
+                + "," + dealPrice + "," + goodsId + "," + price + "," + title);
 
         ShoppingCartData shoppingCartData = new ShoppingCartData(null, storeId + "",
                 storeLogoUrl, storeName, coverUrl, dealPrice, goodsId + "", 0 + "", price, title);
@@ -230,10 +230,25 @@ public class BuyProductActivity extends AppCompatActivity {
      */
     public void buyProduct(View view) {
         ToastUtils.showToast(this, "购买商品");
-        Cursor query = db.query(dao.getTablename(), dao.getAllColumns(), null, null, null, null,
+        Cursor cursor = db.query(dao.getTablename(), dao.getAllColumns(), null, null, null, null,
                 null);
-                Log.i("Log",query.toString());
 
+        while (cursor.moveToNext()) {
+            //            ShoppingCartData shoppingCartData = new ShoppingCartData(null, storeId + "",
+            //                    storeLogoUrl, storeName, coverUrl, dealPrice, goodsId + "", 0 + "", price, title);
+
+            String storeId = cursor.getString(1);
+            String storeLogoUrl = cursor.getString(2);
+            String storeName = cursor.getString(3);
+            String coverUrl = cursor.getString(4);
+            String dealPrice = cursor.getString(5);
+            String goodsId = cursor.getString(6);
+            String cunt = cursor.getString(7);
+            String price = cursor.getString(8);
+            String title = cursor.getString(9);
+            Log.i("Log", "购物车的数据是:" + storeId + "," + storeLogoUrl + "," + storeName + "," + coverUrl
+                    + "," + dealPrice + "," + goodsId + "," + price + "," + title);
+        }
     }
 
     @Override
