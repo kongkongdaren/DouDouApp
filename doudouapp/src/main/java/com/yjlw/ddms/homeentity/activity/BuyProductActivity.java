@@ -106,7 +106,7 @@ public class BuyProductActivity extends AppCompatActivity {
         List<BuyProductInFosData.ResultBean.ListBeanX> listBeanXes = buyProductInFosData
                 .getResult().getList();//评论
         shopLists.addAll(buyProductInFosData.getResult().getRelationShopList().getList());//店铺
-        Log.i("Log", shopLists.toString());
+//        Log.i("Log", shopLists.toString());
         rvProductStore.setLayoutManager(new GridLayoutManager(this, 2));
         recyclerViewAdapter = new StoreRecyclerViewAdapter(shopLists);
         rvProductStore.setAdapter(recyclerViewAdapter);
@@ -115,12 +115,14 @@ public class BuyProductActivity extends AppCompatActivity {
 
 
         header.attachTo(rvProductStore);
-        aboutRecyclerViewHeadler(header, buyProductInFosData);
+        RecyclerViewHeader center = RecyclerViewHeader.fromXml(this, R.layout
+                .home_bue_product_item_center);
+//        center.attachTo(rvProductStore);
+        aboutRecyclerViewHeadler(header, buyProductInFosData,center);
     }
 
-    private void aboutRecyclerViewHeadler(RecyclerViewHeader header, BuyProductInFosData
-            buyProductInFosData) {
-        Log.i("Log",buyProductInFosData.getResult().toString());
+    private void aboutRecyclerViewHeadler(RecyclerViewHeader header, BuyProductInFosData buyProductInFosData, RecyclerViewHeader center) {
+
         ImageView imgInfo = (ImageView) header.findViewById(R.id.iv_img_info);
         TextView title = (TextView) header.findViewById(R.id.tv_title);
         TextView subTitle = (TextView) header.findViewById(R.id.tv_sub_title);
@@ -131,18 +133,20 @@ public class BuyProductActivity extends AppCompatActivity {
         TextView likeCount = (TextView) header.findViewById(R.id.tv_like_count);
 
         TextView tasteCount = (TextView) header.findViewById(R.id.tv_taste_count);
-        MySelfCircleView imgUrl = (MySelfCircleView) header.findViewById(R.id.iv_imageUrl);
-        TextView userName = (TextView) header.findViewById(R.id.tv_userName);
-        TextView info = (TextView) header.findViewById(R.id.tv_info);
-        TextView contentTags = (TextView) header.findViewById(R.id.tv_contentTags);
-        TextView content = (TextView) header.findViewById(R.id.tv_content);
-        TextView tags = (TextView) header.findViewById(R.id.tv_tags);
-        TextView contentParam0 = (TextView) header.findViewById(R.id.tv_content_param0);
-        TextView contentParam1 = (TextView) header.findViewById(R.id.tv_content_param1);
-        TextView contentParam2 = (TextView) header.findViewById(R.id.tv_content_param2);
-        TextView count = (TextView) header.findViewById(R.id.tv_count);
-        TextView allEvaluate = (TextView) header.findViewById(R.id.tv_all_evaluate);
+        MySelfCircleView imgUrl = (MySelfCircleView) center.findViewById(R.id.iv_imageUrl);
+        TextView userName = (TextView) center.findViewById(R.id.tv_userName);
+        TextView info = (TextView) center.findViewById(R.id.tv_info);
+        TextView contentTags = (TextView) center.findViewById(R.id.tv_contentTags);
+        TextView content = (TextView) center.findViewById(R.id.tv_content);
+        TextView tags = (TextView) center.findViewById(R.id.tv_tags);
+//        TextView contentParam0 = (TextView) center.findViewById(R.id.tv_content_param0);
+//        TextView contentParam1 = (TextView) center.findViewById(R.id.tv_content_param1);
+//        TextView contentParam2 = (TextView) center.findViewById(R.id.tv_content_param2);
+//        TextView count = (TextView) center.findViewById(R.id.tv_count);
+//        TextView allEvaluate = (TextView) center.findViewById(R.id.tv_all_evaluate);
+
         BuyProductInFosData.ResultBean result = buyProductInFosData.getResult();
+
         x.image().bind(imgInfo, result.getImgInfo().get(0));
         title.setText(result.getTitle());
         subTitle.setText(result.getSubTitle());
@@ -153,19 +157,20 @@ public class BuyProductActivity extends AppCompatActivity {
         stock.setText("库存"+result.getStock());
         likeCount.setText(result.getLikeCount()+"");
         tasteCount.setText(result.getTasteCount()+"");
-        x.image().bind(imgUrl,result.getCoverUrl());
-        BuyProductInFosData.ResultBean.GoodsTasteBean goodsTasteBean = result.getGoodsTaste().get
-                (0);
+        BuyProductInFosData.ResultBean.GoodsTasteBean goodsTasteBean = result.getGoodsTaste().get(0);
+        x.image().bind(imgUrl,goodsTasteBean.getImgUrl());//品检员头像
         userName.setText(goodsTasteBean.getUserName());
         info.setText(goodsTasteBean.getInfo());
-        contentTags.setText(goodsTasteBean.getContentTags().get(0));
+        contentTags.setText("["+goodsTasteBean.getContentTags().get(0)+"]");
         content.setText(goodsTasteBean.getContent());
         tags.setText(goodsTasteBean.getTags().get(0));
+//
         List<String> contentParam = result.getContentParam();
-        contentParam0.setText(contentParam.get(0));
-        contentParam1.setText(contentParam.get(1));
-        contentParam2.setText(contentParam.get(2));
-        count.setText(result.getCount()+"");
+        Log.i("Log","产品工艺"+contentParam.toString());
+//        contentParam0.setText(contentParam.get(0));
+//        contentParam1.setText(contentParam.get(1));
+//        contentParam2.setText(contentParam.get(2));
+//        count.setText(result.getCmtCount()+"");
 
     }
 

@@ -12,63 +12,7 @@ import java.util.List;
  */
 public class BuyProductInFosData {
 
-    /**
-     * status : 200
-     * result : {"ImgInfo":["http://pimg2.hoto.cn/goods/2015/07/31/271_55bb72af0a680_720_720
-     * .jpg"],"ShowShare":1,"Title":"【肘爷】酱肘子/1000g","CoverUrl":"http://pimg2.hoto
-     * .cn/goods/2015/07/31/271_55bb72af0a680_100_100.jpg","ShareUrl":"http://m.haodou
-     * .com/mall/index.php?r=wap/goods/detail&id=271",
-     * "ShareDesc":"冷吃切片先白嘴尝尝！搭配豆芽、菠菜粉丝、韭菜炒鸡蛋、大葱、甜面酱，卷热烙饼食用的美味肘子。","SubTitle":"【肘爷】酱肘子，肉质细腻",
-     * "DealPrice":"￥150.00","ShippingInfo":"同城配送上门/全国快递","ContentParam":["私厨:靓家货",
-     * "发货时间:上午10点--下午五点半","顺丰快递:48小时左右"],"Content":[{"ImgUrl":"http://pimg2.hoto
-     * .cn/goods/2015/07/31/271_55bb72af8c32c.jpg","Desc":""},{"ImgUrl":"http://pimg2.hoto
-     * .cn/goods/2015/07/31/271_55bb72afd7601.jpg","Desc":""},{"ImgUrl":"http://pimg2.hoto
-     * .cn/goods/2015/07/31/271_55bb72b02b9b9.jpg","Desc":""},{"ImgUrl":"http://pimg2.hoto
-     * .cn/goods/2015/07/31/271_55bb72b06ff4b.jpg","Desc":""},{"ImgUrl":"http://pimg2.hoto
-     * .cn/goods/2015/07/31/271_55bb72b0b8aba.jpg","Desc":""}],"IsLike":0,"LikeCount":2499,
-     * "CmtCount":22,"TasteCount":"9.90","BuyCount":50,"CartNum":0,"Stock":100,"MadeIn":"",
-     * "GoodsTaste":[{"GoodsTasteId":7,"UserName":"好豆品鉴员","ImgUrl":"http://img1.hoto
-     * .cn/mall/mall_ad/2015/11/1447047612.jpg",
-     * "Content":"物流：同城速度很快。\r\n\r\n包装：包装很卫生。\r\n\r\n口味：入味且肉非常烂，肥肉也不腻，个头份量足。",
-     * "ContentTags":["品鉴"],"Tags":["靓家货  肘子"],"Info":"好豆品鉴员  欣欣"}],"ForecastShippingFee":"￥22",
-     * "PriceLabels":[],"Labels":[],"Weight":"1000克","PricePerKilogram":75,
-     * "PromotionActivityList":[],"RelationShopList":{"count":4,"list":[{"StoreId":149,
-     * "StoreTitle":"靓家货","StoreLogoUrl":"http://pimg2.hoto.cn/store/2015/07/31/55bb6ac68d05a
-     * .jpg","UserId":"8190340","UserName":"Leslie靓靓","GoodsId":274,"Title":"【膀爷】麻辣鸭翅",
-     * "SubTitle":"（微麻微辣）一包12个鸡翅，开袋即食","DealPrice":"￥80.00","ShippingInfo":"配送上门/全国快递",
-     * "CoverUrl":"http://pimg2.hoto.cn/goods/2015/07/31/274_55bb761513436_680_450.jpg",
-     * "OpenUrl":"haodourecipe://haodou.com/goods/detail?id=274","LikeCount":8,"Stock":100,
-     * "IsShippingFree":1,"IsLike":0,"CartNum":0,"Labels":[],"Weight":"500克","Price":"￥108.00"},
-     * {"StoreId":149,"StoreTitle":"靓家货","StoreLogoUrl":"http://pimg2.hoto
-     * .cn/store/2015/07/31/55bb6ac68d05a.jpg","UserId":"8190340","UserName":"Leslie靓靓",
-     * "GoodsId":273,"Title":"【蹄爷】酱猪蹄","SubTitle":"每袋3个猪蹄 冷食热食均可","DealPrice":"￥150.00",
-     * "ShippingInfo":"配送上门/全国快递","CoverUrl":"http://pimg1.hoto
-     * .cn/goods/2015/07/31/273_55bb7476ac8e5_680_450.jpg","OpenUrl":"haodourecipe://haodou
-     * .com/goods/detail?id=273","LikeCount":566,"Stock":100,"IsShippingFree":1,"IsLike":0,
-     * "CartNum":0,"Labels":[],"Weight":"1000克","Price":"￥168.00"},{"StoreId":149,
-     * "StoreTitle":"靓家货","StoreLogoUrl":"http://pimg2.hoto.cn/store/2015/07/31/55bb6ac68d05a
-     * .jpg","UserId":"8190340","UserName":"Leslie靓靓","GoodsId":6267,"Title":"酱牛肉",
-     * "SubTitle":"选用澳洲牛肉最好的金钱腱","DealPrice":"￥128.00","ShippingInfo":"配送上门/全国快递",
-     * "CoverUrl":"http://pimg1.hoto.cn/goods/2016/10/17/6267_580459437a3e9_680_450.jpg",
-     * "OpenUrl":"haodourecipe://haodou.com/goods/detail?id=6267","LikeCount":8,"Stock":100,
-     * "IsShippingFree":1,"IsLike":0,"CartNum":0,"Labels":[],"Weight":"500克","Price":"￥138.00"},
-     * {"StoreId":149,"StoreTitle":"靓家货","StoreLogoUrl":"http://pimg2.hoto
-     * .cn/store/2015/07/31/55bb6ac68d05a.jpg","UserId":"8190340","UserName":"Leslie靓靓",
-     * "GoodsId":529,"Title":"靓家货大礼包","SubTitle":"私房秘制配方酱货","DealPrice":"￥500.00",
-     * "ShippingInfo":"配送上门/全国快递","CoverUrl":"http://pimg2.hoto
-     * .cn/goods/2016/10/19/529_580749bfa631c_680_450.jpg","OpenUrl":"haodourecipe://haodou
-     * .com/goods/detail?id=529","LikeCount":19,"Stock":100,"IsShippingFree":1,"IsLike":0,
-     * "CartNum":0,"Labels":[],"Weight":"4000克"}]},"Feature":[],
-     * "StoreInfo":{"Shopkeeper":{"Online":0,"UserId":8190340,"UserName":"Leslie靓靓",
-     * "Idiograph":"","Vip":0,"FansCount":731,"NoticeCnt":7,"AvatarUrl":"http://avatar0.hoto
-     * .cn/84/f9/8190340_48.jpg?v=1","Area":{"ProvinceId":0,"ProvinceName":"北京","CityId":0,
-     * "CityName":"北京"}},"StoreId":149,"UserId":8190340,"LogoUrl":"http://pimg2.hoto
-     * .cn/store/2015/07/31/55bb6ac68d05a.jpg","IsHealth":0,"Title":"靓家货","AutoAddress":"Leslie靓靓
-     * 北京市","IsFollow":0},"IsShippingFree":1,"Price":"￥168.00","count":28,"list":[{"Cid":"63846",
-     * "UserId":"10063357","Avatar":"http://avatar1.hoto.cn/fd/8d/10063357_185.jpg?v=1",
-     * "UserName":"Engels","AtUserId":"0","AtUserName":"","Content":"非常好吃，下次再来！","AtContent":"",
-     * "CreateTime":"09-20 03:00","Mark":"10","Gender":2}]}
-     */
+
 
     private int status;
     private ResultBean result;
@@ -89,84 +33,15 @@ public class BuyProductInFosData {
         this.result = result;
     }
 
-    public static class ResultBean {
-        /**
-         * ImgInfo : ["http://pimg2.hoto.cn/goods/2015/07/31/271_55bb72af0a680_720_720.jpg"]
-         * ShowShare : 1
-         * Title : 【肘爷】酱肘子/1000g
-         * CoverUrl : http://pimg2.hoto.cn/goods/2015/07/31/271_55bb72af0a680_100_100.jpg
-         * ShareUrl : http://m.haodou.com/mall/index.php?r=wap/goods/detail&id=271
-         * ShareDesc : 冷吃切片先白嘴尝尝！搭配豆芽、菠菜粉丝、韭菜炒鸡蛋、大葱、甜面酱，卷热烙饼食用的美味肘子。
-         * SubTitle : 【肘爷】酱肘子，肉质细腻
-         * DealPrice : ￥150.00
-         * ShippingInfo : 同城配送上门/全国快递
-         * ContentParam : ["私厨:靓家货","发货时间:上午10点--下午五点半","顺丰快递:48小时左右"]
-         * Content : [{"ImgUrl":"http://pimg2.hoto.cn/goods/2015/07/31/271_55bb72af8c32c.jpg",
-         * "Desc":""},{"ImgUrl":"http://pimg2.hoto.cn/goods/2015/07/31/271_55bb72afd7601.jpg",
-         * "Desc":""},{"ImgUrl":"http://pimg2.hoto.cn/goods/2015/07/31/271_55bb72b02b9b9.jpg",
-         * "Desc":""},{"ImgUrl":"http://pimg2.hoto.cn/goods/2015/07/31/271_55bb72b06ff4b.jpg",
-         * "Desc":""},{"ImgUrl":"http://pimg2.hoto.cn/goods/2015/07/31/271_55bb72b0b8aba.jpg",
-         * "Desc":""}]
-         * IsLike : 0
-         * LikeCount : 2499
-         * CmtCount : 22
-         * TasteCount : 9.90
-         * BuyCount : 50
-         * CartNum : 0
-         * Stock : 100
-         * MadeIn :
-         * GoodsTaste : [{"GoodsTasteId":7,"UserName":"好豆品鉴员","ImgUrl":"http://img1.hoto
-         * .cn/mall/mall_ad/2015/11/1447047612.jpg",
-         * "Content":"物流：同城速度很快。\r\n\r\n包装：包装很卫生。\r\n\r\n口味：入味且肉非常烂，肥肉也不腻，个头份量足。",
-         * "ContentTags":["品鉴"],"Tags":["靓家货  肘子"],"Info":"好豆品鉴员  欣欣"}]
-         * ForecastShippingFee : ￥22
-         * PriceLabels : []
-         * Labels : []
-         * Weight : 1000克
-         * PricePerKilogram : 75
-         * PromotionActivityList : []
-         * RelationShopList : {"count":4,"list":[{"StoreId":149,"StoreTitle":"靓家货",
-         * "StoreLogoUrl":"http://pimg2.hoto.cn/store/2015/07/31/55bb6ac68d05a.jpg",
-         * "UserId":"8190340","UserName":"Leslie靓靓","GoodsId":274,"Title":"【膀爷】麻辣鸭翅",
-         * "SubTitle":"（微麻微辣）一包12个鸡翅，开袋即食","DealPrice":"￥80.00","ShippingInfo":"配送上门/全国快递",
-         * "CoverUrl":"http://pimg2.hoto.cn/goods/2015/07/31/274_55bb761513436_680_450.jpg",
-         * "OpenUrl":"haodourecipe://haodou.com/goods/detail?id=274","LikeCount":8,"Stock":100,
-         * "IsShippingFree":1,"IsLike":0,"CartNum":0,"Labels":[],"Weight":"500克","Price":"￥108
-         * .00"},{"StoreId":149,"StoreTitle":"靓家货","StoreLogoUrl":"http://pimg2.hoto
-         * .cn/store/2015/07/31/55bb6ac68d05a.jpg","UserId":"8190340","UserName":"Leslie靓靓",
-         * "GoodsId":273,"Title":"【蹄爷】酱猪蹄","SubTitle":"每袋3个猪蹄 冷食热食均可","DealPrice":"￥150.00",
-         * "ShippingInfo":"配送上门/全国快递","CoverUrl":"http://pimg1.hoto
-         * .cn/goods/2015/07/31/273_55bb7476ac8e5_680_450.jpg","OpenUrl":"haodourecipe://haodou
-         * .com/goods/detail?id=273","LikeCount":566,"Stock":100,"IsShippingFree":1,"IsLike":0,
-         * "CartNum":0,"Labels":[],"Weight":"1000克","Price":"￥168.00"},{"StoreId":149,
-         * "StoreTitle":"靓家货","StoreLogoUrl":"http://pimg2.hoto.cn/store/2015/07/31/55bb6ac68d05a
-         * .jpg","UserId":"8190340","UserName":"Leslie靓靓","GoodsId":6267,"Title":"酱牛肉",
-         * "SubTitle":"选用澳洲牛肉最好的金钱腱","DealPrice":"￥128.00","ShippingInfo":"配送上门/全国快递",
-         * "CoverUrl":"http://pimg1.hoto.cn/goods/2016/10/17/6267_580459437a3e9_680_450.jpg",
-         * "OpenUrl":"haodourecipe://haodou.com/goods/detail?id=6267","LikeCount":8,"Stock":100,
-         * "IsShippingFree":1,"IsLike":0,"CartNum":0,"Labels":[],"Weight":"500克","Price":"￥138
-         * .00"},{"StoreId":149,"StoreTitle":"靓家货","StoreLogoUrl":"http://pimg2.hoto
-         * .cn/store/2015/07/31/55bb6ac68d05a.jpg","UserId":"8190340","UserName":"Leslie靓靓",
-         * "GoodsId":529,"Title":"靓家货大礼包","SubTitle":"私房秘制配方酱货","DealPrice":"￥500.00",
-         * "ShippingInfo":"配送上门/全国快递","CoverUrl":"http://pimg2.hoto
-         * .cn/goods/2016/10/19/529_580749bfa631c_680_450.jpg","OpenUrl":"haodourecipe://haodou
-         * .com/goods/detail?id=529","LikeCount":19,"Stock":100,"IsShippingFree":1,"IsLike":0,
-         * "CartNum":0,"Labels":[],"Weight":"4000克"}]}
-         * Feature : []
-         * StoreInfo : {"Shopkeeper":{"Online":0,"UserId":8190340,"UserName":"Leslie靓靓",
-         * "Idiograph":"","Vip":0,"FansCount":731,"NoticeCnt":7,"AvatarUrl":"http://avatar0.hoto
-         * .cn/84/f9/8190340_48.jpg?v=1","Area":{"ProvinceId":0,"ProvinceName":"北京","CityId":0,
-         * "CityName":"北京"}},"StoreId":149,"UserId":8190340,"LogoUrl":"http://pimg2.hoto
-         * .cn/store/2015/07/31/55bb6ac68d05a.jpg","IsHealth":0,"Title":"靓家货",
-         * "AutoAddress":"Leslie靓靓 北京市","IsFollow":0}
-         * IsShippingFree : 1
-         * Price : ￥168.00
-         * count : 28
-         * list : [{"Cid":"63846","UserId":"10063357","Avatar":"http://avatar1.hoto
-         * .cn/fd/8d/10063357_185.jpg?v=1","UserName":"Engels","AtUserId":"0","AtUserName":"",
-         * "Content":"非常好吃，下次再来！","AtContent":"","CreateTime":"09-20 03:00","Mark":"10","Gender":2}]
-         */
+    @Override
+    public String toString() {
+        return "BuyProductInFosData{" +
+                "status=" + status +
+                ", result=" + result +
+                '}';
+    }
 
+    public static class ResultBean {
         private int ShowShare;
         private String Title;
         private String CoverUrl;
@@ -200,6 +75,45 @@ public class BuyProductInFosData {
         private List<?> PromotionActivityList;
         private List<?> Feature;
         private List<ListBeanX> list;
+
+        @Override
+        public String toString() {
+            return "ResultBean{" +
+                    "ShowShare=" + ShowShare +
+                    ", Title='" + Title + '\'' +
+                    ", CoverUrl='" + CoverUrl + '\'' +
+                    ", ShareUrl='" + ShareUrl + '\'' +
+                    ", ShareDesc='" + ShareDesc + '\'' +
+                    ", SubTitle='" + SubTitle + '\'' +
+                    ", DealPrice='" + DealPrice + '\'' +
+                    ", ShippingInfo='" + ShippingInfo + '\'' +
+                    ", IsLike=" + IsLike +
+                    ", LikeCount=" + LikeCount +
+                    ", CmtCount=" + CmtCount +
+                    ", TasteCount='" + TasteCount + '\'' +
+                    ", BuyCount=" + BuyCount +
+                    ", CartNum=" + CartNum +
+                    ", Stock=" + Stock +
+                    ", MadeIn='" + MadeIn + '\'' +
+                    ", ForecastShippingFee='" + ForecastShippingFee + '\'' +
+                    ", Weight='" + Weight + '\'' +
+                    ", PricePerKilogram=" + PricePerKilogram +
+                    ", RelationShopList=" + RelationShopList +
+                    ", StoreInfo=" + StoreInfo +
+                    ", IsShippingFree=" + IsShippingFree +
+                    ", Price='" + Price + '\'' +
+                    ", count=" + count +
+                    ", ImgInfo=" + ImgInfo +
+                    ", ContentParam=" + ContentParam +
+                    ", Content=" + Content +
+                    ", GoodsTaste=" + GoodsTaste +
+                    ", PriceLabels=" + PriceLabels +
+                    ", Labels=" + Labels +
+                    ", PromotionActivityList=" + PromotionActivityList +
+                    ", Feature=" + Feature +
+                    ", list=" + list +
+                    '}';
+        }
 
         public int getShowShare() {
             return ShowShare;
@@ -466,37 +380,6 @@ public class BuyProductInFosData {
         }
 
         public static class RelationShopListBean {
-            /**
-             * count : 4
-             * list : [{"StoreId":149,"StoreTitle":"靓家货","StoreLogoUrl":"http://pimg2.hoto
-             * .cn/store/2015/07/31/55bb6ac68d05a.jpg","UserId":"8190340","UserName":"Leslie靓靓",
-             * "GoodsId":274,"Title":"【膀爷】麻辣鸭翅","SubTitle":"（微麻微辣）一包12个鸡翅，开袋即食","DealPrice":"￥80
-             * .00","ShippingInfo":"配送上门/全国快递","CoverUrl":"http://pimg2.hoto
-             * .cn/goods/2015/07/31/274_55bb761513436_680_450.jpg",
-             * "OpenUrl":"haodourecipe://haodou.com/goods/detail?id=274","LikeCount":8,
-             * "Stock":100,"IsShippingFree":1,"IsLike":0,"CartNum":0,"Labels":[],"Weight":"500克",
-             * "Price":"￥108.00"},{"StoreId":149,"StoreTitle":"靓家货","StoreLogoUrl":"http://pimg2
-             * .hoto.cn/store/2015/07/31/55bb6ac68d05a.jpg","UserId":"8190340",
-             * "UserName":"Leslie靓靓","GoodsId":273,"Title":"【蹄爷】酱猪蹄","SubTitle":"每袋3个猪蹄 冷食热食均可",
-             * "DealPrice":"￥150.00","ShippingInfo":"配送上门/全国快递","CoverUrl":"http://pimg1.hoto
-             * .cn/goods/2015/07/31/273_55bb7476ac8e5_680_450.jpg",
-             * "OpenUrl":"haodourecipe://haodou.com/goods/detail?id=273","LikeCount":566,
-             * "Stock":100,"IsShippingFree":1,"IsLike":0,"CartNum":0,"Labels":[],
-             * "Weight":"1000克","Price":"￥168.00"},{"StoreId":149,"StoreTitle":"靓家货",
-             * "StoreLogoUrl":"http://pimg2.hoto.cn/store/2015/07/31/55bb6ac68d05a.jpg",
-             * "UserId":"8190340","UserName":"Leslie靓靓","GoodsId":6267,"Title":"酱牛肉",
-             * "SubTitle":"选用澳洲牛肉最好的金钱腱","DealPrice":"￥128.00","ShippingInfo":"配送上门/全国快递",
-             * "CoverUrl":"http://pimg1.hoto.cn/goods/2016/10/17/6267_580459437a3e9_680_450.jpg",
-             * "OpenUrl":"haodourecipe://haodou.com/goods/detail?id=6267","LikeCount":8,
-             * "Stock":100,"IsShippingFree":1,"IsLike":0,"CartNum":0,"Labels":[],"Weight":"500克",
-             * "Price":"￥138.00"},{"StoreId":149,"StoreTitle":"靓家货","StoreLogoUrl":"http://pimg2
-             * .hoto.cn/store/2015/07/31/55bb6ac68d05a.jpg","UserId":"8190340",
-             * "UserName":"Leslie靓靓","GoodsId":529,"Title":"靓家货大礼包","SubTitle":"私房秘制配方酱货",
-             * "DealPrice":"￥500.00","ShippingInfo":"配送上门/全国快递","CoverUrl":"http://pimg2.hoto
-             * .cn/goods/2016/10/19/529_580749bfa631c_680_450.jpg",
-             * "OpenUrl":"haodourecipe://haodou.com/goods/detail?id=529","LikeCount":19,
-             * "Stock":100,"IsShippingFree":1,"IsLike":0,"CartNum":0,"Labels":[],"Weight":"4000克"}]
-             */
 
             private int count;
             private List<ListBean> list;
@@ -517,29 +400,15 @@ public class BuyProductInFosData {
                 this.list = list;
             }
 
+            @Override
+            public String toString() {
+                return "RelationShopListBean{" +
+                        "count=" + count +
+                        ", list=" + list +
+                        '}';
+            }
+
             public static class ListBean {
-                /**
-                 * StoreId : 149
-                 * StoreTitle : 靓家货
-                 * StoreLogoUrl : http://pimg2.hoto.cn/store/2015/07/31/55bb6ac68d05a.jpg
-                 * UserId : 8190340
-                 * UserName : Leslie靓靓
-                 * GoodsId : 274
-                 * Title : 【膀爷】麻辣鸭翅
-                 * SubTitle : （微麻微辣）一包12个鸡翅，开袋即食
-                 * DealPrice : ￥80.00
-                 * ShippingInfo : 配送上门/全国快递
-                 * CoverUrl : http://pimg2.hoto.cn/goods/2015/07/31/274_55bb761513436_680_450.jpg
-                 * OpenUrl : haodourecipe://haodou.com/goods/detail?id=274
-                 * LikeCount : 8
-                 * Stock : 100
-                 * IsShippingFree : 1
-                 * IsLike : 0
-                 * CartNum : 0
-                 * Labels : []
-                 * Weight : 500克
-                 * Price : ￥108.00
-                 */
 
                 private int StoreId;
                 private String StoreTitle;
@@ -748,22 +617,11 @@ public class BuyProductInFosData {
                             '}';
                 }
             }
+
         }
 
         public static class StoreInfoBean {
-            /**
-             * Shopkeeper : {"Online":0,"UserId":8190340,"UserName":"Leslie靓靓","Idiograph":"",
-             * "Vip":0,"FansCount":731,"NoticeCnt":7,"AvatarUrl":"http://avatar0.hoto
-             * .cn/84/f9/8190340_48.jpg?v=1","Area":{"ProvinceId":0,"ProvinceName":"北京",
-             * "CityId":0,"CityName":"北京"}}
-             * StoreId : 149
-             * UserId : 8190340
-             * LogoUrl : http://pimg2.hoto.cn/store/2015/07/31/55bb6ac68d05a.jpg
-             * IsHealth : 0
-             * Title : 靓家货
-             * AutoAddress : Leslie靓靓 北京市
-             * IsFollow : 0
-             */
+
 
             private ShopkeeperBean Shopkeeper;
             private int StoreId;
@@ -839,17 +697,6 @@ public class BuyProductInFosData {
             }
 
             public static class ShopkeeperBean {
-                /**
-                 * Online : 0
-                 * UserId : 8190340
-                 * UserName : Leslie靓靓
-                 * Idiograph :
-                 * Vip : 0
-                 * FansCount : 731
-                 * NoticeCnt : 7
-                 * AvatarUrl : http://avatar0.hoto.cn/84/f9/8190340_48.jpg?v=1
-                 * Area : {"ProvinceId":0,"ProvinceName":"北京","CityId":0,"CityName":"北京"}
-                 */
 
                 private int Online;
                 private int UserId;
@@ -933,6 +780,21 @@ public class BuyProductInFosData {
                     this.Area = Area;
                 }
 
+                @Override
+                public String toString() {
+                    return "ShopkeeperBean{" +
+                            "Online=" + Online +
+                            ", UserId=" + UserId +
+                            ", UserName='" + UserName + '\'' +
+                            ", Idiograph='" + Idiograph + '\'' +
+                            ", Vip=" + Vip +
+                            ", FansCount=" + FansCount +
+                            ", NoticeCnt=" + NoticeCnt +
+                            ", AvatarUrl='" + AvatarUrl + '\'' +
+                            ", Area=" + Area +
+                            '}';
+                }
+
                 public static class AreaBean {
                     /**
                      * ProvinceId : 0
@@ -977,7 +839,32 @@ public class BuyProductInFosData {
                     public void setCityName(String CityName) {
                         this.CityName = CityName;
                     }
+
+                    @Override
+                    public String toString() {
+                        return "AreaBean{" +
+                                "ProvinceId=" + ProvinceId +
+                                ", ProvinceName='" + ProvinceName + '\'' +
+                                ", CityId=" + CityId +
+                                ", CityName='" + CityName + '\'' +
+                                '}';
+                    }
                 }
+
+            }
+
+            @Override
+            public String toString() {
+                return "StoreInfoBean{" +
+                        "Shopkeeper=" + Shopkeeper +
+                        ", StoreId=" + StoreId +
+                        ", UserId=" + UserId +
+                        ", LogoUrl='" + LogoUrl + '\'' +
+                        ", IsHealth=" + IsHealth +
+                        ", Title='" + Title + '\'' +
+                        ", AutoAddress='" + AutoAddress + '\'' +
+                        ", IsFollow=" + IsFollow +
+                        '}';
             }
         }
 
@@ -1005,7 +892,16 @@ public class BuyProductInFosData {
             public void setDesc(String Desc) {
                 this.Desc = Desc;
             }
+
+            @Override
+            public String toString() {
+                return "ContentBean{" +
+                        "ImgUrl='" + ImgUrl + '\'' +
+                        ", Desc='" + Desc + '\'' +
+                        '}';
+            }
         }
+
 
         public static class GoodsTasteBean {
             /**
@@ -1084,6 +980,19 @@ public class BuyProductInFosData {
 
             public void setTags(List<String> Tags) {
                 this.Tags = Tags;
+            }
+
+            @Override
+            public String toString() {
+                return "GoodsTasteBean{" +
+                        "GoodsTasteId=" + GoodsTasteId +
+                        ", UserName='" + UserName + '\'' +
+                        ", ImgUrl='" + ImgUrl + '\'' +
+                        ", Content='" + Content + '\'' +
+                        ", Info='" + Info + '\'' +
+                        ", ContentTags=" + ContentTags +
+                        ", Tags=" + Tags +
+                        '}';
             }
         }
 
@@ -1200,6 +1109,23 @@ public class BuyProductInFosData {
 
             public void setGender(int Gender) {
                 this.Gender = Gender;
+            }
+
+            @Override
+            public String toString() {
+                return "ListBeanX{" +
+                        "Cid='" + Cid + '\'' +
+                        ", UserId='" + UserId + '\'' +
+                        ", Avatar='" + Avatar + '\'' +
+                        ", UserName='" + UserName + '\'' +
+                        ", AtUserId='" + AtUserId + '\'' +
+                        ", AtUserName='" + AtUserName + '\'' +
+                        ", Content='" + Content + '\'' +
+                        ", AtContent='" + AtContent + '\'' +
+                        ", CreateTime='" + CreateTime + '\'' +
+                        ", Mark='" + Mark + '\'' +
+                        ", Gender=" + Gender +
+                        '}';
             }
         }
     }
