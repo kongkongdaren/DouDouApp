@@ -42,6 +42,8 @@ import org.xutils.x;
 import java.util.LinkedList;
 import java.util.List;
 
+import static com.yjlw.ddms.R.string.price;
+
 /**
  * 购买产品的页面
  */
@@ -202,25 +204,45 @@ public class BuyProductActivity extends AppCompatActivity {
 
         String textColumn = NoteDao.Properties.Text.columnName;
         String orderBy = textColumn + " COLLATE LOCALIZED ASC";
-
-
-
         ListBean listBean = shopLists.get(0);
         int storeId = listBean.getStoreId();
         String storeLogoUrl = listBean.getStoreLogoUrl();
         String storeName = listBean.getTitle();
         String coverUrl = listBean.getCoverUrl();
         String dealPrice = listBean.getDealPrice();
+        String dealPrices = dealPrice.substring(dealPrice.indexOf("￥") + 1);
         int goodsId = listBean.getGoodsId();
         String price = listBean.getPrice();
+        String prices = price.substring(price.indexOf("￥") + 1);
+
         String title = listBean.getStoreTitle();
-        Log.i("Log", "购物车的数据是:" + storeId + "," + storeLogoUrl + "," + storeName + "," + coverUrl
-                + "," + dealPrice + "," + goodsId + "," + price + "," + title);
+        //        Log.i("Log", "购物车的数据是:" + storeId + "," + storeLogoUrl + "," + storeName + ","
+        // + coverUrl
+        //                + "," + dealPrice + "," + goodsId + "," + price + "," + title);
 
         ShoppingCartData shoppingCartData = new ShoppingCartData(null, storeId + "",
-                storeLogoUrl, storeName, coverUrl, dealPrice, goodsId + "", 0 + "", price, title);
-        dao.insert(shoppingCartData);
-        ToastUtils.showToast(this, "添加到购物车");
+                storeLogoUrl, storeName, coverUrl, dealPrices, goodsId + "", 0 + "", prices, title);
+        //        dao.queryBuilder().where(.equals(goodsId)).build();
+        Query query = dao.queryBuilder().where(ShoppingCartDataDao.Properties.GoodsId.eq(goodsId
+                + "")).build();
+        List list = query.list();
+        if(list.size()==0){
+            dao.insert(shoppingCartData);
+            ToastUtils.showToast(this, "添加到购物车");
+        }else {
+            for (int i = 0; i <=list.size(); i++) {
+                ShoppingCartData shopping = (ShoppingCartData) list.get(i);
+                if (shopping.getGoodsId().equals(goodsId + "")) {
+                    ToastUtils.showToast(this, "存在了");
+                    break;
+                } else {
+                    dao.insert(shoppingCartData);
+                    ToastUtils.showToast(this, "添加到购物车");
+                }
+
+            }
+        }
+
     }
 
     /**
@@ -234,8 +256,10 @@ public class BuyProductActivity extends AppCompatActivity {
                 null);
 
         while (cursor.moveToNext()) {
-            //            ShoppingCartData shoppingCartData = new ShoppingCartData(null, storeId + "",
-            //                    storeLogoUrl, storeName, coverUrl, dealPrice, goodsId + "", 0 + "", price, title);
+            //            ShoppingCartData shoppingCartData = new ShoppingCartData(null, storeId
+            // + "",
+            //                    storeLogoUrl, storeName, coverUrl, dealPrice, goodsId + "", 0 +
+            // "", price, title);
 
             String storeId = cursor.getString(1);
             String storeLogoUrl = cursor.getString(2);
@@ -246,8 +270,8 @@ public class BuyProductActivity extends AppCompatActivity {
             String cunt = cursor.getString(7);
             String price = cursor.getString(8);
             String title = cursor.getString(9);
-            Log.i("Log", "购物车的数据是:" + storeId + "," + storeLogoUrl + "," + storeName + "," + coverUrl
-                    + "," + dealPrice + "," + goodsId + "," + price + "," + title);
+            Log.i("Log", "购物车的数据是:" + storeId + "," + storeLogoUrl + "," + storeName + "," +
+                    coverUrl + "," + dealPrice + "," + goodsId + "," + price + "," + title);
         }
     }
 

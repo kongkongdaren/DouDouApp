@@ -7,11 +7,14 @@ public class DataBean {
 
      int id;
 
-    public DataBean(int id, int carNum, String shopName, String content, float price) {
+
+    public DataBean(int id, int carNum, String shopName, String content, String openUrl, float
+            price) {
         this.id = id;
         this.carNum = carNum;
         this.shopName = shopName;
         this.content = content;
+        this.openUrl = openUrl;
         this.price = price;
     }
 
@@ -24,6 +27,15 @@ public class DataBean {
     String shopName;
 
     String content;
+    String openUrl;
+
+    public String getOpenUrl() {
+        return openUrl;
+    }
+
+    public void setOpenUrl(String openUrl) {
+        this.openUrl = openUrl;
+    }
 
     float price;
 

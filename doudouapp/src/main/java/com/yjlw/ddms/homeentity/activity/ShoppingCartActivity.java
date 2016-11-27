@@ -139,15 +139,18 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         int maxId = 0;
         if (mListData != null && mListData.size() > 0)
             maxId = mListData.get(mListData.size() - 1).getId();
-        List<DataBean> result = new ArrayList<DataBean>();
+        List<DataBean> result = new ArrayList<>();
         DataBean data = null;
-        //TODO 在此书写数据库查询
         Cursor cursor = db.query(dao.getTablename(), dao.getAllColumns(), null, null, null, null,
                 null);
+        int i = 0;
         while (cursor.moveToNext()) {
-            //            ShoppingCartData shoppingCartData = new ShoppingCartData(null, storeId + "",
-            //                    storeLogoUrl, storeName, coverUrl, dealPrice, goodsId + "", 0 + "", price, title);
+            //            ShoppingCartData shoppingCartData = new ShoppingCartData(null, storeId
+            // + "",
+            //                    storeLogoUrl, storeName, coverUrl, dealPrice, goodsId + "", 0 +
+            // "", price, title);
             data = new DataBean();
+            data.setId(maxId + (i++) + 1);// 从最大Id的下一个开始
             storeId = cursor.getString(1);
             int storeids = Integer.parseInt(storeId);
             storeLogoUrl = cursor.getString(2);
@@ -157,13 +160,15 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
             goodsId = cursor.getString(6);
             cunt = cursor.getString(7);
             price = cursor.getString(8);
-//            int storeprice = Integer.parseInt(price);
+            float parseFloat = Float.parseFloat(price);
+            Log.i("Log", parseFloat + "");
             title = cursor.getString(9);
             data.setId(storeids);// 从最大Id的下一个开始
             data.setShopName(storeName);
             data.setContent(title);
             data.setCarNum(1);
-//            data.setPrice(storeprice);
+            data.setOpenUrl(coverUrl);
+            data.setPrice(parseFloat);
             result.add(data);
         }
         return result;
@@ -249,8 +254,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
                 @Override
                 public void onClick(View v) {
-                    // TODO Auto-generated method stub
-
                     int _id = (int) mListData.get(position).getId();
 
                     boolean selected = mSelectState.get(_id, false);
@@ -299,6 +302,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
             holder.shopName.setText(data.getShopName());
             holder.content.setText(data.getContent());
             holder.price.setText("￥" + data.getPrice());
+            x.image().bind(holder.image, data.getOpenUrl());
             holder.carNum.setText(data.getCarNum() + "");
             int _id = data.getId();
 
@@ -323,10 +327,12 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
                 mSelectState.delete(_id);
                 totalPrice -= bean.getCarNum() * bean.getPrice();
             }
+
             mSelectNum.setText("已选" + mSelectState.size() + "件商品");
             mPriceAll.setText("￥" + totalPrice + "");
             //TODO 图片
-//            x.image().bind(holder.image,"http://pimg3.hoto.cn/goods/2016/06/29/6131_577353233d790_680_450.jpg");
+            //            x.image().bind(holder.image,"http://pimg3.hoto
+            // .cn/goods/2016/06/29/6131_577353233d790_680_450.jpg");
             if (mSelectState.size() == mListData.size()) {
                 mCheckAll.setChecked(true);
             } else {
