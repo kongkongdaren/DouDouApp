@@ -65,6 +65,7 @@ public class TopicFragment extends Fragment {
     private View beanFriendview;
     private ListView beanFriendListView;
     private List<Lists.ResultBean.ListBean> list;
+    private ProgressBar beanfiend_progressbar_id;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -95,6 +96,7 @@ public class TopicFragment extends Fragment {
             //关于豆友的
             beanFriendview = inflater.inflate(R.layout.squareen_beanfriend_listview, null);
             beanFriendListView = (ListView) beanFriendview.findViewById(R.id.lv_beanfiend_sq_id);
+            beanfiend_progressbar_id = (ProgressBar) beanFriendview.findViewById(R.id.beanfiend_progressbar_id);
             BeanFriendDownLoadData();
             return beanFriendview;
         }else{
@@ -147,7 +149,11 @@ public class TopicFragment extends Fragment {
         Gson gson=new Gson();
         lists = gson.fromJson(result, Lists.class);
         list = lists.getResult().getList();
-        Log.i("list", list.toString());
+        if(list==null){
+            beanfiend_progressbar_id.setVisibility(View.VISIBLE);
+        }else{
+            beanfiend_progressbar_id.setVisibility(View.GONE);
+        }
 
         MyBeanFriendBaseAdapter adapter=new MyBeanFriendBaseAdapter(list,getContext());
 
