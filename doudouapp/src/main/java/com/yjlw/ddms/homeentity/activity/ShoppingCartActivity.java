@@ -429,12 +429,18 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
                     List<Integer> ids = getSelectedIds();
                     doDelete(ids);
                 } else {
-                    //TODO
+                    //TODO 获取位置
                     List<Integer> ids = getSelectedIds();
                     List<DataBean> dataBeens = new ArrayList<>();
-                    for(int i=0;i<ids.size();i++){
+                    for (int i = 0; i < ids.size(); i++) {
                         DataBean dataBean = mListData.get(i);
-                        dataBeens.add(dataBean);
+                        DataBean data = new DataBean();
+                        data.setCoverUrl(dataBean.getOpenUrl());
+                        data.setShopName(dataBean.getShopName());
+                        data.setSubTitle(dataBean.getContent());
+                        data.setPrice(dataBean.getPrice());
+                        Log.i("Log", dataBean.toString());
+                        dataBeens.add(data);
                     }
                     Intent intent = new Intent(this, ShoppingAliPayActivity.class);
                     Bundle bundle = new Bundle();

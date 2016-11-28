@@ -37,6 +37,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+import static com.yjlw.ddms.R.string.price;
 import static com.yjlw.ddms.common.Constants.PARTNER;
 import static com.yjlw.ddms.common.Constants.RSA_PRIVATE;
 import static com.yjlw.ddms.common.Constants.SDK_PAY_FLAG;
@@ -58,7 +59,7 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
     private Handler mHandler;
 
     private List<DataBean> dataBeens = new LinkedList<>();
-    private float price;
+    private float count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,10 +71,11 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
         dataBeens.addAll(beens);
         for (int i = 0; i < dataBeens.size(); i++) {
             DataBean dataBean = dataBeens.get(i);
-            price = dataBean.getPrice();
-            price += price;
+            float price = dataBean.getPrice();
+            count = price + count;
+            Log.i("Log", count + "");
         }
-        tvTotal.setText("¥" + price);
+        tvTotal.setText("¥" + count);
         aboutHandler();
         aboutListView();
     }
