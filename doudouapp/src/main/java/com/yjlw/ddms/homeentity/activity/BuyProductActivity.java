@@ -27,6 +27,7 @@ import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.fristentity.views.MySelfCircleView;
 import com.yjlw.ddms.homeentity.adapter.StoreRecyclerViewAdapter;
 import com.yjlw.ddms.homeentity.entity.BuyProductInFosData;
+import com.yjlw.ddms.homeentity.entity.BuyProductInFosData.ResultBean;
 import com.yjlw.ddms.homeentity.entity.BuyProductInFosData.ResultBean.RelationShopListBean.ListBean;
 import com.yjlw.ddms.homeentity.entity.ShoppingCartData;
 import com.yjlw.ddms.utils.ToastUtils;
@@ -62,7 +63,7 @@ public class BuyProductActivity extends AppCompatActivity {
     private String GoodsId;
     private ShoppingCartDataDao dao;
     private SQLiteDatabase db;
-
+    private List<BuyProductInFosData> productResult = new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -127,8 +128,7 @@ public class BuyProductActivity extends AppCompatActivity {
     private void parserSecondPageData(String s) {
         Gson gson = new Gson();
         BuyProductInFosData buyProductInFosData = gson.fromJson(s, BuyProductInFosData.class);
-        List<BuyProductInFosData.ResultBean.ListBeanX> listBeanXes = buyProductInFosData
-                .getResult().getList();//评论
+        productResult.add(buyProductInFosData);//店铺详情
         shopLists.addAll(buyProductInFosData.getResult().getRelationShopList().getList());//店铺
         //        Log.i("Log", shopLists.toString());
         rvProductStore.setLayoutManager(new GridLayoutManager(this, 2));
@@ -202,21 +202,24 @@ public class BuyProductActivity extends AppCompatActivity {
 
 
     public void addShoppingCard(View view) {
+        BuyProductInFosData shippingInfo = productResult.get(0);
 
-        String textColumn = NoteDao.Properties.Text.columnName;
-        String orderBy = textColumn + " COLLATE LOCALIZED ASC";
-        ListBean listBean = shopLists.get(0);
-        int storeId = listBean.getStoreId();
-        String storeLogoUrl = listBean.getStoreLogoUrl();
-        String storeName = listBean.getTitle();
-        String coverUrl = listBean.getCoverUrl();
-        String dealPrice = listBean.getDealPrice();
+
+        BuyProductInFosData buyProductInFosData = productResult.get(0);
+        ResultBean resultBean = buyProductInFosData.getResult();
+        Log.i("Log",buyProductInFosData.toString());
+        ResultBean.StoreInfoBean storeInfo = resultBean.getStoreInfo();
+        int storeId = storeInfo.getStoreId();
+        String storeLogoUrl = storeInfo.getLogoUrl();
+        String storeName = storeInfo.getTitle();
+        String coverUrl = resultBean.getCoverUrl();
+        String dealPrice = resultBean.getDealPrice();
         String dealPrices = dealPrice.substring(dealPrice.indexOf("￥") + 1);
-        int goodsId = listBean.getGoodsId();
-        String price = listBean.getPrice();
+        int goodsId = storeInfo.getStoreId();
+        String price = resultBean.getPrice();
         String prices = price.substring(price.indexOf("￥") + 1);
 
-        String title = listBean.getStoreTitle();
+        String title = resultBean.getTitle();
         //        Log.i("Log", "购物车的数据是:" + storeId + "," + storeLogoUrl + "," + storeName + ","
         // + coverUrl
         //                + "," + dealPrice + "," + goodsId + "," + price + "," + title);

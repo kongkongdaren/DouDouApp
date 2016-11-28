@@ -446,10 +446,10 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
         for (int i = 0; i < mListData.size(); i++) {
             long dataId = mListData.get(i).getId();
-            long id = mListData.get(i).get_id();
-            dao.deleteByKey(id);
-            for (int j = 0; j < ids.size(); j++) {
 
+            for (int j = 0; j < ids.size(); j++) {
+                long id = mListData.get(j).get_id();
+                dao.deleteByKey(id);
                 int deleteId = ids.get(j);
                 if (dataId == deleteId) {
                     mListData.remove(i);
