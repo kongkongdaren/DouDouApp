@@ -2,24 +2,24 @@ package com.yjlw.ddms.squareentity.fragment.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
-import com.yjlw.ddms.fristentity.fragment.FirstFragment;
 import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
-import com.yjlw.ddms.squareentity.fragment.adapter.MyBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyViewPagerAdapter;
 import com.yjlw.ddms.squareentity.fragment.entity.Result;
 
@@ -30,10 +30,7 @@ import org.xutils.x;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
-import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Description：话题Fragment<br/>
@@ -56,7 +53,11 @@ public class TopicFragment extends Fragment {
     private ViewPager mVp;
     private List<Result.ResultBean.HotBean> hot;
     private int i;
+    private int index=0;
     private View squareen_topic_group;
+    private ProgressBar progressBar;
+    private List<TopicViewPagerFragment> pager;
+    private Handler handler;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -77,37 +78,104 @@ public class TopicFragment extends Fragment {
             //填充布局文件squareen_fragment
             view = inflater.inflate(R.layout.squareen_fragment, null);
             mLv = (ListView) view.findViewById(R.id.lv_sq_id);
+            progressBar = (ProgressBar) view.findViewById(R.id.progressbar_id);
 
-            DownloadData();
+            TopicDownloadData();
 
         }else if(i==1){
-        //TODO
+            //TODO
             //关于豆友的
+            BeanFriendDownLoadData();
 
         }else{
-        //TODO
+            //TODO
             //关于动态的
+            DynamicDownLoadData();
         }
         return view;
     }
 
+    //动态的数据下载
+    private void DynamicDownLoadData() {
+        String thirdPageDynamic = Constant.THIRD_PAGE_DYNAMIC;
+        RequestParams params = new RequestParams(thirdPageDynamic);
+        params.addBodyParameter("limit", "10");
+        params.addBodyParameter("offset", "0");
+        params.addBodyParameter("sign", "");
+        params.addBodyParameter("uid	", "0");
+        x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                parserThirdPagerDynamic(result);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+    }
+    //动态数据进行的Gson解析
+    private void parserThirdPagerDynamic(String result) {
+    }
+
+    //豆友的数据下载
+    private void BeanFriendDownLoadData() {
+        String thirdPageBeanFirend = Constant.THIRD_PAGE_BEAN_FIREND;
+        RequestParams params = new RequestParams(thirdPageBeanFirend);
+        params.addBodyParameter("limit", "20");
+        params.addBodyParameter("sign", "");
+        params.addBodyParameter("uid	", "0");
+        params.addBodyParameter("position", "中国北京市东城区西长安街");
+        params.addBodyParameter("lng", "116.403625");
+        params.addBodyParameter("offset", "0");
+        params.addBodyParameter("lat", "39.913249");
+        x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                parserThirdPagerBeanFirend(result);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+    }
+
+    //豆友数据进行的Gson解析
+    private void parserThirdPagerBeanFirend(String result) {
+    }
 
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
 
-        if(i==0){
-
-        }else if(i==1){
-
-        }else{
-
-        }
         super.onActivityCreated(savedInstanceState);
     }
 
     //下载数据
-    private void DownloadData() {
+    private void TopicDownloadData() {
         String thirdPage = Constant.THIRD_PAGE;
         RequestParams params = new RequestParams(thirdPage);
         params.addBodyParameter("offset", "0");
@@ -144,20 +212,29 @@ public class TopicFragment extends Fragment {
 
         groupBeans.addAll(result1.getResult().getGroup());//向ListView中添加数据源
 
-        // Log.i("log",groupBeans.toString());
         hot = result1.getResult().getHot();
 
         ad.addAll(result1.getResult().getAd());
 
+        if(groupBeans==null && hot==null && ad==null){
+            progressBar.setVisibility(View.VISIBLE);
+        }else{
+            progressBar.setVisibility(View.GONE);
+        }
         View inflate = View.inflate(getContext(),R.layout.squareen_topic_image_viewpager, null);
-        mLl = (LinearLayout) inflate.findViewById(R.id.ll_container_id);
-        mVp = (ViewPager) inflate.findViewById(R.id.vp_id);
+        mLl = (LinearLayout) inflate.findViewById(R.id.ll_topic_container_id);
+        mVp = (ViewPager) inflate.findViewById(R.id.topic_vp_id);
 
         //填充ViewPager布局文件
         mLv.addHeaderView(inflate);
 
         //关于ViewPager的操作
-        //aboutViewPager();
+        aboutViewPager();
+
+        // 3、关于小圆点的操作
+        aboutLittleDots();
+        circleShowPic();
+        ad.clear();
 
         //添加实时热点
         View squareen_real_time = View.inflate(getContext(),R.layout.squareen_real_time, null);
@@ -243,5 +320,97 @@ public class TopicFragment extends Fragment {
             TextView tv_dianji_count_id;
             TextView tv_message_count_id;
         }
+    }
+
+    //关于V
+    private void aboutViewPager() {
+        pager = new LinkedList<>();
+        for (int i = 0; i < ad.size(); i++) {
+            TopicViewPagerFragment fragment = new TopicViewPagerFragment();
+            Bundle args = new Bundle();
+            args.putString("img", ad.get(i).getImg());
+            args.putString("url", ad.get(i).getUrl());
+            fragment.setArguments(args);
+            pager.add(fragment);
+        }
+        //适配器
+        MyViewPagerAdapter adapter=new MyViewPagerAdapter(getFragmentManager(),pager);
+        //绑定适配器
+        mVp.setAdapter(adapter);
+        // 给ViewPger添加监听器，决定小圆点的状态
+        mVp.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
+            @Override
+            public void onPageSelected(int position) {
+                // ViewPager决定小圆点的状态
+                for (int i = 0; i < pager.size(); i++) {// 状态复原
+                    mLl.getChildAt(i).setEnabled(true);
+                }
+
+                // 将position位置处的小圆点enable属性值设置为false
+                mLl.getChildAt(position).setEnabled(false);
+            }
+        });
+    }
+
+    /**
+     * 关于小圆点的操作
+     */
+    private void aboutLittleDots() {
+        // 分析：
+        // 1）小圆点的个数与ViewPager中数据源中Fragment的个数是一样的
+        // 2）在占位的容器控件中，动态添加ImageView。
+        // 3）联动效果的添加：
+        // a)小圆点决定ViewPager当前页面的状态
+        // b)ViewPager决定小圆点的状态
+
+        MyOnClickListener listener = new MyOnClickListener();
+
+        for (int i = 0; i < pager.size(); i++) {// 每循环一次，构建一个ImageView的实例，添加到占位的容器控件中
+            ImageView iv = new ImageView(getActivity());
+            iv.setImageResource(R.drawable.dot_selector);
+
+            // 给ImageView添加标签
+            iv.setTag(i);
+            // 给小圆点添加监听器
+            iv.setOnClickListener(listener);
+
+            // ImageView控件上显示的图片，动态由Enabled属性值，根据选择器，来动态加载图片
+            iv.setEnabled(true);
+
+            mLl.addView(iv);
+        }
+
+        // 默认第一个小圆点是选中的状态
+        mLl.getChildAt(0).setEnabled(false);
+
+    }
+
+    // OnClickListener点击事件监听器
+    private final class MyOnClickListener implements View.OnClickListener {
+
+        /*
+         * (non-Javadoc)
+         *
+         * @see android.view.View.OnClickListener#onClick(android.view.View)
+         */
+        @Override
+        public void onClick(View v) {
+            // 小圆点决定ViewPager当前页面的状态
+            mVp.setCurrentItem((Integer) v.getTag());
+        }
+
+    }
+    private void circleShowPic() {
+        handler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                mVp.setCurrentItem(index++);
+                if(index==pager.size()){
+                    index=0;
+                }
+                handler.sendEmptyMessageDelayed(1,2000);
+            }
+        };
+        handler.sendEmptyMessageDelayed(1,2000);
     }
 }

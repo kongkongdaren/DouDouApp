@@ -27,26 +27,28 @@ public class TopicViewPagerFragment extends Fragment {
 
     private ImageView mPhoto;
     private String img;
+    private String url;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         Bundle bundle = getArguments();
         img = bundle.getString("img");
-        Log.i("","img"+img);
+        Log.i("img",img);
+        url = bundle.getString("url");
         super.onCreate(savedInstanceState);
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.squareen_topic_image, null);
-        mPhoto = (ImageView) view.findViewById(R.id.iv_photo_id);
+        View view = inflater.inflate(R.layout.squareen_topic_image, container,false);
+        mPhoto = (ImageView) view.findViewById(R.id.iv_topic_photo_id);
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        Picasso.with(getContext()).load(img).into(mPhoto);
+        Picasso.with(getContext()).load(img).placeholder(R.mipmap.default_high).into(mPhoto);
         super.onActivityCreated(savedInstanceState);
     }
 }
