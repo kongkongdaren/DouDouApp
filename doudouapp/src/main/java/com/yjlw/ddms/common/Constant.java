@@ -938,4 +938,15 @@ public class Constant {
        params.addBodyParameter("appqs", "haodourecipe://haodou.com/photolist/?type=1&id=158&_wt=5");
        params.addBodyParameter("topicTag", "158");
     */
+    //看视频
+    public static String VEDIO_DATA="http://api.haodou.com/index.php?appid=2" +
+            "&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=" +
+            "1480322030436&vc=105&vn=6.1.15&loguid=10282642&deviceid=" +
+            "haodou864394010609719&uuid=4d026196b079f72c6ee96157c0c65d62&channel=" +
+            "anzhi_v6115&method=Info.getVideoUrl&virtual=&signmethod=md5&v=3&timestamp" +
+            "=1480322100&nonce=0.06804157082520612&appsign=86667fa71437e839b8ce3457960830f4";
+    /*
+    params.addBodyParameter("appqs", "haodourecipe://haodou.com/recipe/info/?id=901456&video=1");
+    params.addBodyParameter("rid", "901456");
+    */
 }
