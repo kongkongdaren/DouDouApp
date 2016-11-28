@@ -113,18 +113,19 @@
         <!-- 视频播放 -->
         <activity android:name=".fristentity.activity.VideoActiviry"/>
         <!-- 产品评论 -->
-        <activity android:name=".homeentity.activity.ProductCommentActivity">
-        </activity>
+        <activity android:name=".homeentity.activity.ProductCommentActivity"/>
         <!-- 购买商品 -->
-        <activity android:name=".homeentity.activity.BuyProductActivity">
-        </activity>
+        <activity android:name=".homeentity.activity.BuyProductActivity"/>
         <!-- list条目 -->
         <activity android:name=".fristentity.activity.ListActivity"/>
         <!-- 热门活动跳转 -->
         <activity android:name=".fristentity.activity.HotSkipActivity"/>
         <!--阿里支付-->
-        <activity android:name=".homeentity.activity.ShoppingAliPayActivity">
-        </activity>
+        <activity android:name=".homeentity.activity.ShoppingAliPayActivity"/>
+        <!--登录活动-->
+        <activity android:name=".aboutme.activity.LoginActivity"/>
+        <!--注册活动-->
+        <activity android:name=".aboutme.activity.RegistActivity"/>
     </application>
 
 </manifest>

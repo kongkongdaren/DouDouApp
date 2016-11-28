@@ -3,17 +3,17 @@ package com.yjlw.ddms.fristentity.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
+import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.yjlw.ddms.R;
 
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
-
-import it.sephiroth.android.library.picasso.Picasso;
 
 /**
  * Description：xx <br/>
@@ -30,10 +30,8 @@ public class ListActivity extends AppCompatActivity {
     private ImageView ivListBack;
     @ViewInject(R.id.iv_list_share)
     private ImageView ivListShare;
-    @ViewInject(R.id.iv_photo_list)
-    private ImageView ivListPhoto;
-    @ViewInject(R.id.tv_list_title)
-    private TextView tvListTitle;
+    @ViewInject(R.id.webv_id)
+    private WebView web;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +44,20 @@ public class ListActivity extends AppCompatActivity {
             }
         });
         Bundle extras = getIntent().getExtras();
-        String title = extras.getString("title");
-        String img = extras.getString("imgUrl");
-        Log.i("img",title);
-        Picasso.with(this).load(img).placeholder(R.mipmap.default_high).into(ivListPhoto);
-        tvListTitle.setText(title);
+        String url = extras.getString("url");
+        WebSettings settings = web.getSettings();
+        settings.setRenderPriority(WebSettings.RenderPriority.HIGH);
+        settings.setSupportMultipleWindows(true);
+        settings.setJavaScriptEnabled(true);
+        settings.setSavePassword(false);
+        settings.setJavaScriptCanOpenWindowsAutomatically(true);
+        settings.setMinimumFontSize(settings.getMinimumFontSize() + 8);
+        settings.setAllowFileAccess(false);
+        settings.setTextSize(WebSettings.TextSize.NORMAL);
+        settings.setUseWideViewPort(true);
+        settings.setLoadWithOverviewMode(true);
+        web.setWebChromeClient(new WebChromeClient());// 支持运行特殊的javascript（例如：alert()）
+        web.setWebViewClient(new WebViewClient());//
+        web.loadUrl(url);
     }
 }
