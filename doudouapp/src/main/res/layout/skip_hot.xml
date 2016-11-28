@@ -60,7 +60,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:background="@color/common_gray"
+        android:background="@color/bright_gray"
         />
     <FrameLayout
         android:layout_marginTop="10dp"
@@ -71,7 +71,6 @@
             android:id="@+id/lv_skip"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:focusable="false"
             />
         <ProgressBar
             android:id="@+id/pb_skip"
