@@ -130,6 +130,8 @@
         </activity>
         <!--热门分类-->
         <activity android:name=".fristentity.activity.HotClassActivity"/>
+        <!--热门分类跳转-->
+        <activity android:name=".fristentity.activity.HotClassSkipActivity"/>
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="583c327b8f4a9d5c44001340" />
