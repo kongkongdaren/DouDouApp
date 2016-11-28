@@ -38,6 +38,7 @@
         android:resizeable="true"
         android:smallScreens="true" />
 
+
     <application
         android:name=".application.xUtilsApplication"
         android:allowBackup="true"
