@@ -143,7 +143,6 @@ public class WebVedioData {
             public int getStepDuration() {
                 return StepDuration;
             }
-
             public void setStepDuration(int StepDuration) {
                 this.StepDuration = StepDuration;
             }
