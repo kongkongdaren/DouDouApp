@@ -6,7 +6,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -15,8 +14,8 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
-import com.yjlw.ddms.fristentity.adapter.NewDataAdapter;
-import com.yjlw.ddms.fristentity.entity.NewData;
+import com.yjlw.ddms.fristentity.adapter.HotSkipAdapter;
+import com.yjlw.ddms.fristentity.entity.HotSkipData;
 
 import org.xutils.common.Callback;
 import org.xutils.http.HttpMethod;
@@ -27,30 +26,30 @@ import org.xutils.x;
 import java.util.List;
 
 /**
- * Description：新手活动 <br/>
+ * Description：xx <br/>
  * Copyright (c) 2016<br/>
  * This program is protected by copyright laws <br/>
- * Date: 2016年11月25  21:35
+ * Date: 2016年11月29  0:08
  *
  * @author 姜文莒
  * @version : 1.0
  */
 
-public class NewActivity extends AppCompatActivity {
-    @ViewInject(R.id.iv_new_back)
-    private ImageView ivNew;
-    @ViewInject(R.id.tv_new_title)
-    private TextView tvNewTitle;
-    @ViewInject(R.id.new_gv)
-    private RecyclerView newGv;
-    @ViewInject(R.id.new_pb)
-    private ProgressBar newPb;
+public class HotClassSkipActivity extends AppCompatActivity {
+    @ViewInject(R.id.hot_class_back)
+    private ImageView hotClassBack;
+    @ViewInject(R.id.hot_class_title)
+    private TextView hotClassTitle;
+    @ViewInject(R.id.hot_class_rlv)
+    private RecyclerView rlv;
+    @ViewInject(R.id.hot_pb)
+    private ProgressBar pb;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.new_gv);
+        setContentView(R.layout.hot_class);
         x.view().inject(this);
-        ivNew.setOnClickListener(new View.OnClickListener() {
+        hotClassBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
@@ -58,21 +57,22 @@ public class NewActivity extends AppCompatActivity {
         });
         Bundle extras = getIntent().getExtras();
         String title = extras.getString("title");
-        tvNewTitle.setText(title);
-        downloadNewData();
+        hotClassTitle.setText(title);
+        int position = extras.getInt("position");
+        downHotSkipData(position);
     }
-//下载数据
-    private void downloadNewData() {
-        String newUrl = Constant.SECOND_PAGE_FRESHCLASSROOM;
-        RequestParams params=new RequestParams(newUrl);
+
+    private void downHotSkipData(int position) {
+        String hotItemUrl = Constant.HOT_CLASS_ITEM;
+        RequestParams params=new RequestParams(hotItemUrl);
         params.addBodyParameter("limit", "20");
         params.addBodyParameter("offset", "0");
-        params.addBodyParameter("type", "");
+        params.addBodyParameter("type", "1");
+        params.addBodyParameter("cate_id", (47-position)+"");
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                Log.i("Log","新手"+result);
-                parseNewData(result);
+                parseHotSkipData(result);
             }
 
             @Override
@@ -91,30 +91,27 @@ public class NewActivity extends AppCompatActivity {
             }
         });
     }
-//解析数据
-    private void parseNewData(String result) {
-        Gson gson=new Gson();
-        NewData newData = gson.fromJson(result, NewData.class);
-        List<NewData.ResultBean.ListBean> newDataList = newData.getResult().getList();
-        if(newDataList==null){
-            newPb.setVisibility(View.VISIBLE);
-        }else{
-            newPb.setVisibility(View.GONE);
-        }
-        Log.i("Log","新手数据"+newDataList.get(0).getTitle());
-        aboutGridView(newDataList);
 
+    private void parseHotSkipData(String result) {
+        Gson gson=new Gson();
+        HotSkipData hotSkipData = gson.fromJson(result, HotSkipData.class);
+        List<HotSkipData.ResultBean.ListBean> skipList = hotSkipData.getResult().getList();
+        if (skipList==null){
+            pb.setVisibility(View.VISIBLE);
+        }else {
+             pb.setVisibility(View.GONE);
+        }
+        aboutRecyclerView(skipList);
     }
 
-    private void aboutGridView(List<NewData.ResultBean.ListBean> newDataList) {
+    private void aboutRecyclerView(List<HotSkipData.ResultBean.ListBean> skipList) {
         //初始化布局
-        newGv.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-        //适配器
-        NewDataAdapter adapter=new NewDataAdapter(newDataList,this);
-        newGv.setAdapter(adapter);
+        rlv.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+        HotSkipAdapter adapter=new HotSkipAdapter(skipList,this);
+        rlv.setAdapter(adapter);
         //设置item之间的间隔
         SpacesItemDecoration decoration=new SpacesItemDecoration(5);
-        newGv.addItemDecoration(decoration);
+        rlv.addItemDecoration(decoration);
 
     }
     public class SpacesItemDecoration extends RecyclerView.ItemDecoration {

@@ -949,4 +949,29 @@ public class Constant {
     params.addBodyParameter("appqs", "haodourecipe://haodou.com/recipe/info/?id=901456&video=1");
     params.addBodyParameter("rid", "901456");
     */
+    //看视频之热门分类
+    public static String HOT_CLASS="http://api.haodou.com/index.php?appid=" +
+            "2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=" +
+            "1480347793298&vc=105&vn=6.1.15&loguid=10282642&deviceid=haodou864394010609719&uuid" +
+            "=4d026196b079f72c6ee96157c0c65d62&channel=anzhi_v6115&method=" +
+            "Video.getRecipeVideoCateList&virtual=&signmethod=md5&v=3&timestamp=" +
+            "1480347812&nonce=0.7260112681182109&appsign=83a6c1a41eb00df400419431a79f7cfc";
+    /*
+     params.addBodyParameter("limit", "20");
+     params.addBodyParameter("offset", "0");
+     */
+    //看视频之热门分类条目点击
+    public static String HOT_CLASS_ITEM="http://api.haodou.com/index.php?appid=" +
+            "2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=" +
+            "1480347793298&vc=105&vn=6.1.15&loguid=10282642&deviceid=" +
+            "haodou864394010609719&uuid=4d026196b079f72c6ee96157c0c65d62&channel=" +
+            "anzhi_v6115&method=Video.getVideoListByCate&virtual=&signmethod=md5&v" +
+            "=3&timestamp=1480349887&nonce=0.4283383949178309&appsign=" +
+            "4622a4f65d073af9c91e8e11605f80e5";
+    /*
+     params.addBodyParameter("limit", "20");
+     params.addBodyParameter("offset", "0");
+     params.addBodyParameter("type", "1");
+     params.addBodyParameter("cate_id", "47");
+     */
 }

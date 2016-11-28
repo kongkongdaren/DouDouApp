@@ -43,4 +43,6 @@ dependencies {
     compile 'com.bartoszlipinski:recyclerviewheader:1.2.1'
     compile project(':refreshlibrary')
     compile files('libs/alipaySdk-20160516.jar')
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/SocialSDK_QQZone_1.jar')
 }
