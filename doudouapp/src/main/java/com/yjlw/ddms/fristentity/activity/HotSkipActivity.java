@@ -82,8 +82,8 @@ public class HotSkipActivity extends AppCompatActivity {
         params.addBodyParameter("sign", "df04ef8cf3aab201ce09175f64129ac4");
         params.addBodyParameter("uid	", "10282642");
         params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
-        params.addBodyParameter("appqs", "haodourecipe://haodou.com/photolist/?type=1&id=position&_wt=5");
-        params.addBodyParameter("topicTag",position+"");
+        params.addBodyParameter("appqs", "haodourecipe://haodou.com/photolist/?type=1&id=(159-position)&_wt=5");
+        params.addBodyParameter("topicTag",(159-position)+"");
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {

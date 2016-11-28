@@ -37,7 +37,7 @@ import it.sephiroth.android.library.picasso.Picasso;
 
 public class VideoActiviry extends AppCompatActivity {
     @ViewInject(R.id.iv_hotvideo_back)
-            private ImageView ivVedioBack;
+    private ImageView ivVedioBack;
     @ViewInject(R.id.iv_hotvideo_collect)
     private ImageView ivVedioCollect;
     @ViewInject(R.id.iv_hotvideo_share)
@@ -67,8 +67,10 @@ public class VideoActiviry extends AppCompatActivity {
     }
 //下载视频的url
     private void downloadVedioUrl() {
-        String videoUrl = Constant.LOOK_VIDEO;
+        String videoUrl = Constant.VEDIO_DATA;
         RequestParams params=new RequestParams(videoUrl);
+        params.addBodyParameter("appqs", "haodourecipe://haodou.com/recipe/info/?id=901456&video=1");
+        params.addBodyParameter("rid", "901456");
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
