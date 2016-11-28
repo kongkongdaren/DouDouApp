@@ -24,6 +24,19 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <!-- 允许应用读取低级别的系统日志文件 -->
     <uses-permission android:name="android.permission.READ_LOGS"/>
+    <!-- 支付宝要用到的权限 -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"/>
 
     <application
         android:name=".application.xUtilsApplication"
@@ -102,13 +115,16 @@
         <!-- 产品评论 -->
         <activity android:name=".homeentity.activity.ProductCommentActivity">
         </activity>
-        <!--购买商品-->
+        <!-- 购买商品 -->
         <activity android:name=".homeentity.activity.BuyProductActivity">
         </activity>
-        <!--list条目-->
+        <!-- list条目 -->
         <activity android:name=".fristentity.activity.ListActivity"/>
-        <!--热门活动跳转-->
+        <!-- 热门活动跳转 -->
         <activity android:name=".fristentity.activity.HotSkipActivity"/>
+        <!--阿里支付-->
+        <activity android:name=".homeentity.activity.ShoppingAliPayActivity">
+        </activity>
     </application>
 
 </manifest>

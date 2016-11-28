@@ -1,5 +1,6 @@
 package com.yjlw.ddms.homeentity.activity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Paint;
@@ -226,11 +227,11 @@ public class BuyProductActivity extends AppCompatActivity {
         Query query = dao.queryBuilder().where(ShoppingCartDataDao.Properties.GoodsId.eq(goodsId
                 + "")).build();
         List list = query.list();
-        if(list.size()==0){
+        if (list.size() == 0) {
             dao.insert(shoppingCartData);
             ToastUtils.showToast(this, "添加到购物车");
-        }else {
-            for (int i = 0; i <=list.size(); i++) {
+        } else {
+            for (int i = 0; i <= list.size(); i++) {
                 ShoppingCartData shopping = (ShoppingCartData) list.get(i);
                 if (shopping.getGoodsId().equals(goodsId + "")) {
                     ToastUtils.showToast(this, "存在了");
@@ -254,25 +255,30 @@ public class BuyProductActivity extends AppCompatActivity {
         ToastUtils.showToast(this, "购买商品");
         Cursor cursor = db.query(dao.getTablename(), dao.getAllColumns(), null, null, null, null,
                 null);
+        startActivity(new Intent(this, ShoppingAliPayActivity.class));
 
-        while (cursor.moveToNext()) {
-            //            ShoppingCartData shoppingCartData = new ShoppingCartData(null, storeId
-            // + "",
-            //                    storeLogoUrl, storeName, coverUrl, dealPrice, goodsId + "", 0 +
-            // "", price, title);
-
-            String storeId = cursor.getString(1);
-            String storeLogoUrl = cursor.getString(2);
-            String storeName = cursor.getString(3);
-            String coverUrl = cursor.getString(4);
-            String dealPrice = cursor.getString(5);
-            String goodsId = cursor.getString(6);
-            String cunt = cursor.getString(7);
-            String price = cursor.getString(8);
-            String title = cursor.getString(9);
-            Log.i("Log", "购物车的数据是:" + storeId + "," + storeLogoUrl + "," + storeName + "," +
-                    coverUrl + "," + dealPrice + "," + goodsId + "," + price + "," + title);
-        }
+        //        while (cursor.moveToNext()) {
+        //            //            ShoppingCartData shoppingCartData = new ShoppingCartData
+        // (null, storeId
+        //            // + "",
+        //            //                    storeLogoUrl, storeName, coverUrl, dealPrice, goodsId
+        // + "", 0 +
+        //            // "", price, title);
+        //
+        //            String storeId = cursor.getString(1);
+        //            String storeLogoUrl = cursor.getString(2);
+        //            String storeName = cursor.getString(3);
+        //            String coverUrl = cursor.getString(4);
+        //            String dealPrice = cursor.getString(5);
+        //            String goodsId = cursor.getString(6);
+        //            String cunt = cursor.getString(7);
+        //            String price = cursor.getString(8);
+        //            String title = cursor.getString(9);
+        ////            Log.i("Log", "购物车的数据是:" + storeId + "," + storeLogoUrl + "," + storeName
+        // + "," +
+        ////                    coverUrl + "," + dealPrice + "," + goodsId + "," + price + "," +
+        // title);
+        //        }
     }
 
     @Override

@@ -42,4 +42,5 @@ dependencies {
     compile project(':vitamio')
     compile 'com.bartoszlipinski:recyclerviewheader:1.2.1'
     compile project(':refreshlibrary')
+    compile files('libs/alipaySdk-20160516.jar')
 }
