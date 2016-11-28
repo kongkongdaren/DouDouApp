@@ -70,7 +70,7 @@ public class HotSkipActivity extends AppCompatActivity {
         String title = extras.getString("title");
         tvSkipTitle.setText(title+"的作品");
         tvSkipBigTitle.setText(title);
-        int  position = extras.getInt("position");
+        int position = extras.getInt("position");
         downloadSkipData(position);
     }
 //下载数据
@@ -121,11 +121,10 @@ public class HotSkipActivity extends AppCompatActivity {
         }else {
             pb.setVisibility(View.GONE);
         }
-        Log.i("re","你想要的是"+listSkipData.get(0).getCreateTime()+"");
-        aboutPullToRefresh(listSkipData);
+        aboutPullToRefreshListView(listSkipData);
     }
 
-    private void aboutPullToRefresh(List<SkipData.ResultBean.ListBean> listSkipData) {
+    private void aboutPullToRefreshListView(List<SkipData.ResultBean.ListBean> listSkipData) {
         SkipAdapter adapter=new SkipAdapter(listSkipData,this);
         lv.setAdapter(adapter);
     }

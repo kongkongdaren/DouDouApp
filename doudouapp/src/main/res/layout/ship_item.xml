@@ -25,7 +25,7 @@
         android:id="@+id/tv_title_skip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="60dp"
+        android:paddingLeft="70dp"
         />
 <LinearLayout
     android:paddingLeft="60dp"
@@ -117,6 +117,6 @@
         android:id="@+id/tv_skip_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="50dp"
+        android:paddingLeft="60dp"
         android:layout_marginTop="10dp"/>
 </LinearLayout>
