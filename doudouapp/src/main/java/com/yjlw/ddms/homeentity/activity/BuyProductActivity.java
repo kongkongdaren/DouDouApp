@@ -192,7 +192,7 @@ public class BuyProductActivity extends AppCompatActivity {
         tags.setText(goodsTasteBean.getTags().get(0));
         //
         List<String> contentParam = result.getContentParam();
-        Log.i("Log", "产品工艺" + contentParam.toString());
+//        Log.i("Log", "产品工艺" + contentParam.toString());
         //        contentParam0.setText(contentParam.get(0));
         //        contentParam1.setText(contentParam.get(1));
         //        contentParam2.setText(contentParam.get(2));
@@ -207,7 +207,7 @@ public class BuyProductActivity extends AppCompatActivity {
 
         BuyProductInFosData buyProductInFosData = productResult.get(0);
         ResultBean resultBean = buyProductInFosData.getResult();
-        Log.i("Log",buyProductInFosData.toString());
+        //        Log.i("Log",buyProductInFosData.toString());
         ResultBean.StoreInfoBean storeInfo = resultBean.getStoreInfo();
         int storeId = storeInfo.getStoreId();
         String storeLogoUrl = storeInfo.getLogoUrl();
@@ -256,9 +256,28 @@ public class BuyProductActivity extends AppCompatActivity {
      */
     public void buyProduct(View view) {
         ToastUtils.showToast(this, "购买商品");
-        Cursor cursor = db.query(dao.getTablename(), dao.getAllColumns(), null, null, null, null,
-                null);
-        startActivity(new Intent(this, ShoppingAliPayActivity.class));
+        BuyProductInFosData buyProductInFosData = productResult.get(0);
+        ResultBean resultBean = buyProductInFosData.getResult();
+        //        Log.i("Log",buyProductInFosData.toString());
+        ResultBean.StoreInfoBean storeInfo = resultBean.getStoreInfo();
+        int storeId = storeInfo.getStoreId();
+        String storeLogoUrl = storeInfo.getLogoUrl();
+        String storeName = storeInfo.getTitle();
+        String coverUrl = resultBean.getCoverUrl();
+        String dealPrice = resultBean.getDealPrice();
+        int goodsId = storeInfo.getStoreId();
+        String price = resultBean.getPrice();
+        String subTitle = resultBean.getSubTitle();
+        String title = resultBean.getTitle();
+
+        Intent intent = new Intent(this, ShoppingAliPayActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("coverUrl", coverUrl);
+        bundle.putString("title", title);
+        bundle.putString("subTitle", subTitle);
+        bundle.putString("dealPrice", dealPrice);
+        intent.putExtras(bundle);
+        startActivity(intent);
 
         //        while (cursor.moveToNext()) {
         //            //            ShoppingCartData shoppingCartData = new ShoppingCartData

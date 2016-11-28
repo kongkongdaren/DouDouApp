@@ -21,7 +21,6 @@ import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
-import com.yjlw.ddms.squareentity.fragment.adapter.MyBeanFriendBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyViewPagerAdapter;
 import com.yjlw.ddms.squareentity.fragment.entity.Lists;
 import com.yjlw.ddms.squareentity.fragment.entity.Result;
@@ -149,9 +148,9 @@ public class TopicFragment extends Fragment {
         list = lists.getResult().getList();
         Log.i("list", list.toString());
 
-        MyBeanFriendBaseAdapter adapter=new MyBeanFriendBaseAdapter(list,getContext());
-
-        beanFriendListView.setAdapter(adapter);
+//        MyBeanFriendBaseAdapter adapter=new MyBeanFriendBaseAdapter(list,getContext());
+//
+//        beanFriendListView.setAdapter(adapter);
 
     }
 

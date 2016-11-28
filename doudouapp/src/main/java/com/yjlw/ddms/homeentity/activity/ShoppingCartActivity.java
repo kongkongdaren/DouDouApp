@@ -1,5 +1,6 @@
 package com.yjlw.ddms.homeentity.activity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
@@ -390,7 +391,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
                 break;
 
             case R.id.check_box:
-                //TODO 选择
                 if (mCheckAll.isChecked()) {
 
                     totalPrice = 0;
@@ -427,7 +427,15 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
                     List<Integer> ids = getSelectedIds();
                     doDelete(ids);
                 } else {
-                    Toast.makeText(getApplicationContext(), "结算", Toast.LENGTH_SHORT).show();
+                    //TODO
+                    Intent intent = new Intent(this, ShoppingAliPayActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("coverUrl", coverUrl);
+                    bundle.putString("title", title);
+                    bundle.putString("subTitle", storeName);
+                    bundle.putString("dealPrice", dealPrice);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
                 }
                 break;
 
