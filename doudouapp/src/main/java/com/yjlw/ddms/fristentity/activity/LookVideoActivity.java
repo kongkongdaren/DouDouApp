@@ -271,7 +271,6 @@ public class LookVideoActivity extends AppCompatActivity {
         //绑定适配器
         lvInterest.setAdapter(adapter);
     }
-
     private void aboutViewPager(List<VideoData.ResultBean.AdBean> videoAd) {
         videoPager = new LinkedList<>();
         for(int i=0;i<videoAd.size();i++){
