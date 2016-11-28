@@ -265,6 +265,7 @@ public class LookVideoActivity extends AppCompatActivity {
     }
 
     private void aboutListViewInterest(List<VideoData.ResultBean.FunlifeBean> hotFunlife) {
+        lvInterest.setFocusable(false);
         //适配器
         LookVedioAdapter adapter=new LookVedioAdapter(hotFunlife,this);
         //绑定适配器
