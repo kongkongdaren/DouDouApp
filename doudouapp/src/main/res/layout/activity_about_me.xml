@@ -49,6 +49,7 @@
                     android:background="@drawable/shape"
                     android:shadowRadius="5"
                     android:text="@string/login"
+                    android:onClick="OnClickAction"
                     android:textColor="#ffffff"
                     />
 
@@ -60,6 +61,7 @@
                     android:background="@drawable/shape"
                     android:shadowRadius="5"
                     android:text="@string/regist"
+                    android:onClick="OnClickAction"
                     android:textColor="#ffffff"
                     />
             </LinearLayout>
