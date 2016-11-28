@@ -7,6 +7,7 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +21,9 @@ import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
+import com.yjlw.ddms.squareentity.fragment.adapter.MyBeanFriendBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyViewPagerAdapter;
+import com.yjlw.ddms.squareentity.fragment.entity.Lists;
 import com.yjlw.ddms.squareentity.fragment.entity.Result;
 
 import org.xutils.common.Callback;
@@ -47,7 +50,7 @@ public class TopicFragment extends Fragment {
     private Result result1;
     private List<Result.ResultBean.AdBean> ad = new LinkedList<>();
     private List<Result.ResultBean.GroupBean> groupBeans = new LinkedList<>();
-    private View view;
+    private View Topicview;
     private ListView mLv;
     private LinearLayout mLl;
     private ViewPager mVp;
@@ -58,6 +61,10 @@ public class TopicFragment extends Fragment {
     private ProgressBar progressBar;
     private List<TopicViewPagerFragment> pager;
     private Handler handler;
+    private Lists lists;
+    private View beanFriendview;
+    private ListView beanFriendListView;
+    private List<Lists.ResultBean.ListBean> list;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,24 +83,78 @@ public class TopicFragment extends Fragment {
 
         if(i==0){
             //填充布局文件squareen_fragment
-            view = inflater.inflate(R.layout.squareen_fragment, null);
-            mLv = (ListView) view.findViewById(R.id.lv_sq_id);
-            progressBar = (ProgressBar) view.findViewById(R.id.progressbar_id);
+            Topicview = inflater.inflate(R.layout.squareen_fragment, null);
+            mLv = (ListView) Topicview.findViewById(R.id.lv_sq_id);
+            progressBar = (ProgressBar) Topicview.findViewById(R.id.progressbar_id);
 
             TopicDownloadData();
+            return Topicview;
 
         }else if(i==1){
             //TODO
             //关于豆友的
+            beanFriendview = inflater.inflate(R.layout.squareen_beanfriend_listview, null);
+            beanFriendListView = (ListView) beanFriendview.findViewById(R.id.lv_beanfiend_sq_id);
             BeanFriendDownLoadData();
-
+            return beanFriendview;
         }else{
             //TODO
             //关于动态的
             DynamicDownLoadData();
         }
-        return view;
+       return null;
     }
+
+
+
+    //豆友的数据下载
+    private void BeanFriendDownLoadData() {
+        String thirdPageBeanFirend = Constant.THIRD_PAGE_BEAN_FIREND;
+        RequestParams params = new RequestParams(thirdPageBeanFirend);
+        params.addBodyParameter("limit", "20");
+        params.addBodyParameter("sign", "");
+        params.addBodyParameter("uid	", "0");
+        params.addBodyParameter("position", "中国北京市东城区西长安街");
+        params.addBodyParameter("lng", "116.403625");
+        params.addBodyParameter("offset", "0");
+        params.addBodyParameter("lat", "39.913249");
+        x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                Log.i("log",result);
+                parserThirdPagerBeanFirend(result);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+    }
+
+    //豆友数据进行的Gson解析
+    private void parserThirdPagerBeanFirend(String result) {
+        Gson gson=new Gson();
+        lists = gson.fromJson(result, Lists.class);
+        list = lists.getResult().getList();
+        Log.i("list", list.toString());
+
+        MyBeanFriendBaseAdapter adapter=new MyBeanFriendBaseAdapter(list,getContext());
+
+        beanFriendListView.setAdapter(adapter);
+
+    }
+
 
     //动态的数据下载
     private void DynamicDownLoadData() {
@@ -128,45 +189,6 @@ public class TopicFragment extends Fragment {
     //动态数据进行的Gson解析
     private void parserThirdPagerDynamic(String result) {
     }
-
-    //豆友的数据下载
-    private void BeanFriendDownLoadData() {
-        String thirdPageBeanFirend = Constant.THIRD_PAGE_BEAN_FIREND;
-        RequestParams params = new RequestParams(thirdPageBeanFirend);
-        params.addBodyParameter("limit", "20");
-        params.addBodyParameter("sign", "");
-        params.addBodyParameter("uid	", "0");
-        params.addBodyParameter("position", "中国北京市东城区西长安街");
-        params.addBodyParameter("lng", "116.403625");
-        params.addBodyParameter("offset", "0");
-        params.addBodyParameter("lat", "39.913249");
-        x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
-            @Override
-            public void onSuccess(String result) {
-                parserThirdPagerBeanFirend(result);
-            }
-
-            @Override
-            public void onError(Throwable ex, boolean isOnCallback) {
-
-            }
-
-            @Override
-            public void onCancelled(CancelledException cex) {
-
-            }
-
-            @Override
-            public void onFinished() {
-
-            }
-        });
-    }
-
-    //豆友数据进行的Gson解析
-    private void parserThirdPagerBeanFirend(String result) {
-    }
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
