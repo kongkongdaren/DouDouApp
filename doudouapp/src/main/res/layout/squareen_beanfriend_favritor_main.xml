@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_guide"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    >
+
+    <com.yjlw.ddms.fristentity.views.MySelfCircleView
+        android:id="@+id/iv_beanjfriend_userPhoto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_beanfriend_username_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="浩瀚and馨瑶"/>
+                <ImageView
+                    android:id="@+id/iv_beanfriend_vip_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:src="@mipmap/icon_vip_small"/>
+                <ImageView
+                    android:id="@+id/iv_beanfriend_female_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:src="@mipmap/ico_auxiliary_female"/>
+
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:src="@mipmap/myhome_follow_normal"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_beanfriend_content_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:layout_marginTop="10dp"
+            android:text="儿女双全的宝妈，爱美食，享受生活"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_beanfriend_fravritor1_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/bright_gray"
+                android:text="小清新"/>
+            <TextView
+                android:id="@+id/tv_beanfriend_fravritor2_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/bright_gray"
+                android:layout_marginLeft="5dp"
+                android:text="斋素"/>
+            <TextView
+                android:id="@+id/tv_beanfriend_fravritor3_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:background="@color/bright_gray"
+                android:text="家常菜"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_beanfriend_address_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="北京"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>
