@@ -1,6 +1,8 @@
 package com.yjlw.ddms.homeentity.fragment;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,8 +22,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
+import com.admom.mygreendaotest.ShoppingCartDataDao;
 import com.google.gson.Gson;
 import com.yjlw.ddms.R;
+import com.yjlw.ddms.application.xUtilsApplication;
 import com.yjlw.ddms.common.Constant;
 
 import com.yjlw.ddms.homeentity.activity.CateActivity;
@@ -41,6 +45,7 @@ import com.yjlw.ddms.homeentity.views.HomeTitleItemView;
 import com.yjlw.ddms.homeentity.views.RefreshListView;
 import com.yjlw.ddms.utils.ToastUtils;
 
+import org.greenrobot.greendao.query.Query;
 import org.xutils.common.Callback;
 import org.xutils.http.HttpMethod;
 import org.xutils.http.RequestParams;
@@ -87,10 +92,19 @@ public class HomeFragment extends Fragment {
     private View newProductView;
     private HomeTitleItemView newProductTitle;
     private FloatingActionButton flactionBtn;
+    private SQLiteDatabase db;
+    private ShoppingCartDataDao dao;
+    private int count;
+    private TextView shoppingCount;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-
+        xUtilsApplication application = (xUtilsApplication) getActivity().getApplication();
+        db = application.getDb();
+        dao = application.getDaoSession().getShoppingCartDataDao();
+        Cursor cursor = db.query(dao.getTablename(), dao.getAllColumns(), null, null, null, null,
+                null);
+        count = cursor.getCount();
         super.onCreate(savedInstanceState);
     }
 
@@ -99,6 +113,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
             Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_home_arrive, null);
+        shoppingCount = (TextView) view.findViewById(R.id.tv_shopping_cart_count);
         llArrveTitle = (LinearLayout) view.findViewById(R.id.ll_home_arrive_title);
         lvHomeArrave = (RefreshListView) view.findViewById(R.id.lv_home_arrive);
         pbContent = (ProgressBar) view.findViewById(R.id.pb_content);
@@ -164,8 +179,26 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+    public void onStart() {
+        Cursor cursor = db.query(dao.getTablename(), dao.getAllColumns(), null, null, null, null,
+                null);
+        count = cursor.getCount();
+        if (count != 0) {
+            shoppingCount.setVisibility(View.VISIBLE);
+            shoppingCount.setText(count + "");
+        }else if(count==0) {
+            shoppingCount.setVisibility(View.INVISIBLE);
 
+        }
+        super.onStart();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        if (count != 0) {
+            shoppingCount.setVisibility(View.VISIBLE);
+            shoppingCount.setText(count + "");
+        }
         aboutListView();
         aboutGridView();
         coverUrl = (ImageView) homeCenterFoodItem.findViewById(R.id.iv_cover_url);

@@ -81,6 +81,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
     private String cunt;
     private String price;
     private String title;
+    private long data_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,6 +151,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
             //                    storeLogoUrl, storeName, coverUrl, dealPrice, goodsId + "", 0 +
             // "", price, title);
             data = new DataBean();
+            data_id = cursor.getLong(0);
             data.setId(maxId + (i++) + 1);// 从最大Id的下一个开始
             storeId = cursor.getString(1);
             int storeids = Integer.parseInt(storeId);
@@ -158,8 +160,10 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
             coverUrl = cursor.getString(4);
             dealPrice = cursor.getString(5);
             goodsId = cursor.getString(6);
+            long goodsIds = Long.parseLong(goodsId);
             cunt = cursor.getString(7);
             price = cursor.getString(8);
+
             float parseFloat = Float.parseFloat(price);
             Log.i("Log", parseFloat + "");
             title = cursor.getString(9);
@@ -169,6 +173,8 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
             data.setCarNum(1);
             data.setOpenUrl(coverUrl);
             data.setPrice(parseFloat);
+            data.setGoodsId(goodsIds);
+            data.set_id(data_id);
             result.add(data);
         }
         return result;
@@ -275,8 +281,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
                 @Override
                 public void onClick(View v) {
-
-                    // TODO Auto-generated method stub
                     if (mListData.get(position).getCarNum() == 1)
                         return;
 
@@ -330,9 +334,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
             mSelectNum.setText("已选" + mSelectState.size() + "件商品");
             mPriceAll.setText("￥" + totalPrice + "");
-            //TODO 图片
-            //            x.image().bind(holder.image,"http://pimg3.hoto
-            // .cn/goods/2016/06/29/6131_577353233d790_680_450.jpg");
             if (mSelectState.size() == mListData.size()) {
                 mCheckAll.setChecked(true);
             } else {
@@ -369,7 +370,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
     @Override
     public void onClick(View v) {
-        // TODO Auto-generated method stub
         switch (v.getId()) {
 
             case R.id.subtitle:
@@ -382,7 +382,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
                 } else {
                     mEdit.setText(getResources().getString(R.string.menu_edit));
-
                     mFavorite.setVisibility(View.GONE);
                     mBottonLayout.setVisibility(View.VISIBLE);
                     mDelete.setText(getResources().getString(R.string.menu_sett));
@@ -391,6 +390,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
                 break;
 
             case R.id.check_box:
+                //TODO 选择
                 if (mCheckAll.isChecked()) {
 
                     totalPrice = 0;
@@ -418,7 +418,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
                         refreshListView();
                         mPriceAll.setText("￥" + 0.00 + "");
                         mSelectNum.setText("已选" + 0 + "件商品");
-
                     }
                 }
                 break;
@@ -430,7 +429,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
                 } else {
                     Toast.makeText(getApplicationContext(), "结算", Toast.LENGTH_SHORT).show();
                 }
-
                 break;
 
             default:
@@ -438,10 +436,20 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+
+    /**
+     * 删除
+     *
+     * @param ids
+     */
     private void doDelete(List<Integer> ids) {
+
         for (int i = 0; i < mListData.size(); i++) {
             long dataId = mListData.get(i).getId();
+            long id = mListData.get(i).get_id();
+            dao.deleteByKey(id);
             for (int j = 0; j < ids.size(); j++) {
+
                 int deleteId = ids.get(j);
                 if (dataId == deleteId) {
                     mListData.remove(i);

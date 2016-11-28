@@ -10,7 +10,7 @@ import org.greenrobot.greendao.annotation.Generated;
 /**
  * Simple to Introduction
  *
- * @Description: [一句话描述该类的功能]
+ * @Description: 购物车实体类
  * @Author: 原海忠
  * @CreateDate: 2016/11/27
  * @Version: [v1.0]
