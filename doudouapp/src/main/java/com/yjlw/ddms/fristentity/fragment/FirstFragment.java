@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -311,10 +312,12 @@ public class FirstFragment extends Fragment {
              public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                      Intent intent=new Intent(getActivity(), ListActivity.class);
                      Bundle bundle=new Bundle();
-                     bundle.putString("imgUrl",listBeen.get((position-3)).getImgs().get(0));
-                     bundle.putString("title",listBeen.get((position-3)).getTitle());
-                     intent.putExtras(bundle);
-                     startActivity(intent);
+                 String webUrl= listBeen.get(position - 3).getUrl();
+                 String replaceUrl ="http://mp.haodou.com/h5/message/"+webUrl.substring(webUrl.lastIndexOf("=")+1);
+                 Log.i("url",replaceUrl);
+                 bundle.putString("url",replaceUrl);
+                 intent.putExtras(bundle);
+                 startActivity(intent);
              }
          });
         MyOnRefreshListener listener=new MyOnRefreshListener();
