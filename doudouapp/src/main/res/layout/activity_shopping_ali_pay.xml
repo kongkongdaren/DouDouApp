@@ -75,7 +75,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
-                android:text="@string/remark"
                 android:textColor="@color/gold"/>
         </LinearLayout>
     </LinearLayout>
@@ -208,7 +207,6 @@
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:layout_toLeftOf="@+id/tv_money"
-                    android:text="@string/total"
                     android:textColor="@color/black"
                     android:textSize="16sp"/>
 
@@ -237,7 +235,6 @@
             android:layout_centerVertical="true"
             android:layout_gravity="center_vertical"
             android:layout_toLeftOf="@+id/tv_total"
-            android:text="@string/total"
             android:textColor="@color/black"
             android:textSize="16sp"/>
 

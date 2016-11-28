@@ -34,6 +34,7 @@
             android:layout_height="31dp"
             android:layout_weight="1.00"
             android:layout_gravity="center_vertical"
+            android:clickable="true"
             android:src="@mipmap/bar_category_foreground"/>
     </LinearLayout>
 

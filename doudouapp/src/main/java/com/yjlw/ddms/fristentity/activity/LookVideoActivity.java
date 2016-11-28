@@ -143,7 +143,13 @@ public class LookVideoActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+          ivAll.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  Intent intent=new Intent(LookVideoActivity.this,HotClassActivity.class);
+                  startActivity(intent);
+              }
+          });
         downLoadVedioData();
     }
 
