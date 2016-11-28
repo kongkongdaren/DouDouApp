@@ -255,6 +255,7 @@ public class BuyProductActivity extends AppCompatActivity {
         Cursor cursor = db.query(dao.getTablename(), dao.getAllColumns(), null, null, null, null,
                 null);
 
+
 //        while (cursor.moveToNext()) {
 //            //            ShoppingCartData shoppingCartData = new ShoppingCartData(null, storeId
 //            // + "",
