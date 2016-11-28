@@ -103,7 +103,7 @@ public class Lists {
             private String ListUrl;//
             private int StyleType;//
             private int entityType;//
-            private List<?> FavoriteList;//FavoriteList : []
+            private List<FavoriteListBean> FavoriteList;//FavoriteList : []
 
             public String getAvatar() {
                 return Avatar;
@@ -209,11 +209,11 @@ public class Lists {
                 this.entityType = entityType;
             }
 
-            public List<?> getFavoriteList() {
+            public List<FavoriteListBean> getFavoriteList() {
                 return FavoriteList;
             }
 
-            public void setFavoriteList(List<?> FavoriteList) {
+            public void setFavoriteList(List<FavoriteListBean> FavoriteList) {
                 this.FavoriteList = FavoriteList;
             }
         }
