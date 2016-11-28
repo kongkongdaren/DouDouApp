@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.yjlw.ddms.R;
@@ -41,8 +40,16 @@ public class SkipAdapter extends HomeCustomBaseAdapter<SkipData.ResultBean.ListB
             vh.tvName= (TextView) convertView.findViewById(R.id.tv_skip_name);
             vh.tvTitle= (TextView) convertView.findViewById(R.id.tv_title_skip);
             vh.tvTime= (TextView) convertView.findViewById(R.id.tv_skip_time);
-            //vh.ll= (LinearLayout) convertView.findViewById(R.id.ll_skip);
-            vh.ivPhoto= (ImageView) convertView.findViewById(R.id.iv_skip_photo);
+            vh.ivimg1= (ImageView) convertView.findViewById(R.id.img1);
+            vh.ivimg2= (ImageView) convertView.findViewById(R.id.img2);
+            vh.ivimg3= (ImageView) convertView.findViewById(R.id.img3);
+            vh.ivimg4= (ImageView) convertView.findViewById(R.id.img4);
+            vh.ivimg5= (ImageView) convertView.findViewById(R.id.img5);
+            vh.ivimg6= (ImageView) convertView.findViewById(R.id.img6);
+            vh.ivimg7= (ImageView) convertView.findViewById(R.id.img7);
+            vh.ivimg8= (ImageView) convertView.findViewById(R.id.img8);
+            vh.ivimg9= (ImageView) convertView.findViewById(R.id.img9);
+
             convertView.setTag(vh);
         }else{
             vh= (ViewHolder) convertView.getTag();
@@ -51,17 +58,61 @@ public class SkipAdapter extends HomeCustomBaseAdapter<SkipData.ResultBean.ListB
         vh.tvName.setText(lists.get(position).getUserInfo().getUserName());
         vh.tvTitle.setText(lists.get(position).getTopicTags().get(0).getName());
         vh.tvTime.setText(lists.get(position).getCreateTime()+"");
-//        for (int i=1;i<lists.get(position).getImages().size();i++){
-//            if(i<4) {
-//                ImageView iv = new ImageView(context);
-//                iv.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-//                        LinearLayout.LayoutParams.WRAP_CONTENT));
-//                iv.setPadding(50, 5, 5, 5);
-//                Picasso.with(context).load(lists.get(i).getImages().get(i).getSmallUrl()).placeholder(R.mipmap.default_high).into(iv);
-//                vh.ll.addView(iv);
-//            }
-//        }
-        Picasso.with(context).load(lists.get(position).getImages().get(0).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivPhoto);
+              if(lists.get(position).getImages().size()==1){
+                  Picasso.with(context).load(lists.get(position).getImages().get(0).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg1);
+              }else if(lists.get(position).getImages().size()==2){
+                  Picasso.with(context).load(lists.get(position).getImages().get(0).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg1);
+                  Picasso.with(context).load(lists.get(position).getImages().get(1).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg2);
+              }else if(lists.get(position).getImages().size()==3){
+                  Picasso.with(context).load(lists.get(position).getImages().get(0).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg1);
+                  Picasso.with(context).load(lists.get(position).getImages().get(1).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg2);
+                  Picasso.with(context).load(lists.get(position).getImages().get(2).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg3);
+              }else if(lists.get(position).getImages().size()==4){
+                  Picasso.with(context).load(lists.get(position).getImages().get(0).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg1);
+                  Picasso.with(context).load(lists.get(position).getImages().get(1).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg2);
+                  Picasso.with(context).load(lists.get(position).getImages().get(2).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg3);
+                  Picasso.with(context).load(lists.get(position).getImages().get(3).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg4);
+              }else if(lists.get(position).getImages().size()==5){
+                  Picasso.with(context).load(lists.get(position).getImages().get(0).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg1);
+                  Picasso.with(context).load(lists.get(position).getImages().get(1).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg2);
+                  Picasso.with(context).load(lists.get(position).getImages().get(2).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg3);
+                  Picasso.with(context).load(lists.get(position).getImages().get(3).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg4);
+                  Picasso.with(context).load(lists.get(position).getImages().get(4).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg5);
+              }else if(lists.get(position).getImages().size()==6){
+                  Picasso.with(context).load(lists.get(position).getImages().get(0).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg1);
+                  Picasso.with(context).load(lists.get(position).getImages().get(1).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg2);
+                  Picasso.with(context).load(lists.get(position).getImages().get(2).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg3);
+                  Picasso.with(context).load(lists.get(position).getImages().get(3).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg4);
+                  Picasso.with(context).load(lists.get(position).getImages().get(4).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg5);
+                  Picasso.with(context).load(lists.get(position).getImages().get(5).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg6);
+              }else if(lists.get(position).getImages().size()==7){
+                  Picasso.with(context).load(lists.get(position).getImages().get(0).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg1);
+                  Picasso.with(context).load(lists.get(position).getImages().get(1).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg2);
+                  Picasso.with(context).load(lists.get(position).getImages().get(2).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg3);
+                  Picasso.with(context).load(lists.get(position).getImages().get(3).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg4);
+                  Picasso.with(context).load(lists.get(position).getImages().get(4).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg5);
+                  Picasso.with(context).load(lists.get(position).getImages().get(5).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg6);
+                  Picasso.with(context).load(lists.get(position).getImages().get(6).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg7);
+              }else if(lists.get(position).getImages().size()==8){
+                  Picasso.with(context).load(lists.get(position).getImages().get(0).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg1);
+                  Picasso.with(context).load(lists.get(position).getImages().get(1).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg2);
+                  Picasso.with(context).load(lists.get(position).getImages().get(2).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg3);
+                  Picasso.with(context).load(lists.get(position).getImages().get(3).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg4);
+                  Picasso.with(context).load(lists.get(position).getImages().get(4).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg5);
+                  Picasso.with(context).load(lists.get(position).getImages().get(5).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg6);
+                  Picasso.with(context).load(lists.get(position).getImages().get(6).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg7);
+                  Picasso.with(context).load(lists.get(position).getImages().get(7).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg8);
+              }else if(lists.get(position).getImages().size()==9){
+                  Picasso.with(context).load(lists.get(position).getImages().get(0).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg1);
+                  Picasso.with(context).load(lists.get(position).getImages().get(1).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg2);
+                  Picasso.with(context).load(lists.get(position).getImages().get(2).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg3);
+                  Picasso.with(context).load(lists.get(position).getImages().get(3).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg4);
+                  Picasso.with(context).load(lists.get(position).getImages().get(4).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg5);
+                  Picasso.with(context).load(lists.get(position).getImages().get(5).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg6);
+                  Picasso.with(context).load(lists.get(position).getImages().get(6).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg7);
+                  Picasso.with(context).load(lists.get(position).getImages().get(7).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg8);
+                  Picasso.with(context).load(lists.get(position).getImages().get(8).getSmallUrl()).placeholder(R.mipmap.default_high).into(vh.ivimg9);
+              }
         return convertView;
     }
    private final class ViewHolder{
@@ -69,7 +120,14 @@ public class SkipAdapter extends HomeCustomBaseAdapter<SkipData.ResultBean.ListB
     private TextView tvName;
     private TextView tvTitle;
     private TextView tvTime;
-       private  LinearLayout ll;
-       private ImageView ivPhoto;
+       private ImageView ivimg1;
+       private ImageView ivimg2;
+       private ImageView ivimg3;
+       private ImageView ivimg4;
+       private ImageView ivimg5;
+       private ImageView ivimg6;
+       private ImageView ivimg7;
+       private ImageView ivimg8;
+       private ImageView ivimg9;
    }
 }
