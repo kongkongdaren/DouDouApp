@@ -113,7 +113,7 @@ public class NewActivity extends AppCompatActivity {
         NewDataAdapter adapter=new NewDataAdapter(newDataList,this);
         newGv.setAdapter(adapter);
         //设置item之间的间隔
-        SpacesItemDecoration decoration=new SpacesItemDecoration(5);
+        SpacesItemDecoration decoration=new SpacesItemDecoration(10);
         newGv.addItemDecoration(decoration);
 
     }

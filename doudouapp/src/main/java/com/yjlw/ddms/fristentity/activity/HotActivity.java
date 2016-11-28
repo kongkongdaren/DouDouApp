@@ -1,10 +1,12 @@
 package com.yjlw.ddms.fristentity.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateUtils;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -137,6 +139,18 @@ public class HotActivity extends AppCompatActivity {
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 refreshData(hotList);
+            }
+        });
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent intent=new Intent(HotActivity.this,HotSkipActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putInt("position",(position-1));
+                bundle.putString("title",hotList.get(position-1).getTitle());
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }
