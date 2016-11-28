@@ -32,7 +32,6 @@ public class Lists {
     }
 
     public static class ResultBean {
-        private int count;
         /**
          * Avatar : http://avatar1.hoto.cn/e1/b7/7452641_185.jpg?v=4
          * UserName : 浩轩and馨瑶
@@ -51,14 +50,20 @@ public class Lists {
          */
 
         private List<ListBean> list;
+        /**
+         * Title : 全部
+         * Value : default
+         */
 
-        public int getCount() {
-            return count;
-        }
+        private List<SearchCondListBean> searchCondList;
+        /**
+         * Id : 11
+         * Name : 奶香浓郁
+         * Img : http://www.haodou.com/public/images/user_center/array_data/11.jpg
+         * Check : false
+         */
 
-        public void setCount(int count) {
-            this.count = count;
-        }
+        private List<FavoriteListBean> FavoriteList;
 
         public List<ListBean> getList() {
             return list;
@@ -66,6 +71,22 @@ public class Lists {
 
         public void setList(List<ListBean> list) {
             this.list = list;
+        }
+
+        public List<SearchCondListBean> getSearchCondList() {
+            return searchCondList;
+        }
+
+        public void setSearchCondList(List<SearchCondListBean> searchCondList) {
+            this.searchCondList = searchCondList;
+        }
+
+        public List<FavoriteListBean> getFavoriteList() {
+            return FavoriteList;
+        }
+
+        public void setFavoriteList(List<FavoriteListBean> FavoriteList) {
+            this.FavoriteList = FavoriteList;
         }
 
         public static class ListBean {
@@ -194,6 +215,66 @@ public class Lists {
 
             public void setFavoriteList(List<?> FavoriteList) {
                 this.FavoriteList = FavoriteList;
+            }
+        }
+
+        public static class SearchCondListBean {
+            private String Title;
+            private String Value;
+
+            public String getTitle() {
+                return Title;
+            }
+
+            public void setTitle(String Title) {
+                this.Title = Title;
+            }
+
+            public String getValue() {
+                return Value;
+            }
+
+            public void setValue(String Value) {
+                this.Value = Value;
+            }
+        }
+
+        public static class FavoriteListBean {
+            private int Id;
+            private String Name;
+            private String Img;
+            private boolean Check;
+
+            public int getId() {
+                return Id;
+            }
+
+            public void setId(int Id) {
+                this.Id = Id;
+            }
+
+            public String getName() {
+                return Name;
+            }
+
+            public void setName(String Name) {
+                this.Name = Name;
+            }
+
+            public String getImg() {
+                return Img;
+            }
+
+            public void setImg(String Img) {
+                this.Img = Img;
+            }
+
+            public boolean isCheck() {
+                return Check;
+            }
+
+            public void setCheck(boolean Check) {
+                this.Check = Check;
             }
         }
     }
