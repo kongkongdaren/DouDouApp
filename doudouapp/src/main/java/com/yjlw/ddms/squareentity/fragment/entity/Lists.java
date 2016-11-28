@@ -90,20 +90,20 @@ public class Lists {
         }
 
         public static class ListBean {
-            private String Avatar;
-            private String UserName;
-            private String OpenUrl;
-            private int Gender;
-            private int UserId;
-            private int Vip;
-            private String Intro;
-            private int Relation;
-            private String Address;
-            private String SameFeature;
-            private String ListUrl;
-            private int StyleType;
-            private int entityType;
-            private List<?> FavoriteList;
+            private String Avatar;//Avatar : http://avatar1.hoto.cn/e1/b7/7452641_185.jpg?v=4
+            private String UserName;//浩轩and馨瑶
+            private String OpenUrl;//
+            private int Gender;//
+            private int UserId;//
+            private int Vip;//
+            private String Intro;//Intro : 儿女双全的宝妈，爱美食，享受生活，乐观。星星在哪里都是很亮的，就看你有没有抬头去看他们。
+            private int Relation;//
+            private String Address;//Address : 中国山东省青岛市
+            private String SameFeature;//
+            private String ListUrl;//
+            private int StyleType;//
+            private int entityType;//
+            private List<?> FavoriteList;//FavoriteList : []
 
             public String getAvatar() {
                 return Avatar;

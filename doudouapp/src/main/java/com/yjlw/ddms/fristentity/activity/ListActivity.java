@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.yjlw.ddms.R;
 
 import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
 import it.sephiroth.android.library.picasso.Picasso;
 
@@ -37,6 +38,7 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_item_web);
+        x.view().inject(this);
         ivListBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
