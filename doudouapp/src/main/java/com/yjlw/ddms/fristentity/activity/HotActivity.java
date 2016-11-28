@@ -141,10 +141,10 @@ public class HotActivity extends AppCompatActivity {
         });
     }
     private void refreshData(final List<HotAndData.ResultBean.ListBean> hotList) {
-        String hotUrl = Constant.ONE_PAGE_POPLAR_ACTIVITIES;
+        String hotUrl = Constant.HOT_ACTIVITY_REFRESH_DATA;
         RequestParams params=new RequestParams(hotUrl);
         params.addBodyParameter("limit", "20");
-        params.addBodyParameter("offset", "0");
+        params.addBodyParameter("offset", "20");
         params.addBodyParameter("appqs", "haodourecipe://haodou.com/latestactive/official/");
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String> () {
             @Override

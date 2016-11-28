@@ -186,7 +186,7 @@ public class HotTitleFragment extends Fragment {
                 DownRefreshHotAllData(listAll,Constant.SECOND_PAGE_ALLPOPULARRECIPES,"热门菜谱");
                 break;
             case "私人":
-                DownRefreshHotAllData(listAll,Constant.SECOND_PAGE_PERSONAL,"私人定制");
+                DownRefreshHotAllData(listAll,Constant.REFRESH_SIREN,"私人定制");
                 break;
             case "时令":
                 DownRefreshHotAllData(listAll,Constant.SECOND_PAGE_SEASONALDELICACIES,"时令佳肴");

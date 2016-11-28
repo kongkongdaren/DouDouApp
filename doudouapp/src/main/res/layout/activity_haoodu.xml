@@ -11,8 +11,8 @@
             android:id="@+id/iv_plus"
             android:layout_width="40dp"
             android:layout_height="match_parent"
-            android:src="@mipmap/icon_publish"
-            android:layout_marginLeft="5dp"
+            android:src="@mipmap/icon_plus"
+            android:layout_marginLeft="10dp"
             />
         <EditText
             android:id="@+id/et_search"

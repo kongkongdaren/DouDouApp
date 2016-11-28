@@ -107,6 +107,8 @@
         </activity>
         <!--list条目-->
         <activity android:name=".fristentity.activity.ListActivity"/>
+        <!--热门活动跳转-->
+        <activity android:name=".fristentity.activity.HotSkipActivity"/>
     </application>
 
 </manifest>

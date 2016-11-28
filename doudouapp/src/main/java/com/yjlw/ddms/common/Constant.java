@@ -886,4 +886,40 @@ public class Constant {
         params.addBodyParameter("virtual", "0");
         params.addBodyParameter("vn", "6.1.15");
      */
+ //刷新数据
+ //热门活动
+ public static String HOT_ACTIVITY_REFRESH_DATA="http://api.haodou.com/index.php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format" +
+         "=json&sessionid=1480254050833&vc=105&vn=6.1.15&loguid=10282642&deviceid=" +
+         "haodou864394010609719&uuid=4d026196b079f72c6ee96157c0c65d62&channel=" +
+         "anzhi_v6115&method=Event.getOfficialList&virtual=&signmethod=md5&v=" +
+         "3&timestamp=1480254213&nonce=0.7433854508837525&appsign=" +
+         "f10a98981c4e9acb28533c981c8c4714";
+    /*
+      params.addBodyParameter("limit", "20");
+      params.addBodyParameter("offset", "20");
+      params.addBodyParameter("appqs", "haodourecipe://haodou.com/latestactive/official/");
+    */
+    //私人定制
+    public static String REFRESH_SIREN="http://api.haodou.com/index.php?appid=" +
+            "2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=" +
+            "1480253507316&vc=105&vn=6.1.15&loguid=10282642&deviceid=" +
+            "haodou864394010609719&uuid=4d026196b079f72c6ee96157c0c65d62&channel=" +
+            "anzhi_v6115&method=Recipe.getCollectRecomment&virtual=&signmethod=" +
+            "md5&v=3&timestamp=1480253779&nonce=0.4795749757162079&appsign=" +
+            "1cb37ddc352281ac2967cfef60a508e4";
+    /*
+    params.addBodyParameter("limit", "10");
+    params.addBodyParameter("sign", "df04ef8cf3aab201ce09175f64129ac4");
+    params.addBodyParameter("uid", "10282642");
+    params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
+    params.addBodyParameter("offset", "0");
+    params.addBodyParameter("appqs", "haodourecipe://haodou
+            .com/recommend/recipe/?keyword=%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1&title=%E7%83%AD%E9%97%A8
+    %E8%8F%9C%E8%B0%B1&tab=%E5%85%A8%E9%83%A8%3A%E7%83%AD%E9%97%A8%E8%8F%9C%E8%B0%B1%7C%E7%A7%81
+            %E4%BA%BA%3A%E7%A7%81%E4%BA%BA%E5%AE%9A%E5%88%B6%7C%E6%97%B6%E4%BB%A4%3A%E6%97%B6%E4%BB%A4%E4
+    %BD%B3%E8%82%B4%7C%E8%BE%BE%E4%BA%BA%3A%E8%BE%BE%E4%BA%BA%E8%8F%9C%E8%B0%B1%7C%E6%9C%80%E6%96
+            %B0%3A%E6%9C%80%E6%96%B0%E8%8F%9C%E8%B0%B1%7C%E7%83%98%E7%84%99%3A%E5%BF%AB%E4%B9%90%E7%9A%84
+            %E7%83%98%E7%84%99");
+            params.addBodyParameter("type", "私人定制");
+            */
 }
