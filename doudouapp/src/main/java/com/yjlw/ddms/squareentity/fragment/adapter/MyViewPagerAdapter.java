@@ -19,20 +19,20 @@ import java.util.List;
  */
 
 public class MyViewPagerAdapter extends FragmentStatePagerAdapter {
-    private List<TopicViewPagerFragment> tempDs;
+    private List<TopicViewPagerFragment> pager;
 
-    public MyViewPagerAdapter(FragmentManager fm, List<TopicViewPagerFragment> tempDs) {
+    public MyViewPagerAdapter(FragmentManager fm, List<TopicViewPagerFragment> pager) {
         super(fm);
-        this.tempDs=tempDs;
+        this.pager=pager;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return tempDs.get( position);
+        return pager.get( position);
     }
 
     @Override
     public int getCount() {
-        return tempDs.size();
+        return pager.size();
     }
 }
