@@ -7,7 +7,9 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,19 +39,42 @@ import static com.yjlw.ddms.common.Constants.SELLER;
  * 阿里支付
  */
 public class ShoppingAliPayActivity extends AppCompatActivity {
+    @ViewInject(R.id.iv_cover_Url)
+    private ImageView coverUrl;//商品图片
     @ViewInject(R.id.product_subject)
     private TextView tvSubject;//商品标题
     @ViewInject(R.id.tv_goods_detail)
     private TextView tvInfo;//商品描述
     @ViewInject(R.id.product_price)
     private TextView tvPrice;//商品价格
+
+    @ViewInject(R.id.tv_money)
+    private TextView tvMoney;//商品总价
+    @ViewInject(R.id.tv_total)
+    private TextView tvTotal;//商品总价
     private Handler mHandler;
+    private String coverUrl1;
+    private String title;
+    private String subTitle;
+    private String dealPrice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_ali_pay);
         x.view().inject(this);
+        Bundle bundle = this.getIntent().getExtras();
+        coverUrl1 = bundle.getString("coverUrl");
+        title = bundle.getString("title");
+        subTitle = bundle.getString("subTitle");
+        dealPrice = bundle.getString("dealPrice");
+        Log.i("Log", coverUrl1 + ",标题" + title + "详情，" + subTitle + "价格，" + dealPrice);
+        x.image().bind(coverUrl, coverUrl1);
+        tvSubject.setText(subTitle);
+        tvInfo.setText(title);
+        tvPrice.setText(dealPrice);
+        tvMoney.setText(dealPrice);
+        tvTotal.setText(dealPrice);
         aboutHandler();
     }
 
@@ -75,16 +100,19 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
 
                         // 判断resultStatus 为“9000”则代表支付成功，具体状态码代表含义可参考接口文档
                         if (TextUtils.equals(resultStatus, "9000")) {
-                            Toast.makeText(ShoppingAliPayActivity.this, "支付成功", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ShoppingAliPayActivity.this, "支付成功", Toast
+                                    .LENGTH_SHORT).show();
                         } else {
                             // 判断resultStatus 为非"9000"则代表可能支付失败
                             // "8000"代表支付结果因为支付渠道原因或者系统原因还在等待支付结果确认，最终交易是否成功以服务端异步通知为准（小概率状态）
                             if (TextUtils.equals(resultStatus, "8000")) {
-                                Toast.makeText(ShoppingAliPayActivity.this, "支付结果确认中", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ShoppingAliPayActivity.this, "支付结果确认中", Toast
+                                        .LENGTH_SHORT).show();
 
                             } else {
                                 // 其他值就可以判断为支付失败，包括用户主动取消支付，或者系统返回的错误
-                                Toast.makeText(ShoppingAliPayActivity.this, "支付失败", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(ShoppingAliPayActivity.this, "支付失败", Toast
+                                        .LENGTH_SHORT).show();
 
                             }
                         }
@@ -107,8 +135,8 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
     private void userActivityPay(View view) {
         if (TextUtils.isEmpty(PARTNER) || TextUtils.isEmpty(RSA_PRIVATE) || TextUtils.isEmpty
                 (SELLER)) {
-            new AlertDialog.Builder(this).setTitle("警告").setMessage("需要配置PARTNER | RSA_PRIVATE| " +
-                    "SELLER").setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            new AlertDialog.Builder(this).setTitle("警告").setMessage("需要配置PARTNER | RSA_PRIVATE| "
+                    + "SELLER").setPositiveButton("确定", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialoginterface, int i) {
                     //
                     finish();
@@ -117,7 +145,7 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
             return;
         }
         // 订单
-        String orderInfo = getOrderInfo(tvSubject.getText().toString(), tvInfo.getText().toString(), tvPrice.getText().toString().replace("元",""));
+        String orderInfo = getOrderInfo("测试的商品", "该测试商品的详细描述", "0.01");
 
         //③获得签名信息，并进行编码（特别注意，这里的签名逻辑需要放在服务端，切勿将私钥泄露在代码中！）
         String sign = SignUtils.sign(orderInfo, RSA_PRIVATE);//sign中保存的是签名后的订单详情
@@ -138,6 +166,7 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
         //开启子线程进行支付
         beginPay(payInfo);
     }
+
     /**
      * create the order info. 创建订单信息
      *
@@ -171,7 +200,8 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
         builder.append("&total_fee=").append("\"").append(price).append("\"");
 
         // 服务器异步通知页面路径
-        builder.append("&notify_url=").append("\"").append("http://notify.msp.hk/notify.htm").append("\"");
+        builder.append("&notify_url=").append("\"").append("http://notify.msp.hk/notify.htm")
+                .append("\"");
 
         // 服务接口名称， 固定值
         builder.append("&service=\"mobile.securitypay.pay\"");
@@ -200,6 +230,7 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
 
         return builder.toString();
     }
+
     /**
      * get the out_trade_no for an order. 生成商户订单号，该值在商户端应保持唯一（可自定义格式规范）
      */
@@ -216,6 +247,7 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
 
     /**
      * 开始正式支付
+     *
      * @param payInfo
      */
     private void beginPay(final String payInfo) {
@@ -239,16 +271,5 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
         // 必须异步调用
         Thread payThread = new Thread(payRunnable);
         payThread.start();
-    }
-
-    /**
-     * 手机支付（WebView ）
-     *
-     * @param view
-     */
-    @Event(type = View.OnClickListener.class, value = R.id.btn_web_pay)
-    private void userWebViewPay(View view) {
-
-
     }
 }
