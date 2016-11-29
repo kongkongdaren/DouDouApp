@@ -7,6 +7,7 @@
         android:layout_height="40dp"
         android:background="@color/bright_gray">
         <ImageButton
+            android:id="@+id/iv_home_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/btn_header_selector"/>
