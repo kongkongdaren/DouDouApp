@@ -1,11 +1,14 @@
 package com.yjlw.ddms.squareentity.fragment.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +24,7 @@ import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
+import com.yjlw.ddms.squareentity.fragment.activity.RealTimeActivity;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyBeanFriendBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyDynamicBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyViewPagerAdapter;
@@ -73,6 +77,8 @@ public class TopicFragment extends Fragment {
     private ProgressBar dynamic_progressbar_id;
     private Dynamic dynamic;
     private List<Dynamic.ResultBean.ListBean> dynamiclist;
+    private ImageView iv_topic_auxiliary_more_image;
+    private View squareen_real_time;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -289,7 +295,14 @@ public class TopicFragment extends Fragment {
         ad.clear();
 
         //添加实时热点
-        View squareen_real_time = View.inflate(getContext(),R.layout.squareen_real_time, null);
+        squareen_real_time = View.inflate(getContext(), R.layout.squareen_real_time, null);
+        iv_topic_auxiliary_more_image = (ImageView) squareen_real_time.findViewById(R.id.iv_topic_auxiliary_more_image);
+        iv_topic_auxiliary_more_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), RealTimeActivity.class));
+            }
+        });
         mLv.addHeaderView(squareen_real_time);
 
         ListViewAdapter adapter = new ListViewAdapter(hot, getContext());
