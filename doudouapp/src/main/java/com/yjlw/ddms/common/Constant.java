@@ -783,6 +783,7 @@ public class Constant {
     params.addBodyParameter("uid", "0");
 
     */
+    //实时热点
     public static String THIRD_PAGE_REAL_TIME="http://api.haodou.com/index.php?appid=2&appke" +
             "y=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1480416945596&vc=105&v" +
             "n=6.1.15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c8" +
