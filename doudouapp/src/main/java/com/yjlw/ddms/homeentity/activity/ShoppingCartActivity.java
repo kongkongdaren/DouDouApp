@@ -28,13 +28,17 @@ import com.yjlw.ddms.application.xUtilsApplication;
 import com.yjlw.ddms.homeentity.entity.DataBean;
 import com.yjlw.ddms.homeentity.entity.ShoppingCartData;
 import com.yjlw.ddms.mainactivity.MainActivity;
+import com.yjlw.ddms.utils.ToastUtils;
 
 import org.xutils.x;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.data;
 import static android.R.attr.id;
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.L;
 import static com.baidu.platform.comapi.map.e.f;
 import static com.baidu.platform.comapi.map.e.i;
 
@@ -89,7 +93,13 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_shopping_cart);
-
+        ImageView back = (ImageView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         xUtilsApplication application = (xUtilsApplication) getApplication();
         db = application.getDb();
         dao = application.getDaoSession().getShoppingCartDataDao();
@@ -427,15 +437,37 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
                     List<Integer> ids = getSelectedIds();
                     doDelete(ids);
                 } else {
-                    //TODO
+                    //TODO 获取位置
+                    List<Integer> ids = getSelectedIds();
+                    List<DataBean> dataBeens = new ArrayList<>();
+
+                    for (int i = 0; i < mListData.size(); i++) {
+                        DataBean dataBean = mListData.get(i);
+                        long dataId = dataBean.getId();
+
+                        for (int j = 0; j < ids.size(); j++) {
+                            long id = mListData.get(j).get_id();
+
+                            int deleteId = ids.get(j);
+                            if (dataId == deleteId) {
+                                DataBean data = new DataBean();
+                                data.setCoverUrl(dataBean.getOpenUrl());
+                                data.setShopName(dataBean.getShopName());
+                                data.setSubTitle(dataBean.getContent());
+                                data.setPrice(dataBean.getPrice());
+                                dataBeens.add(data);
+                            }
+                        }
+                    }
                     Intent intent = new Intent(this, ShoppingAliPayActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putString("coverUrl", coverUrl);
-                    bundle.putString("title", title);
-                    bundle.putString("subTitle", storeName);
-                    bundle.putString("dealPrice", dealPrice);
+                    bundle.putSerializable("dataBeens", (Serializable) dataBeens);
                     intent.putExtras(bundle);
-                    startActivity(intent);
+                    if(dataBeens.size()==0){
+                        ToastUtils.showToast(this,"请您选择支付产品");
+                    }else {
+                        startActivity(intent);
+                    }
                 }
                 break;
 
@@ -454,13 +486,12 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
 
         for (int i = 0; i < mListData.size(); i++) {
             long dataId = mListData.get(i).getId();
-
             for (int j = 0; j < ids.size(); j++) {
                 long id = mListData.get(j).get_id();
-                dao.deleteByKey(id);
                 int deleteId = ids.get(j);
                 if (dataId == deleteId) {
                     mListData.remove(i);
+                    dao.deleteByKey(id);
                     i--;
                     ids.remove(j);
                     j--;

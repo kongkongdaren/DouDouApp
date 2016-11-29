@@ -29,6 +29,7 @@ import com.yjlw.ddms.homeentity.adapter.StoreRecyclerViewAdapter;
 import com.yjlw.ddms.homeentity.entity.BuyProductInFosData;
 import com.yjlw.ddms.homeentity.entity.BuyProductInFosData.ResultBean;
 import com.yjlw.ddms.homeentity.entity.BuyProductInFosData.ResultBean.RelationShopListBean.ListBean;
+import com.yjlw.ddms.homeentity.entity.DataBean;
 import com.yjlw.ddms.homeentity.entity.ShoppingCartData;
 import com.yjlw.ddms.utils.ToastUtils;
 
@@ -41,6 +42,8 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -192,7 +195,7 @@ public class BuyProductActivity extends AppCompatActivity {
         tags.setText(goodsTasteBean.getTags().get(0));
         //
         List<String> contentParam = result.getContentParam();
-//        Log.i("Log", "产品工艺" + contentParam.toString());
+        //        Log.i("Log", "产品工艺" + contentParam.toString());
         //        contentParam0.setText(contentParam.get(0));
         //        contentParam1.setText(contentParam.get(1));
         //        contentParam2.setText(contentParam.get(2));
@@ -255,7 +258,6 @@ public class BuyProductActivity extends AppCompatActivity {
      * @param view
      */
     public void buyProduct(View view) {
-        ToastUtils.showToast(this, "购买商品");
         BuyProductInFosData buyProductInFosData = productResult.get(0);
         ResultBean resultBean = buyProductInFosData.getResult();
         //        Log.i("Log",buyProductInFosData.toString());
@@ -270,12 +272,21 @@ public class BuyProductActivity extends AppCompatActivity {
         String subTitle = resultBean.getSubTitle();
         String title = resultBean.getTitle();
 
+        String prices = price.substring(price.indexOf("￥") + 1);
+
+        List<DataBean> dataBeens = new ArrayList<>();
+        DataBean dataBean=new DataBean();
+        dataBean.setCoverUrl(coverUrl);
+        dataBean.setShopName(storeName);
+        dataBean.setSubTitle(subTitle);
+
+        float parseFloat = Float.parseFloat(prices);
+        dataBean.setPrice(parseFloat);
+        dataBeens.add(dataBean);
+
         Intent intent = new Intent(this, ShoppingAliPayActivity.class);
         Bundle bundle = new Bundle();
-        bundle.putString("coverUrl", coverUrl);
-        bundle.putString("title", title);
-        bundle.putString("subTitle", subTitle);
-        bundle.putString("dealPrice", dealPrice);
+        bundle.putSerializable("dataBeens",(Serializable) dataBeens);
         intent.putExtras(bundle);
         startActivity(intent);
 

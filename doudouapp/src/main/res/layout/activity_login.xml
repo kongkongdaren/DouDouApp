@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:text="@string/name"/>
         <EditText
+            android:id="@+id/et_user_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -44,6 +45,7 @@
             android:layout_height="wrap_content"
             android:text="@string/pwd"/>
         <EditText
+            android:id="@+id/et_user_pwd"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -67,6 +69,7 @@
             android:text="@string/regist"/>
     </RelativeLayout>
     <Button
+        android:id="@+id/btn_user_login_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape"

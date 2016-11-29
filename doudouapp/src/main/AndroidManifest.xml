@@ -30,6 +30,9 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <!-- 友盟分享需要的权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <supports-screens
         android:anyDensity="true"
@@ -88,6 +91,10 @@
         <activity android:name=".fristentity.activity.LookVideoActivity"/>
         <activity android:name=".baidumap.BaiduMapBaseActivity">
         </activity>
+        <!--用户登录-->
+        <activity android:name=".aboutme.activity.LoginActivity"></activity>
+        <!--用户注册-->
+        <activity android:name=".aboutme.activity.RegistActivity"></activity>
 
         <service
             android:name="com.baidu.location.f"
@@ -113,19 +120,63 @@
         <!-- 视频播放 -->
         <activity android:name=".fristentity.activity.VideoActiviry"/>
         <!-- 产品评论 -->
-        <activity android:name=".homeentity.activity.ProductCommentActivity"/>
+        <activity android:name=".homeentity.activity.ProductCommentActivity">
+        </activity>
         <!-- 购买商品 -->
-        <activity android:name=".homeentity.activity.BuyProductActivity"/>
+        <activity android:name=".homeentity.activity.BuyProductActivity">
+        </activity>
         <!-- list条目 -->
         <activity android:name=".fristentity.activity.ListActivity"/>
         <!-- 热门活动跳转 -->
         <activity android:name=".fristentity.activity.HotSkipActivity"/>
         <!--阿里支付-->
-        <activity android:name=".homeentity.activity.ShoppingAliPayActivity"/>
-        <!--登录活动-->
-        <activity android:name=".aboutme.activity.LoginActivity"/>
-        <!--注册活动-->
-        <activity android:name=".aboutme.activity.RegistActivity"/>
+        <activity android:name=".homeentity.activity.ShoppingAliPayActivity">
+        </activity>
+        <!--热门分类-->
+        <activity android:name=".fristentity.activity.HotClassActivity"/>
+        <!--热门分类跳转-->
+        <activity android:name=".fristentity.activity.HotClassSkipActivity"/>
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="583c327b8f4a9d5c44001340"/>
+
+        <!-- 腾讯SSO授权的Activity注册 -->
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <!-- 这里需要配置自己QQ互联的AppID:tencentXXXXXX，和代码中保持一致 -->
+                <data android:scheme="tencent100424468"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+
+        <!-- *************************    分享相关的注册 START **************************** -->
+        <!-- 分享内容编辑页 -->
+        <activity
+            android:name="com.umeng.socialize.editorpage.ShareActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/Theme.UMDialog"
+            >
+        </activity>
+
+
+        <!-- 微信回调activity -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <!-- *************************    分享相关的注册 END **************************** -->
     </application>
 
 </manifest>

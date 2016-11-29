@@ -143,7 +143,13 @@ public class LookVideoActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+          ivAll.setOnClickListener(new View.OnClickListener() {
+              @Override
+              public void onClick(View view) {
+                  Intent intent=new Intent(LookVideoActivity.this,HotClassActivity.class);
+                  startActivity(intent);
+              }
+          });
         downLoadVedioData();
     }
 
@@ -265,6 +271,7 @@ public class LookVideoActivity extends AppCompatActivity {
     }
 
     private void aboutListViewInterest(List<VideoData.ResultBean.FunlifeBean> hotFunlife) {
+        lvInterest.setFocusable(false);
         //适配器
         LookVedioAdapter adapter=new LookVedioAdapter(hotFunlife,this);
         //绑定适配器
