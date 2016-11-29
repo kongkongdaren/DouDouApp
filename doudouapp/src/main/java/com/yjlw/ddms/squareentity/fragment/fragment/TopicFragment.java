@@ -21,6 +21,7 @@ import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
+import com.yjlw.ddms.squareentity.fragment.adapter.MyBeanFriendBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyViewPagerAdapter;
 import com.yjlw.ddms.squareentity.fragment.entity.Lists;
 import com.yjlw.ddms.squareentity.fragment.entity.Result;
@@ -122,7 +123,7 @@ public class TopicFragment extends Fragment {
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                Log.i("log",result);
+                //Log.i("log",result);
                 parserThirdPagerBeanFirend(result);
             }
 
@@ -154,9 +155,9 @@ public class TopicFragment extends Fragment {
             beanfiend_progressbar_id.setVisibility(View.GONE);
         }
 
-//        MyBeanFriendBaseAdapter adapter=new MyBeanFriendBaseAdapter(list,getContext());
-//
-//        beanFriendListView.setAdapter(adapter);
+        MyBeanFriendBaseAdapter adapter=new MyBeanFriendBaseAdapter(list,getContext());
+
+        beanFriendListView.setAdapter(adapter);
 
     }
 
@@ -197,11 +198,10 @@ public class TopicFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-
         super.onActivityCreated(savedInstanceState);
     }
 
-    //下载数据
+    //话题的数据下载
     private void TopicDownloadData() {
         String thirdPage = Constant.THIRD_PAGE;
         RequestParams params = new RequestParams(thirdPage);
@@ -231,7 +231,7 @@ public class TopicFragment extends Fragment {
         });
     }
 
-    //Gson解析数据
+    //话题Gson解析数据
     private void parserThirdPager(String result) {
 
         Gson gson = new Gson();
