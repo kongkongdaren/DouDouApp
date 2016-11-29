@@ -150,6 +150,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
                 <TextView
                     android:id="@+id/tv_dynamic_pinglun_username1_id"
@@ -170,6 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:orientation="horizontal">
                 <TextView
                     android:id="@+id/tv_dynamic_pinglun_username2_id"
