@@ -783,6 +783,19 @@ public class Constant {
     params.addBodyParameter("uid", "0");
 
     */
+    public static String THIRD_PAGE_REAL_TIME="http://api.haodou.com/index.php?appid=2&appke" +
+            "y=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1480416945596&vc=105&v" +
+            "n=6.1.15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c8" +
+            "8e65f5&channel=anzhi_v6115&method=Topic.getHotTopicList&virtual=&signmethod=md5&" +
+            "v=3&timestamp=1480435038&nonce=0.3207418475010684&appsign=445f9638458e02cae8e8c4" +
+            "059f6eea6a";
+    /*
+    params.addBodyParameter("limit", "20");
+    params.addBodyParameter("sign", "");
+    params.addBodyParameter("uid", "0");
+    params.addBodyParameter("offset", "0");
+    params.addBodyParameter("appqs", "haodourecipe://haodou.com/Topic/getHotTopicList/");
+    */
     //豆友
     public static String THIRD_PAGE_BEAN_FIREND = "http://api.haodou.com/index" +
             ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
