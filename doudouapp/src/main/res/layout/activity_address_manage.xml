@@ -5,6 +5,7 @@
     android:id="@+id/activity_address_manage"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/common_white"
     android:orientation="vertical"
     tools:context="com.yjlw.ddms.aboutme.activity.AddressManageActivity">
 
@@ -42,6 +43,7 @@
             android:layout_marginLeft="18sp"
             android:gravity="center"
             android:text="保存"
+            android:clickable="true"
             android:textColor="@color/common_yellow"
             android:textSize="16sp"/>
     </RelativeLayout>
@@ -179,7 +181,9 @@
         android:id="@+id/et_detailed_address"
         android:layout_width="match_parent"
         android:layout_height="150dp"
+        android:background="@color/bright_gray"
         android:gravity="top"
-        android:hint="详细地址"/>
+        android:hint="详细地址"
+        android:paddingLeft="5dp"/>
 
 </LinearLayout>
