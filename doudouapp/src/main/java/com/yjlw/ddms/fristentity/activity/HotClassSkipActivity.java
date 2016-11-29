@@ -58,17 +58,17 @@ public class HotClassSkipActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String title = extras.getString("title");
         hotClassTitle.setText(title);
-        int position = extras.getInt("position");
-        downHotSkipData(position);
+        String cateId = extras.getString("cateId");
+        downHotSkipData(cateId);
     }
 
-    private void downHotSkipData(int position) {
+    private void downHotSkipData(String cateId) {
         String hotItemUrl = Constant.HOT_CLASS_ITEM;
         RequestParams params=new RequestParams(hotItemUrl);
         params.addBodyParameter("limit", "20");
         params.addBodyParameter("offset", "0");
         params.addBodyParameter("type", "1");
-        params.addBodyParameter("cate_id", (47-position)+"");
+        params.addBodyParameter("cate_id",cateId);
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
