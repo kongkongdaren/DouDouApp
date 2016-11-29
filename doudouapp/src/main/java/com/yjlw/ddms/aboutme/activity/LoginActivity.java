@@ -10,6 +10,7 @@ import android.widget.EditText;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.baidumap.LocationActivity;
 import com.yjlw.ddms.utils.SharedPreferencesUtils;
+import com.yjlw.ddms.utils.ToastUtils;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -41,8 +42,8 @@ public class LoginActivity extends AppCompatActivity {
     private void downAddress(View view) {
         SharedPreferencesUtils.saveString(this, "userName", mUserName.getText().toString());
         SharedPreferencesUtils.saveString(this, "userName", mUserPwd.getText().toString());
-
-        //向远程服务器发送请求
+        ToastUtils.showToast(this, "登录成功");
+        //TODO 向远程服务器发送请求
         finish();
     }
 
