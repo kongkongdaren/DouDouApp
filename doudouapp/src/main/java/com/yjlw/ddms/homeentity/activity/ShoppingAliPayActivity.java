@@ -47,14 +47,14 @@ import static com.yjlw.ddms.common.Constants.SELLER;
  * 阿里支付
  */
 public class ShoppingAliPayActivity extends AppCompatActivity {
-
+    @ViewInject(R.id.iv_back)
+    private ImageView back;
 
     @ViewInject(R.id.tv_total)
     private TextView tvTotal;//商品总价
 
     @ViewInject(R.id.lv_buy_product)
     private ListView lvBuyPro;//商品信息
-
 
     private Handler mHandler;
 
@@ -66,6 +66,12 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_ali_pay);
         x.view().inject(this);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
         Intent intent = this.getIntent();
         List<DataBean> beens = (List<DataBean>) intent.getSerializableExtra("dataBeens");
         dataBeens.addAll(beens);
