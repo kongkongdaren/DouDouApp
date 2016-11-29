@@ -6,6 +6,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.baidumap.LocationActivity;
@@ -16,11 +17,15 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import static com.yjlw.ddms.R.id.back;
+
 /**
  * Created by 王俞娟 on 2016/11/28.
  */
 
 public class LoginActivity extends AppCompatActivity {
+    @ViewInject(R.id.iv_home_back)
+    private ImageView back;
     @ViewInject(R.id.et_user_name)
     private EditText mUserName;
     @ViewInject(R.id.et_user_pwd)
@@ -31,6 +36,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         x.view().inject(this);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     /**
