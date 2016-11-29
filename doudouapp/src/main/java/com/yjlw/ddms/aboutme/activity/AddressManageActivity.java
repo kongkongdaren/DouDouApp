@@ -2,6 +2,7 @@ package com.yjlw.ddms.aboutme.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.utils.SharedPreferencesUtils;
+import com.yjlw.ddms.utils.ToastUtils;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -41,14 +43,28 @@ public class AddressManageActivity extends AppCompatActivity {
         x.view().inject(this);
     }
 
-    @Event(type = View.OnClickListener.class, value = R.id.btn_pay)
+    @Event(type = View.OnClickListener.class, value = R.id.tv_save)
     private void saveAddress(View view) {
-        SharedPreferencesUtils.saveString(this, "consignee", etUserName.getText().toString());
-        SharedPreferencesUtils.saveString(this, "userPhoneNumber", etUserPhoneNumber.getText().toString());
-        SharedPreferencesUtils.saveString(this, "addressRegion", tvaddressRegion.getText().toString());
-        SharedPreferencesUtils.saveString(this, "addressStreet", tvaddressStreet.getText().toString());
-        SharedPreferencesUtils.saveString(this, "detailedAddress", etDetailedAddress.getText().toString());
+//        || TextUtils.isEmpty(tvaddressRegion
+//                .getText().toString()) || TextUtils.isEmpty(tvaddressStreet.getText().toString()
+//        )
+        if (TextUtils.isEmpty(etUserName.getText().toString()) || TextUtils.isEmpty
+                (etUserPhoneNumber.getText().toString()) || TextUtils.isEmpty(etDetailedAddress.getText().toString())) {
+            ToastUtils.showToast(this, "信息不能为空");
+        } else {
+            SharedPreferencesUtils.saveString(this, "consignee", etUserName.getText().toString());
+            SharedPreferencesUtils.saveString(this, "userPhoneNumber", etUserPhoneNumber.getText
+                    ().toString());
+            SharedPreferencesUtils.saveString(this, "addressRegion", tvaddressRegion.getText()
+                    .toString());
+            SharedPreferencesUtils.saveString(this, "addressStreet", tvaddressStreet.getText()
+                    .toString());
+            SharedPreferencesUtils.saveString(this, "detailedAddress", etDetailedAddress.getText
+                    ().toString());
+            ToastUtils.showToast(this, "保存成功");
+        }
 
+        //TODO 向远程服务器发送
 
     }
 }

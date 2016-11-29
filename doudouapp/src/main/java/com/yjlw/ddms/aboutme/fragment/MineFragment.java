@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.yjlw.ddms.R;
+import com.yjlw.ddms.aboutme.activity.AddressManageActivity;
 import com.yjlw.ddms.aboutme.activity.LoginActivity;
 import com.yjlw.ddms.aboutme.activity.RegistActivity;
 import com.yjlw.ddms.aboutme.views.SettingItemClickView;
@@ -123,5 +124,11 @@ public class MineFragment extends Fragment {
         mAddress = (SettingItemClickView) view.findViewById(R.id.user_address);
         mAddress.setTextView("收货地址");
         mAddress.setLeftImage(R.mipmap.ico_user_sign_in_on);
+        mAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), AddressManageActivity.class));
+            }
+        });
     }
 }

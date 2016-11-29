@@ -41,7 +41,8 @@ public class LoginActivity extends AppCompatActivity {
     @Event(type = View.OnClickListener.class, value = R.id.btn_user_login_id)
     private void downAddress(View view) {
         SharedPreferencesUtils.saveString(this, "userName", mUserName.getText().toString());
-        SharedPreferencesUtils.saveString(this, "userName", mUserPwd.getText().toString());
+        //TODO 加密
+//        SharedPreferencesUtils.saveString(this, "userPwd", mUserPwd.getText().toString());
         ToastUtils.showToast(this, "登录成功");
         //TODO 向远程服务器发送请求
         finish();
