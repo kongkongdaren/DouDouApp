@@ -130,9 +130,9 @@ public class MyDynamicBaseAdapter extends HomeCustomBaseAdapter<Dynamic.ResultBe
                 vh2.tv_dynamic_date_id.setText(data.getCreateTime());
                 vh2.tv_dynamic_dianzan_count_id.setText(data.getDiggCnt()+"");
                 vh2.tv_dynamic_pinlun_count_id.setText(data.getCommentCnt()+"");
-                vh2.tv_dynamic_pinglun_username1_id.setText(data.getCommentList().get(0).getUserName());
+                vh2.tv_dynamic_pinglun_username1_id.setText(data.getCommentList().get(0).getUserName()+":");
                 vh2.tv_dynamic_pinglun_content1_id.setText(data.getCommentList().get(0).getContent());
-                vh2.tv_dynamic_pinglun_username2_id.setText(data.getCommentList().get(1).getUserName());
+                vh2.tv_dynamic_pinglun_username2_id.setText(data.getCommentList().get(1).getUserName()+":");
                 vh2.tv_dynamic_pinglun_content2_id.setText(data.getCommentList().get(1).getContent());
                 break;
         }
