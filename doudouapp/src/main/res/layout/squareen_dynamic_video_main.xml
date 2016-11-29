@@ -71,11 +71,27 @@
             android:ellipsize="end"
             android:text="“百味来世界意面总决赛”专业组优秀作品，正确答案是A,F,你猜对了吗？猜对"/>
 
-        <io.vov.vitamio.widget.VideoView
-            android:id="@+id/iv_dynamic_result_image_id"
+        <FrameLayout
             android:layout_width="200dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_height="150dp">
+            <io.vov.vitamio.widget.VideoView
+                android:id="@+id/iv_dynamic_result_video_id"
+                android:layout_width="200dp"
+                android:layout_height="150dp" />
+            <ImageView
+                android:id="@+id/iv_dynamic_result_video_img"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:src="@mipmap/ic_main_logo"
+                />
+            <ImageView
+                android:id="@+id/video_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/btn_video_play_small" />
+        </FrameLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
