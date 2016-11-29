@@ -24,6 +24,7 @@ import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
+import com.yjlw.ddms.squareentity.fragment.activity.JiaChangCaiActivity;
 import com.yjlw.ddms.squareentity.fragment.activity.RealTimeActivity;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyBeanFriendBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyDynamicBaseAdapter;
@@ -79,6 +80,7 @@ public class TopicFragment extends Fragment {
     private List<Dynamic.ResultBean.ListBean> dynamiclist;
     private ImageView iv_topic_auxiliary_more_image;
     private View squareen_real_time;
+    private LinearLayout topicgroupll;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -317,9 +319,18 @@ public class TopicFragment extends Fragment {
         squareen_topic_group = View.inflate(getContext(),R.layout.squareen_topic_group,null);
         mLv.addFooterView(squareen_topic_group);
 
+
+
         for(int i=0;i<groupBeans.size();i++){
             //填充控件
             View squareen_topic_group_item = View.inflate(getContext(),R.layout.squareen_topic_group_item, null);
+            topicgroupll = (LinearLayout) squareen_topic_group_item.findViewById(R.id.activity_topic_group);
+            topicgroupll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getContext(), JiaChangCaiActivity.class));
+                }
+            });
             mLv.addFooterView(squareen_topic_group_item);
             ImageView topic_group_item_image_id =(ImageView)squareen_topic_group_item.findViewById(R.id.topic_group_item_image_id);
             TextView tv_Name_id= (TextView) squareen_topic_group_item.findViewById(R.id.tv_Name_id);
