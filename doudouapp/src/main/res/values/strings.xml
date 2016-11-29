@@ -87,6 +87,7 @@
     <string name="evaluate">评价</string>
     <string name="mydynamic">我的动态</string>
     <string name="total">合计</string>
+    <string name="hotclass">热门分类</string>
     <string-array name="hottitlename">
         <item>全部</item>
         <item>私人</item>
