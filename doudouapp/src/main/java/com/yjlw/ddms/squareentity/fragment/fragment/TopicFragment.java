@@ -22,6 +22,7 @@ import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyBeanFriendBaseAdapter;
+import com.yjlw.ddms.squareentity.fragment.adapter.MyDynamicBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyViewPagerAdapter;
 import com.yjlw.ddms.squareentity.fragment.entity.Dynamic;
 import com.yjlw.ddms.squareentity.fragment.entity.Lists;
@@ -68,6 +69,10 @@ public class TopicFragment extends Fragment {
     private List<Lists.ResultBean.ListBean> list;
     private ProgressBar beanfiend_progressbar_id;
     private View dynamicview;
+    private ListView dynamicListView;
+    private ProgressBar dynamic_progressbar_id;
+    private Dynamic dynamic;
+    private List<Dynamic.ResultBean.ListBean> dynamiclist;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,7 +90,7 @@ public class TopicFragment extends Fragment {
             Bundle savedInstanceState) {
 
         if(i==0){
-            //填充布局文件squareen_fragment
+            //关于话题的
             Topicview = inflater.inflate(R.layout.squareen_fragment, null);
             mLv = (ListView) Topicview.findViewById(R.id.lv_sq_id);
             progressBar = (ProgressBar) Topicview.findViewById(R.id.progressbar_id);
@@ -105,6 +110,8 @@ public class TopicFragment extends Fragment {
             //TODO
             //关于动态的
             dynamicview = inflater.inflate(R.layout.squareen_dynamic_listview,null);
+            dynamicListView = (ListView) dynamicview.findViewById(R.id.lv_dynamic_sq_id);
+            dynamic_progressbar_id = (ProgressBar) dynamicview.findViewById(R.id.dynamic_progressbar_id);
             DynamicDownLoadData();
             return dynamicview;
         }
@@ -200,8 +207,18 @@ public class TopicFragment extends Fragment {
     //动态数据进行的Gson解析
     private void parserThirdPagerDynamic(String result) {
         Gson gson=new Gson();
-        gson.fromJson(result, Dynamic.class);
+        dynamic = gson.fromJson(result, Dynamic.class);
 
+        dynamiclist = dynamic.getResult().getList();
+        if(dynamiclist==null){
+            dynamic_progressbar_id.setVisibility(View.VISIBLE);
+        }else{
+            dynamic_progressbar_id.setVisibility(View.GONE);
+        }
+
+        MyDynamicBaseAdapter adapter=new MyDynamicBaseAdapter(dynamiclist,getContext());
+
+        dynamicListView.setAdapter(adapter);
     }
 
     @Override
