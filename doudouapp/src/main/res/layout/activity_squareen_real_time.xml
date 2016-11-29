@@ -8,7 +8,8 @@
     <LinearLayout
         android:id="@+id/squareen_toolbar_id"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/bright_gray">
         <ImageView
             android:id="@+id/iv_squareen_return_id"
             android:layout_width="wrap_content"
@@ -16,7 +17,8 @@
             android:layout_marginLeft="10dp"
             android:src="@mipmap/btn_header_back"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:layout_marginLeft="8dp"
             android:textSize="20sp"
@@ -25,7 +27,7 @@
             android:id="@+id/iv_squareen_btn_header_edit_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
+            android:layout_marginRight="10dp"
             android:src="@mipmap/btn_header_edit"/>
     </LinearLayout>
 
