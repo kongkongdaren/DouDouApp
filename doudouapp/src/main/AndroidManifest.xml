@@ -91,10 +91,11 @@
         <activity android:name=".fristentity.activity.LookVideoActivity"/>
         <activity android:name=".baidumap.BaiduMapBaseActivity">
         </activity>
-        <!--用户登录-->
-        <activity android:name=".aboutme.activity.LoginActivity"></activity>
-        <!--用户注册-->
-        <activity android:name=".aboutme.activity.RegistActivity"></activity>
+        <!-- 用户登录 -->
+        <activity android:name=".aboutme.activity.LoginActivity"/>
+        <!-- 用户注册 -->
+        <activity android:name=".aboutme.activity.RegistActivity"/>
+        <activity android:name=".aboutme.activity.AddressManageActivity"/>
 
         <service
             android:name="com.baidu.location.f"
@@ -129,13 +130,14 @@
         <activity android:name=".fristentity.activity.ListActivity"/>
         <!-- 热门活动跳转 -->
         <activity android:name=".fristentity.activity.HotSkipActivity"/>
-        <!--阿里支付-->
+        <!-- 阿里支付 -->
         <activity android:name=".homeentity.activity.ShoppingAliPayActivity">
         </activity>
-        <!--热门分类-->
+        <!-- 热门分类 -->
         <activity android:name=".fristentity.activity.HotClassActivity"/>
-        <!--热门分类跳转-->
+        <!-- 热门分类跳转 -->
         <activity android:name=".fristentity.activity.HotClassSkipActivity"/>
+
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="583c327b8f4a9d5c44001340"/>
@@ -164,10 +166,8 @@
         <activity
             android:name="com.umeng.socialize.editorpage.ShareActivity"
             android:excludeFromRecents="true"
-            android:theme="@style/Theme.UMDialog"
-            >
+            android:theme="@style/Theme.UMDialog">
         </activity>
-
 
         <!-- 微信回调activity -->
         <activity
@@ -177,6 +177,14 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <!-- *************************    分享相关的注册 END **************************** -->
+        <receiver
+            android:name=".baidumap.receiver.BaiduMapReceiver"
+            android:enabled="true"
+            android:exported="true">
+        </receiver>
+
+        <activity android:name=".aboutme.activity.RegionChoiceActivity">
+        </activity>
     </application>
 
 </manifest>
