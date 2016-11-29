@@ -31,8 +31,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <!-- 友盟分享需要的权限 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
 
     <supports-screens
         android:anyDensity="true"
@@ -91,6 +91,10 @@
         <activity android:name=".fristentity.activity.LookVideoActivity"/>
         <activity android:name=".baidumap.BaiduMapBaseActivity">
         </activity>
+        <!--用户登录-->
+        <activity android:name=".aboutme.activity.LoginActivity"></activity>
+        <!--用户注册-->
+        <activity android:name=".aboutme.activity.RegistActivity"></activity>
 
         <service
             android:name="com.baidu.location.f"
@@ -134,35 +138,35 @@
         <activity android:name=".fristentity.activity.HotClassSkipActivity"/>
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="583c327b8f4a9d5c44001340" />
+            android:value="583c327b8f4a9d5c44001340"/>
 
         <!-- 腾讯SSO授权的Activity注册 -->
         <activity
             android:name="com.tencent.tauth.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true" >
+            android:noHistory="true">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.VIEW"/>
 
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
                 <!-- 这里需要配置自己QQ互联的AppID:tencentXXXXXX，和代码中保持一致 -->
-                <data android:scheme="tencent100424468" />
+                <data android:scheme="tencent100424468"/>
             </intent-filter>
         </activity>
         <activity
             android:name="com.tencent.connect.common.AssistActivity"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
         <!-- *************************    分享相关的注册 START **************************** -->
         <!-- 分享内容编辑页 -->
         <activity
             android:name="com.umeng.socialize.editorpage.ShareActivity"
-            android:theme="@style/Theme.UMDialog"
             android:excludeFromRecents="true"
+            android:theme="@style/Theme.UMDialog"
             >
-    </activity>
+        </activity>
 
 
         <!-- 微信回调activity -->
@@ -171,7 +175,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <!-- *************************    分享相关的注册 END **************************** -->
     </application>
 
