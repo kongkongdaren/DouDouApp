@@ -195,6 +195,7 @@ public class TopicFragment extends Fragment {
     //动态数据进行的Gson解析
     private void parserThirdPagerDynamic(String result) {
         Gson gson=new Gson();
+
     }
 
     @Override
