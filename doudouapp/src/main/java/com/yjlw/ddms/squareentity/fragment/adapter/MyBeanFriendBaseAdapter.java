@@ -32,9 +32,6 @@ public class MyBeanFriendBaseAdapter extends HomeCustomBaseAdapter<Lists.ResultB
 //    private final int TYPE_FRAVITOR_IMAGE_MAIN=2;
 //    private final int TYPE_FRAVITOR_FRAVITOR_IMAGE_MAIN=3;
 
-    private List<Lists.ResultBean.ListBean> list;
-    private Context context;
-
     public MyBeanFriendBaseAdapter(List<Lists.ResultBean.ListBean> lists, Context context) {
         super(lists, context);
     }
@@ -47,7 +44,7 @@ public class MyBeanFriendBaseAdapter extends HomeCustomBaseAdapter<Lists.ResultB
 
     @Override
     public int getItemViewType(int position) {
-        if (list.get(position).getFavoriteList().toString()!=null) {
+        if (lists.get(position).getFavoriteList().size()>0) {
             return TYPE_FRAVITOR_MAIN;
         } else {
             return TYPT_MAIN;
@@ -94,7 +91,7 @@ public class MyBeanFriendBaseAdapter extends HomeCustomBaseAdapter<Lists.ResultB
             }
         }
 
-        Lists.ResultBean.ListBean listBean = list.get(i);
+        Lists.ResultBean.ListBean listBean = lists.get(i);
         switch (type) {
             case TYPT_MAIN:
                 Picasso.with(context).load(listBean.getAvatar()).into(vh1.iv_beanjfriend_userPhoto);
@@ -106,9 +103,9 @@ public class MyBeanFriendBaseAdapter extends HomeCustomBaseAdapter<Lists.ResultB
                 Picasso.with(context).load(listBean.getAvatar()).into(vh2.iv_beanjfriend_userPhoto);
                 vh2.tv_beanfriend_username_id.setText(listBean.getUserName());
                 vh2.tv_beanfriend_content_id.setText(listBean.getIntro());
-                vh2.tv_beanfriend_fravritor1_id.setText(listBean.getFavoriteList().get(i)+"");
-                vh2.tv_beanfriend_fravritor2_id.setText(listBean.getFavoriteList().get(i)+"");
-                vh2.tv_beanfriend_fravritor3_id.setText(listBean.getFavoriteList().get(i)+"");
+                vh2.tv_beanfriend_fravritor1_id.setText(listBean.getFavoriteList().get(0).getName());
+                vh2.tv_beanfriend_fravritor2_id.setText(listBean.getFavoriteList().get(1).getName());
+                vh2.tv_beanfriend_fravritor3_id.setText(listBean.getFavoriteList().get(2).getName());
                 vh2.tv_beanfriend_address_id.setText(listBean.getAddress());
                 break;
         }
