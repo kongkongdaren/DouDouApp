@@ -801,13 +801,13 @@ public class Constant {
         params.addBodyParameter("lat", "39.913249");
      */
     //动态：
-    public static String THIRD_PAGE_DYNAMIC = "http://api.haodou.com/index" +
-            ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
-            "=1479277154256&vc=105&vn=6.1" +
-            ".15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5" +
-            "&channel=anzhi_v6115&method=UserFeed" +
-            ".getFollowUserFeed&virtual=&signmethod=md5&v=3&timestamp=1479279362&nonce=0" +
-            ".34251052026632334&appsign=78e26fe3d4b4efc759392425ead6f978";
+    public static String THIRD_PAGE_DYNAMIC = "http://api.haodou.com/index.php?" +
+            "appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sess" +
+            "ionid=1480412675026&vc=105&vn=6.1.15&loguid=0&deviceid=haodou864" +
+            "394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5&channel=anzhi" +
+            "_v6115&method=UserFeed.getFollowUserFeed&virtual=&signmethod=md5&" +
+            "v=3&timestamp=1480415516&nonce=0.73550044302865&appsign=d131e860f" +
+            "b6ed7d7c239499c79be7019";
     /*
       params.addBodyParameter("limit", "10");
       params.addBodyParameter("offset", "0");
