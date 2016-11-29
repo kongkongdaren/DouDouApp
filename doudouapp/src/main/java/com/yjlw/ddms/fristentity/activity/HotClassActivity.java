@@ -97,7 +97,7 @@ public class HotClassActivity extends AppCompatActivity {
                 Intent intent=new Intent(HotClassActivity.this,HotClassSkipActivity.class);
                 Bundle bundle=new Bundle();
                 bundle.putString("title",hotItemList.get(position).getCateName());
-                bundle.putInt("position",position);
+                bundle.putString("cateId",hotItemList.get(position).getCateId());
                 intent.putExtras(bundle);
                 startActivity(intent);
             }
