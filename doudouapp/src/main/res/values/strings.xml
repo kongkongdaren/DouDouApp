@@ -86,6 +86,7 @@
     <string name="productcraft">产品工艺</string>
     <string name="evaluate">评价</string>
     <string name="mydynamic">我的动态</string>
+    <string name="total">合计</string>
     <string-array name="hottitlename">
         <item>全部</item>
         <item>私人</item>

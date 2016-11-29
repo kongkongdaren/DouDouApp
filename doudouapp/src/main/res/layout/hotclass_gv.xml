@@ -19,7 +19,7 @@
             android:textSize="20sp"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="@string/hotclass"/>
+            />
     </LinearLayout>
     <GridView
         android:id="@+id/hotclass_item"

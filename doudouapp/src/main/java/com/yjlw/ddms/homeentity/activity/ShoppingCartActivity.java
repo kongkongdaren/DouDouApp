@@ -31,9 +31,11 @@ import com.yjlw.ddms.mainactivity.MainActivity;
 
 import org.xutils.x;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.data;
 import static android.R.attr.id;
 import static com.baidu.platform.comapi.map.e.f;
 import static com.baidu.platform.comapi.map.e.i;
@@ -427,13 +429,22 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
                     List<Integer> ids = getSelectedIds();
                     doDelete(ids);
                 } else {
-                    //TODO
+                    //TODO 获取位置
+                    List<Integer> ids = getSelectedIds();
+                    List<DataBean> dataBeens = new ArrayList<>();
+                    for (int i = 0; i < ids.size(); i++) {
+                        DataBean dataBean = mListData.get(i);
+                        DataBean data = new DataBean();
+                        data.setCoverUrl(dataBean.getOpenUrl());
+                        data.setShopName(dataBean.getShopName());
+                        data.setSubTitle(dataBean.getContent());
+                        data.setPrice(dataBean.getPrice());
+                        Log.i("Log", dataBean.toString());
+                        dataBeens.add(data);
+                    }
                     Intent intent = new Intent(this, ShoppingAliPayActivity.class);
                     Bundle bundle = new Bundle();
-                    bundle.putString("coverUrl", coverUrl);
-                    bundle.putString("title", title);
-                    bundle.putString("subTitle", storeName);
-                    bundle.putString("dealPrice", dealPrice);
+                    bundle.putSerializable("dataBeens", (Serializable) dataBeens);
                     intent.putExtras(bundle);
                     startActivity(intent);
                 }

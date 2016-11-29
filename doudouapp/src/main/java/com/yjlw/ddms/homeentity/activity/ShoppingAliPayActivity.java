@@ -1,6 +1,7 @@
 package com.yjlw.ddms.homeentity.activity;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AlertDialog;
@@ -10,11 +11,14 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 import com.yjlw.ddms.R;
+import com.yjlw.ddms.homeentity.adapter.CommodityAdapter;
+import com.yjlw.ddms.homeentity.entity.DataBean;
 import com.yjlw.ddms.homeentity.entity.PayResult;
 import com.yjlw.ddms.mainactivity.MainActivity;
 import com.yjlw.ddms.utils.SignUtils;
@@ -23,13 +27,17 @@ import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.io.Serializable;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Locale;
 import java.util.Random;
 
+import static com.yjlw.ddms.R.string.price;
 import static com.yjlw.ddms.common.Constants.PARTNER;
 import static com.yjlw.ddms.common.Constants.RSA_PRIVATE;
 import static com.yjlw.ddms.common.Constants.SDK_PAY_FLAG;
@@ -39,43 +47,42 @@ import static com.yjlw.ddms.common.Constants.SELLER;
  * 阿里支付
  */
 public class ShoppingAliPayActivity extends AppCompatActivity {
-    @ViewInject(R.id.iv_cover_Url)
-    private ImageView coverUrl;//商品图片
-    @ViewInject(R.id.product_subject)
-    private TextView tvSubject;//商品标题
-    @ViewInject(R.id.tv_goods_detail)
-    private TextView tvInfo;//商品描述
-    @ViewInject(R.id.product_price)
-    private TextView tvPrice;//商品价格
 
-    @ViewInject(R.id.tv_money)
-    private TextView tvMoney;//商品总价
+
     @ViewInject(R.id.tv_total)
     private TextView tvTotal;//商品总价
+
+    @ViewInject(R.id.lv_buy_product)
+    private ListView lvBuyPro;//商品信息
+
+
     private Handler mHandler;
-    private String coverUrl1;
-    private String title;
-    private String subTitle;
-    private String dealPrice;
+
+    private List<DataBean> dataBeens = new LinkedList<>();
+    private float count = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_ali_pay);
         x.view().inject(this);
-        Bundle bundle = this.getIntent().getExtras();
-        coverUrl1 = bundle.getString("coverUrl");
-        title = bundle.getString("title");
-        subTitle = bundle.getString("subTitle");
-        dealPrice = bundle.getString("dealPrice");
-        Log.i("Log", coverUrl1 + ",标题" + title + "详情，" + subTitle + "价格，" + dealPrice);
-        x.image().bind(coverUrl, coverUrl1);
-        tvSubject.setText(subTitle);
-        tvInfo.setText(title);
-        tvPrice.setText(dealPrice);
-        tvMoney.setText(dealPrice);
-        tvTotal.setText(dealPrice);
+        Intent intent = this.getIntent();
+        List<DataBean> beens = (List<DataBean>) intent.getSerializableExtra("dataBeens");
+        dataBeens.addAll(beens);
+        for (int i = 0; i < dataBeens.size(); i++) {
+            DataBean dataBean = dataBeens.get(i);
+            float price = dataBean.getPrice();
+            count = price + count;
+            Log.i("Log", count + "");
+        }
+        tvTotal.setText("¥" + count);
         aboutHandler();
+        aboutListView();
+    }
+
+    private void aboutListView() {
+        CommodityAdapter adapter = new CommodityAdapter(dataBeens, this);
+        lvBuyPro.setAdapter(adapter);
     }
 
     /**
