@@ -123,15 +123,11 @@
         <activity android:name=".homeentity.activity.ProductCommentActivity">
         </activity>
         <!-- 购买商品 -->
-        <activity android:name=".homeentity.activity.BuyProductActivity">
-        </activity>
         <!-- list条目 -->
         <activity android:name=".fristentity.activity.ListActivity"/>
         <!-- 热门活动跳转 -->
         <activity android:name=".fristentity.activity.HotSkipActivity"/>
         <!--阿里支付-->
-        <activity android:name=".homeentity.activity.ShoppingAliPayActivity">
-        </activity>
         <!--热门分类-->
         <activity android:name=".fristentity.activity.HotClassActivity"/>
         <!--热门分类跳转-->
