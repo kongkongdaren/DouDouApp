@@ -1,5 +1,7 @@
 package com.yjlw.ddms.fristentity.activity;
 
+import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -32,6 +34,8 @@ public class ListActivity extends AppCompatActivity {
     private ImageView ivListShare;
     @ViewInject(R.id.webv_id)
     private WebView web;
+    private ProgressDialog dialog;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,14 +54,36 @@ public class ListActivity extends AppCompatActivity {
         settings.setSupportMultipleWindows(true);
         settings.setJavaScriptEnabled(true);
         settings.setSavePassword(false);
+        //设置缓存模式
+        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
         settings.setMinimumFontSize(settings.getMinimumFontSize() + 8);
         settings.setAllowFileAccess(false);
         settings.setTextSize(WebSettings.TextSize.NORMAL);
         settings.setUseWideViewPort(true);
         settings.setLoadWithOverviewMode(true);
-        web.setWebChromeClient(new WebChromeClient());// 支持运行特殊的javascript（例如：alert()）
-        web.setWebViewClient(new WebViewClient());//
+        web.setWebChromeClient(new WebChroemClient());// 支持运行特殊的javascript（例如：alert()）
+        web.setWebViewClient(new webClient());//
+        dialog = ProgressDialog.show(this,null,"正在为小主努力加载。。。");
         web.loadUrl(url);
+    }
+    private class WebChroemClient extends WebChromeClient {
+
+        @Override
+        public void onProgressChanged(WebView view, int newProgress) {
+            // TODO Auto-generated method stub
+            super.onProgressChanged(view, newProgress);
+        }
+    }
+    private  class webClient extends WebViewClient{
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            super.onPageStarted(view, url, favicon);
+        }
+
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            dialog.dismiss();
+        }
     }
 }
