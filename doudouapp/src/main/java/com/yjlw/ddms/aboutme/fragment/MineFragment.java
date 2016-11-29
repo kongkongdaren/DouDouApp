@@ -15,9 +15,6 @@ import com.yjlw.ddms.aboutme.activity.LoginActivity;
 import com.yjlw.ddms.aboutme.activity.RegistActivity;
 import com.yjlw.ddms.aboutme.views.SettingItemClickView;
 
-import org.xutils.view.annotation.Event;
-import org.xutils.view.annotation.ViewInject;
-import org.xutils.x;
 
 
 public class MineFragment extends Fragment {
