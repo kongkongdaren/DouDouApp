@@ -9,11 +9,9 @@ import android.widget.TextView;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.entity.Dynamic;
-import com.yjlw.ddms.squareentity.fragment.entity.Lists;
 
 import java.util.List;
 
-import io.vov.vitamio.widget.VideoView;
 import it.sephiroth.android.library.picasso.Picasso;
 
 
