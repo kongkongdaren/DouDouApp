@@ -7,9 +7,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.yjlw.ddms.R;
+import com.yjlw.ddms.aboutme.activity.LoginActivity;
+import com.yjlw.ddms.aboutme.activity.RegistActivity;
 import com.yjlw.ddms.aboutme.views.SettingItemClickView;
+
+import org.xutils.view.annotation.Event;
+import org.xutils.view.annotation.ViewInject;
+import org.xutils.x;
 
 
 public class MineFragment extends Fragment {
@@ -26,6 +33,8 @@ public class MineFragment extends Fragment {
     private SettingItemClickView mMycoupons;
     private SettingItemClickView mAddress;
     private View view;
+    private Button mLogin;
+    private Button mRegist;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,8 +44,23 @@ public class MineFragment extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable
+            Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_about_me, null);
+        mLogin = (Button) view.findViewById(R.id.btn_login_id);
+        mLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), LoginActivity.class));
+            }
+        });
+        mRegist = (Button) view.findViewById(R.id.btn_regist_id);
+        mRegist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), RegistActivity.class));
+            }
+        });
         //界面控件实例的获取
         initWidget();
         return view;
@@ -44,7 +68,6 @@ public class MineFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-
 
         super.onActivityCreated(savedInstanceState);
     }
@@ -72,7 +95,7 @@ public class MineFragment extends Fragment {
         mGift_change.setTextView("礼品兑换");
         mGift_change.setLeftImage(R.mipmap.ico_user_gift_exchange);
 
-        mDownload_id = (SettingItemClickView)view. findViewById(R.id.mv_download_id);
+        mDownload_id = (SettingItemClickView) view.findViewById(R.id.mv_download_id);
         mDownload_id.setTextView("我的下载");
         mDownload_id.setLeftImage(R.mipmap.ico_user_mydown);
 
@@ -93,7 +116,7 @@ public class MineFragment extends Fragment {
         mOrder.setOrderTextView("查看全部订单");
         mOrder.setLeftImage(R.mipmap.ico_user_myorder);
 
-        mMycoupons = (SettingItemClickView)view.findViewById(R.id.user_mycoupons);
+        mMycoupons = (SettingItemClickView) view.findViewById(R.id.user_mycoupons);
         mMycoupons.setTextView("我的优惠券");
         mMycoupons.setLeftImage(R.mipmap.ico_user_mycoupons);
 
