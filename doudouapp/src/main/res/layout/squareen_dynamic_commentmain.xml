@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     >
-    <ImageView
+    <com.yjlw.ddms.fristentity.views.MySelfCircleView
         android:id="@+id/iv_dynamic_image_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_margin="10dp"
         android:src="@mipmap/ic_main_logo"/>
 
@@ -57,25 +57,52 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_dynamic_result_id"
+            android:id="@+id/tv_dynamic_user_content_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="百味来活动结果公布"/>
+            android:text="家常菜达人。快捷家常菜，健康又养生"/>
         <TextView
-            android:id="@+id/tv_dynamic_content_id"
+            android:id="@+id/tv_dynamic_data_content_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:singleLine="true"
             android:ellipsize="end"
-            android:text="“百味来世界意面总决赛”专业组优秀作品，正确答案是A,F,你猜对了吗？猜对"/>
+            android:text="真专业，学习了"/>
 
-        <ImageView
-            android:id="@+id/iv_dynamic_result_image_id"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:background="@color/bright_gray"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/iv_dynamic_result_image_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tv_dynamic_title_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="【征集】什么是菜肴的色、香、味、形、器?"/>
+                <TextView
+                    android:id="@+id/tv_dynamic_content_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:text="一道好的菜肴必须达到色、香、味、形、器俱佳。具体地说：色：指菜肴主料与副料色泽的配合，必须质地（主要指硬软、松实）适宜，迎合时令，鲜美明快，悦目协调；料与汁（芡汁、汤汁）色泽的配合，要"/>
+            </LinearLayout>
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,23 +173,17 @@
                     android:id="@+id/tv_dynamic_pinglun_username2_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="月下光辉："/>
+                    android:text="关于韩："/>
                 <TextView
                     android:id="@+id/tv_dynamic_pinglun_content2_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="009"/>
+                    android:text="恭喜恭喜"/>
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tv_dynamic_pinglun_count_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="查看全部27条评论"/>
-
         </LinearLayout>
+
 
     </LinearLayout>
 
