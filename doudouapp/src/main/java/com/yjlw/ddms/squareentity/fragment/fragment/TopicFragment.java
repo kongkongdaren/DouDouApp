@@ -67,6 +67,7 @@ public class TopicFragment extends Fragment {
     private ListView beanFriendListView;
     private List<Lists.ResultBean.ListBean> list;
     private ProgressBar beanfiend_progressbar_id;
+    private View dynamicview;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -100,11 +101,14 @@ public class TopicFragment extends Fragment {
             beanfiend_progressbar_id = (ProgressBar) beanFriendview.findViewById(R.id.beanfiend_progressbar_id);
             BeanFriendDownLoadData();
             return beanFriendview;
-        }else{
+        }else if(i==2){
             //TODO
             //关于动态的
+            dynamicview = inflater.inflate(R.layout.squareen_dynamic_listview,null);
             DynamicDownLoadData();
+            return dynamicview;
         }
+
        return null;
     }
 
