@@ -23,6 +23,7 @@ import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyBeanFriendBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyViewPagerAdapter;
+import com.yjlw.ddms.squareentity.fragment.entity.Dynamic;
 import com.yjlw.ddms.squareentity.fragment.entity.Lists;
 import com.yjlw.ddms.squareentity.fragment.entity.Result;
 
@@ -195,6 +196,7 @@ public class TopicFragment extends Fragment {
     //动态数据进行的Gson解析
     private void parserThirdPagerDynamic(String result) {
         Gson gson=new Gson();
+        gson.fromJson(result, Dynamic.class);
 
     }
 
