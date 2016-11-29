@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.yjlw.ddms.R;
+import com.yjlw.ddms.utils.SharedPreferencesUtils;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -42,6 +43,12 @@ public class AddressManageActivity extends AppCompatActivity {
 
     @Event(type = View.OnClickListener.class, value = R.id.btn_pay)
     private void saveAddress(View view) {
+        SharedPreferencesUtils.saveString(this, "consignee", etUserName.getText().toString());
+        SharedPreferencesUtils.saveString(this, "userPhoneNumber", etUserPhoneNumber.getText().toString());
+        SharedPreferencesUtils.saveString(this, "addressRegion", tvaddressRegion.getText().toString());
+        SharedPreferencesUtils.saveString(this, "addressStreet", tvaddressStreet.getText().toString());
+        SharedPreferencesUtils.saveString(this, "detailedAddress", etDetailedAddress.getText().toString());
+
 
     }
 }
