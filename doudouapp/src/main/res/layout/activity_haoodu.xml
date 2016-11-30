@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="5dp"
             android:src="@mipmap/icon_index_message"/>
-    </LinearLayout>
+</LinearLayout>
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
