@@ -79,13 +79,7 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shopping_ali_pay);
         x.view().inject(this);
         userName = SharedPreferencesUtils.getString(this, "userName", "");
-        String consignee = SharedPreferencesUtils.getString(this, "consignee", "");
-        String addressRegion = SharedPreferencesUtils.getString(this, "addressRegion", "");
-        String detailedAddress = SharedPreferencesUtils.getString(this, "detailedAddress", "");
-        String userPhoneNumber = SharedPreferencesUtils.getString(this, "userPhoneNumber", "");
-        tvConsignee.setText(consignee);
-        tvAddress.setText(addressRegion+detailedAddress);
-        tvPhone.setText(userPhoneNumber);
+        SetAddressData();
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,6 +103,22 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
         });
         aboutHandler();
         aboutListView();
+    }
+
+    @Override
+    protected void onStart() {
+        SetAddressData();
+        super.onStart();
+    }
+
+    private void SetAddressData() {
+        String consignee = SharedPreferencesUtils.getString(this, "consignee", "");
+        String addressRegion = SharedPreferencesUtils.getString(this, "addressRegion", "");
+        String detailedAddress = SharedPreferencesUtils.getString(this, "detailedAddress", "");
+        String userPhoneNumber = SharedPreferencesUtils.getString(this, "userPhoneNumber", "");
+        tvConsignee.setText(consignee);
+        tvAddress.setText(addressRegion + detailedAddress);
+        tvPhone.setText(userPhoneNumber);
     }
 
     private void aboutListView() {
