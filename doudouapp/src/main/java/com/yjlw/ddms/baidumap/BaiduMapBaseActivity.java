@@ -1,17 +1,31 @@
 package com.yjlw.ddms.baidumap;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
 import com.baidu.mapapi.model.LatLng;
+import com.baidu.mapapi.overlayutil.PoiOverlay;
+import com.baidu.mapapi.search.core.PoiInfo;
+import com.baidu.mapapi.search.core.SearchResult;
+import com.baidu.mapapi.search.poi.OnGetPoiSearchResultListener;
+import com.baidu.mapapi.search.poi.PoiDetailResult;
+import com.baidu.mapapi.search.poi.PoiDetailSearchOption;
+import com.baidu.mapapi.search.poi.PoiNearbySearchOption;
+import com.baidu.mapapi.search.poi.PoiResult;
+import com.baidu.mapapi.search.poi.PoiSearch;
 import com.yjlw.ddms.R;
+import com.yjlw.ddms.utils.SharedPreferencesUtils;
 
-
+import java.util.List;
 
 
 public class BaiduMapBaseActivity extends AppCompatActivity {
@@ -20,8 +34,12 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
     protected MapView mapview;
     protected double latitude = 40.050966;// 经度
     protected double longitude = 116.303128;// 纬度
-//    39.913248,116.403624
+    //    39.913248,116.403624
     protected LatLng hmPos = new LatLng(latitude, longitude);
+    private PoiSearch poiSearch;
+    private LatLng currentPos;
+    protected EditText etFood;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +47,10 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
         initManager();
 
         setContentView(R.layout.activity_base);
-
+        etFood = (EditText) findViewById(R.id.et_food);
         init();
     }
+
     private void initManager() {
     }
 
@@ -50,8 +69,7 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
         baiduMap.setMapStatus(mapstatusUpdate);
 
         // LatLng latlng = new LatLng(arg0, arg1);// 坐标 经纬度 参数1 纬度 参数2 经度
-        MapStatusUpdate mapstatusUpdatePoint = MapStatusUpdateFactory
-                .newLatLng(hmPos);
+        MapStatusUpdate mapstatusUpdatePoint = MapStatusUpdateFactory.newLatLng(hmPos);
         // 设置中心点 默认是天安门
         baiduMap.setMapStatus(mapstatusUpdatePoint);
 
@@ -61,8 +79,24 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
 
     }
 
-    public   void OkAddress(View view){
+    public void OkAddress(View view) {
         finish();
+
+    }
+
+    /**
+     * 搜索周边
+     *
+     * @param view
+     */
+    public void searchAction(View view) {
+
+        search();
+    }
+
+    private void search() {
+        startActivity(new Intent(getApplicationContext(), PoiSearchNearByDemo.class));
+        //
     }
 
     @Override
@@ -70,6 +104,7 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
         mapview.onDestroy();
         super.onDestroy();
     }
+
     @Override
     protected void onResume() {
         mapview.onResume();
