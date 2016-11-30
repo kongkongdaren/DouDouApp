@@ -41,7 +41,7 @@ public class MyDynamicBaseAdapter extends HomeCustomBaseAdapter<Dynamic.ResultBe
 
     @Override
     public int getItemViewType(int position) {
-        if(lists.get(position).getData().getCommentList().size()>0){
+        if(lists.get(position).getData().getCommentList().size()==2){
             return TYPT_COMMENT_MAIN;
         }else{
             return TYPT_MAIN;
