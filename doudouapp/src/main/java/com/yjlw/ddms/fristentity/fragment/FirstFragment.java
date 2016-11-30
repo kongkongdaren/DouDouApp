@@ -316,6 +316,8 @@ public class FirstFragment extends Fragment {
                  String replaceUrl ="http://mp.haodou.com/h5/message/"+webUrl.substring(webUrl.lastIndexOf("=")+1);
                  Log.i("url",replaceUrl);
                  bundle.putString("url",replaceUrl);
+                 bundle.putString("title",listBeen.get(position - 3).getUrl());
+                 bundle.putString("content",listBeen.get(position-3).getDesc());
                  intent.putExtras(bundle);
                  startActivity(intent);
              }

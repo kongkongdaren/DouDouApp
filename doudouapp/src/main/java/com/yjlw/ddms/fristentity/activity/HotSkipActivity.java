@@ -103,12 +103,12 @@ public class HotSkipActivity extends AppCompatActivity {
         ivSkipShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                shareData(position);
+                shareData();
             }
         });
     }
     //分享界面
-    private void shareData(int position) {
+    private void shareData() {
             AlertDialog.Builder builder=new AlertDialog.Builder(this);
             //把布局文件先填充成View对象
             View inflate=View.inflate(this,R.layout.share_item,null);
