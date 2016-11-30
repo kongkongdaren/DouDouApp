@@ -124,10 +124,6 @@ public class TopicFragment extends Fragment {
 
         }
     }
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
 
     //豆友的数据下载
     private void BeanFriendDownLoadData() {
@@ -485,5 +481,10 @@ public class TopicFragment extends Fragment {
             }
         };
         handler.sendEmptyMessageDelayed(1,2000);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 }
