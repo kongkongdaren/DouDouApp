@@ -29,13 +29,10 @@ public class MyBeanFriendBaseAdapter extends HomeCustomBaseAdapter<Lists.ResultB
     private final int TYPE_CNT = 2; //布局文件的类型
     private final int TYPT_MAIN = 0;
     private final int TYPE_FRAVITOR_MAIN = 1;
-//    private final int TYPE_FRAVITOR_IMAGE_MAIN=2;
-//    private final int TYPE_FRAVITOR_FRAVITOR_IMAGE_MAIN=3;
 
     public MyBeanFriendBaseAdapter(List<Lists.ResultBean.ListBean> lists, Context context) {
         super(lists, context);
     }
-
 
     @Override
     public int getViewTypeCount() {
@@ -44,7 +41,7 @@ public class MyBeanFriendBaseAdapter extends HomeCustomBaseAdapter<Lists.ResultB
 
     @Override
     public int getItemViewType(int position) {
-        if (lists.get(position).getFavoriteList().size()>0) {
+        if (lists.get(position).getFavoriteList().size()==3) {
             return TYPE_FRAVITOR_MAIN;
         } else {
             return TYPT_MAIN;
@@ -130,27 +127,4 @@ public class MyBeanFriendBaseAdapter extends HomeCustomBaseAdapter<Lists.ResultB
             private TextView tv_beanfriend_fravritor3_id;
             private TextView tv_beanfriend_address_id;
         }
-    /*
-    private final class ViewHolderImageMain{
-        private ImageView iv_beanjfriend_userPhoto;
-        private TextView tv_beanfriend_username_id;
-        private TextView tv_beanfriend_content_id;
-        private ImageView iv_beanfriend_tagImage_id;
-        private TextView tv_beanfiend_tagtitle_id;
-        private TextView tv_beanfriend_tagcontent_id;
-        private TextView tv_beanfriend_address_id;
-    }
-    private final class ViewHolderFavritorImageMain{
-        private ImageView iv_beanjfriend_userPhoto;
-        private TextView tv_beanfriend_username_id;
-        private TextView tv_beanfriend_content_id;
-        private TextView tv_beanfriend_fravritor1_id;
-        private TextView tv_beanfriend_fravritor2_id;
-        private TextView tv_beanfriend_fravritor3_id;
-        private ImageView iv_beanfriend_tagImage_id;
-        private TextView tv_beanfiend_tagtitle_id;
-        private TextView tv_beanfriend_tagcontent_id;
-        private TextView tv_beanfriend_address_id;
-    }
-*/
 }
