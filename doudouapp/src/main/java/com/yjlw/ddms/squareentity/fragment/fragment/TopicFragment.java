@@ -1,11 +1,14 @@
 package com.yjlw.ddms.squareentity.fragment.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,7 +24,10 @@ import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.homeentity.adapter.HomeCustomBaseAdapter;
+import com.yjlw.ddms.squareentity.fragment.activity.JiaChangCaiActivity;
+import com.yjlw.ddms.squareentity.fragment.activity.RealTimeActivity;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyBeanFriendBaseAdapter;
+import com.yjlw.ddms.squareentity.fragment.adapter.MyDynamicBaseAdapter;
 import com.yjlw.ddms.squareentity.fragment.adapter.MyViewPagerAdapter;
 import com.yjlw.ddms.squareentity.fragment.entity.Dynamic;
 import com.yjlw.ddms.squareentity.fragment.entity.Lists;
@@ -68,6 +74,13 @@ public class TopicFragment extends Fragment {
     private List<Lists.ResultBean.ListBean> list;
     private ProgressBar beanfiend_progressbar_id;
     private View dynamicview;
+    private ListView dynamicListView;
+    private ProgressBar dynamic_progressbar_id;
+    private Dynamic dynamic;
+    private List<Dynamic.ResultBean.ListBean> dynamiclist;
+    private ImageView iv_topic_auxiliary_more_image;
+    private View squareen_real_time;
+    private LinearLayout topicgroupll;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,7 +98,7 @@ public class TopicFragment extends Fragment {
             Bundle savedInstanceState) {
 
         if(i==0){
-            //填充布局文件squareen_fragment
+            //关于话题的
             Topicview = inflater.inflate(R.layout.squareen_fragment, null);
             mLv = (ListView) Topicview.findViewById(R.id.lv_sq_id);
             progressBar = (ProgressBar) Topicview.findViewById(R.id.progressbar_id);
@@ -94,25 +107,23 @@ public class TopicFragment extends Fragment {
             return Topicview;
 
         }else if(i==1){
-            //TODO
             //关于豆友的
             beanFriendview = inflater.inflate(R.layout.squareen_beanfriend_listview, null);
             beanFriendListView = (ListView) beanFriendview.findViewById(R.id.lv_beanfiend_sq_id);
             beanfiend_progressbar_id = (ProgressBar) beanFriendview.findViewById(R.id.beanfiend_progressbar_id);
             BeanFriendDownLoadData();
             return beanFriendview;
-        }else if(i==2){
-            //TODO
+
+        }else{
             //关于动态的
             dynamicview = inflater.inflate(R.layout.squareen_dynamic_listview,null);
+            dynamicListView = (ListView) dynamicview.findViewById(R.id.lv_dynamic_sq_id);
+            dynamic_progressbar_id = (ProgressBar) dynamicview.findViewById(R.id.dynamic_progressbar_id);
             DynamicDownLoadData();
             return dynamicview;
+
         }
-
-       return null;
     }
-
-
 
     //豆友的数据下载
     private void BeanFriendDownLoadData() {
@@ -200,14 +211,21 @@ public class TopicFragment extends Fragment {
     //动态数据进行的Gson解析
     private void parserThirdPagerDynamic(String result) {
         Gson gson=new Gson();
-        gson.fromJson(result, Dynamic.class);
+        dynamic = gson.fromJson(result, Dynamic.class);
 
+        dynamiclist = dynamic.getResult().getList();
+        if(dynamiclist==null){
+            dynamic_progressbar_id.setVisibility(View.VISIBLE);
+        }else{
+            dynamic_progressbar_id.setVisibility(View.GONE);
+        }
+
+        MyDynamicBaseAdapter adapter=new MyDynamicBaseAdapter(dynamiclist,getContext());
+
+        dynamicListView.setAdapter(adapter);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
+
 
     //话题的数据下载
     private void TopicDownloadData() {
@@ -272,7 +290,14 @@ public class TopicFragment extends Fragment {
         ad.clear();
 
         //添加实时热点
-        View squareen_real_time = View.inflate(getContext(),R.layout.squareen_real_time, null);
+        squareen_real_time = View.inflate(getContext(), R.layout.squareen_real_time, null);
+        iv_topic_auxiliary_more_image = (ImageView) squareen_real_time.findViewById(R.id.iv_topic_auxiliary_more_image);
+        iv_topic_auxiliary_more_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), RealTimeActivity.class));
+            }
+        });
         mLv.addHeaderView(squareen_real_time);
 
         ListViewAdapter adapter = new ListViewAdapter(hot, getContext());
@@ -290,6 +315,13 @@ public class TopicFragment extends Fragment {
         for(int i=0;i<groupBeans.size();i++){
             //填充控件
             View squareen_topic_group_item = View.inflate(getContext(),R.layout.squareen_topic_group_item, null);
+            topicgroupll = (LinearLayout) squareen_topic_group_item.findViewById(R.id.activity_topic_group);
+            topicgroupll.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startActivity(new Intent(getContext(), JiaChangCaiActivity.class));
+                }
+            });
             mLv.addFooterView(squareen_topic_group_item);
             ImageView topic_group_item_image_id =(ImageView)squareen_topic_group_item.findViewById(R.id.topic_group_item_image_id);
             TextView tv_Name_id= (TextView) squareen_topic_group_item.findViewById(R.id.tv_Name_id);
@@ -447,5 +479,10 @@ public class TopicFragment extends Fragment {
             }
         };
         handler.sendEmptyMessageDelayed(1,2000);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 }

@@ -185,6 +185,11 @@
 
         <activity android:name=".aboutme.activity.RegionChoiceActivity">
         </activity>
+
+        <!-- 实时热点的activity注册-->
+        <activity android:name=".squareentity.fragment.activity.RealTimeActivity"/>
+        <!-- 家常菜的activity注册-->
+        <activity android:name=".squareentity.fragment.activity.JiaChangCaiActivity"/>
     </application>
 
 </manifest>

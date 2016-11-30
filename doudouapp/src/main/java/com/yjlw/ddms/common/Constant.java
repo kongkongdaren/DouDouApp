@@ -783,6 +783,37 @@ public class Constant {
     params.addBodyParameter("uid", "0");
 
     */
+    //实时热点
+    public static String THIRD_PAGE_REAL_TIME="http://api.haodou.com/index.php?appid=2&appke" +
+            "y=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1480416945596&vc=105&v" +
+            "n=6.1.15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c8" +
+            "8e65f5&channel=anzhi_v6115&method=Topic.getHotTopicList&virtual=&signmethod=md5&" +
+            "v=3&timestamp=1480435038&nonce=0.3207418475010684&appsign=445f9638458e02cae8e8c4" +
+            "059f6eea6a";
+    /*
+    params.addBodyParameter("limit", "20");
+    params.addBodyParameter("sign", "");
+    params.addBodyParameter("uid", "0");
+    params.addBodyParameter("offset", "0");
+    params.addBodyParameter("appqs", "haodourecipe://haodou.com/Topic/getHotTopicList/");
+    */
+
+    public static String THIRD_PAGE_JIACHANGCAI="http://api.haodou.com/index.php?appid=2&appkey=9e" +
+            "f269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1480416945596&vc=105&vn=6.1." +
+            "15&loguid=0&deviceid=haodou864394010224212&uuid=b3b08f17bca548949af2ddc9c88e65f5&" +
+            "channel=anzhi_v6115&method=Topic.getTopicList&virtual=&signmethod=md5&v=3&timestamp" +
+            "=1480442130&nonce=0.9550596915923953&appsign=871f24545e6b3445d3ad601b55008a23";
+     /*
+    params.addBodyParameter("limit", "20");
+    params.addBodyParameter("sign", "");
+    params.addBodyParameter("uid", "0");
+    params.addBodyParameter("cateid", "33");
+    params.addBodyParameter("digest", "0");
+    params.addBodyParameter("offset", "0");
+    params.addBodyParameter("appqs", "haodourecipe://haodou.com/httopic/?id=33");
+    */
+
+
     //豆友
     public static String THIRD_PAGE_BEAN_FIREND = "http://api.haodou.com/index" +
             ".php?appid=2&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid" +
