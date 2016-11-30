@@ -107,27 +107,23 @@ public class TopicFragment extends Fragment {
             return Topicview;
 
         }else if(i==1){
-            //TODO
             //关于豆友的
             beanFriendview = inflater.inflate(R.layout.squareen_beanfriend_listview, null);
             beanFriendListView = (ListView) beanFriendview.findViewById(R.id.lv_beanfiend_sq_id);
             beanfiend_progressbar_id = (ProgressBar) beanFriendview.findViewById(R.id.beanfiend_progressbar_id);
             BeanFriendDownLoadData();
             return beanFriendview;
-        }else if(i==2){
-            //TODO
+
+        }else{
             //关于动态的
             dynamicview = inflater.inflate(R.layout.squareen_dynamic_listview,null);
             dynamicListView = (ListView) dynamicview.findViewById(R.id.lv_dynamic_sq_id);
             dynamic_progressbar_id = (ProgressBar) dynamicview.findViewById(R.id.dynamic_progressbar_id);
             DynamicDownLoadData();
             return dynamicview;
+
         }
-
-       return null;
     }
-
-
 
     //豆友的数据下载
     private void BeanFriendDownLoadData() {
@@ -229,10 +225,7 @@ public class TopicFragment extends Fragment {
         dynamicListView.setAdapter(adapter);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
+
 
     //话题的数据下载
     private void TopicDownloadData() {
@@ -488,5 +481,10 @@ public class TopicFragment extends Fragment {
             }
         };
         handler.sendEmptyMessageDelayed(1,2000);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 }
