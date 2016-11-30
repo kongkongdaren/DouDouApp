@@ -113,6 +113,7 @@ public class TopicFragment extends Fragment {
             beanfiend_progressbar_id = (ProgressBar) beanFriendview.findViewById(R.id.beanfiend_progressbar_id);
             BeanFriendDownLoadData();
             return beanFriendview;
+
         }else{
             //关于动态的
             dynamicview = inflater.inflate(R.layout.squareen_dynamic_listview,null);
@@ -120,7 +121,12 @@ public class TopicFragment extends Fragment {
             dynamic_progressbar_id = (ProgressBar) dynamicview.findViewById(R.id.dynamic_progressbar_id);
             DynamicDownLoadData();
             return dynamicview;
+
         }
+    }
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
     }
 
     //豆友的数据下载
@@ -223,10 +229,7 @@ public class TopicFragment extends Fragment {
         dynamicListView.setAdapter(adapter);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-    }
+
 
     //话题的数据下载
     private void TopicDownloadData() {
