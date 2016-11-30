@@ -105,6 +105,7 @@
         <!-- 获取位置 -->
         <activity android:name=".baidumap.LocationActivity">
         </activity>
+        <activity android:name=".baidumap.PoiSearchNearByDemo"/>
         <!-- 特价趁现在 -->
         <activity android:name=".homeentity.activity.EveryBargainPriceActivity">
         </activity>

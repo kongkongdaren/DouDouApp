@@ -312,8 +312,6 @@ public class TopicFragment extends Fragment {
         squareen_topic_group = View.inflate(getContext(),R.layout.squareen_topic_group,null);
         mLv.addFooterView(squareen_topic_group);
 
-
-
         for(int i=0;i<groupBeans.size();i++){
             //填充控件
             View squareen_topic_group_item = View.inflate(getContext(),R.layout.squareen_topic_group_item, null);

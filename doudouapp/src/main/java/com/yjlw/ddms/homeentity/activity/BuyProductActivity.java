@@ -135,7 +135,7 @@ public class BuyProductActivity extends AppCompatActivity {
         shopLists.addAll(buyProductInFosData.getResult().getRelationShopList().getList());//店铺
         //        Log.i("Log", shopLists.toString());
         rvProductStore.setLayoutManager(new GridLayoutManager(this, 2));
-        recyclerViewAdapter = new StoreRecyclerViewAdapter(shopLists);
+        recyclerViewAdapter = new StoreRecyclerViewAdapter(shopLists,this);
         rvProductStore.setAdapter(recyclerViewAdapter);
         RecyclerViewHeader header = RecyclerViewHeader.fromXml(this, R.layout
                 .home_buy_product_item_top);
@@ -282,6 +282,7 @@ public class BuyProductActivity extends AppCompatActivity {
 
         float parseFloat = Float.parseFloat(prices);
         dataBean.setPrice(parseFloat);
+        dataBean.setCarNum(1);
         dataBeens.add(dataBean);
 
         Intent intent = new Intent(this, ShoppingAliPayActivity.class);

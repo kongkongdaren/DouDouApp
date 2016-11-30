@@ -3,6 +3,7 @@ package com.yjlw.ddms.homeentity.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -22,7 +23,7 @@ import java.util.List;
 /**
  * Simple to Introduction
  *
- * @Description: [一句话描述该类的功能]
+ * @Description: [美食研究所适配器]
  * @Author: 原海忠
  * @CreateDate: 2016/11/19
  * @Version: [v1.0]
@@ -35,7 +36,7 @@ public class CateListAdapter extends HomeCustomBaseAdapter<ListBean> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-        ListBean strollShopping = getItem(position);
+        final ListBean strollShopping = getItem(position);
         ViewHolder vh = null;
         if (convertView == null) {
             convertView = View.inflate(context, R.layout.scroll_shopping_list_item, null);
@@ -59,7 +60,12 @@ public class CateListAdapter extends HomeCustomBaseAdapter<ListBean> {
         vh.openUrl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, BuyProductActivity.class));
+                Intent intent = new Intent(context, BuyProductActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("GoodsId", strollShopping.getGoodsId()+"");
+
+                intent.putExtras(bundle);
+                context.startActivity(intent);
             }
         });
         return convertView;

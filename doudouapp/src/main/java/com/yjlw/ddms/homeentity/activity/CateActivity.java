@@ -28,7 +28,7 @@ import java.util.List;
 
 
 /**
- * 特价趁现在
+ * 美食研究所
  */
 public class CateActivity extends AppCompatActivity {
     @ViewInject(R.id.lv_bargain_price)
