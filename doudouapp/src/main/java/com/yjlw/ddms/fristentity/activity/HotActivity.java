@@ -58,7 +58,6 @@ public class HotActivity extends AppCompatActivity {
         });
         downLoadData();
     }
-
     /**
      * 下载数据
      */
