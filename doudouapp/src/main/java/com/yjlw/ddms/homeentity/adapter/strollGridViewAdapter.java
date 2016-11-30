@@ -57,6 +57,7 @@ public class strollGridViewAdapter extends HomeCustomBaseAdapter<FoodieFavoriteG
 
                 intent.putExtras(bundle);
                 context.startActivity(intent);
+
             }
         });
         return convertView;

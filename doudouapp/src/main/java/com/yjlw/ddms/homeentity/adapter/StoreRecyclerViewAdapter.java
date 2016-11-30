@@ -1,6 +1,9 @@
 package com.yjlw.ddms.homeentity.adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Paint;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.yjlw.ddms.homeentity.activity.BuyProductActivity;
 import com.yjlw.ddms.homeentity.entity.BuyProductInFosData.ResultBean.RelationShopListBean.ListBean;
 import com.yjlw.ddms.R;
 
@@ -17,6 +21,7 @@ import org.xutils.x;
 import java.util.List;
 
 import static android.R.attr.data;
+import static com.umeng.socialize.utils.DeviceConfig.context;
 
 /**
  * Simple to Introduction
@@ -29,10 +34,11 @@ import static android.R.attr.data;
 public class StoreRecyclerViewAdapter extends RecyclerView.Adapter<StoreRecyclerViewAdapter
         .ViewHolder> {
     private List<ListBean> datas = null;
+    private Context context;
 
-    public StoreRecyclerViewAdapter(List<ListBean> datas) {
+    public StoreRecyclerViewAdapter(List<ListBean> datas, Context context) {
         this.datas = datas;
-
+        this.context = context;
     }
 
     //创建新View，被LayoutManager所调用
@@ -47,13 +53,24 @@ public class StoreRecyclerViewAdapter extends RecyclerView.Adapter<StoreRecycler
     //将数据与界面进行绑定的操作
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        ListBean listBean = datas.get(position);
+        final ListBean listBean = datas.get(position);
         x.image().bind(viewHolder.coverUrl, listBean.getCoverUrl());
         viewHolder.title.setText(listBean.getTitle());
         viewHolder.price.setText(listBean.getPrice());
         viewHolder.price.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);//添加删除线
         viewHolder.dealPrice.setText(listBean.getDealPrice());
-        if (listBean.getLabels().size()!=0) {
+        viewHolder.buyProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, BuyProductActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("GoodsId", listBean.getGoodsId() + "");
+
+                                intent.putExtras(bundle);
+                context.startActivity(intent);
+            }
+        });
+        if (listBean.getLabels().size() != 0) {
             viewHolder.labels0.setVisibility(View.VISIBLE);
         }
     }
