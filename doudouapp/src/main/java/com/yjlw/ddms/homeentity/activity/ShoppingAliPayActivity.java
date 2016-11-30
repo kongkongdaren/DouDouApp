@@ -53,13 +53,16 @@ import static com.yjlw.ddms.common.Constants.SELLER;
 public class ShoppingAliPayActivity extends AppCompatActivity {
     @ViewInject(R.id.iv_back)
     private ImageView back;
-
+    @ViewInject(R.id.iv_address)
+    private ImageView ivAddress;
     @ViewInject(R.id.tv_total)
     private TextView tvTotal;//商品总价
     @ViewInject(R.id.tv_consignee)
     private TextView tvConsignee;//收货人
     @ViewInject(R.id.tv_address)
     private TextView tvAddress;//收货地址
+    @ViewInject(R.id.tv_phone)
+    private TextView tvPhone;//收货电话
 
     @ViewInject(R.id.lv_buy_product)
     private ListView lvBuyPro;//商品信息
@@ -79,8 +82,10 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
         String consignee = SharedPreferencesUtils.getString(this, "consignee", "");
         String addressRegion = SharedPreferencesUtils.getString(this, "addressRegion", "");
         String detailedAddress = SharedPreferencesUtils.getString(this, "detailedAddress", "");
+        String userPhoneNumber = SharedPreferencesUtils.getString(this, "userPhoneNumber", "");
         tvConsignee.setText(consignee);
-        tvAddress.setText(detailedAddress);
+        tvAddress.setText(addressRegion+detailedAddress);
+        tvPhone.setText(userPhoneNumber);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,10 +97,16 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
         dataBeens.addAll(beens);
         for (int i = 0; i < dataBeens.size(); i++) {
             DataBean dataBean = dataBeens.get(i);
-            float price = dataBean.getPrice()*dataBean.getCarNum();
+            float price = dataBean.getPrice() * dataBean.getCarNum();
             count = price + count;
         }
         tvTotal.setText("¥" + count);
+        ivAddress.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ShoppingAliPayActivity.this, AddressManageActivity.class));
+            }
+        });
         aboutHandler();
         aboutListView();
     }
