@@ -32,7 +32,7 @@ public class StoreRecyclerViewAdapter extends RecyclerView.Adapter<StoreRecycler
 
     public StoreRecyclerViewAdapter(List<ListBean> datas) {
         this.datas = datas;
-        Log.i("Log", "传过来的数据是" + datas.toString());
+
     }
 
     //创建新View，被LayoutManager所调用
