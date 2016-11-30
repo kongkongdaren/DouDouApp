@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="80dp"
+    android:paddingRight="80dp"
+    android:paddingTop="30dp"
+    android:paddingBottom="30dp">
+
+    <ImageView
+        android:id="@+id/iv_qq"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:src="@mipmap/icon_share_qq"/>
+
+    <ImageView
+        android:id="@+id/iv_weixin"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:src="@mipmap/icon_share_weixin_friend"/>
+    <ImageView
+        android:id="@+id/iv_qzone"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:src="@mipmap/icon_share_qzone"/>
+
+</LinearLayout>

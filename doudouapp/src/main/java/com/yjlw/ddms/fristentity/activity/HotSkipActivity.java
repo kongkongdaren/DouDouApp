@@ -2,15 +2,21 @@ package com.yjlw.ddms.fristentity.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
+import com.umeng.socialize.media.UMImage;
+import com.umeng.socialize.utils.Log;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.fristentity.adapter.SkipAdapter;
@@ -55,6 +61,28 @@ public class HotSkipActivity extends AppCompatActivity {
     private PullToRefreshListView lv;
     @ViewInject(R.id.pb_skip)
     private ProgressBar pb;
+    private SkipData.ResultBean.InfoBean.ShareInfoBean shareInfoData;
+    private UMShareListener umShareListener = new UMShareListener() {
+        @Override
+        public void onResult(SHARE_MEDIA platform) {
+            Toast.makeText(HotSkipActivity.this, platform + " 分享成功啦", Toast.LENGTH_SHORT).show();
+
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA platform, Throwable t) {
+            Toast.makeText(HotSkipActivity.this,platform + " 分享失败啦", Toast.LENGTH_SHORT).show();
+            if(t!=null){
+                Log.d("throw","throw:"+t.getMessage());
+            }
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA platform) {
+            Toast.makeText(HotSkipActivity.this,platform + " 分享取消了", Toast.LENGTH_SHORT).show();
+        }
+    };
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,10 +98,67 @@ public class HotSkipActivity extends AppCompatActivity {
         String title = extras.getString("title");
         tvSkipTitle.setText(title+"的作品");
         tvSkipBigTitle.setText(title);
-        int position = extras.getInt("position");
+        final int position = extras.getInt("position");
         downloadSkipData(position);
+        ivSkipShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                shareData(position);
+            }
+        });
     }
-//下载数据
+    //分享界面
+    private void shareData(int position) {
+            AlertDialog.Builder builder=new AlertDialog.Builder(this);
+            //把布局文件先填充成View对象
+            View inflate=View.inflate(this,R.layout.share_item,null);
+            ImageView ivQQ= (ImageView) inflate.findViewById(R.id.iv_qq);
+            ImageView ivWeixin= (ImageView) inflate.findViewById(R.id.iv_weixin);
+            ImageView ivQZone= (ImageView) inflate.findViewById(R.id.iv_qzone);
+            ivQQ.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    ShareAction qq=new ShareAction(HotSkipActivity.this);
+                        qq.withTitle(shareInfoData.getTitle());
+                        qq.withText(shareInfoData.getContent());
+                    UMImage urlImage = new UMImage(HotSkipActivity.this,R.mipmap.ic_main_logo);
+                    qq.withMedia(urlImage);
+                         qq.withTargetUrl(shareInfoData.getUrl());
+                    qq.setPlatform(SHARE_MEDIA.QQ).setCallback(umShareListener).share();
+                }
+            });
+
+        ivQZone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ShareAction Qzone=new ShareAction(HotSkipActivity.this);
+                Qzone.withTitle(shareInfoData.getTitle());
+                Qzone.withText(shareInfoData.getContent());
+                //分享图片
+                UMImage urlImage = new UMImage(HotSkipActivity.this,R.mipmap.ic_main_logo);
+                Qzone.withMedia(urlImage);
+                Qzone.withTargetUrl(shareInfoData.getUrl());
+                Qzone.setPlatform(SHARE_MEDIA.QZONE).setCallback(umShareListener).share();
+            }
+        });
+        ivWeixin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ShareAction weixin=new ShareAction(HotSkipActivity.this);
+                weixin.withTitle(shareInfoData.getTitle());
+                weixin.withText(shareInfoData.getContent());
+                weixin.withTargetUrl(shareInfoData.getUrl());
+                UMImage urlImage = new UMImage(HotSkipActivity.this,R.mipmap.ic_main_logo);
+                weixin.withMedia(urlImage);
+                weixin.setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE).setCallback(umShareListener).share();
+            }
+        });
+            builder.setView(inflate);
+            builder.show();
+        }
+
+
+    //下载数据
     private void downloadSkipData(final int position) {
         String skipDataUrl = Constant.SKIP_DATA;
         final RequestParams params=new RequestParams(skipDataUrl);
@@ -111,7 +196,7 @@ public class HotSkipActivity extends AppCompatActivity {
         Gson gson=new Gson();
         SkipData skipData = gson.fromJson(result, SkipData.class);
         SkipData.ResultBean resultData = skipData.getResult();
-        Log.i("re","热门活动数据是////"+resultData.getInfo().getCount()+"");
+        shareInfoData = resultData.getInfo().getShareInfo();
         tvSkipCount.setText(resultData.getInfo().getCount()+"");
         Picasso.with(this).load(resultData.getInfo().getCover()).placeholder(R.mipmap.default_high).into(ivSkip);
         tvContent.setText(resultData.getInfo().getContent());

@@ -5,6 +5,8 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.admom.mygreendaotest.DaoMaster;
 import com.admom.mygreendaotest.DaoSession;
+import com.umeng.socialize.PlatformConfig;
+import com.umeng.socialize.UMShareAPI;
 import com.yjlw.ddms.common.Constants;
 
 import org.xutils.x;
@@ -24,10 +26,19 @@ public class xUtilsApplication extends Application {
     public SQLiteDatabase db;
     public DaoMaster.DevOpenHelper helper;
     public DaoMaster daoMaster;
+    {
+
+        PlatformConfig.setWeixin("wx967daebe835fbeac", "5bb696d9ccd75a38c8a0bfe0675559b3");
+        PlatformConfig.setSinaWeibo("3921700954", "04b48b094faeb16683c32669824ebdad");
+        PlatformConfig.setQQZone("100424468", "c7394704798a158208a74ab60104f0ba");
+
+
+    }
     @Override
     public void onCreate() {
         super.onCreate();
         x.Ext.init(this);
+        UMShareAPI.get(this);
         setupDatabase();
     }
 
