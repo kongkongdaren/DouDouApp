@@ -1,6 +1,7 @@
 package com.yjlw.ddms.homeentity.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -15,6 +16,8 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.util.List;
+
+import static android.view.View.X;
 
 /**
  * Simple to Introduction
@@ -55,8 +58,9 @@ public class CommodityAdapter extends HomeCustomBaseAdapter<DataBean> {
         x.image().bind(vh.coverUrl, dataBean.getCoverUrl());
         vh.title.setText(dataBean.getShopName());
         vh.subTitle.setText(dataBean.getSubTitle());
-        vh.dealPrice.setText(dataBean.getPrice()+"");
-        vh.moneyTotal.setText(dataBean.getPrice()+"");
+        vh.dealPrice.setText("¥"+dataBean.getPrice());
+        vh.moneyTotal.setText("¥"+dataBean.getPrice()*dataBean.getCarNum());
+        vh.carNum.setText("x"+dataBean.getCarNum());
         return convertView;
     }
 
@@ -66,6 +70,7 @@ public class CommodityAdapter extends HomeCustomBaseAdapter<DataBean> {
         vh.subTitle = (TextView) convertView.findViewById(R.id.tv_goods_detail);
         vh.dealPrice = (TextView) convertView.findViewById(R.id.product_price);
         vh.moneyTotal = (TextView) convertView.findViewById(R.id.tv_money);
+        vh.carNum = (TextView) convertView.findViewById(R.id.product_carNum);
     }
 
     class ViewHolder {
@@ -74,5 +79,6 @@ public class CommodityAdapter extends HomeCustomBaseAdapter<DataBean> {
         TextView subTitle;//子标题
         TextView dealPrice;//价钱
         TextView moneyTotal;//标价
+        TextView carNum;//数量
     }
 }

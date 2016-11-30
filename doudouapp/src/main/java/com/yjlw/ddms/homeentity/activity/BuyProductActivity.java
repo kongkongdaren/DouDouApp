@@ -282,6 +282,7 @@ public class BuyProductActivity extends AppCompatActivity {
 
         float parseFloat = Float.parseFloat(prices);
         dataBean.setPrice(parseFloat);
+        dataBean.setCarNum(1);
         dataBeens.add(dataBean);
 
         Intent intent = new Intent(this, ShoppingAliPayActivity.class);

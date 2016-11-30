@@ -77,6 +77,7 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
         x.view().inject(this);
         userName = SharedPreferencesUtils.getString(this, "userName", "");
         String consignee = SharedPreferencesUtils.getString(this, "consignee", "");
+        String addressRegion = SharedPreferencesUtils.getString(this, "addressRegion", "");
         String detailedAddress = SharedPreferencesUtils.getString(this, "detailedAddress", "");
         tvConsignee.setText(consignee);
         tvAddress.setText(detailedAddress);
@@ -91,9 +92,8 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
         dataBeens.addAll(beens);
         for (int i = 0; i < dataBeens.size(); i++) {
             DataBean dataBean = dataBeens.get(i);
-            float price = dataBean.getPrice();
+            float price = dataBean.getPrice()*dataBean.getCarNum();
             count = price + count;
-            Log.i("Log", count + "");
         }
         tvTotal.setText("¥" + count);
         aboutHandler();

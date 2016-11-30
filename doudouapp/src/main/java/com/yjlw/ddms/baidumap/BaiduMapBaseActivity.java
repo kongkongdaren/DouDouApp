@@ -60,9 +60,11 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
         // mapview.showScaleControl(false);// 默认是true 显示标尺
 
     }
+
     public   void OkAddress(View view){
         finish();
     }
+
     @Override
     protected void onDestroy() {
         mapview.onDestroy();

@@ -176,7 +176,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
             price = cursor.getString(8);
 
             float parseFloat = Float.parseFloat(price);
-            Log.i("Log", parseFloat + "");
+            //            Log.i("Log", parseFloat + "");
             title = cursor.getString(9);
             data.setId(storeids);// 从最大Id的下一个开始
             data.setShopName(storeName);
@@ -437,7 +437,6 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
                     List<Integer> ids = getSelectedIds();
                     doDelete(ids);
                 } else {
-                    //TODO 获取位置
                     List<Integer> ids = getSelectedIds();
                     List<DataBean> dataBeens = new ArrayList<>();
 
@@ -455,6 +454,7 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
                                 data.setShopName(dataBean.getShopName());
                                 data.setSubTitle(dataBean.getContent());
                                 data.setPrice(dataBean.getPrice());
+                                data.setCarNum(dataBean.getCarNum());
                                 dataBeens.add(data);
                             }
                         }
@@ -463,9 +463,9 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("dataBeens", (Serializable) dataBeens);
                     intent.putExtras(bundle);
-                    if(dataBeens.size()==0){
-                        ToastUtils.showToast(this,"请您选择支付产品");
-                    }else {
+                    if (dataBeens.size() == 0) {
+                        ToastUtils.showToast(this, "请您选择支付产品");
+                    } else {
                         startActivity(intent);
                     }
                 }
@@ -489,9 +489,9 @@ public class ShoppingCartActivity extends AppCompatActivity implements View.OnCl
             for (int j = 0; j < ids.size(); j++) {
                 long id = mListData.get(j).get_id();
                 int deleteId = ids.get(j);
+                dao.deleteByKey(id);
                 if (dataId == deleteId) {
                     mListData.remove(i);
-                    dao.deleteByKey(id);
                     i--;
                     ids.remove(j);
                     j--;

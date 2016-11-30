@@ -100,11 +100,20 @@
 
                         <TextView
                             android:id="@+id/product_price"
-                            android:layout_width="fill_parent"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:gravity="right"
                             android:text="0.01"
                             android:textColor="#ff6600"
+                            tools:ignore="HardcodedText"/>
+                        <TextView
+                            android:id="@+id/product_carNum"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="right"
+                            android:layout_marginRight="10dp"
                             tools:ignore="HardcodedText"/>
                     </LinearLayout>
 

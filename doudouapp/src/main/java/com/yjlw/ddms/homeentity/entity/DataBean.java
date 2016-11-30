@@ -20,6 +20,7 @@ public class DataBean implements Serializable {
     String subTitle;
     long goodsId;
 
+
     public DataBean() {
 
     }
