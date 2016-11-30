@@ -78,7 +78,7 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_ali_pay);
         x.view().inject(this);
-        userName = SharedPreferencesUtils.getString(this, "userName", "");
+
         SetAddressData();
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,6 +112,7 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
     }
 
     private void SetAddressData() {
+        userName = SharedPreferencesUtils.getString(this, "userName", "");
         String consignee = SharedPreferencesUtils.getString(this, "consignee", "");
         String addressRegion = SharedPreferencesUtils.getString(this, "addressRegion", "");
         String detailedAddress = SharedPreferencesUtils.getString(this, "detailedAddress", "");
@@ -332,4 +333,5 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
         Thread payThread = new Thread(payRunnable);
         payThread.start();
     }
+
 }
