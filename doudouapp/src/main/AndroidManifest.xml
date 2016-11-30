@@ -138,7 +138,8 @@
         <activity android:name=".fristentity.activity.HotClassActivity"/>
         <!-- 热门分类跳转 -->
         <activity android:name=".fristentity.activity.HotClassSkipActivity"/>
-
+        <!-- 热门菜谱实现 -->
+        <activity android:name=".fristentity.activity.CaipuActivity"/>
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="583c327b8f4a9d5c44001340"/>

@@ -1005,4 +1005,18 @@ public class Constant {
      params.addBodyParameter("type", "1");
      params.addBodyParameter("cate_id", "47");
      */
+    //热门菜谱具体实现
+    public static String HOT_CAI_PU="http://api.haodou.com/index.php?appid=2" +
+            "&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=" +
+            "1480504809751&vc=105&vn=6.1.15&loguid=10282642&deviceid=haodou864394010609719&uuid=" +
+            "4d026196b079f72c6ee96157c0c65d62&channel=anzhi_v6115&method=Info.getInfo&virtual=" +
+            "&signmethod=md5&v=3&timestamp=1480505968&nonce=0.09857817542873337&appsign=" +
+            "6a3a98b0d1e1863716b664e2e23ef2c9";
+    /*
+     params.addBodyParameter("sign", "df04ef8cf3aab201ce09175f64129ac4");
+     params.addBodyParameter("uid", "10282642");
+     params.addBodyParameter("return_request_id", "");
+     params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
+     params.addBodyParameter("rid", "1115824");
+     */
 }
