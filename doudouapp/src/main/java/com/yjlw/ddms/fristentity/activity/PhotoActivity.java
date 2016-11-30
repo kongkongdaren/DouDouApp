@@ -148,17 +148,6 @@ public class PhotoActivity extends AppCompatActivity {
          //适配器
         adapter = new PhotoAdapter(listPhoto,this);
         rlv.setAdapter(adapter);
-        rlv.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                downRefreshData(listPhoto);
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-            }
-        });
         //设置item之间的间隔
         SpacesItemDecoration decoration=new SpacesItemDecoration(10);
         rlv.addItemDecoration(decoration);
