@@ -1,5 +1,7 @@
 package com.yjlw.ddms.baidumap.entity;
 
+import java.io.Serializable;
+
 /**
  * Simple to Introduction
  *
@@ -8,8 +10,9 @@ package com.yjlw.ddms.baidumap.entity;
  * @CreateDate: 2016/11/24
  * @Version: [v1.0]
  */
-public class AddressInfo {
+public class AddressInfo implements Serializable{
 
+    private static final long serialVersionUID = -5921741268223669546L;
     /**
      * error_code : 0
      * reason : 成功

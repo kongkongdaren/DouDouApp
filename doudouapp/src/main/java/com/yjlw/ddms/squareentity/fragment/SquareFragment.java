@@ -3,8 +3,6 @@ package com.yjlw.ddms.squareentity.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +12,6 @@ import android.widget.RadioGroup;
 
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.squareentity.fragment.adapter.ViewPagerAdapter;
-import com.yjlw.ddms.squareentity.fragment.fragment.DynamicFragment;
-import com.yjlw.ddms.squareentity.fragment.fragment.HaoDouFragment;
 import com.yjlw.ddms.squareentity.fragment.fragment.TopicFragment;
 
 import java.util.LinkedList;
@@ -92,20 +88,13 @@ public class SquareFragment extends Fragment {
         fragments = new LinkedList<>();
         for(int i=0;i<mRg.getChildCount();i++){
             TopicFragment topicFragment=new TopicFragment();
-//            HaoDouFragment haoDouFragment=new HaoDouFragment();
-//            DynamicFragment dynamicFragment=new DynamicFragment();
 
             Bundle bundle=new Bundle();
             bundle.putString("tabName",((RadioButton)mRg.getChildAt(i))
                     .getText().toString());
             bundle.putInt("i",i);
             topicFragment.setArguments(bundle);
-//            haoDouFragment.setArguments(bundle);
-//            dynamicFragment.setArguments(bundle);
-//
             fragments.add(topicFragment);
-//            fragments.add(haoDouFragment);
-//            fragments.add(dynamicFragment);
         }
 
         //适配器
@@ -133,22 +122,4 @@ public class SquareFragment extends Fragment {
 
 
     }
-
-//    //自定义适配器
-//    private final class MyPagerAdapter extends FragmentStatePagerAdapter{
-//
-//        public MyPagerAdapter(FragmentManager fm) {
-//            super(fm);
-//        }
-//
-//        @Override
-//        public Fragment getItem(int position) {
-//            return fragments.get(position);
-//        }
-//
-//        @Override
-//        public int getCount() {
-//            return fragments.size();
-//        }
-//    }
 }

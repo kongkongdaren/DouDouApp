@@ -17,11 +17,15 @@ import android.widget.Toast;
 
 import com.alipay.sdk.app.PayTask;
 import com.yjlw.ddms.R;
+import com.yjlw.ddms.aboutme.activity.AddressManageActivity;
+import com.yjlw.ddms.aboutme.activity.LoginActivity;
 import com.yjlw.ddms.homeentity.adapter.CommodityAdapter;
 import com.yjlw.ddms.homeentity.entity.DataBean;
 import com.yjlw.ddms.homeentity.entity.PayResult;
 import com.yjlw.ddms.mainactivity.MainActivity;
+import com.yjlw.ddms.utils.SharedPreferencesUtils;
 import com.yjlw.ddms.utils.SignUtils;
+import com.yjlw.ddms.utils.ToastUtils;
 
 import org.xutils.view.annotation.Event;
 import org.xutils.view.annotation.ViewInject;
@@ -52,6 +56,10 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
 
     @ViewInject(R.id.tv_total)
     private TextView tvTotal;//商品总价
+    @ViewInject(R.id.tv_consignee)
+    private TextView tvConsignee;//收货人
+    @ViewInject(R.id.tv_address)
+    private TextView tvAddress;//收货地址
 
     @ViewInject(R.id.lv_buy_product)
     private ListView lvBuyPro;//商品信息
@@ -60,12 +68,18 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
 
     private List<DataBean> dataBeens = new LinkedList<>();
     private float count = 0;
+    private String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping_ali_pay);
         x.view().inject(this);
+        userName = SharedPreferencesUtils.getString(this, "userName", "");
+        String consignee = SharedPreferencesUtils.getString(this, "consignee", "");
+        String detailedAddress = SharedPreferencesUtils.getString(this, "detailedAddress", "");
+        tvConsignee.setText(consignee);
+        tvAddress.setText(detailedAddress);
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,38 +160,50 @@ public class ShoppingAliPayActivity extends AppCompatActivity {
      */
     @Event(type = View.OnClickListener.class, value = R.id.btn_pay)
     private void userActivityPay(View view) {
-        if (TextUtils.isEmpty(PARTNER) || TextUtils.isEmpty(RSA_PRIVATE) || TextUtils.isEmpty
-                (SELLER)) {
-            new AlertDialog.Builder(this).setTitle("警告").setMessage("需要配置PARTNER | RSA_PRIVATE| "
-                    + "SELLER").setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialoginterface, int i) {
-                    //
-                    finish();
-                }
-            }).show();
-            return;
+        if (TextUtils.isEmpty(userName)) {
+            ToastUtils.showToast(this, "请您登陆");
+            startActivity(new Intent(this, LoginActivity.class));
+        } else if (TextUtils.isEmpty(tvConsignee.getText().toString()) && TextUtils.isEmpty
+                (tvAddress.getText().toString())) {
+            ToastUtils.showToast(this, "收货地址不能为空");
+            startActivity(new Intent(this, AddressManageActivity.class));
+
+        } else {
+            if (TextUtils.isEmpty(PARTNER) || TextUtils.isEmpty(RSA_PRIVATE) || TextUtils.isEmpty
+                    (SELLER)) {
+                new AlertDialog.Builder(this).setTitle("警告").setMessage("需要配置PARTNER | " +
+                        "RSA_PRIVATE| " + "SELLER").setPositiveButton("确定", new DialogInterface
+                        .OnClickListener() {
+                    public void onClick(DialogInterface dialoginterface, int i) {
+                        //
+                        finish();
+                    }
+                }).show();
+                return;
+            }
+            // 订单
+            String orderInfo = getOrderInfo("测试的商品", "该测试商品的详细描述", "0.01");
+
+            //③获得签名信息，并进行编码（特别注意，这里的签名逻辑需要放在服务端，切勿将私钥泄露在代码中！）
+            String sign = SignUtils.sign(orderInfo, RSA_PRIVATE);//sign中保存的是签名后的订单详情
+
+            try {
+                /**
+                 * 仅需对sign 做URL编码
+                 */
+                sign = URLEncoder.encode(sign, "UTF-8");//为了解决乱码，对订单详情中的：参数名和参数值进行编码
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+
+            //④ 完整的符合支付宝参数规范的订单信息
+            final String payInfo = orderInfo + "&sign=\"" + sign + "\"&" + "sign_type=\"RSA\"";
+
+            //⑤开启子线程，进行支付操作
+            //开启子线程进行支付
+            beginPay(payInfo);
         }
-        // 订单
-        String orderInfo = getOrderInfo("测试的商品", "该测试商品的详细描述", "0.01");
 
-        //③获得签名信息，并进行编码（特别注意，这里的签名逻辑需要放在服务端，切勿将私钥泄露在代码中！）
-        String sign = SignUtils.sign(orderInfo, RSA_PRIVATE);//sign中保存的是签名后的订单详情
-
-        try {
-            /**
-             * 仅需对sign 做URL编码
-             */
-            sign = URLEncoder.encode(sign, "UTF-8");//为了解决乱码，对订单详情中的：参数名和参数值进行编码
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
-
-        //④ 完整的符合支付宝参数规范的订单信息
-        final String payInfo = orderInfo + "&sign=\"" + sign + "\"&" + "sign_type=\"RSA\"";
-
-        //⑤开启子线程，进行支付操作
-        //开启子线程进行支付
-        beginPay(payInfo);
     }
 
     /**

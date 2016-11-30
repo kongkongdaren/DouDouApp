@@ -85,7 +85,7 @@ public class Lists {
             return FavoriteList;
         }
 
-        public void setFavoriteList(List<FavoriteListBean> FavoriteList) {
+        public void  setFavoriteList(List<FavoriteListBean> FavoriteList) {
             this.FavoriteList = FavoriteList;
         }
 
