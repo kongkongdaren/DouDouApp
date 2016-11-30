@@ -57,7 +57,6 @@ public class AllDataAdapter extends HomeCustomBaseAdapter<HotAll.ResultBean.List
         vh.tvName.setText("by "+listBean.getUserName());
         vh.tvPraiseCount.setText(listBean.getLikeCount()+"");
         for(int i=0;i<listBean.getTags().size();i++){
-            if(i<=4) {
                 TextView tvTag = new TextView(context);
                 // 第一个参数为宽的设置，第二个参数为高的设置。
                 tvTag.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -69,7 +68,6 @@ public class AllDataAdapter extends HomeCustomBaseAdapter<HotAll.ResultBean.List
                 tvTag.setEllipsize(TextUtils.TruncateAt.END);
                 tvTag.setText(listBean.getTags().get(i).getName());
                 vh.llTag.addView(tvTag);
-            }
         }
         return convertView;
 
