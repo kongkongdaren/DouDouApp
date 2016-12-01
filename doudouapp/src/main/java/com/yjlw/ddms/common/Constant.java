@@ -1034,4 +1034,18 @@ public class Constant {
      params.addBodyParameter("appqs", "haodourecipe://haodou.com/recipe/info/?id=869878&video=1");
      params.addBodyParameter("rid", "869878");
      */
+    //食品数据
+    public static String FOOD_DATE="http://api.haodou.com/index.php?appid=2&appkey=" +
+            "9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=1480590359576&vc=" +
+            "105&vn=6.1.15&loguid=10282642&deviceid=haodou864394010609719&uuid=" +
+            "4d026196b079f72c6ee96157c0c65d62&channel=anzhi_v6115&method=Search.getList&virtual=" +
+            "&signmethod=md5&v=3&timestamp=1480590419&nonce=0.6333092953738771&appsign=" +
+            "b82b276add7c6513ceaf71a3ecd5f8b5";
+    /*
+    params.addBodyParameter("limit", "20");
+    params.addBodyParameter("scene", "t1");
+    params.addBodyParameter("tagid", "321");
+    params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
+    params.addBodyParameter("offset", "0");
+    */
 }

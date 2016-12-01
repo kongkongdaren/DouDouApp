@@ -1,5 +1,6 @@
 package com.yjlw.ddms.fristentity.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -120,9 +121,21 @@ public class MenuSortActivity extends AppCompatActivity {
         });
     }
 //关于GridView的操作
-    private void aboutGridView(List<MenuSort.ResultBean.ListBean.TagsBean> listSortTags) {
+    private void aboutGridView(final List<MenuSort.ResultBean.ListBean.TagsBean> listSortTags) {
         //适配器
         MenuGridViewAdapter adapter=new MenuGridViewAdapter(listSortTags,this);
         gv.setAdapter(adapter);
+        gv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Log.i("zouleme","吃屎吧");
+                Intent intent=new Intent(MenuSortActivity.this,FoodActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("title",listSortTags.get(position).getName());
+                bundle.putString("id",listSortTags.get(position).getId()+"");
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
     }
 }
