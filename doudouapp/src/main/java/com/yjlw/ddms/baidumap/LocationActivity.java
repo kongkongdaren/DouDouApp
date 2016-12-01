@@ -108,39 +108,12 @@ public class LocationActivity extends BaiduMapBaseActivity {
                         .getLatitude()).longitude(bdLocation.getLongitude()).build();
                 baiduMap.setMyLocationData(data);
 
-                Log.i("Log", bdLocation.getLatitude() + "," + bdLocation.getLongitude());
                 double longitude = bdLocation.getLongitude();
                 double latitude = bdLocation.getLatitude();
                 SharedPreferencesUtils.saveString(getApplicationContext(),"longitude",longitude+"");
                 SharedPreferencesUtils.saveString(getApplicationContext(),"latitude",latitude+"");
-                String url = "http://api.haoservice.com/api/getLocationinfor";
-                RequestParams params = new RequestParams(url);
-                params.addBodyParameter("latlng", bdLocation.getLatitude() + "," + bdLocation
-                        .getLongitude());
-                params.addBodyParameter("type", "2");
-                params.addBodyParameter("key", "9eb3943f742c430fae3178ba5dcf9717");
-                x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
-                    @Override
-                    public void onSuccess(String s) {
-                        Log.i("Log", s);
-                        parserAddressInFo(s);
-                    }
+              //http://api.haoservice.com/api/convertlnglat?old_lnglat=116.44361,39.93554&key=cebfba62dbf04e1db8a6d4c3e352e062
 
-                    @Override
-                    public void onError(Throwable throwable, boolean b) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(CancelledException e) {
-
-                    }
-
-                    @Override
-                    public void onFinished() {
-
-                    }
-                });
             }
         }
     }
@@ -159,7 +132,7 @@ public class LocationActivity extends BaiduMapBaseActivity {
 
         localBroadcast.sendBroadcast(intent);
         Log.i("Log", addressInfo.toString());
-        SharedPreferencesUtils.saveString(this, "addressinfo", address);
+
     }
 
     /**

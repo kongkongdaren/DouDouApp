@@ -22,8 +22,16 @@ import com.baidu.mapapi.search.poi.PoiDetailSearchOption;
 import com.baidu.mapapi.search.poi.PoiNearbySearchOption;
 import com.baidu.mapapi.search.poi.PoiResult;
 import com.baidu.mapapi.search.poi.PoiSearch;
+import com.google.gson.Gson;
 import com.yjlw.ddms.R;
+import com.yjlw.ddms.baidumap.entity.AddressInfo;
+import com.yjlw.ddms.baidumap.entity.GpsAddress;
 import com.yjlw.ddms.utils.SharedPreferencesUtils;
+
+import org.xutils.common.Callback;
+import org.xutils.http.HttpMethod;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 import java.util.List;
 
@@ -39,6 +47,7 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
     private PoiSearch poiSearch;
     private LatLng currentPos;
     protected EditText etFood;
+    private String address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +89,51 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
     }
 
     public void OkAddress(View view) {
+        String currentLongitude = SharedPreferencesUtils.getString(getApplicationContext(),
+                "longitude", "");
+        String currentLatitude = SharedPreferencesUtils.getString(getApplicationContext(),
+                "latitude", "");
+        double currLong = Double.parseDouble(currentLongitude);
+        double currLati = Double.parseDouble(currentLatitude);
+        String url = "http://api.haoservice.com/api/convertlnglat";
+        RequestParams params = new RequestParams(url);
+        //        39.913248,116.403624
+        Log.i("Log", currLati + "," + currLong);
+
+        params.addBodyParameter("old_lnglat", currLong + "," + currLati);
+        //                params.addBodyParameter("type", "2");
+        params.addBodyParameter("key", "cebfba62dbf04e1db8a6d4c3e352e062");
+        x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String s) {
+                parserAddressInFo(s);
+            }
+
+            @Override
+            public void onError(Throwable throwable, boolean b) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException e) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+
+    }
+
+    private void parserAddressInFo(String s) {
+        Gson gson = new Gson();
+        Log.i("Log", s);
+
+        GpsAddress gpsAddress = gson.fromJson(s, GpsAddress.class);
+        address = gpsAddress.getResult().getProvince() + gpsAddress.getResult().getCity();
+        Log.i("Log", gpsAddress.toString());
         finish();
     }
 
@@ -101,6 +155,7 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         mapview.onDestroy();
+        SharedPreferencesUtils.saveString(this, "gspAddress", address);
         super.onDestroy();
     }
 
