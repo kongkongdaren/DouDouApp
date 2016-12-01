@@ -1,5 +1,6 @@
 package com.yjlw.ddms.fristentity.activity;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -109,6 +110,16 @@ public class HotClassSkipActivity extends AppCompatActivity {
         rlv.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
         HotSkipAdapter adapter=new HotSkipAdapter(skipList,this);
         rlv.setAdapter(adapter);
+        adapter.setOnItemClickListener(new HotSkipAdapter.MyItemClickListener() {
+            @Override
+            public void onItemClick(View view, String url3) {
+                Intent intent = new Intent(HotClassSkipActivity.this, PhotopuActivity.class);
+
+                intent.putExtra("url",url3);
+
+                startActivity(intent);
+            }
+        });
         //设置item之间的间隔
         SpacesItemDecoration decoration=new SpacesItemDecoration(5);
         rlv.addItemDecoration(decoration);

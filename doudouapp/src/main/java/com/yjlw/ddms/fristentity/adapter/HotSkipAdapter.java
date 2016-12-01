@@ -28,7 +28,13 @@ import it.sephiroth.android.library.picasso.Picasso;
 public class HotSkipAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private List<HotSkipData.ResultBean.ListBean> lists;
     private Context context;
+    private MyItemClickListener listenr;
 
+
+    public void setOnItemClickListener(MyItemClickListener listenr){
+
+        this.listenr = listenr;
+    }
     public HotSkipAdapter(List<HotSkipData.ResultBean.ListBean> lists, Context context) {
         this.lists = lists;
         this.context = context;
@@ -40,7 +46,27 @@ public class HotSkipAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
+        //判断是否设置了监听器
+
+        if(listenr!=null) {
+            // holder.itemView.setBackgroundResource(R.drawable.item_color);
+
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    // int postion2 = holder.getLayoutPosition();
+
+                    String url = lists.get(position).getVideoUrl();
+                    String  url2 = url.substring(url.lastIndexOf("id=")+3,url.lastIndexOf("&"));
+
+                    String  url3 = "http://www.haodou.com/recipe/"+url2+"/";
+
+
+                    listenr.onItemClick(holder.itemView, url3);
+                }
+            });
+        }
         MyViewHolder mvh= (MyViewHolder) holder;
         Picasso.with(context).load(lists.get(position).getCover()).placeholder(R.mipmap.default_high).into(mvh.ivSkipPhoto);
         mvh.tvSkipCount.setText(lists.get(position).getPlayCount()+"");
@@ -69,5 +95,12 @@ public class HotSkipAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             tvSkipMessage= (TextView) itemView.findViewById(R.id.hot_item_message);
 
         }
+    }
+    /**
+     * 自定义回调接口
+     */
+    public interface MyItemClickListener{
+
+        void onItemClick(View view, String url3);
     }
 }
