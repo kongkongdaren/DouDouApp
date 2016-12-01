@@ -10,8 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.yjlw.ddms.R;
-import com.yjlw.ddms.fristentity.activity.ViewPagerWebActivity;
+import com.yjlw.ddms.fristentity.activity.PhotopuActivity;
 
 import it.sephiroth.android.library.picasso.Picasso;
 
@@ -60,28 +61,26 @@ public class ViewPagerFragment extends Fragment {
 
                     url2 = url.substring(url.lastIndexOf("id=")+3);
 
-                    url3 = "http://www.haodou.com/recipe/album /"+url2+"/";
+                    url3 = "http://www.haodou.com/recipe/album/"+url2+"/";
 
-
+                    Log.i("url",url2);
                 }else if(url.contains("opentopic")){
 
                     url2 = url.substring(url.lastIndexOf("topic"),url.lastIndexOf("&"));
-
-
-                    url3 = "http://group.haodou.com /"+url2;
-                    Log.i("i",url3);
+                    url3 = "http://group.haodou.com/"+url2;
+                    Log.i("i+",url3);
 
                 }else{
                     url2 = url.substring(url.lastIndexOf("id=")+3,url.lastIndexOf("&"));
 
-                    url3 = "http://www.haodou.com/recipe /"+url2+"/";
+                    url3 = "http://www.haodou.com/recipe/"+url2+"/";
                 }
 
-                Intent intent = new Intent(getActivity(),ViewPagerWebActivity.class);
-                Bundle bundle=new Bundle();
-                bundle.putString("url",url3);
-                intent.putExtras(bundle);
-                startActivity(intent);
+                 Intent intent = new Intent(getActivity(),PhotopuActivity.class);
+                 Bundle bundle=new Bundle();
+                 bundle.putString("url",url3);
+                 intent.putExtras(bundle);
+                 startActivity(intent);
 
             }
         });
