@@ -81,7 +81,6 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
 
     public void OkAddress(View view) {
         finish();
-
     }
 
     /**

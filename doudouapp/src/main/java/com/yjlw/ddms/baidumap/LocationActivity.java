@@ -113,34 +113,34 @@ public class LocationActivity extends BaiduMapBaseActivity {
                 double latitude = bdLocation.getLatitude();
                 SharedPreferencesUtils.saveString(getApplicationContext(),"longitude",longitude+"");
                 SharedPreferencesUtils.saveString(getApplicationContext(),"latitude",latitude+"");
-//                String url = "http://api.haoservice.com/api/getLocationinfor";
-//                RequestParams params = new RequestParams(url);
-//                params.addBodyParameter("latlng", bdLocation.getLatitude() + "," + bdLocation
-//                        .getLongitude());
-//                params.addBodyParameter("type", "2");
-//                params.addBodyParameter("key", "9eb3943f742c430fae3178ba5dcf9717");
-//                x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
-//                    @Override
-//                    public void onSuccess(String s) {
-//                        Log.i("Log", s);
-//                        parserAddressInFo(s);
-//                    }
-//
-//                    @Override
-//                    public void onError(Throwable throwable, boolean b) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(CancelledException e) {
-//
-//                    }
-//
-//                    @Override
-//                    public void onFinished() {
-//
-//                    }
-//                });
+                String url = "http://api.haoservice.com/api/getLocationinfor";
+                RequestParams params = new RequestParams(url);
+                params.addBodyParameter("latlng", bdLocation.getLatitude() + "," + bdLocation
+                        .getLongitude());
+                params.addBodyParameter("type", "2");
+                params.addBodyParameter("key", "9eb3943f742c430fae3178ba5dcf9717");
+                x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
+                    @Override
+                    public void onSuccess(String s) {
+                        Log.i("Log", s);
+                        parserAddressInFo(s);
+                    }
+
+                    @Override
+                    public void onError(Throwable throwable, boolean b) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(CancelledException e) {
+
+                    }
+
+                    @Override
+                    public void onFinished() {
+
+                    }
+                });
             }
         }
     }
