@@ -1,10 +1,10 @@
 [
     {
-        "merged": "F:\\AndroidStudio_Workspace\\DouDouApp\\refreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
-        "source": "F:\\AndroidStudio_Workspace\\DouDouApp\\refreshlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_horizontal.xml"
+        "merged": "F:\\AndroidDemo\\AndroidStio\\DouDouApp\\refreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_horizontal.xml",
+        "source": "F:\\AndroidDemo\\AndroidStio\\DouDouApp\\refreshlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_horizontal.xml"
     },
     {
-        "merged": "F:\\AndroidStudio_Workspace\\DouDouApp\\refreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_vertical.xml",
-        "source": "F:\\AndroidStudio_Workspace\\DouDouApp\\refreshlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_vertical.xml"
+        "merged": "F:\\AndroidDemo\\AndroidStio\\DouDouApp\\refreshlibrary\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\pull_to_refresh_header_vertical.xml",
+        "source": "F:\\AndroidDemo\\AndroidStio\\DouDouApp\\refreshlibrary\\build\\intermediates\\bundles\\debug\\res\\layout\\pull_to_refresh_header_vertical.xml"
     }
 ]

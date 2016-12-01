@@ -150,14 +150,13 @@ finish();
     }
 
     private void search() {
-        startActivity(new Intent(getApplicationContext(), PoiSearchNearByDemo.class));
+        startActivity(new Intent(getApplicationContext(), PoiSearchInCityDemo.class));
         //
     }
 
     @Override
     protected void onDestroy() {
         mapview.onDestroy();
-        SharedPreferencesUtils.saveString(this, "gspAddress", address);
         super.onDestroy();
     }
 
