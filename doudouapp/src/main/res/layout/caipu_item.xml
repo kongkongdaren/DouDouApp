@@ -138,7 +138,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="10dp"
                 android:text="食材"/>
-            <ListView
+            <com.yjlw.ddms.fristentity.views.MyListView
                 android:id="@+id/lv_shicai"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -149,7 +149,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"/>
-            <ListView
+            <com.yjlw.ddms.fristentity.views.MyListView
                 android:id="@+id/lv_othershicai"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -186,7 +186,7 @@
                 android:layout_marginLeft="10dp"
                 android:text="步骤"
                 android:textSize="15sp"/>
-            <ListView
+            <com.yjlw.ddms.fristentity.views.MyListView
                 android:id="@+id/cai_cheng"
                 android:layout_marginLeft="10dp"
                 android:layout_width="match_parent"

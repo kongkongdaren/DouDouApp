@@ -1,10 +1,7 @@
 package com.yjlw.ddms.fristentity.views;
 
 import android.content.Context;
-import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.ListView;
 
 /**
@@ -18,34 +15,24 @@ import android.widget.ListView;
  */
 
 public class MyListView extends ListView {
-    View.OnTouchListener mGestureListener;
+    public MyListView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+    }
 
-
-    private View touchView;
-
-    public void touchView(View view)
-    {
-        touchView=view;
+    public MyListView(Context context, AttributeSet attrs) {
+        super(context, attrs);
     }
 
     public MyListView(Context context) {
         super(context);
     }
-    public MyListView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        setFadingEdgeLength(0);
-    }
-    public MyListView(Context context, AttributeSet attrs, int defStyle) {
-        super(context, attrs, defStyle);
-    }
     @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        if(touchView!=null){
-            //判断在视图内的动作则返回 false
-            Rect rect = new Rect(touchView.getLeft(),touchView.getTop(),touchView.getRight(),touchView.getBottom());
-            if(rect.contains((int)ev.getX(), (int)ev.getY())){
-                return false;
-            }}
-        return super.onInterceptTouchEvent(ev);
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        //设置为Integer.MAX_VALUE>>2 是listview全部展开
+        int measureSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE>>2, MeasureSpec.AT_MOST);
+//设置为400是设置listview的高度只能有400 不全部展开   实现可以滑动的效果
+        //int measureSpec1 = MeasureSpec.makeMeasureSpec(400, MeasureSpec.AT_MOST);
+        super.onMeasure(widthMeasureSpec, measureSpec);
     }
+
 }

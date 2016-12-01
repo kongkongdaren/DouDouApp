@@ -12,7 +12,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -22,6 +21,7 @@ import com.yjlw.ddms.fristentity.adapter.LookVedioAdapter;
 import com.yjlw.ddms.fristentity.adapter.VideoPagerAdapter;
 import com.yjlw.ddms.fristentity.entity.VideoData;
 import com.yjlw.ddms.fristentity.fragment.VideoPagerFragment;
+import com.yjlw.ddms.fristentity.views.MyListView;
 import com.yjlw.ddms.fristentity.views.MySelfCircleView;
 import com.yjlw.ddms.homeentity.views.HomeTitleItemView;
 
@@ -129,7 +129,7 @@ public class LookVideoActivity extends AppCompatActivity {
     @ViewInject(R.id.htiv_interest)
     private HomeTitleItemView htivInterest;
     @ViewInject(R.id.lv_interest)
-    private ListView lvInterest;
+    private MyListView lvInterest;
     private List<VideoData.ResultBean.HotrankBean> hotRank;
 
     @Override

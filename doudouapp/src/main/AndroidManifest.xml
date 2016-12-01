@@ -51,10 +51,10 @@
 
         <!-- 百度地图的操作 -->
         <!-- 百度地图密钥（原海忠）(eaeSfIvDQCl2GpaGQeS95oGb4M5xzlcw) -->
-        <!-- 百度地图秘钥（姜文莒）（uateLaRmBx2wno9FxZbvnH5drGSFbpwY） -->
+        <!-- 百度地图秘钥（姜文莒）（y1QWZ01GQRg2SQCImGWfGCAlsfYh4G6A） -->
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"
-            android:value="uateLaRmBx2wno9FxZbvnH5drGSFbpwY"/>
+            android:value="y1QWZ01GQRg2SQCImGWfGCAlsfYh4G6A"/>
         <!-- 欢迎界面 -->
         <activity android:name=".mainactivity.SplashActivity">
             <intent-filter>

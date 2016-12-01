@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -16,6 +15,7 @@ import com.yjlw.ddms.fristentity.adapter.MainfoodAdapter;
 import com.yjlw.ddms.fristentity.adapter.OtherfoodAdapter;
 import com.yjlw.ddms.fristentity.adapter.StepfoodAdapter;
 import com.yjlw.ddms.fristentity.entity.CaipuData;
+import com.yjlw.ddms.fristentity.views.MyListView;
 import com.yjlw.ddms.fristentity.views.MySelfCircleView;
 
 import org.xutils.common.Callback;
@@ -66,13 +66,13 @@ public class CaipuActivity extends AppCompatActivity {
     @ViewInject(R.id.cai_shicai)
     private TextView caiShiCai;
     @ViewInject(R.id.lv_shicai)
-    private ListView lvMain;
+    private MyListView lvMain;
     @ViewInject(R.id.lv_othershicai)
-    private ListView otherLv;
+    private MyListView otherLv;
     @ViewInject(R.id.cai_CookTime)
     private TextView caiCookTime;
     @ViewInject(R.id.cai_cheng)
-    private ListView lvChe;
+    private MyListView lvChe;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

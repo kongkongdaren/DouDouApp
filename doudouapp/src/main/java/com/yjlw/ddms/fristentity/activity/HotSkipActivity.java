@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
@@ -21,6 +20,7 @@ import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.fristentity.adapter.SkipAdapter;
 import com.yjlw.ddms.fristentity.entity.SkipData;
+import com.yjlw.ddms.fristentity.views.MyListView;
 
 import org.xutils.common.Callback;
 import org.xutils.http.HttpMethod;
@@ -58,7 +58,7 @@ public class HotSkipActivity extends AppCompatActivity {
     @ViewInject(R.id.tv_content)
     private TextView tvContent;
     @ViewInject(R.id.lv_skip)
-    private PullToRefreshListView lv;
+    private MyListView lv;
     @ViewInject(R.id.pb_skip)
     private ProgressBar pb;
     private SkipData.ResultBean.InfoBean.ShareInfoBean shareInfoData;
@@ -206,10 +206,11 @@ public class HotSkipActivity extends AppCompatActivity {
         }else {
             pb.setVisibility(View.GONE);
         }
-        aboutPullToRefreshListView(listSkipData);
+        aboutMyListView(listSkipData);
     }
 
-    private void aboutPullToRefreshListView(List<SkipData.ResultBean.ListBean> listSkipData) {
+    private void aboutMyListView(List<SkipData.ResultBean.ListBean> listSkipData) {
+        lv.setFocusable(false);
         SkipAdapter adapter=new SkipAdapter(listSkipData,this);
         lv.setAdapter(adapter);
     }

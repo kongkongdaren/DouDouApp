@@ -376,7 +376,7 @@
             android:id="@+id/htiv_interest"
             android:layout_width="match_parent"
             android:layout_height="40dp"/>
-        <ListView
+        <com.yjlw.ddms.fristentity.views.MyListView
             android:id="@+id/lv_interest"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
