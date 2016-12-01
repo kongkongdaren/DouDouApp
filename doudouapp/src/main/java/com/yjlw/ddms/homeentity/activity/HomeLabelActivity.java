@@ -129,9 +129,11 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
     }
 
     @Override
-    protected void onRestart() {
+    protected void onStart() {
+        addressinfo = SharedPreferencesUtils.getString(this, "gspAddress", "");
+
         tvAddress.setText(addressinfo);
-        super.onRestart();
+        super.onStart();
     }
 
     /**

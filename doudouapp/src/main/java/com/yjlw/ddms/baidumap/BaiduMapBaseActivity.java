@@ -132,9 +132,11 @@ public class BaiduMapBaseActivity extends AppCompatActivity {
         Log.i("Log", s);
 
         GpsAddress gpsAddress = gson.fromJson(s, GpsAddress.class);
-        address = gpsAddress.getResult().getProvince() + gpsAddress.getResult().getCity();
+        GpsAddress.ResultBean result = gpsAddress.getResult();
+        address = gpsAddress.getResult().getCity() + gpsAddress.getResult().getDist()+result.getArea()+result.getTown();
         Log.i("Log", gpsAddress.toString());
-        finish();
+        SharedPreferencesUtils.saveString(this, "gspAddress", address);
+finish();
     }
 
     /**

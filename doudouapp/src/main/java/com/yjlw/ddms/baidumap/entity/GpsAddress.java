@@ -13,10 +13,11 @@ public class GpsAddress {
     /**
      * error_code : 0
      * reason : 成功
-     * result : {"Address":"直辖市北京市朝阳区幸福村中路东直门街道(东城区)三里屯首开幸福广场东北","province":"直辖市","city":"北京市",
-     * "dist":"朝阳区","area":"幸福村中路","town":"东直门街道(东城区)","village":"三里屯","poi":"首开幸福广场",
-     * "poitype":"小区","direction":"东北","distance":0,"roadname":"三里屯东三街","roadDirection":"北",
-     * "roadDistance":0}
+     * result : {"correctlongitude":116.40986,"correctlatitude":39.91465,
+     * "Address":"北京市东城区菜厂胡同东华门街道东华门东厂社区,王府井大厦西北52米,菜厂胡同北28米","province":"直辖市","city":"北京市",
+     * "dist":"东城区","area":"菜厂胡同","town":"东华门街道","village":"东华门东厂社区","poi":"王府井大厦",
+     * "poitype":"大厦","direction":"西北","distance":"52米","roadname":"菜厂胡同","roadDirection":"北",
+     * "roadDistance":"28米"}
      */
 
     private int error_code;
@@ -49,22 +50,26 @@ public class GpsAddress {
 
     public static class ResultBean {
         /**
-         * Address : 直辖市北京市朝阳区幸福村中路东直门街道(东城区)三里屯首开幸福广场东北
+         * correctlongitude : 116.40986
+         * correctlatitude : 39.91465
+         * Address : 北京市东城区菜厂胡同东华门街道东华门东厂社区,王府井大厦西北52米,菜厂胡同北28米
          * province : 直辖市
          * city : 北京市
-         * dist : 朝阳区
-         * area : 幸福村中路
-         * town : 东直门街道(东城区)
-         * village : 三里屯
-         * poi : 首开幸福广场
-         * poitype : 小区
-         * direction : 东北
-         * distance : 0.0
-         * roadname : 三里屯东三街
+         * dist : 东城区
+         * area : 菜厂胡同
+         * town : 东华门街道
+         * village : 东华门东厂社区
+         * poi : 王府井大厦
+         * poitype : 大厦
+         * direction : 西北
+         * distance : 52米
+         * roadname : 菜厂胡同
          * roadDirection : 北
-         * roadDistance : 0.0
+         * roadDistance : 28米
          */
 
+        private double correctlongitude;
+        private double correctlatitude;
         private String Address;
         private String province;
         private String city;
@@ -75,10 +80,26 @@ public class GpsAddress {
         private String poi;
         private String poitype;
         private String direction;
-        private double distance;
+        private String distance;
         private String roadname;
         private String roadDirection;
-        private double roadDistance;
+        private String roadDistance;
+
+        public double getCorrectlongitude() {
+            return correctlongitude;
+        }
+
+        public void setCorrectlongitude(double correctlongitude) {
+            this.correctlongitude = correctlongitude;
+        }
+
+        public double getCorrectlatitude() {
+            return correctlatitude;
+        }
+
+        public void setCorrectlatitude(double correctlatitude) {
+            this.correctlatitude = correctlatitude;
+        }
 
         public String getAddress() {
             return Address;
@@ -160,11 +181,11 @@ public class GpsAddress {
             this.direction = direction;
         }
 
-        public double getDistance() {
+        public String getDistance() {
             return distance;
         }
 
-        public void setDistance(double distance) {
+        public void setDistance(String distance) {
             this.distance = distance;
         }
 
@@ -184,18 +205,20 @@ public class GpsAddress {
             this.roadDirection = roadDirection;
         }
 
-        public double getRoadDistance() {
+        public String getRoadDistance() {
             return roadDistance;
         }
 
-        public void setRoadDistance(double roadDistance) {
+        public void setRoadDistance(String roadDistance) {
             this.roadDistance = roadDistance;
         }
 
         @Override
         public String toString() {
             return "ResultBean{" +
-                    "Address='" + Address + '\'' +
+                    "correctlongitude=" + correctlongitude +
+                    ", correctlatitude=" + correctlatitude +
+                    ", Address='" + Address + '\'' +
                     ", province='" + province + '\'' +
                     ", city='" + city + '\'' +
                     ", dist='" + dist + '\'' +
@@ -205,10 +228,10 @@ public class GpsAddress {
                     ", poi='" + poi + '\'' +
                     ", poitype='" + poitype + '\'' +
                     ", direction='" + direction + '\'' +
-                    ", distance=" + distance +
+                    ", distance='" + distance + '\'' +
                     ", roadname='" + roadname + '\'' +
                     ", roadDirection='" + roadDirection + '\'' +
-                    ", roadDistance=" + roadDistance +
+                    ", roadDistance='" + roadDistance + '\'' +
                     '}';
         }
     }
