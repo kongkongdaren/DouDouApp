@@ -1,5 +1,7 @@
 package com.yjlw.ddms.fristentity.activity;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +12,12 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
+import android.widget.Toast;
 
+import com.umeng.socialize.ShareAction;
+import com.umeng.socialize.UMShareAPI;
+import com.umeng.socialize.UMShareListener;
+import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.yjlw.ddms.R;
 
 import org.xutils.view.annotation.ViewInject;
@@ -33,7 +40,28 @@ public class PhotopuActivity extends AppCompatActivity {
     private ImageView caiShare;
     @ViewInject(R.id.cai_web)
     private WebView web;
+    private ProgressDialog dialog;
+    private UMShareListener umShareListener1 = new UMShareListener() {
+        @Override
+        public void onResult(SHARE_MEDIA share_media) {
 
+            Toast.makeText(PhotopuActivity.this, "分享成功", Toast.LENGTH_LONG).show();
+
+        }
+
+        @Override
+        public void onError(SHARE_MEDIA share_media, Throwable throwable) {
+            Toast.makeText(PhotopuActivity.this, "分享失败", Toast.LENGTH_LONG).show();
+        }
+
+        @Override
+        public void onCancel(SHARE_MEDIA share_media) {
+
+            Toast.makeText(PhotopuActivity.this, "分享取消", Toast.LENGTH_LONG).show();
+
+
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,7 +75,13 @@ public class PhotopuActivity extends AppCompatActivity {
             }
         });
         Bundle extras = getIntent().getExtras();
-        String url = extras.getString("url");
+        final String url = extras.getString("url");
+        caiShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                share(url);
+            }
+        });
         WebSettings settings = web.getSettings();
         settings.setRenderPriority(WebSettings.RenderPriority.HIGH);
         settings.setSupportMultipleWindows(true);
@@ -63,13 +97,22 @@ public class PhotopuActivity extends AppCompatActivity {
         settings.setLoadWithOverviewMode(true);
         web.setWebChromeClient(new webChromeClient());// 支持运行特殊的javascript（例如：alert()）
         web.setWebViewClient(new  webViewClient());//
+        dialog = ProgressDialog.show(this, null, "正在为小猪努力加载。。。。。");
         web.loadUrl(url);
+    }
+
+    private void share(String url) {
+        new ShareAction(this).setDisplayList(SHARE_MEDIA.WEIXIN_CIRCLE, SHARE_MEDIA.QQ, SHARE_MEDIA.QZONE, SHARE_MEDIA.MORE)
+                .withTitle("给你看一条美食相关")
+                .withText("你好啊。。。")
+                .withTargetUrl(url)
+                .setCallback(umShareListener1)
+                .open();
     }
 
     private class webChromeClient extends WebChromeClient {
         @Override
         public void onProgressChanged(WebView view, int newProgress) {
-            // TODO Auto-generated method stub
             super.onProgressChanged(view, newProgress);
         }
     }
@@ -79,5 +122,15 @@ public class PhotopuActivity extends AppCompatActivity {
         public void onPageStarted(WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
         }
+        @Override
+        public void onPageFinished(WebView view, String url) {
+            dialog.dismiss();
+
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        UMShareAPI.get(this).onActivityResult(requestCode, resultCode, data);
     }
 }

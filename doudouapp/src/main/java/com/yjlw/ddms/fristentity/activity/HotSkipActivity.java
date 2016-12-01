@@ -2,7 +2,6 @@ package com.yjlw.ddms.fristentity.activity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -14,7 +13,6 @@ import com.google.gson.Gson;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareListener;
 import com.umeng.socialize.bean.SHARE_MEDIA;
-import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.utils.Log;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
@@ -109,52 +107,12 @@ public class HotSkipActivity extends AppCompatActivity {
     }
     //分享界面
     private void shareData() {
-            AlertDialog.Builder builder=new AlertDialog.Builder(this);
-            //把布局文件先填充成View对象
-            View inflate=View.inflate(this,R.layout.share_item,null);
-            ImageView ivQQ= (ImageView) inflate.findViewById(R.id.iv_qq);
-            ImageView ivWeixin= (ImageView) inflate.findViewById(R.id.iv_weixin);
-            ImageView ivQZone= (ImageView) inflate.findViewById(R.id.iv_qzone);
-            ivQQ.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    ShareAction qq=new ShareAction(HotSkipActivity.this);
-                        qq.withTitle(shareInfoData.getTitle());
-                        qq.withText(shareInfoData.getContent());
-                    UMImage urlImage = new UMImage(HotSkipActivity.this,R.mipmap.ic_main_logo);
-                    qq.withMedia(urlImage);
-                         qq.withTargetUrl(shareInfoData.getUrl());
-                    qq.setPlatform(SHARE_MEDIA.QQ).setCallback(umShareListener).share();
-                }
-            });
-
-        ivQZone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ShareAction Qzone=new ShareAction(HotSkipActivity.this);
-                Qzone.withTitle(shareInfoData.getTitle());
-                Qzone.withText(shareInfoData.getContent());
-                //分享图片
-                UMImage urlImage = new UMImage(HotSkipActivity.this,R.mipmap.ic_main_logo);
-                Qzone.withMedia(urlImage);
-                Qzone.withTargetUrl(shareInfoData.getUrl());
-                Qzone.setPlatform(SHARE_MEDIA.QZONE).setCallback(umShareListener).share();
-            }
-        });
-        ivWeixin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ShareAction weixin=new ShareAction(HotSkipActivity.this);
-                weixin.withTitle(shareInfoData.getTitle());
-                weixin.withText(shareInfoData.getContent());
-                weixin.withTargetUrl(shareInfoData.getUrl());
-                UMImage urlImage = new UMImage(HotSkipActivity.this,R.mipmap.ic_main_logo);
-                weixin.withMedia(urlImage);
-                weixin.setPlatform(SHARE_MEDIA.WEIXIN_CIRCLE).setCallback(umShareListener).share();
-            }
-        });
-            builder.setView(inflate);
-            builder.show();
+        new ShareAction(this).setDisplayList(SHARE_MEDIA.WEIXIN_CIRCLE, SHARE_MEDIA.QQ, SHARE_MEDIA.QZONE, SHARE_MEDIA.MORE)
+                .withTitle(shareInfoData.getTitle())
+                .withText(shareInfoData.getContent())
+                .withTargetUrl(shareInfoData.getUrl())
+                .setCallback(umShareListener)
+                .open();
         }
 
 
