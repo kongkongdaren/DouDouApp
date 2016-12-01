@@ -28,7 +28,11 @@ import it.sephiroth.android.library.picasso.Picasso;
 public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
      private List<PhotoData.DataBean.ListBean> list;
      private Context context;
-    private MyClickListener listener;
+    private MyItemClickListener listener;
+
+    public void setOnItemClickListener(MyItemClickListener listener) {
+        this.listener = listener;
+    }
 
     public PhotoAdapter(List<PhotoData.DataBean.ListBean> list, Context context) {
         this.list = list;
@@ -41,19 +45,30 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(final RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         if (listener!=null){
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    int position=holder.getLayoutPosition();
-                    listener.OnClick(holder.itemView,position);
+                    int position2=holder.getLayoutPosition();
+                    String url=list.get(position).getUrl();
+                    String url2=null;
+                    String url3=null;
+                    if(url.contains("collect")){
+                        url2 = url.substring(url.lastIndexOf("id=")+3);
+                        url3 = "http://www.haodou.com/recipe/album/"+url2+"/";
+                    }else{
+                        url2 = url.substring(url.lastIndexOf("id=")+3,url.lastIndexOf("&"));
+
+                        url3 = "http://www.haodou.com/recipe/"+url2+"/";
+                    }
+                    listener.onItemClick(holder.itemView, url3);
                 }
             });
         }
         MyViewHolder mvh= (MyViewHolder) holder;
         Picasso.with(context).load(list.get(position).getImgs().get(0)).placeholder(R.mipmap.default_high).into(mvh.ivPhoto);
-       mvh.tvPhotoName.setText(list.get(position).getTitle());
+        mvh.tvPhotoName.setText(list.get(position).getTitle());
         mvh.tvPhotoContent.setText(list.get(position).getDesc());
     }
 
@@ -76,7 +91,7 @@ public class PhotoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     /**
      * 自定义回调接口
      */
-    public  interface  MyClickListener{
-        void  OnClick(View view,int position);
+    public interface MyItemClickListener{
+        void onItemClick(View view,String url3);
     }
 }

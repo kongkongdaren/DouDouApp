@@ -186,7 +186,8 @@ public class HotTitleFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Intent intent=new Intent(getActivity(), CaipuActivity.class);
                 Bundle bundle=new Bundle();
-                bundle.putInt("id",listAll.get(position-1).getRecipeId());
+                String url="http://www.haodou.com/recipe/"+listAll.get(position-1).getRecipeId()+"";
+                bundle.putString("url",url);
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

@@ -1,6 +1,7 @@
 package com.yjlw.ddms.fristentity.activity;
 
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
@@ -40,7 +41,7 @@ import java.util.List;
  * @version : 1.0
  */
 
-public class PhotoActivity extends AppCompatActivity {
+public class PhotoActivity extends AppCompatActivity  {
     @ViewInject(R.id.iv_photo_back)
     private ImageView ivPhotoBack;
     @ViewInject(R.id.tv_photo_name)
@@ -151,6 +152,16 @@ public class PhotoActivity extends AppCompatActivity {
         //设置item之间的间隔
         SpacesItemDecoration decoration=new SpacesItemDecoration(10);
         rlv.addItemDecoration(decoration);
+        adapter.setOnItemClickListener(new PhotoAdapter.MyItemClickListener() {
+            @Override
+            public void onItemClick(View view, String url3) {
+                Intent intent=new Intent(PhotoActivity.this,PhotopuActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putString("url",url3);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
         srf.setColorSchemeColors(getResources().getColor(android.R.color.holo_orange_light));
         srf.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -210,7 +221,6 @@ public class PhotoActivity extends AppCompatActivity {
         });
 
     }
-
     public class SpacesItemDecoration extends RecyclerView.ItemDecoration {
 
         private int space;

@@ -424,8 +424,10 @@ private final class MyOnRefreshListener implements SwipeRefreshLayout.OnRefreshL
 
                 // 将position位置处的小圆点enable属性值设置为false
                 llContainer.getChildAt(position).setEnabled(false);
+
             }
         });
+
     }
 
     /**

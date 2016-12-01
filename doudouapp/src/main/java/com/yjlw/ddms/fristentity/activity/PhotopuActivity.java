@@ -26,12 +26,11 @@ import org.xutils.x;
  * @version : 1.0
  */
 
-public class CaipuActivity extends AppCompatActivity {
+public class PhotopuActivity extends AppCompatActivity {
     @ViewInject(R.id.caipu_back)
     private ImageView caiBack;
     @ViewInject(R.id.caipu_share)
     private ImageView caiShare;
-
     @ViewInject(R.id.cai_web)
     private WebView web;
 
