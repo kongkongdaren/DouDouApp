@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -12,6 +13,7 @@ import com.google.gson.Gson;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
 import com.yjlw.ddms.fristentity.entity.LookVideoData;
+import com.yjlw.ddms.fristentity.entity.VedeoSecondData;
 
 import org.xutils.common.Callback;
 import org.xutils.http.HttpMethod;
@@ -48,6 +50,7 @@ public class VideoActiviry extends AppCompatActivity {
     private ImageView ivVedioPhoto;
      @ViewInject(R.id.video_start)
     private ImageView ibStart;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,14 +66,55 @@ public class VideoActiviry extends AppCompatActivity {
         Intent intent = getIntent();
         String img = intent.getStringExtra("img");
         Picasso.with(this).load(img).placeholder(R.mipmap.default_high).into(ivVedioPhoto);
-        downloadVedioUrl();
+        downLoadData();
     }
-//下载视频的url
-    private void downloadVedioUrl() {
+
+    private void downLoadData() {
+        String vedioSecondDataUrl = Constant.VEDIO_SECOND_DATA;
+        final RequestParams params=new RequestParams(vedioSecondDataUrl);
+        params.addBodyParameter("sign", "df04ef8cf3aab201ce09175f64129ac4");
+        params.addBodyParameter("uid", "10282642");
+        params.addBodyParameter("return_request_id", "");
+        params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
+        params.addBodyParameter("appqs", "haodourecipe://haodou.com/recipe/info/?id=869878&video=1");
+        params.addBodyParameter("rid", "869878");
+        x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
+            @Override
+            public void onSuccess(String result) {
+                parseVideoSecondData(result);
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+    }
+
+    private void parseVideoSecondData(String result) {
+        Gson gson=new Gson();
+        VedeoSecondData vedeoSecondData = gson.fromJson(result, VedeoSecondData.class);
+        int recipeId = vedeoSecondData.getResult().getInfo().getRecipeId();
+        downloadVedioUrl(recipeId);
+        Log.i("ve",recipeId+"");
+    }
+
+    //下载视频的url
+    private void downloadVedioUrl(int recipeId) {
         String videoUrl = Constant.VEDIO_DATA;
         RequestParams params=new RequestParams(videoUrl);
-        params.addBodyParameter("appqs", "haodourecipe://haodou.com/recipe/info/?id=901456&video=1");
-        params.addBodyParameter("rid", "901456");
+        params.addBodyParameter("appqs", "haodourecipe://haodou.com/recipe/info/?id=recipeId&video=1");
+        params.addBodyParameter("rid", recipeId+"");
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
@@ -98,7 +142,8 @@ public class VideoActiviry extends AppCompatActivity {
     private void parseVideoData(String result) {
         Gson gson=new Gson();
         LookVideoData lookVideoData = gson.fromJson(result, LookVideoData.class);
-        String VedioUrl = lookVideoData.getResult().getUrl();
+       String VedioUrl = lookVideoData.getResult().getUrl();
+        Log.i("ve",VedioUrl.toString());
         aboutPlayVideo(VedioUrl);
     }
 

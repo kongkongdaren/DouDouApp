@@ -1019,4 +1019,19 @@ public class Constant {
      params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
      params.addBodyParameter("rid", "1115824");
      */
+    //视频数据
+    public static String VEDIO_SECOND_DATA="http://api.haodou.com/index.php?appid=2" +
+            "&appkey=9ef269eec4f7a9d07c73952d06b5413f&format=json&sessionid=" +
+            "1480561690285&vc=105&vn=6.1.15&loguid=10282642&deviceid=" +
+            "haodou864394010609719&uuid=4d026196b079f72c6ee96157c0c65d62&channel=" +
+            "anzhi_v6115&method=Info.getInfo&virtual=&signmethod=md5&v=3&timestamp=" +
+            "1480562882&nonce=0.9306450955734834&appsign=b3cdd503587dc799aac20075f92673e9";
+    /*
+     params.addBodyParameter("sign", "df04ef8cf3aab201ce09175f64129ac4");
+     params.addBodyParameter("uid", "10282642");
+     params.addBodyParameter("return_request_id", "");
+     params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
+     params.addBodyParameter("appqs", "haodourecipe://haodou.com/recipe/info/?id=869878&video=1");
+     params.addBodyParameter("rid", "869878");
+     */
 }

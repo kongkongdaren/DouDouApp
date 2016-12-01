@@ -73,6 +73,8 @@ public class CaipuActivity extends AppCompatActivity {
     private TextView caiCookTime;
     @ViewInject(R.id.cai_cheng)
     private MyListView lvChe;
+    private int rid;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +86,8 @@ public class CaipuActivity extends AppCompatActivity {
                 finish();
             }
         });
+        Bundle extras = getIntent().getExtras();
+        rid = extras.getInt("id");
         downHotCaiPu();
     }
 //下载数据
@@ -94,7 +98,7 @@ public class CaipuActivity extends AppCompatActivity {
         params.addBodyParameter("uid", "10282642");
         params.addBodyParameter("return_request_id", "");
         params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
-        params.addBodyParameter("rid", "1115824");
+        params.addBodyParameter("rid", rid+"");
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {

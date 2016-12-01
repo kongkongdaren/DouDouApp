@@ -1,5 +1,6 @@
 package com.yjlw.ddms.fristentity.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 
@@ -16,6 +18,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.yjlw.ddms.R;
 import com.yjlw.ddms.common.Constant;
+import com.yjlw.ddms.fristentity.activity.CaipuActivity;
 import com.yjlw.ddms.fristentity.adapter.AllDataAdapter;
 import com.yjlw.ddms.fristentity.entity.HotAll;
 
@@ -176,6 +179,16 @@ public class HotTitleFragment extends Fragment {
             @Override
             public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
                 refreshData(listAll);
+            }
+        });
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent intent=new Intent(getActivity(), CaipuActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putInt("id",listAll.get(position-1).getRecipeId());
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
     }
