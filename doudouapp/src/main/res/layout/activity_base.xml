@@ -26,14 +26,15 @@
             android:onClick="searchAction"
             android:text="搜索"
             />
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="OkAddress"
             android:text="定位"
             />
+
     </LinearLayout>
+
     <com.baidu.mapapi.map.MapView
         android:id="@+id/mapview"
         android:layout_width="wrap_content"

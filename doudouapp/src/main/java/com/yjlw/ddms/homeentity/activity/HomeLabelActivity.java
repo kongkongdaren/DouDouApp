@@ -97,7 +97,7 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_label);
-        addressinfo = SharedPreferencesUtils.getString(this, "addressinfo", "");
+        addressinfo = SharedPreferencesUtils.getString(this, "gspAddress", "");
         SDKInitializer.initialize(getApplicationContext()); // 不能传递Activity，必须是全局Context
         Bundle bundle = this.getIntent().getExtras();
         detailsResult = bundle.getString("detailsResult");
@@ -129,9 +129,11 @@ public class HomeLabelActivity extends AppCompatActivity implements View.OnClick
     }
 
     @Override
-    protected void onRestart() {
+    protected void onStart() {
+        addressinfo = SharedPreferencesUtils.getString(this, "gspAddress", "");
+
         tvAddress.setText(addressinfo);
-        super.onRestart();
+        super.onStart();
     }
 
     /**

@@ -142,7 +142,7 @@
         <activity android:name=".fristentity.activity.CaipuActivity"/>
         <activity android:name=".fristentity.activity.PhotopuActivity"/>
         <activity android:name=".fristentity.activity.ViewPagerWebActivity"/>
-        <activity android:name=".fristentity.activity.FoodActivity"/>
+        <activity android:name=".baidumap.PoiSearchInCityDemo"></activity>
         <meta-data
             android:name="UMENG_APPKEY"
             android:value="583c327b8f4a9d5c44001340"/>
