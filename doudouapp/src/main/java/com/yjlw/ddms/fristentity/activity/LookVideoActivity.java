@@ -216,6 +216,7 @@ public class LookVideoActivity extends AppCompatActivity {
                 Intent intent=new Intent(LookVideoActivity.this,VideoActiviry.class);
                 Bundle bundle=new Bundle();
                 bundle.putString("img",hotRank.get(0).getInfo().getCover());
+                bundle.putString("id",hotRank.get(0).getInfo().getVideoId());
                 intent.putExtras(bundle);
                 startActivity(intent);
             }

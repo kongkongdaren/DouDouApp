@@ -65,19 +65,20 @@ public class VideoActiviry extends AppCompatActivity {
         });
         Intent intent = getIntent();
         String img = intent.getStringExtra("img");
+        String vedioId = intent.getStringExtra("id");
         Picasso.with(this).load(img).placeholder(R.mipmap.default_high).into(ivVedioPhoto);
-        downLoadData();
+        downLoadData(vedioId);
     }
 
-    private void downLoadData() {
+    private void downLoadData(String vedioId) {
         String vedioSecondDataUrl = Constant.VEDIO_SECOND_DATA;
         final RequestParams params=new RequestParams(vedioSecondDataUrl);
         params.addBodyParameter("sign", "df04ef8cf3aab201ce09175f64129ac4");
         params.addBodyParameter("uid", "10282642");
         params.addBodyParameter("return_request_id", "");
         params.addBodyParameter("uuid", "4d026196b079f72c6ee96157c0c65d62");
-        params.addBodyParameter("appqs", "haodourecipe://haodou.com/recipe/info/?id=869878&video=1");
-        params.addBodyParameter("rid", "869878");
+        params.addBodyParameter("appqs", "haodourecipe://haodou.com/recipe/info/?id=vedioId&video=1");
+        params.addBodyParameter("rid", vedioId);
         x.http().request(HttpMethod.POST, params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
